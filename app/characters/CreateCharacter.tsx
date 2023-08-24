@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
 
-export default function CreateNote() {
+export default function CreateCharacter() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
 
     const router = useRouter();
 
     const create = async() => {
-        await fetch('http://127.0.0.1:8090/api/collections/posts/records', {
+        await fetch('http://127.0.0.1:8090/api/collections/characters/records', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ export default function CreateNote() {
 
     return (
         <form onSubmit={create}>
-            <h3>Create New Note!</h3>
+            <h3>Create New Character!</h3>
             <div className="row">
                 <div className="six columns">
                     <input
@@ -46,7 +46,7 @@ export default function CreateNote() {
                 onChange={(e) => setContent(e.target.value)}
             />
             <button type="submit">
-                Create Note
+                Create Character
             </button>
         </form>
     );

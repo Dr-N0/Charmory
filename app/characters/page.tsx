@@ -3,7 +3,7 @@ import CreateCharacter from './CreateCharacter';
 
 async function getCharacters() {
     const res = await fetch(
-        'http://127.0.0.1:8090/api/collections/notes/records?page=1&perPage=30',
+        'http://127.0.0.1:8090/api/collections/characters/records?page=1&perPage=10',
         {cache: 'no-store'}
     );
     const data = await res.json();
