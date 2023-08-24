@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import CreateCharacter from './CreateCharacter';
+import CreateCharacter from '../../components/CreateCharacter';
 
 async function getCharacters() {
     const res = await fetch(
