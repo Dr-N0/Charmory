@@ -1,10 +1,9 @@
 import Link from 'next/link'
-import CreateCharacter from '../../components/CreateCharacter';
 
 async function getCharacters() {
     const res = await fetch(
         'http://127.0.0.1:8090/api/collections/characters/records?page=1&perPage=10',
-        {cache: 'no-store'}
+        { cache: 'no-store' }
     );
     const data = await res.json();
     return data?.items as any[];
@@ -20,11 +19,13 @@ export default async function CharactersPage() {
                 return <Character key={character.id} character={character} />;
             })}
 
-            <CreateCharacter />
+            <Link href={`/characters/create`}>
+                <button>Create!</button>
+            </Link>
         </div>
     );
 }
-  
+
 function Character({character}: any){
     const {id, title, content, created } = character || {};
     return (
