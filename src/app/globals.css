@@ -1,6 +1,6 @@
 :root {
-  --random-color: red;
-  --opposite-random-color: red;
+  --random-color: transparent;
+  --opposite-random-color: transparent;
 }
 
 * {
