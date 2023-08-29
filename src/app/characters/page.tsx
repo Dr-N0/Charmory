@@ -1,4 +1,7 @@
 import Link from 'next/link'
+import style from './Characters.module.css'
+import Nav from '@/src/components/Nav'
+import CharacterSearchBar from '@/src/components/CharacterSearchBar';
 
 async function getCharacters() {
     const res = await fetch(
@@ -13,28 +16,46 @@ export default async function CharactersPage() {
     const characters = await getCharacters();
 
     return (
-        <div>
-            <h1>Characters</h1>
-            {characters?.map((character) => {
-                return <Character key={character.id} character={character} />;
-            })}
-
-            <Link href={`/characters/create`}>
-                <button>Create!</button>
-            </Link>
-        </div>
+        <main>
+            <Nav />
+            <section className={style.showcase}>
+                <h1>Characters</h1>
+                <Link href={`/characters/create`}>
+                    <button>Create!</button>
+                </Link>
+                <CharacterSearchBar />
+                <div className={style.characterContainer}>
+                    {characters?.map((character) => {
+                        return <Character key={character.id} character={character} />;
+                    })}
+                </div>
+            </section>
+        </main>
     );
 }
 
 function Character({character}: any){
     const {id, title, content, created } = character || {};
     return (
-        <Link href={`/characters/${id}`}>
-            <div>
-                <h2>{title}</h2>
-                <h5>{content}</h5>
-                <p>{created}</p>
+        <section className={style.characterBox}>
+            <h2>{title}</h2>
+            <p>Subtitle</p>
+            <h5>{content}</h5>
+            <p>{created}</p>
+            <div className={style.characterOptions}>
+                <Link href={`/characters/${id}`}>
+                    <button>View</button>
+                </Link>
+                <Link href={`/characters/edit`}>
+                    <button>Edit</button>
+                </Link>
+                <Link href={`/characters/copy`}>
+                    <button>Copy</button>
+                </Link>
+                <Link href={`/characters/delete`}>
+                    <button>Delete</button>
+                </Link>
             </div>
-        </Link>
+        </section>
     );
 }
