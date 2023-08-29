@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link'
 import style from './Create.module.css'
-import CreateCharacter from '../../../components/CreateCharacter';
+import CreateCharacter from '@/src/components/CreateCharacter';
 
 export default function CreateCharacterPage() {
     function clickthing() {
@@ -16,7 +16,7 @@ export default function CreateCharacterPage() {
     }
 
     return (
-        <div>
+        <main>
             <div className={style.creation}>
                 <nav>
                     <ul>Home</ul>
@@ -65,6 +65,6 @@ export default function CreateCharacterPage() {
             
 
             <CreateCharacter /> */}
-        </div>
+        </main>
     );
 }
