@@ -1,15 +1,35 @@
-.creation {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 20px;
+.showcase {
+    position: absolute;
+    top: 15vh;
+    left: 50vw;
+    transform: translate(-50%);
+    height: calc(100% - 15vh - var(--characters-page-nav-height));
+    vertical-align: top;
+    overflow-x: hidden;
 }
 
-.creation nav {
+.navigation {
+    height: var(--characters-page-nav-height);
     display: flex;
+    justify-content: center;
+}
+
+.sectionContainer {
+    display: flex;
+    gap: 20px;
+    width: 80vw;
+    overflow-y: hidden;
+    align-items: flex-start;
+    scroll-behavior: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+}
+
+.sectionContainer section {
+    height: 0%;
+    min-width: 80vw;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
 }
 
 .hoverUnderlineAnimation {
