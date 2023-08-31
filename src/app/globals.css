@@ -1,6 +1,7 @@
 :root {
   --random-color: transparent;
   --opposite-random-color: transparent;
+  --characters-page-nav-height: 10px;
 }
 
 * {
@@ -13,14 +14,16 @@ html,
 body {
   max-width: 100vw;
   height: 100vh;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   margin: 0;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   color: #ffffff;
   background: linear-gradient(0deg,
-    rgb(197, 49, 49) 0%, 
-    rgb(39, 39, 39) 80%
+    rgb(39, 39, 39) 10%, 
+    rgb(197, 49, 49) 100%
   );
+  background-repeat: no-repeat;
+  background-color: rgb(39, 39, 39);
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
