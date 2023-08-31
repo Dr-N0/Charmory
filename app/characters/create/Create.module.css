@@ -1,0 +1,57 @@
+.showcase {
+    position: absolute;
+    top: 15vh;
+    left: 50vw;
+    transform: translate(-50%);
+    height: calc(100% - 15vh - var(--characters-page-nav-height));
+    vertical-align: top;
+    overflow-x: hidden;
+}
+
+.navigation {
+    height: var(--characters-page-nav-height);
+    display: flex;
+    justify-content: center;
+}
+
+.sectionContainer {
+    display: flex;
+    gap: 20px;
+    width: 80vw;
+    overflow-y: hidden;
+    align-items: flex-start;
+    scroll-behavior: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+}
+
+.sectionContainer section {
+    height: 0%;
+    min-width: 80vw;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+.hoverUnderlineAnimation {
+    display: inline-block;
+    position: relative;
+    color: #0087ca;
+}
+  
+.hoverUnderlineAnimation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.hoverUnderlineAnimation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
