@@ -27,7 +27,7 @@ export default async function CharactersPage() {
             <Nav />
             <section className={style.showcase}>
                 <h1>Characters</h1>
-                <Link href={`/characters/create`}>
+                <Link href={`/characters/build`}>
                     <button>Create!</button>
                 </Link>
                 <CharacterSearchBar />
