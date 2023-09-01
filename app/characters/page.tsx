@@ -24,6 +24,7 @@ async function getCharacters(session: any) {
             characters: true,
         },
     })
+    console.log(user)
     return user;
 }
 
@@ -49,13 +50,13 @@ export default async function CharactersPage({ session }: any) {
 }
 
 function Character({character}: any){
-    const {id, title, content, created } = character || {};
+    const {id, title, name, ownerId } = character || {};
     return (
         <section className={style.characterBox}>
             <h2>{title}</h2>
             <p>Subtitle</p>
-            <h5>{content}</h5>
-            <p>{created}</p>
+            <h5>{name}</h5>
+            <p>{ownerId}</p>
             <div className={style.characterOptions}>
                 <Link href={`/characters/${id}`}>
                     <button>View</button>
