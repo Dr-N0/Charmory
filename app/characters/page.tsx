@@ -1,30 +1,37 @@
 import Link from 'next/link'
 import style from './Characters.module.css'
-import Nav from '@/app/components/Nav'
 import { prisma } from '@/lib/prisma'
 import CharacterSearchBar from '@/app/components/CharacterSearchBar';
+import { getServerSession } from "next-auth"
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
-async function getCharacters() {
-    // const res = await fetch(
-    //     'http://127.0.0.1:8090/api/collections/characters/records?page=1&perPage=10',
-    //     { cache: 'no-store' }
-    // );
-    // const data = await res.json();
-    // return data?.items as any[];
+export async function getServerSideProps() {
+    const session = await getServerSession(authOptions);
+  
+    return {
+      props: {
+        session,
+      },
+    };
+  }
+
+async function getCharacters(session: any) {
     const user = await prisma.user.findFirst({
         where: {
-            email: 'test@test.com'
-        }
+            email: session?.user?.email
+        },
+        include: {
+            characters: true,
+        },
     })
     return user;
 }
 
-export default async function CharactersPage() {
-    const characters = await getCharacters();
-
+export default async function CharactersPage({ session }: any) {
+    const characters = await getCharacters(session);
+    console.log(characters)
     return (
         <main>
-            <Nav />
             <section className={style.showcase}>
                 <h1>Characters</h1>
                 <Link href={`/characters/build`}>
@@ -32,10 +39,9 @@ export default async function CharactersPage() {
                 </Link>
                 <CharacterSearchBar />
                 <div className={style.characterContainer}>
-                    <p>{characters?.name}</p>
-                    {/* {characters?.map((character) => {
+                    {characters?.characters?.map((character) => {
                         return <Character key={character.id} character={character} />;
-                    })} */}
+                    })}
                 </div>
             </section>
         </main>

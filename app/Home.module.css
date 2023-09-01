@@ -1,5 +1,5 @@
 .showcase {
-    height: 100vh;
+    height: calc(100vh - 50px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,6 +30,18 @@
 }
 
 /* Nav bar */
-.navigation {
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 20px;
+}
+
+.nav div:first-child {
+    margin-left: auto;
+}
+
+.navLinks {
+    list-style: none;
+    display: flex;
 }

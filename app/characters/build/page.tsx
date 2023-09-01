@@ -3,6 +3,7 @@
 import { useEffect, Suspense } from "react";
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { prisma } from '@/lib/prisma'
 import style from './Build.module.css'
 import Loading from '@/app/characters/build/loading';
 
@@ -37,6 +38,18 @@ export default function BuildCharacterPage() {
     // Lazy load other components separatly outside of dom, and use a counter +1/-1 system to switch between them.
     // Send their data to db on unfocus or page change or +1/-1 change
 
+    async function handleSave(e: any) {
+        e.preventDefault();
+        // const user = await prisma.user.upsert({
+        //     where: { email: 'test@test.com' },
+        //     update: {},
+        //     create: {
+        //       email: 'test@test.com',
+        //       password: password
+        //     }
+        //   })
+        //   console.log(character)
+    }
 
     // TODO: If user scrolls down while scrollIntoView is happening, the scrollIntoView will stop
     useEffect(() => {
@@ -54,7 +67,7 @@ export default function BuildCharacterPage() {
                 <ul><a href='#abilities'>Abilities</a></ul>
                 <ul><a href='#description'>Description</a></ul>
                 <ul><a href='#equipment'>Equipment</a></ul>
-                <ul>Save</ul>
+                <ul><span onClick={handleSave}>Save</span></ul>
             </nav>
 
             <div className={style.showcase}>

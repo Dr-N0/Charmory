@@ -8,8 +8,71 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
-  password String
-  name     String?
+  id          Int     @id @default(autoincrement())
+  email       String  @unique
+  password    String
+  characters  Character[]
+}
+
+model Character {
+  id          Int     @id @default(autoincrement())
+  owner       User    @relation(fields: [ownerId], references: [id])
+  ownerId     Int
+  name        String?
+  race        Race?
+  class       Class?
+  abilities   Abilities?
+  description Description?
+  equipment   Equipment?
+}
+
+// ===== Race =====
+model Race {
+  id          Int         @id @default(autoincrement())
+  character   Character   @relation(fields: [characterId], references: [id])
+  characterId Int         @unique
+  name        String?
+}
+
+// ===== Class =====
+model Class {
+  id          Int         @id @default(autoincrement())
+  character   Character   @relation(fields: [characterId], references: [id])
+  characterId Int         @unique
+  name        String?
+}
+
+// ===== Abilities =====
+model Abilities {
+  id           Int         @id @default(autoincrement())
+  character    Character   @relation(fields: [characterId], references: [id])
+  characterId  Int         @unique
+  genMethod    GenMethod   @default(MANUAL)
+  strength     Int
+  dexterity    Int
+  constitution Int
+  intelligence Int
+  wisdom       Int
+  charisma     Int
+}
+enum GenMethod {
+  MANUAL
+  ARRAY
+  POINT
+}
+
+// ===== Description =====
+model Description {
+  id          Int         @id @default(autoincrement())
+  character   Character   @relation(fields: [characterId], references: [id])
+  characterId Int         @unique
+  background  String?
+}
+
+// ===== Equipment =====
+model Equipment {
+  id          Int         @id @default(autoincrement())
+  character   Character   @relation(fields: [characterId], references: [id])
+  characterId Int         @unique
+  name        String?
 }
