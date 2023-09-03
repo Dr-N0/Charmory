@@ -1,26 +1,50 @@
-async function getCharacter(characterId: string) {
-    const res = await fetch(
-        `http://127.0.0.1:8090/api/collections/characters/records/${characterId}`,
-        {
-            next: { revalidate: 10 },
+import { ApiError } from 'next/dist/server/api-utils';
+import { prisma } from '@/lib/prisma'
+import { getServerSession } from "next-auth"
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { Character } from '@/lib/interface'
+
+export async function getServerSideProps() {
+    const session = await getServerSession(authOptions);
+  
+    return {
+      props: {
+        session,
+      },
+    };
+  }
+
+async function getCharacters(params: any, session: any) {
+    const character = await prisma.character.findFirst({
+        where: {
+            ownerId: session?.user?.id,
+            id: params.id
+        },
+        include: {
+          race: true,
+          class: true,
+          abilities: true,
+          description: true,
+          equipment: true,
         }
-    );
-    const data = await res.json();
-    return data;
+    })
+    if (!character) {
+      throw new ApiError(403, 'Character not found');
+    }
+    return character;
 }
 
-export default async function CharacterPage({ params }: any) {
-    const character = await getCharacter(params.id);
+export default async function CharacterPage({ params, session }: any) {
+  const characterInfo = await getCharacters(params, session);
+
+  let asdf = JSON.stringify(characterInfo, null, '\t');
 
     return (
       <main>
-        <h1>Characters/{character.id}</h1>
+        <h1>Characters/{characterInfo?.id}</h1>
         <div>
-            <h3>{character.title}</h3>
-            <h5>{character.content}</h5>
-            <p>{character.created}</p>
+            <pre>{asdf}</pre>
         </div>
       </main>
     );
 }
-  
