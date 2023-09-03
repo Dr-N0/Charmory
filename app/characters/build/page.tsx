@@ -7,29 +7,12 @@ import { prisma } from '@/lib/prisma'
 import style from './Build.module.css'
 import Loading from '@/app/characters/build/loading';
 
-const Home = dynamic(() => import('@/app/characters/build/components/Home'), {
-    loading: () => <Loading />,
-})
-
-const Race = dynamic(() => import('@/app/characters/build/components/Race'), {
-    loading: () => <Loading />,
-})
-
-const Class = dynamic(() => import('@/app/characters/build/components/Class'), {
-    loading: () => <Loading />,
-})
-
-const Abilities = dynamic(() => import('@/app/characters/build/components/Abilities'), {
-    loading: () => <Loading />,
-})
-
-const Description = dynamic(() => import('@/app/characters/build/components/Description'), {
-    loading: () => <Loading />,
-})
-
-const Equipment = dynamic(() => import('@/app/characters/build/components/Equipment'), {
-    loading: () => <Loading />,
-})
+const Home = dynamic(() => import('@/app/characters/build/components/Home'))
+const Race = dynamic(() => import('@/app/characters/build/components/Race'))
+const Class = dynamic(() => import('@/app/characters/build/components/Class'))
+const Abilities = dynamic(() => import('@/app/characters/build/components/Abilities'))
+const Description = dynamic(() => import('@/app/characters/build/components/Description'))
+const Equipment = dynamic(() => import('@/app/characters/build/components/Equipment'))
 
 export default function BuildCharacterPage() {
 
