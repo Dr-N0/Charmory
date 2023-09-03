@@ -9,21 +9,23 @@ export default async function Nav() {
 
     return (
         <nav className={style.nav}>
-            <Link href={`/`}>
+            <div>
+            <Link href={`/`} className={style.logo}>
                 <h1>
                     <span className={style.ch}>Ch</span>
                     <span className={style.ar}>ar</span>
                     <span className={style.mory}>mory</span>
                 </h1>
             </Link>
+            </div>
 
             { session ?
                 (<>
-                    <a href='/characters'>
+                    <Link href={`/characters`}>
                         <button>
                             Characters
                         </button>
-                    </a>
+                    </Link>
                     <LogoutButton />
                 </>) : <LoginButton />
             }

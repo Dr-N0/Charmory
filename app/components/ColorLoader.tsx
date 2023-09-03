@@ -26,7 +26,7 @@ function invertColor(hex: string): string {
 export default function ColorLoader() {
 
     useEffect(() => {
-        let randomColor: string = Math.floor(Math.random()*16777215).toString(16);
+        let randomColor: string = Math.random().toString(16).slice(2, 8).padEnd(6, '0');
         let oppositeRandomColor = invertColor(randomColor);
         document.documentElement.style.setProperty('--random-color', `#${randomColor}`);
         document.documentElement.style.setProperty('--opposite-random-color', `${oppositeRandomColor}`);
