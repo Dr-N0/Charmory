@@ -12,7 +12,7 @@ export default async function Home() {
           <span className={style.mory}>mory</span>
         </h1>
         <Link href={`/characters`}>
-          <button>Get Going!</button>
+          <button className={style.hvrFade}>Get Going!</button>
         </Link>
       </section>
     </main>

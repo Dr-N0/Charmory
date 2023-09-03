@@ -1,23 +1,114 @@
 .showcase {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -30%);
-    width: 70vw;
+    position: relative;
+    margin: auto;
+    margin-top: 50px;
+    width: 90vw;
+    background: linear-gradient(0deg,
+        #1b1b1b 90%, 
+        rgb(255, 61, 61) 100%
+    );
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.wrapper {
+    background-color: #282828;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.headerWrapper {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .characterContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 10px;
+    justify-content: flex-start;
+    gap: 5px;
 }
 
 .characterBox {
-    border: 1px solid black;
+    width: 250px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #3f3f3f;
+    flex-basis: 33.333333%;
 }
 
 .characterOptions {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     gap: 5px;
+}
+
+.characterOptions button {
+    padding: 0;
+    min-width: 100px;
+}
+
+.greenFade {
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: color, background-color, border-color;
+    transition-property: color, background-color, border-color;
+}
+
+.greenFade:hover, .greenFade:focus, .greenFade:active {
+    background-color: rgb(66, 202, 48);
+    border-color: rgb(66, 202, 48);
+    color:white
+}
+
+.yellowFade {
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: color, background-color, border-color;
+    transition-property: color, background-color, border-color;
+}
+
+.yellowFade:hover, .yellowFade:focus, .yellowFade:active {
+    background-color: rgb(202, 192, 48);
+    border-color: rgb(202, 192, 48);
+    color:white
+}
+
+.redFade {
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: color, background-color, border-color;
+    transition-property: color, background-color, border-color;
+}
+
+.redFade:hover, .redFade:focus, .redFade:active {
+    background-color: rgb(202, 48, 48);
+    border-color: rgb(202, 48, 48);
+    color:white
+}
+
+@media (max-width: 420px) {
+    .characterOptions button {
+        padding: 0;
+        min-width: 80px;
+    }
+}
+
+@media (max-width: 790px) {
+    .characterBox {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 1150px) and (min-width: 790px) {
+    .characterContainer {
+        justify-content: space-between;
+        gap: 0px;
+    }
+    .characterBox {
+        flex-basis: 49.5%;
+    }
 }
