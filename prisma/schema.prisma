@@ -8,16 +8,16 @@ datasource db {
 }
 
 model User {
-  id          Int         @id @default(autoincrement())
+  id          String      @id @default(uuid())
   email       String      @unique
   password    String
   characters  Character[]
 }
 
 model Character {
-  id          Int     @id @default(autoincrement())
-  owner       User    @relation(fields: [ownerId], references: [id])
-  ownerId     Int
+  id          String     @id @default(uuid())
+  owner       User       @relation(fields: [ownerId], references: [id])
+  ownerId     String
   name        String?
   race        Race?
   class       Class?
@@ -30,7 +30,7 @@ model Character {
 model Race {
   id          Int         @id @default(autoincrement())
   character   Character   @relation(fields: [characterId], references: [id])
-  characterId Int         @unique
+  characterId String      @unique
   name        String?
 }
 
@@ -38,7 +38,7 @@ model Race {
 model Class {
   id          Int         @id @default(autoincrement())
   character   Character   @relation(fields: [characterId], references: [id])
-  characterId Int         @unique
+  characterId String      @unique
   name        String?
 }
 
@@ -46,7 +46,7 @@ model Class {
 model Abilities {
   id           Int         @id @default(autoincrement())
   character    Character   @relation(fields: [characterId], references: [id])
-  characterId  Int         @unique
+  characterId  String      @unique
   genMethod    GenMethod   @default(MANUAL)
   strength     Int
   dexterity    Int
@@ -65,7 +65,7 @@ enum GenMethod {
 model Description {
   id          Int         @id @default(autoincrement())
   character   Character   @relation(fields: [characterId], references: [id])
-  characterId Int         @unique
+  characterId String      @unique
   background  String?
 }
 
@@ -73,6 +73,6 @@ model Description {
 model Equipment {
   id          Int         @id @default(autoincrement())
   character   Character   @relation(fields: [characterId], references: [id])
-  characterId Int         @unique
+  characterId String      @unique
   name        String?
 }

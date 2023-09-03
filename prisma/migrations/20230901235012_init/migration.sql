@@ -3,7 +3,7 @@ CREATE TYPE "GenMethod" AS ENUM ('MANUAL', 'ARRAY', 'POINT');
 
 -- CreateTable
 CREATE TABLE "User" (
-    "id" SERIAL NOT NULL,
+    "id" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
 
@@ -12,8 +12,8 @@ CREATE TABLE "User" (
 
 -- CreateTable
 CREATE TABLE "Character" (
-    "id" SERIAL NOT NULL,
-    "ownerId" INTEGER NOT NULL,
+    "id" TEXT NOT NULL,
+    "ownerId" TEXT NOT NULL,
     "name" TEXT,
 
     CONSTRAINT "Character_pkey" PRIMARY KEY ("id")
@@ -22,7 +22,7 @@ CREATE TABLE "Character" (
 -- CreateTable
 CREATE TABLE "Race" (
     "id" SERIAL NOT NULL,
-    "characterId" INTEGER NOT NULL,
+    "characterId" TEXT NOT NULL,
     "name" TEXT,
 
     CONSTRAINT "Race_pkey" PRIMARY KEY ("id")
@@ -31,7 +31,7 @@ CREATE TABLE "Race" (
 -- CreateTable
 CREATE TABLE "Class" (
     "id" SERIAL NOT NULL,
-    "characterId" INTEGER NOT NULL,
+    "characterId" TEXT NOT NULL,
     "name" TEXT,
 
     CONSTRAINT "Class_pkey" PRIMARY KEY ("id")
@@ -40,7 +40,7 @@ CREATE TABLE "Class" (
 -- CreateTable
 CREATE TABLE "Abilities" (
     "id" SERIAL NOT NULL,
-    "characterId" INTEGER NOT NULL,
+    "characterId" TEXT NOT NULL,
     "genMethod" "GenMethod" NOT NULL DEFAULT 'MANUAL',
     "strength" INTEGER NOT NULL,
     "dexterity" INTEGER NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE "Abilities" (
 -- CreateTable
 CREATE TABLE "Description" (
     "id" SERIAL NOT NULL,
-    "characterId" INTEGER NOT NULL,
+    "characterId" TEXT NOT NULL,
     "background" TEXT,
 
     CONSTRAINT "Description_pkey" PRIMARY KEY ("id")
@@ -64,7 +64,7 @@ CREATE TABLE "Description" (
 -- CreateTable
 CREATE TABLE "Equipment" (
     "id" SERIAL NOT NULL,
-    "characterId" INTEGER NOT NULL,
+    "characterId" TEXT NOT NULL,
     "name" TEXT,
 
     CONSTRAINT "Equipment_pkey" PRIMARY KEY ("id")
