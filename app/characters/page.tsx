@@ -15,7 +15,7 @@ export async function getServerSideProps() {
     };
   }
 
-async function getCharacters(session: any) {
+async function getUser(session: any) {
     const user = await prisma.user.findFirst({
         where: {
             email: session?.user?.email
@@ -24,51 +24,67 @@ async function getCharacters(session: any) {
             characters: true,
         },
     })
-    console.log(user)
     return user;
 }
 
+async function getCharacters(session: any, user: any) {
+    const character = await prisma.character.findFirst({
+        where: {
+            ownerId: session?.user?.id,
+            id: user?.character?.id
+        },
+    })
+    return character;
+}
+
 export default async function CharactersPage({ session }: any) {
-    const characters = await getCharacters(session);
-    console.log(characters)
+    const user = await getUser(session);
+    const characterInfo = await getCharacters(session, user);
+
     return (
-        <main>
+        <div>
             <section className={style.showcase}>
-                <h1>Characters</h1>
-                <Link href={`/characters/build`}>
-                    <button>Create!</button>
-                </Link>
-                <CharacterSearchBar />
-                <div className={style.characterContainer}>
-                    {characters?.characters?.map((character) => {
-                        return <Character key={character.id} character={character} />;
-                    })}
+                <div className={style.wrapper}>
+                    <div className={style.headerWrapper}>
+                        <h1>Characters</h1>
+                        <Link href={`/characters/build`}>
+                            <button className={style.greenFade}>Create!</button>
+                        </Link>
+                    </div>
+                    {/* <CharacterSearchBar /> */}
+                    <div className={style.characterContainer}>
+                        {user?.characters?.map((character) => {
+                            return <Character 
+                                key={character.id} 
+                                character={character} 
+                                characterInfo={characterInfo}
+                            />;
+                        })}
+                    </div>
                 </div>
             </section>
-        </main>
+        </div>
     );
 }
 
 function Character({character}: any){
-    const {id, title, name, ownerId } = character || {};
+    const {id, name, ownerId } = character || {};
+
     return (
         <section className={style.characterBox}>
-            <h2>{title}</h2>
             <p>Subtitle</p>
             <h5>{name}</h5>
             <p>{ownerId}</p>
+            <p>{id}</p>
             <div className={style.characterOptions}>
                 <Link href={`/characters/${id}`}>
-                    <button>View</button>
+                    <button className={style.greenFade}>View</button>
                 </Link>
                 <Link href={`/characters/edit`}>
-                    <button>Edit</button>
-                </Link>
-                <Link href={`/characters/copy`}>
-                    <button>Copy</button>
+                    <button className={style.yellowFade}>Edit</button>
                 </Link>
                 <Link href={`/characters/delete`}>
-                    <button>Delete</button>
+                    <button className={style.redFade}>Delete</button>
                 </Link>
             </div>
         </section>
