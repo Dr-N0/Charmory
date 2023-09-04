@@ -8,7 +8,7 @@ export default async function Nav() {
     const session = await getServerSession(authOptions)
 
     return (
-        <nav className={style.nav}>
+        <nav className={`${style.nav}`}>
             <div>
             <Link href={`/`} className={style.logo}>
                 <h1>

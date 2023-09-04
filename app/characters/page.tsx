@@ -67,15 +67,12 @@ export default async function CharactersPage({ session }: any) {
     );
 }
 
-function Character({character}: any){
-    const {id, name, ownerId } = character || {};
+function Character({character}: any) {
+    const { id } = character || {};
 
     return (
         <section className={style.characterBox}>
-            <p>Subtitle</p>
-            <h5>{name}</h5>
-            <p>{ownerId}</p>
-            <p>{id}</p>
+            <Card character={character} />
             <div className={style.characterOptions}>
                 <Link href={`/characters/${id}`}>
                     <button className={style.greenFade}>View</button>
@@ -88,5 +85,20 @@ function Character({character}: any){
                 </Link>
             </div>
         </section>
+    );
+}
+
+function Card({character}: any) {
+    const { id, name, ownerId } = character || {};
+    
+    return (
+        <div>
+            <h2>{name}</h2>
+            <div className={style.subInfo}>
+                <span>{id}</span>
+                <span>{ownerId}</span>
+                <span>{ownerId}</span>
+            </div>
+        </div>
     );
 }

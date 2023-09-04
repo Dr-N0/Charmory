@@ -19,8 +19,6 @@
 
 .ch {
     text-shadow: var(--random-color) -5px 0 20px;
-    shape-outside: circle();
-    shape-margin: 10px; /* Adjust as needed */
 }
 
 .ar {

@@ -44,7 +44,24 @@ export default async function CharacterPage({ params, session }: any) {
         <h1>Characters/{characterInfo?.id}</h1>
         <div>
             <pre>{asdf}</pre>
+            <div>
+              <Attributes name="Strength" />
+              <Attributes name="Dexterity" />
+              <Attributes name="Constitution" />
+              <Attributes name="Intelligence" />
+              <Attributes name="Wisdom" />
+              <Attributes name="Charisma" />
+            </div>
         </div>
       </main>
     );
+}
+
+function Attributes({ name }: any) {
+  
+  return (
+      <div>
+          <span>{name}</span>
+      </div>
+  );
 }

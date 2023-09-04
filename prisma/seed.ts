@@ -16,7 +16,7 @@ async function main() {
       characters: {    // New field
         create: [
           {
-            name: 'Character Name',
+            name: 'Percival "Percy" Fredrickstein Von Musel Klossowski de Rolo III',
             race: {
               create: {
                 name: 'Race Name'
@@ -50,7 +50,7 @@ async function main() {
             }
           },
           {
-            name: 'Extra Character Name',
+            name: 'EXTRA Percival Fredrickstein Von Musel Klossowski de Rolo III',
             race: {
               create: {
                 name: 'Extra Race Name'

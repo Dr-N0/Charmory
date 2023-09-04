@@ -1,7 +1,7 @@
 .showcase {
     position: relative;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 30px;
     width: 90vw;
     background: linear-gradient(0deg,
         #1b1b1b 90%, 
@@ -19,8 +19,10 @@
 
 .headerWrapper {
     padding: 5px;
+    margin: 5px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .characterContainer {
@@ -28,7 +30,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 5px;
+    gap: 10px;
 }
 
 .characterBox {
@@ -37,6 +39,19 @@
     border-radius: 10px;
     background-color: #3f3f3f;
     flex-basis: 33.333333%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.characterBox div:last-child {
+    margin-top: auto;
+}
+
+.subInfo {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
 }
 
 .characterOptions {
@@ -50,6 +65,35 @@
     padding: 0;
     min-width: 100px;
 }
+
+
+/* MEDIA */
+
+@media (max-width: 420px) {
+    .characterOptions button {
+        padding: 0;
+        min-width: 80px;
+    }
+}
+
+@media (max-width: 790px) {
+    .characterBox {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 1150px) and (min-width: 790px) {
+    .characterContainer {
+        justify-content: space-between;
+        gap: 0px;
+    }
+    .characterBox {
+        flex-basis: 49.5%;
+    }
+}
+
+
+/* FADES */
 
 .greenFade {
     -webkit-transition-duration: 0.3s;
@@ -88,27 +132,4 @@
     background-color: rgb(202, 48, 48);
     border-color: rgb(202, 48, 48);
     color:white
-}
-
-@media (max-width: 420px) {
-    .characterOptions button {
-        padding: 0;
-        min-width: 80px;
-    }
-}
-
-@media (max-width: 790px) {
-    .characterBox {
-        flex-basis: 100%;
-    }
-}
-
-@media (max-width: 1150px) and (min-width: 790px) {
-    .characterContainer {
-        justify-content: space-between;
-        gap: 0px;
-    }
-    .characterBox {
-        flex-basis: 49.5%;
-    }
 }
