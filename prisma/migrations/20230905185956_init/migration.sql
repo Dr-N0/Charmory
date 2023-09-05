@@ -1,6 +1,9 @@
 -- CreateEnum
 CREATE TYPE "GenMethod" AS ENUM ('MANUAL', 'ARRAY', 'POINT');
 
+-- CreateEnum
+CREATE TYPE "HowProficent" AS ENUM ('NONE', 'PROFICENT', 'EXTRA');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
@@ -15,6 +18,13 @@ CREATE TABLE "Character" (
     "id" TEXT NOT NULL,
     "ownerId" TEXT NOT NULL,
     "name" TEXT,
+    "level" INTEGER NOT NULL DEFAULT 1,
+    "speed" INTEGER NOT NULL DEFAULT 30,
+    "armorClass" INTEGER NOT NULL DEFAULT 10,
+    "initiative" INTEGER NOT NULL DEFAULT 0,
+    "inspiration" BOOLEAN NOT NULL DEFAULT false,
+    "healthMax" INTEGER NOT NULL,
+    "healthCurrent" INTEGER NOT NULL,
 
     CONSTRAINT "Character_pkey" PRIMARY KEY ("id")
 );
@@ -70,6 +80,44 @@ CREATE TABLE "Equipment" (
     CONSTRAINT "Equipment_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "Proficencies" (
+    "id" SERIAL NOT NULL,
+    "characterId" TEXT NOT NULL,
+    "strength" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "dexterity" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "constitution" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "intelligence" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "wisdom" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "charisma" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "savingStrength" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "savingDexterity" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "savingConstitution" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "savingIntelligence" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "savingWisdom" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "savingCharisma" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "acrobatics" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "animalHandling" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "arcana" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "athletics" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "deception" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "history" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "insight" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "intimidation" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "investigation" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "medicine" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "nature" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "perception" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "performance" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "persuasion" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "religion" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "sleightOfHand" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "stealth" "HowProficent" NOT NULL DEFAULT 'NONE',
+    "survival" "HowProficent" NOT NULL DEFAULT 'NONE',
+
+    CONSTRAINT "Proficencies_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
@@ -88,6 +136,9 @@ CREATE UNIQUE INDEX "Description_characterId_key" ON "Description"("characterId"
 -- CreateIndex
 CREATE UNIQUE INDEX "Equipment_characterId_key" ON "Equipment"("characterId");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "Proficencies_characterId_key" ON "Proficencies"("characterId");
+
 -- AddForeignKey
 ALTER TABLE "Character" ADD CONSTRAINT "Character_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
@@ -105,3 +156,6 @@ ALTER TABLE "Description" ADD CONSTRAINT "Description_characterId_fkey" FOREIGN 
 
 -- AddForeignKey
 ALTER TABLE "Equipment" ADD CONSTRAINT "Equipment_characterId_fkey" FOREIGN KEY ("characterId") REFERENCES "Character"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Proficencies" ADD CONSTRAINT "Proficencies_characterId_fkey" FOREIGN KEY ("characterId") REFERENCES "Character"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
