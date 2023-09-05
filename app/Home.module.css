@@ -51,9 +51,8 @@
     padding: 20px;
 }
 
-.navLinks {
-    list-style: none;
-    display: flex;
+.characterLink {
+    background-color: var(--primary-color);
 }
 
 /* Mobile first queries */
