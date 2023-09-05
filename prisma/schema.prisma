@@ -15,15 +15,26 @@ model User {
 }
 
 model Character {
-  id          String     @id @default(uuid())
-  owner       User       @relation(fields: [ownerId], references: [id])
-  ownerId     String
-  name        String?
-  race        Race?
-  class       Class?
-  abilities   Abilities?
-  description Description?
-  equipment   Equipment?
+  id              String        @id @default(uuid())
+  owner           User          @relation(fields: [ownerId], references: [id])
+  ownerId         String
+
+  name            String?
+  level           Int           @default(1)
+  speed           Int           @default(30)
+  armorClass      Int           @default(10)
+  initiative      Int           @default(0)
+  proficencies    Proficencies?
+  inspiration     Boolean       @default(false)
+
+  healthMax       Int
+  healthCurrent   Int
+  
+  race            Race?
+  class           Class?
+  abilities       Abilities?
+  description     Description?
+  equipment       Equipment?
 }
 
 // ===== Race =====
@@ -31,6 +42,7 @@ model Race {
   id          Int         @id @default(autoincrement())
   character   Character   @relation(fields: [characterId], references: [id])
   characterId String      @unique
+
   name        String?
 }
 
@@ -39,26 +51,37 @@ model Class {
   id          Int         @id @default(autoincrement())
   character   Character   @relation(fields: [characterId], references: [id])
   characterId String      @unique
+
   name        String?
 }
 
 // ===== Abilities =====
 model Abilities {
-  id           Int         @id @default(autoincrement())
-  character    Character   @relation(fields: [characterId], references: [id])
-  characterId  String      @unique
-  genMethod    GenMethod   @default(MANUAL)
-  strength     Int
-  dexterity    Int
-  constitution Int
-  intelligence Int
-  wisdom       Int
-  charisma     Int
+  id            Int         @id @default(autoincrement())
+  character     Character   @relation(fields: [characterId], references: [id])
+  characterId   String      @unique
+
+  genMethod     GenMethod   @default(MANUAL)
+
+  strength      Int
+  dexterity     Int
+  constitution  Int
+  intelligence  Int
+  wisdom        Int
+  charisma      Int
+
+  senses        Senses[]
 }
 enum GenMethod {
   MANUAL
   ARRAY
   POINT
+}
+enum Senses {
+  BLINDSIGHT
+  DARKVISION
+  TREMORSENSE
+  TRUESIGHT
 }
 
 // ===== Description =====
@@ -66,6 +89,7 @@ model Description {
   id          Int         @id @default(autoincrement())
   character   Character   @relation(fields: [characterId], references: [id])
   characterId String      @unique
+
   background  String?
 }
 
@@ -74,5 +98,50 @@ model Equipment {
   id          Int         @id @default(autoincrement())
   character   Character   @relation(fields: [characterId], references: [id])
   characterId String      @unique
+
   name        String?
+}
+
+model Proficencies {
+  id            Int         @id @default(autoincrement())
+  character     Character   @relation(fields: [characterId], references: [id])
+  characterId   String      @unique
+
+  strength            HowProficent  @default(NONE)
+  dexterity           HowProficent  @default(NONE)
+  constitution        HowProficent  @default(NONE)
+  intelligence        HowProficent  @default(NONE)
+  wisdom              HowProficent  @default(NONE)
+  charisma            HowProficent  @default(NONE)
+
+  savingStrength      HowProficent  @default(NONE)
+  savingDexterity     HowProficent  @default(NONE)
+  savingConstitution  HowProficent  @default(NONE)
+  savingIntelligence  HowProficent  @default(NONE)
+  savingWisdom        HowProficent  @default(NONE)
+  savingCharisma      HowProficent  @default(NONE)
+  
+  acrobatics          HowProficent  @default(NONE)
+  animalHandling      HowProficent  @default(NONE)
+  arcana              HowProficent  @default(NONE)
+  athletics           HowProficent  @default(NONE)
+  deception           HowProficent  @default(NONE)
+  history             HowProficent  @default(NONE)
+  insight             HowProficent  @default(NONE)
+  intimidation        HowProficent  @default(NONE)
+  investigation       HowProficent  @default(NONE)
+  medicine            HowProficent  @default(NONE)
+  nature              HowProficent  @default(NONE)
+  perception          HowProficent  @default(NONE)
+  performance         HowProficent  @default(NONE)
+  persuasion          HowProficent  @default(NONE)
+  religion            HowProficent  @default(NONE)
+  sleightOfHand       HowProficent  @default(NONE)
+  stealth             HowProficent  @default(NONE)
+  survival            HowProficent  @default(NONE)
+}
+enum HowProficent {
+  NONE
+  PROFICENT
+  EXTRA
 }
