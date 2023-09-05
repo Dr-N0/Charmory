@@ -10,19 +10,19 @@ export default async function Nav() {
     return (
         <nav className={`${style.nav}`}>
             <div>
-            <Link href={`/`} className={style.logo}>
-                <h1>
-                    <span className={style.ch}>Ch</span>
-                    <span className={style.ar}>ar</span>
-                    <span className={style.mory}>mory</span>
-                </h1>
-            </Link>
+                <Link href={`/`} className={style.logo}>
+                    <h1>
+                        <span className={style.ch}>Ch</span>
+                        <span className={style.ar}>ar</span>
+                        <span className={style.mory}>mory</span>
+                    </h1>
+                </Link>
             </div>
 
             { session ?
                 (<>
                     <Link href={`/characters`}>
-                        <button>
+                        <button className={style.characterLink}>
                             Characters
                         </button>
                     </Link>
