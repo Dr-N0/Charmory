@@ -88,7 +88,7 @@ function Character({character}: any) {
     );
 }
 
-function Card({character}: any) {
+export function Card({character}: any) {
     const { id, name, ownerId } = character || {};
     
     return (

@@ -1,0 +1,75 @@
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Character description + sheet */
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Character sheet container */
+.characterSheetContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* Two halfs of character sheet */
+.statsContainer {
+    display: flex;
+    flex-basis: 50%;
+    flex-grow: 1;
+
+    flex-direction: column;
+}
+
+.interactiveContainer {
+    display: flex;
+    flex-basis: 50%;
+    flex-grow: 1;
+}
+
+
+/* Stats */
+
+.topOfStats {
+    display: flex;
+    flex-direction: row;
+}
+
+.notTopOfStats {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Attributes */
+.attributesContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Skills */
+.skillsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Vital Values */
+.vitalValuesContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Saving Throws */
+.savingThrowsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Senses */
+.sensesContainer {
+    display: flex;
+    flex-direction: column;
+}
