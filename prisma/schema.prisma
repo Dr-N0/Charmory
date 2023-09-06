@@ -107,13 +107,6 @@ model Proficencies {
   character     Character   @relation(fields: [characterId], references: [id])
   characterId   String      @unique
 
-  strength            HowProficent  @default(NONE)
-  dexterity           HowProficent  @default(NONE)
-  constitution        HowProficent  @default(NONE)
-  intelligence        HowProficent  @default(NONE)
-  wisdom              HowProficent  @default(NONE)
-  charisma            HowProficent  @default(NONE)
-
   savingStrength      HowProficent  @default(NONE)
   savingDexterity     HowProficent  @default(NONE)
   savingConstitution  HowProficent  @default(NONE)
