@@ -51,6 +51,10 @@ export default async function CharacterPage({ params, session }: any) {
 
   let asdf = JSON.stringify(characterInfo, null, '\t');
 
+  function plus(value: any) {
+    return value >= 0 ? "+" + value : value;
+  }
+
   function computedValue(value: any) {
     if (value == 0) {
         value = 1;
@@ -109,6 +113,7 @@ export default async function CharacterPage({ params, session }: any) {
                   <Attributes
                     abilities={characterInfo.abilities}
                     computedValue={computedValue}
+                    plus={plus}
                   />
                 </div>
               </div>
@@ -122,6 +127,7 @@ export default async function CharacterPage({ params, session }: any) {
                       proficencies={characterInfo.proficencies}
                       proficencyBonus={getProficencyBonus}
                       computedValue={computedValue}
+                      plus={plus}
                     />
                   </div>
                 </div>
@@ -154,6 +160,7 @@ export default async function CharacterPage({ params, session }: any) {
                       proficencies={characterInfo.proficencies}
                       proficencyBonus={getProficencyBonus}
                       computedValue={computedValue}
+                      plus={plus}
                     />
 
                     <div className={style.sensesContainer}>
@@ -162,6 +169,7 @@ export default async function CharacterPage({ params, session }: any) {
                         proficencies={characterInfo.proficencies}
                         proficencyBonus={getProficencyBonus}
                         computedValue={computedValue}
+                        plus={plus}
                         sesnseTypes={characterInfo.abilities?.wisdom}
                       />
                     </div>

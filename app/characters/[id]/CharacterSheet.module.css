@@ -53,12 +53,20 @@
 .attributesBox {
     display: flex;
     flex-direction: row;
+    gap: 10px;
 }
 
 .attribute {
     border-radius: 10px;
     border: 2px solid white;
-    width: 100px;
+    width: 90px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    background-color: #282828;
 }
 
 .attributeName {
@@ -68,10 +76,33 @@
 
 .attributeComp {
     font-size: 1.3rem;
+    width: 60%;
+    text-align: center;
+
+    --g: 6px;     /* the gap */
+    --b: 2px;    /* border thickness*/
+    --c: red; /* the color */
+
+    padding: calc(var(--g) + var(--b));
+    --_c: #0000 0 25%, var(--c) 0 50%;
+    --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+    --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+    background:
+    var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+    var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+    background-size: 200% var(--b),var(--b) 200%;
+    cursor: pointer;
+    filter: grayscale(50%);
+    transition: .3s;
+}
+.attributeComp:hover {
+    --_p: 75%;
+    filter: grayscale(0%);
 }
 
 .attributeValue {
     font-size: 0.70rem;
+    text-align: center;
 }
 
 /* Skills */
@@ -119,57 +150,4 @@
 } */
 
 
-
-.box {
-    height: 200px;
-    width: 300px;
-    position: relative;
-}
-
-.box__line {
-    position: absolute;
-    background: white;
-}
-.box__line--top, .box__line--bottom {
-    height: 8px;
-    width: 100%;
-}
-.box__line--top::before, .box__line--top::after, .box__line--bottom::before, .box__line--bottom::after {
-    content: "";
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: white;
-}
-.box__line--top {
-    top: -8px;
-}
-.box__line--top::before {
-    left: 0;
-    bottom: -8px;
-}
-.box__line--top::after {
-    right: 0;
-    bottom: -8px;
-}
-.box__line--bottom {
-    bottom: -8px;
-}
-.box__line--bottom::before {
-    left: 0;
-    top: -8px;
-}
-.box__line--bottom::after {
-    right: 0;
-    top: -8px;
-}
-.box__line--left, .box__line--right {
-    width: 8px;
-    height: 100%;
-}
-.box__line--left {
-    left: -8px;
-}
-.box__line--right {
-    right: -8px;
-}
+/* TABLET LAYOUT */
