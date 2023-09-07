@@ -36,10 +36,10 @@ export default function Attributes({
         <div className={style.attributesBox}>
             {attributesList.map((attributes) => {
                 return (
-                    <div>
-                        <span>{attributes.name}</span>
-                        <span>{computedValue(attributes.value)}</span>
-                        <span>{attributes.value}</span>
+                    <div className={`${style.box} ${style.attribute}`}>
+                        <p className={style.attributeName}>{attributes.name}</p>
+                        <p className={style.attributeComp}>{computedValue(attributes.value)}</p>
+                        <p className={style.attributeValue}>{attributes.value}</p>
                     </div>
                 )
             })}
