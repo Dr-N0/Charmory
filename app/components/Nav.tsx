@@ -22,7 +22,7 @@ export default async function Nav() {
             { session ?
                 (<>
                     <Link href={`/characters`}>
-                        <button className={style.characterLink}>
+                        <button className={style.solidBackground}>
                             Characters
                         </button>
                     </Link>

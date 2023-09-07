@@ -5,6 +5,7 @@ export default function Skills({
     proficencies,
     proficencyBonus,
     computedValue,
+    plus
 }: any) {
 
     const skillList = [
@@ -125,7 +126,7 @@ export default function Skills({
                         <span>{skill.hasProficency}</span>
                         <span>{skill.mod}</span>
                         <span>{skill.name}</span>
-                        <span>{proficencyBonus(skill.hasProficency) + computedValue(getAbilityValue(skill.mod))}</span>
+                        <span>{plus(proficencyBonus(skill.hasProficency) + computedValue(getAbilityValue(skill.mod)))}</span>
                     </div>
                 )
             })}
