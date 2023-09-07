@@ -4,7 +4,8 @@ export default function SavingThrows({
     abilities,
     proficencies,
     proficencyBonus,
-    computedValue
+    computedValue,
+    plus
 }: any) {
 
     const savingThrowList = [
@@ -46,7 +47,7 @@ export default function SavingThrows({
                 return (
                     <div>
                         <span>{savingThrow.name}</span>
-                        <span>{proficencyBonus(savingThrow.hasProficency) + computedValue(savingThrow.value)}</span>
+                        <span>{plus(proficencyBonus(savingThrow.hasProficency) + computedValue(savingThrow.value))}</span>
                         <span>{savingThrow.value}</span>
                     </div>
                 )
