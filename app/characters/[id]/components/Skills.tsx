@@ -87,7 +87,7 @@ export default function Skills({
         {
             name: "Sleight of Hand",
             mod: "dex",
-            hasProficency: proficencies?.slightOfHand
+            hasProficency: proficencies?.sleightOfHand
         },
         {
             name: "Stealth",
@@ -118,18 +118,37 @@ export default function Skills({
         }
     }
 
+    // https://www.i2symbol.com/symbols/circle
+    const profToSymbol = (s: string) => {
+        switch(true){
+            case s == "NONE":
+                return <span>○</span>
+            case s == "PROFICENT":
+                return <span>●</span>
+            case s == "EXTRA":
+                return <span>◉</span>
+        }
+    }
+
     return (
         <div className={style.skillsBox}>
-            {skillList.map((skill) => {
-                return (
-                    <div className={`${style.skill}`}>
-                        <span>{skill.hasProficency}</span>
-                        <span>{skill.mod}</span>
-                        <span>{skill.name}</span>
-                        <span>{plus(proficencyBonus(skill.hasProficency) + computedValue(getAbilityValue(skill.mod)))}</span>
-                    </div>
-                )
-            })}
+            <table className={style.table}>
+                <tbody>
+                    {skillList.map((skill) => (
+                        <tr key={skill.name}>
+                            <td>{profToSymbol(skill.hasProficency)}</td>
+                            <td>{skill.mod}</td>
+                            <td>{skill.name}</td>
+                            <td>
+                                {plus(
+                                proficencyBonus(skill.hasProficency) +
+                                    computedValue(getAbilityValue(skill.mod))
+                                )}
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 }
