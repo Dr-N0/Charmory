@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    flex-basis: 50%;
 }
 
 /* Character description + sheet */
@@ -15,6 +16,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin: 0px 20px;
 }
 
 /* Two halfs of character sheet */
@@ -41,12 +43,12 @@
 .topOfStats {
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 .notTopOfStats {
     display: flex;
     flex-direction: row;
-    align-items: center;
     gap: 10px;
 }
 
@@ -54,13 +56,16 @@
 .attributesContainer {
     display: flex;
     flex-direction: row;
-    /* flex-wrap: wrap; */
+    width: 100%;
 }
 
 .attributesBox {
     display: flex;
     flex-direction: row;
-    gap: 4px;
+    justify-content: center;
+    width: 100%;
+
+    gap: 10px;
 }
 
 .attribute {
@@ -118,37 +123,49 @@
 
 /* Skills */
 .skillsContainer {
-    padding: 0px;
-    border: 1px solid white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-color: #181818;
 }
 
-.skillsBox {
-    border-radius: 20px;
+/* .table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 10px;
+    border-radius: 10px;
     border: 2px solid white;
-    padding: 5px;
 }
+
+.table td:first-child {
+    text-align: left;
+    border-top: none;
+}
+
+.table td:last-child {
+    text-align: right;
+    border-bottom: none;
+} */
+
+/* .skillsBox {
+    
+}
+
+.skill {
+    
+} */
 
 /* Vital Values */
 .vitalValuesContainer {
-    padding: 2px;
-    border: 2px solid white;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     gap: 7px;
-    background-color: #181818;
 }
 
 .vitalValuesBox {
-    border-radius: 10px;
+    /* border-radius: 10px;
     border: 2px solid white;
-    padding: 5px;
+    padding: 5px; */
 }
 
 /* Saving Throws */
@@ -162,11 +179,17 @@
     padding: 5px;
     border: 2px solid white;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 7px;
     background-color: #181818;
+}
+
+.savingThrows {
+    /* width: 200px; */
+    /* display: flex; */
+    flex-basis: calc(50% - 5px);
 }
 
 /* Senses */
