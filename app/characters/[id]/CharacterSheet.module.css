@@ -25,12 +25,14 @@
     gap: 10px;
 
     flex-direction: column;
+    align-items: center;
 }
 
 .interactiveContainer {
     display: flex;
     flex-basis: 50%;
     flex-grow: 1;
+    justify-content: center;
 }
 
 
@@ -44,6 +46,7 @@
 .notTopOfStats {
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 10px;
 }
 
@@ -51,28 +54,26 @@
 .attributesContainer {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
 .attributesBox {
     display: flex;
     flex-direction: row;
-    gap: 10px;
-    flex-wrap: wrap;
+    gap: 4px;
 }
 
 .attribute {
     border-radius: 10px;
     border: 2px solid white;
-    width: 90px;
-    height: 100px;
+    width: 76px;
+    height: 90px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 7px;
+    gap: 5px;
     background-color: #181818;
-    flex-shrink: 1;
 }
 
 .attributeName {
@@ -82,7 +83,7 @@
 
 .attributeComp {
     font-size: 1.3rem;
-    width: 60%;
+    width: 70%;
     text-align: center;
 
     --g: 6px;     /* the gap */

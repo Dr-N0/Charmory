@@ -42,14 +42,12 @@ export default function Attributes({
     // TODO: USE ICONS FOR BACKGROUND SO YOU DON'T NEED THE NAME
     // CHANGE BORDER ANIMATION TO A FADE IN BACKGROUND LIGHTER ON HOVER
 
-    // 1200px should be when we swtich to alt name
-
     return (
         <div className={style.attributesBox}>
             {attributesList.map((attributes) => {
                 return (
                     <div className={`${style.attribute}`}>
-                        <p className={`${style.attributeName}`}>{attributes.name}</p>
+                        <p className={`${style.attributeName}`}>{attributes.alt}</p>
                         <p className={`${style.attributeComp}`}>{plus(computedValue(attributes.value))}</p>
                         <p className={`${style.attributeValue}`}>{attributes.value}</p>
                     </div>

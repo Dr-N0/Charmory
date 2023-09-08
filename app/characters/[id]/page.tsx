@@ -130,7 +130,7 @@ export default async function CharacterPage({ params, session }: any) {
                   </div>
                 </div>
 
-                <div className={`${style.col} ${style.secondaryValues}`}>
+                <div className={`${style.col}`}>
                   {/* Vital Values (Speed, AC, Prof Bonus, Init) */}
                   <div className={style.vitalValuesContainer}>
                     <div>
