@@ -133,19 +133,19 @@ export default async function CharacterPage({ params, session }: any) {
                 <div className={`${style.col}`}>
                   {/* Vital Values (Speed, AC, Prof Bonus, Init) */}
                   <div className={style.vitalValuesContainer}>
-                    <div>
+                    <div className={`${style.vitalValuesBox} ${style.speedCont}`}>
                       {/* Speed (top left) */}
                       <span>{characterInfo.speed}</span>
                     </div>
-                    <div>
+                    <div className={`${style.vitalValuesBox} ${style.armorClassCont}`}>
                       {/* AC (top right) */}
                       <span>{characterInfo.armorClass}</span>
                     </div>
-                    <div>
+                    <div className={`${style.vitalValuesBox} ${style.proficencyBonusCont}`}>
                       {/* Proff Bonus (bottom left) */}
                       <span>{getProficencyBonus(characterInfo.level)}</span>
                     </div>
-                    <div>
+                    <div className={`${style.vitalValuesBox} ${style.initiativeCont}`}>
                       {/* Initiative (bottom right) */}
                       <span>{characterInfo.initiative}</span>
                     </div>
@@ -160,8 +160,8 @@ export default async function CharacterPage({ params, session }: any) {
                       computedValue={computedValue}
                       plus={plus}
                     />
-
-                    <div className={style.sensesContainer}>
+                  </div>
+                  <div className={style.sensesContainer}>
                       <Senses
                         abilities={characterInfo.abilities}
                         proficencies={characterInfo.proficencies}
@@ -170,7 +170,6 @@ export default async function CharacterPage({ params, session }: any) {
                         plus={plus}
                         sesnseTypes={characterInfo.abilities?.wisdom}
                       />
-                    </div>
                   </div>
                 </div>
               </div>
