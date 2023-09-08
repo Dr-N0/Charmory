@@ -1,6 +1,7 @@
 .col {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 /* Character description + sheet */
@@ -21,6 +22,7 @@
     display: flex;
     flex-basis: 50%;
     flex-grow: 1;
+    gap: 10px;
 
     flex-direction: column;
 }
@@ -42,18 +44,21 @@
 .notTopOfStats {
     display: flex;
     flex-direction: row;
+    gap: 10px;
 }
 
 /* Attributes */
 .attributesContainer {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .attributesBox {
     display: flex;
     flex-direction: row;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .attribute {
@@ -66,11 +71,12 @@
     justify-content: center;
     align-items: center;
     gap: 7px;
-    background-color: #282828;
+    background-color: #181818;
+    flex-shrink: 1;
 }
 
 .attributeName {
-    font-size: 0.60rem;
+    font-size: 0.6rem;
     text-transform: uppercase;
 }
 
@@ -80,9 +86,10 @@
     text-align: center;
 
     --g: 6px;     /* the gap */
-    --b: 2px;    /* border thickness*/
+    --b: 3px;    /* border thickness*/
     --c: red; /* the color */
 
+    border-radius: 20px;
     padding: calc(var(--g) + var(--b));
     --_c: #0000 0 25%, var(--c) 0 50%;
     --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
@@ -97,7 +104,10 @@
 }
 .attributeComp:hover {
     --_p: 75%;
+    --b: 2px;
+    padding: calc(var(--g) + var(--b) + 1px);
     filter: grayscale(0%);
+    border-radius: 0px;
 }
 
 .attributeValue {
@@ -107,47 +117,72 @@
 
 /* Skills */
 .skillsContainer {
+    padding: 0px;
+    border: 1px solid white;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #181818;
 }
 
-/* .skillsBox {
-    display: flex;
-    flex-direction: column;
-} */
+.skillsBox {
+    border-radius: 20px;
+    border: 2px solid white;
+    padding: 5px;
+}
 
 /* Vital Values */
 .vitalValuesContainer {
+    padding: 2px;
+    border: 2px solid white;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    background-color: #181818;
 }
 
-/* .vitalValuesBox {
-    display: flex;
-    flex-direction: column;
-} */
+.vitalValuesBox {
+    border-radius: 10px;
+    border: 2px solid white;
+    padding: 5px;
+}
 
 /* Saving Throws */
 .savingThrowsContainer {
     display: flex;
     flex-direction: column;
+    gap: 5px
 }
 
-/* .savingThrowsBox {
+.savingThrowsBox {
+    padding: 5px;
+    border: 2px solid white;
     display: flex;
     flex-direction: column;
-} */
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    background-color: #181818;
+}
 
 /* Senses */
-.sensesContainer {
-    display: flex;
-    flex-direction: column;
-}
-
-/* .sensesBox {
-    display: flex;
-    flex-direction: column;
+/* .sensesContainer {
+    
 } */
+
+.sensesBox {
+    padding: 5px;
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    background-color: #181818;
+}
 
 
 /* TABLET LAYOUT */

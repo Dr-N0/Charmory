@@ -1,16 +1,14 @@
 import { prisma } from '@/lib/prisma'
-import dynamic from 'next/dynamic'
 import { getServerSession } from "next-auth"
 import { ApiError } from 'next/dist/server/api-utils';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import { Character } from '@/lib/interface'
 import style from './CharacterSheet.module.css'
 import { Card } from '@/app/characters/page'
 
-const Attributes = dynamic(() => import('./components/Attributes'))
-const SavingThrows = dynamic(() => import('./components/SavingThrows'))
-const Senses = dynamic(() => import('./components/Senses'))
-const Skills = dynamic(() => import('./components/Skills'))
+import Attributes from './components/Attributes'
+import SavingThrows from './components/SavingThrows'
+import Senses from './components/Senses'
+import Skills from './components/Skills'
 
 // Values we still need
 // Inspiration, Defenses vs Conditions
@@ -132,7 +130,7 @@ export default async function CharacterPage({ params, session }: any) {
                   </div>
                 </div>
 
-                <div className={style.col}>
+                <div className={`${style.col} ${style.secondaryValues}`}>
                   {/* Vital Values (Speed, AC, Prof Bonus, Init) */}
                   <div className={style.vitalValuesContainer}>
                     <div>
