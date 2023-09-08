@@ -9,32 +9,40 @@ export default function Attributes({
     const attributesList = [
         {
             name: "Strength",
+            alt: "STR",
             value: abilities?.strength,
         },
         {
             name: "Dexerity",
+            alt: "DEX",
             value: abilities?.dexterity,
         },
         {
             name: "Constitution",
+            alt: "CON",
             value: abilities?.constitution,
         },
         {
             name: "Intelligence",
+            alt: "INT",
             value: abilities?.intelligence,
         },
         {
             name: "Wisdom",
+            alt: "WIS",
             value: abilities?.wisdom,
         },
         {
             name: "Charisma",
+            alt: "CHA",
             value: abilities?.charisma,
         },
     ]
 
     // TODO: USE ICONS FOR BACKGROUND SO YOU DON'T NEED THE NAME
     // CHANGE BORDER ANIMATION TO A FADE IN BACKGROUND LIGHTER ON HOVER
+
+    // 1200px should be when we swtich to alt name
 
     return (
         <div className={style.attributesBox}>

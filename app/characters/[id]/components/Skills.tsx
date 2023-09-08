@@ -122,7 +122,7 @@ export default function Skills({
         <div className={style.skillsBox}>
             {skillList.map((skill) => {
                 return (
-                    <div>
+                    <div className={`${style.skill}`}>
                         <span>{skill.hasProficency}</span>
                         <span>{skill.mod}</span>
                         <span>{skill.name}</span>
