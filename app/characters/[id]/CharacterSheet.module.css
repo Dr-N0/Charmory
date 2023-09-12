@@ -3,6 +3,8 @@
     flex-direction: column;
     gap: 20px;
     flex-basis: 50%;
+    height: 78vh;
+    overflow: scroll;
 }
 
 .center {
@@ -21,6 +23,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     margin: 0px 20px;
+    gap: 10px;
 }
 
 /* Two halfs of character sheet */
@@ -39,11 +42,11 @@
     flex-basis: 48%;
     flex-grow: 1;
     justify-content: center;
+    background-color: var(--background-box-color);
 }
 
 
 /* Stats */
-
 .topOfStats {
     display: flex;
     flex-direction: row;
@@ -53,7 +56,7 @@
 .notTopOfStats {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 5px;
 }
 
 /* Attributes */
@@ -69,7 +72,7 @@
     justify-content: center;
     width: 100%;
 
-    gap: 10px;
+    gap: 5px;
 }
 
 .attribute {
@@ -82,7 +85,7 @@
     justify-content: center;
     align-items: center;
     gap: 5px;
-    background-color: #181818;
+    background-color: var(--background-box-color);
 }
 
 .attributeName {
@@ -127,18 +130,24 @@
 
 /* Skills */
 .skillsContainer {
-    background-color: #181818;
+    background-color: var(--background-box-color);
+    padding-top: 5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 2px solid white;
+    padding-bottom: 10px;
+    position: relative;
 }
 
 .skillsBox {
-    position: relative;
+    
 }
 
 .skillsTitle {
     position: absolute;
     font-size: 0.7em;
     bottom: -15px; left: calc(45% - 3px - 2px);
-    background: #181818;
+    background: var(--background-box-color);
     border: 2px solid white;
     border-radius: 20px;
     padding: 5px;
@@ -148,13 +157,8 @@
 .skillsTable {
     table-layout: fixed;
     width: 100%;
-    padding-top: 5px;
     border-collapse: separate;
     border-spacing: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border: 2px solid white;
-    padding-bottom: 10px;
 }
 
 .skillsTable thead {
@@ -252,7 +256,7 @@
     justify-content: center;
     align-items: center;
     gap: 7px;
-    background-color: #181818;
+    background-color: var(--background-box-color);
 }
 
 .vitalValuesBox {
@@ -318,12 +322,14 @@
     padding: 10px;
     padding-bottom: 25px;
     border: 2px solid white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 7px;
-    background-color: #181818;
+    background-color: var(--background-box-color);
     position: relative;
 }
 
@@ -331,7 +337,7 @@
     position: absolute;
     font-size: 0.7em;
     bottom: -15px; left: calc(50% - 45px);
-    background: #181818;
+    background: var(--background-box-color);
     border: 2px solid white;
     border-radius: 20px;
     padding: 5px;
@@ -386,33 +392,32 @@
 .savingThrows span:nth-child(3):hover {
     --_p: 75%;
     --b: 2px;
+    padding: calc(var(--g) + var(--b) + 1px);
     filter: grayscale(0%);
     border-radius: 0px;
 }
 
 /* Senses */
-/* .sensesContainer {
-    
-} */
-
 .sensesBox {
     padding: 10px;
     border: 2px solid white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 7px;
-    background-color: #181818;
+    background-color: var(--background-box-color);
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 25px;
 }
 
 .sensesTitle {
     position: absolute;
     font-size: 0.7em;
     bottom: -15px; left: calc(50% - 25px);
-    background: #181818;
+    background: var(--background-box-color);
     border: 2px solid white;
     border-radius: 20px;
     padding: 5px;
@@ -429,8 +434,8 @@
 }
 
 .senseProf {
-    flex-basis: 10%;
-    text-align: center;
+    flex-basis: 3em;
+    text-align: right;
 }
 
 .senseProf {
@@ -438,7 +443,7 @@
 
     width: 3em;
 
-    --g: 6px;     /* the gap */
+    --g: 8px;     /* the gap */
     --b: 3px;    /* border thickness*/
     --c: var(--character-page-button-color); /* the color */
 
@@ -458,6 +463,7 @@
 .senseProf:hover {
     --_p: 75%;
     --b: 2px;
+    padding: calc(var(--g) + var(--b) + 1px);
     filter: grayscale(0%);
     border-radius: 0px;
 }

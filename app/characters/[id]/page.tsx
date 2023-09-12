@@ -130,17 +130,15 @@ export default async function CharacterPage({ params, session }: any) {
 
             <div className={style.notTopOfStats}>
               {/* Skills */}
-              <div className={style.col}>
-                <div className={style.skillsContainer}>
-                  <Skills
-                    abilities={characterInfo.abilities}
-                    proficencies={characterInfo.proficencies}
-                    proficencyBonus={getProficencyBonus}
-                    profToSymbol={profToSymbol}
-                    computedValue={computedValue}
-                    plus={plus}
-                  />
-                </div>
+              <div className={`${style.col} ${style.skillsContainer}`}>
+                <Skills
+                  abilities={characterInfo.abilities}
+                  proficencies={characterInfo.proficencies}
+                  proficencyBonus={getProficencyBonus}
+                  profToSymbol={profToSymbol}
+                  computedValue={computedValue}
+                  plus={plus}
+                />
               </div>
 
               <div className={`${style.col}`}>

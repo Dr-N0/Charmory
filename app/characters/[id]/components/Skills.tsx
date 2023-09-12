@@ -121,7 +121,6 @@ export default function Skills({
 
     return (
         <div className={style.skillsBox}>
-            <span className={style.skillsTitle}>Skills</span>
             <table className={style.skillsTable}>
                 <thead>
                     <tr>
