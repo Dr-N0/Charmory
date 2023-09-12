@@ -97,7 +97,7 @@
 
     --g: 6px;     /* the gap */
     --b: 3px;    /* border thickness*/
-    --c: red; /* the color */
+    --c: var(--character-page-button-color); /* the color */
 
     border-radius: 20px;
     padding: calc(var(--g) + var(--b));
@@ -213,7 +213,7 @@
 
     --g: 5px;
     --b: 3px;    /* border thickness*/
-    --c: red; /* the color */
+    --c: var(--character-page-button-color); /* the color */
 
     border-radius: 20px;
     padding: calc(var(--g) + var(--b));
@@ -278,6 +278,36 @@
     font-size: 1.5em;
 }
 
+.init {
+    text-align: center;
+    justify-content: none;
+    width: 1.5em;
+
+    --g: 2px;     /* the gap */
+    --b: 3px;    /* border thickness*/
+    --c: var(--character-page-button-color); /* the color */
+
+    border-radius: 20px;
+    padding: calc(var(--g) + var(--b));
+    --_c: #0000 0 25%, var(--c) 0 50%;
+    --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+    --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+    background:
+    var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+    var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+    background-size: 200% var(--b),var(--b) 200%;
+    cursor: pointer;
+    filter: grayscale(50%);
+    transition: .3s;
+}
+.init:hover {
+    --_p: 75%;
+    --g: 3px;
+    --b: 2px;
+    filter: grayscale(0%);
+    border-radius: 0px;
+}
+
 /* Saving Throws */
 .savingThrowsContainer {
     display: flex;
@@ -300,7 +330,7 @@
 .savingThrowsTitle {
     position: absolute;
     font-size: 0.7em;
-    bottom: -15px; left: calc(50% - 50px);
+    bottom: -15px; left: calc(50% - 45px);
     background: #181818;
     border: 2px solid white;
     border-radius: 20px;
@@ -338,7 +368,7 @@
 
     --g: 6px;     /* the gap */
     --b: 3px;    /* border thickness*/
-    --c: red; /* the color */
+    --c: var(--character-page-button-color); /* the color */
 
     border-radius: 20px;
     padding: calc(var(--g) + var(--b));
@@ -381,7 +411,7 @@
 .sensesTitle {
     position: absolute;
     font-size: 0.7em;
-    bottom: -15px; left: calc(45% - 3px - 2px);
+    bottom: -15px; left: calc(50% - 25px);
     background: #181818;
     border: 2px solid white;
     border-radius: 20px;
@@ -410,7 +440,7 @@
 
     --g: 6px;     /* the gap */
     --b: 3px;    /* border thickness*/
-    --c: red; /* the color */
+    --c: var(--character-page-button-color); /* the color */
 
     border-radius: 20px;
     padding: calc(var(--g) + var(--b));
