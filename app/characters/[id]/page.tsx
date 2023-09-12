@@ -159,12 +159,12 @@ export default async function CharacterPage({ params, session }: any) {
                   <div className={`${style.vitalValuesBox} ${style.proficencyBonusCont}`}>
                     {/* Proff Bonus (bottom left) */}
                     <span className={`${style.vitalValuesName}`}>Proff. Bonus</span>
-                    <span className={`${style.vitalValues}`}>{getProficencyBonus(characterInfo.level)}</span>
+                    <span className={`${style.vitalValues}`}>+ {getProficencyBonus(characterInfo.level)}</span>
                   </div>
                   <div className={`${style.vitalValuesBox}`}>
                     {/* Initiative (bottom right) */}
                     <span className={`${style.vitalValuesName}`}>Initiative</span>
-                    <span className={`${style.vitalValues}`}>{characterInfo.initiative}</span>
+                    <span className={`${style.vitalValues} ${style.init}`}>{characterInfo.initiative}</span>
                   </div>
                 </div>
 
