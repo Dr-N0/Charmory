@@ -4,6 +4,7 @@ export default function Skills({
     abilities,
     proficencies,
     proficencyBonus,
+    profToSymbol,
     computedValue,
     plus
 }: any) {
@@ -118,21 +119,9 @@ export default function Skills({
         }
     }
 
-    // https://www.i2symbol.com/symbols/circle
-    const profToSymbol = (s: string) => {
-        switch(true){
-            case s == "NONE":
-                return <span>○</span>
-            case s == "PROFICENT":
-                return <span>●</span>
-            case s == "EXTRA":
-                return <span>◉</span>
-        }
-    }
-
     return (
         <div className={style.skillsBox}>
-            <span className={style.title}>Skills</span>
+            <span className={style.skillsTitle}>Skills</span>
             <table className={style.skillsTable}>
                 <thead>
                     <tr>
