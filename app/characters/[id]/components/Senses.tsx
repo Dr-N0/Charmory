@@ -28,11 +28,12 @@ export default function Senses({
 
     return (
         <div className={style.sensesBox}>
+            <span className={style.sensesTitle}>Senses</span>
             {sensesList.map((senses) => {
                 return (
                     <div>
-                        <span>{proficencyBonus(senses.hasProficency) + computedValue(senses.value) + 10}</span>
-                        <span>{senses.name}</span>
+                        <span className={style.senseProf}>{proficencyBonus(senses.hasProficency) + computedValue(senses.value) + 10}</span>
+                        <span className={style.senseName}>{senses.name}</span>
                     </div>
                 )
             })}
