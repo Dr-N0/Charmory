@@ -94,94 +94,112 @@ export default async function CharacterPage({ params, session }: any) {
     return bonus;
   }
 
-    return (
-      <main className={style.mainContainer}>
-        {/* Top Bar */}
-        <div>
-          <Card />
-          {/* Health */}
-          {/* Share + Short Rest + Long Rest */}
-        </div>
+  // https://www.i2symbol.com/symbols/circle
+  const profToSymbol = (s: string) => {
+      switch(true){
+          case s == "NONE":
+              return <span>○</span>
+          case s == "PROFICENT":
+              return <span>●</span>
+          case s == "EXTRA":
+              return <span>◉</span>
+      }
+  }
 
-        <div className={style.characterSheetContainer}>
-            <div className={style.statsContainer}>
-              {/* Attributes */}
-              <div className={style.topOfStats}>
-                <div className={style.attributesContainer}>
-                  <Attributes
+  return (
+    <main className={style.mainContainer}>
+      {/* Top Bar */}
+      <div>
+        <Card />
+        {/* Health */}
+        {/* Share + Short Rest + Long Rest */}
+      </div>
+
+      <div className={style.characterSheetContainer}>
+          <div className={style.statsContainer}>
+            {/* Attributes */}
+            <div className={style.topOfStats}>
+              <div className={style.attributesContainer}>
+                <Attributes
+                  abilities={characterInfo.abilities}
+                  computedValue={computedValue}
+                  plus={plus}
+                />
+              </div>
+            </div>
+
+            <div className={style.notTopOfStats}>
+              {/* Skills */}
+              <div className={style.col}>
+                <div className={style.skillsContainer}>
+                  <Skills
                     abilities={characterInfo.abilities}
+                    proficencies={characterInfo.proficencies}
+                    proficencyBonus={getProficencyBonus}
+                    profToSymbol={profToSymbol}
                     computedValue={computedValue}
                     plus={plus}
                   />
                 </div>
               </div>
 
-              <div className={style.notTopOfStats}>
-                {/* Skills */}
-                <div className={style.col}>
-                  <div className={style.skillsContainer}>
-                    <Skills
-                      abilities={characterInfo.abilities}
-                      proficencies={characterInfo.proficencies}
-                      proficencyBonus={getProficencyBonus}
-                      computedValue={computedValue}
-                      plus={plus}
-                    />
+              <div className={`${style.col}`}>
+                {/* Vital Values (Speed, AC, Prof Bonus, Init) */}
+                <div className={style.vitalValuesContainer}>
+                  <div className={`${style.vitalValuesBox} ${style.speedCont}`}>
+                    {/* Speed (top left) */}
+                    <span className={`${style.vitalValuesName}`}>Speed</span>
+                    <span className={`${style.vitalValues}`}>{characterInfo.speed}</span>
+                  </div>
+                  <div className={`${style.vitalValuesBox} ${style.armorClassCont}`}>
+                    {/* AC (top right) */}
+                    <span className={`${style.vitalValuesName}`}>Armor Class</span>
+                    <span className={`${style.vitalValues}`}>{characterInfo.armorClass}</span>
+                  </div>
+                  <div className={`${style.vitalValuesBox} ${style.proficencyBonusCont}`}>
+                    {/* Proff Bonus (bottom left) */}
+                    <span className={`${style.vitalValuesName}`}>Proff. Bonus</span>
+                    <span className={`${style.vitalValues}`}>{getProficencyBonus(characterInfo.level)}</span>
+                  </div>
+                  <div className={`${style.vitalValuesBox}`}>
+                    {/* Initiative (bottom right) */}
+                    <span className={`${style.vitalValuesName}`}>Initiative</span>
+                    <span className={`${style.vitalValues}`}>{characterInfo.initiative}</span>
                   </div>
                 </div>
 
-                <div className={`${style.col}`}>
-                  {/* Vital Values (Speed, AC, Prof Bonus, Init) */}
-                  <div className={style.vitalValuesContainer}>
-                    <div className={`${style.vitalValuesBox} ${style.speedCont}`}>
-                      {/* Speed (top left) */}
-                      <span>{characterInfo.speed}</span>
-                    </div>
-                    <div className={`${style.vitalValuesBox} ${style.armorClassCont}`}>
-                      {/* AC (top right) */}
-                      <span>{characterInfo.armorClass}</span>
-                    </div>
-                    <div className={`${style.vitalValuesBox} ${style.proficencyBonusCont}`}>
-                      {/* Proff Bonus (bottom left) */}
-                      <span>{getProficencyBonus(characterInfo.level)}</span>
-                    </div>
-                    <div className={`${style.vitalValuesBox} ${style.initiativeCont}`}>
-                      {/* Initiative (bottom right) */}
-                      <span>{characterInfo.initiative}</span>
-                    </div>
-                  </div>
-
-                  {/* Saving Throws & Senses */}
-                  <div className={style.savingThrowsContainer}>
-                    <SavingThrows 
+                {/* Saving Throws & Senses */}
+                <div className={style.savingThrowsContainer}>
+                  <SavingThrows 
+                    abilities={characterInfo.abilities}
+                    proficencies={characterInfo.proficencies}
+                    proficencyBonus={getProficencyBonus}
+                    profToSymbol={profToSymbol}
+                    computedValue={computedValue}
+                    plus={plus}
+                  />
+                </div>
+                <div className={style.sensesContainer}>
+                    <Senses
                       abilities={characterInfo.abilities}
                       proficencies={characterInfo.proficencies}
                       proficencyBonus={getProficencyBonus}
                       computedValue={computedValue}
                       plus={plus}
+                      sesnseTypes={characterInfo.abilities?.wisdom}
                     />
-                  </div>
-                  <div className={style.sensesContainer}>
-                      <Senses
-                        abilities={characterInfo.abilities}
-                        proficencies={characterInfo.proficencies}
-                        proficencyBonus={getProficencyBonus}
-                        computedValue={computedValue}
-                        plus={plus}
-                        sesnseTypes={characterInfo.abilities?.wisdom}
-                      />
-                  </div>
                 </div>
               </div>
-
             </div>
-            
-            <div className={style.interactiveContainer}>
-              <p>asdfadkfjlaslkfasjkl</p>
-            </div>
-        </div>
 
-        <pre>{asdf}</pre>
-      </main>
-    );
+          </div>
+          
+          <div className={style.interactiveContainer}>
+            <p>asdfadkfjlaslkfasjkl</p>
+          </div>
+      </div>
+
+      <pre>{asdf}</pre>
+    </main>
+  );
 }
