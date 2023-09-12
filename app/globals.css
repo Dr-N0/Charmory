@@ -6,6 +6,8 @@
   --particle-size: 3px;
   --primary-color: #121212;
   --secondary-color: rgb(165, 0, 0);
+
+  --character-page-button-color: red;
 }
 
 * {
