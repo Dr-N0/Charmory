@@ -5,6 +5,10 @@
     flex-basis: 50%;
 }
 
+.center {
+    text-align: center;
+}
+
 /* Character description + sheet */
 .mainContainer {
     display: flex;
@@ -126,24 +130,112 @@
     background-color: #181818;
 }
 
-/* .table {
+.skillsBox {
+    position: relative;
+}
+
+.title {
+    position: absolute;
+    font-size: 0.7em;
+    top: calc(50% - 3px - 2px); left: -20px;
+    transform: rotate(-90deg);
+    background:#181818;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 3px;
+    z-index: 2;
+}
+
+.skillsTable {
     table-layout: fixed;
     width: 100%;
+    padding-top: 5px;
     border-collapse: separate;
     border-spacing: 10px;
-    border-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     border: 2px solid white;
 }
 
-.table td:first-child {
-    text-align: left;
-    border-top: none;
+.skillsTable thead {
+    font-size: 0.6em;
 }
 
-.table td:last-child {
-    text-align: right;
-    border-bottom: none;
-} */
+.skillsTable tbody td:nth-child(1) {
+    width: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+.skillsTable thead td:nth-child(1) {
+    width: 15px;
+    text-align: left;
+}
+
+.skillsTable td:nth-child(2) {
+    width: 20px;
+    text-align: left;
+}
+
+.skillsTable tbody td:nth-child(2) {
+    text-transform: uppercase;
+    font-size: 0.8em;
+}
+
+.skillsTable td:nth-child(3) {
+    width: 50%;
+    text-align: left;
+}
+
+.skillsTable tbody td:nth-child(3) {
+    border-bottom: 1px solid grey;
+}
+
+.skillsTable thead td:nth-child(4) {
+    text-align: center;
+    width: 20px;
+}
+
+.skillsTable tbody td:nth-child(4) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skillsTable tbody td:nth-child(4) p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    width: 3em;
+    height: 40px;
+
+    --g: 5px;
+    --b: 3px;    /* border thickness*/
+    --c: red; /* the color */
+
+    border-radius: 20px;
+    padding: calc(var(--g) + var(--b));
+    --_c: #0000 0 25%, var(--c) 0 50%;
+    --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+    --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+    background:
+    var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+    var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+    background-size: 200% var(--b),var(--b) 200%;
+    cursor: pointer;
+    filter: grayscale(50%);
+    transition: .3s;
+}
+
+.skillsTable tbody td:nth-child(4) p:hover {
+    --_p: 75%;
+    --b: 2px;
+    padding: calc(var(--g) + var(--b) + 1px);
+    filter: grayscale(0%);
+    border-radius: 0px;
+}
 
 /* .skillsBox {
     
@@ -190,6 +282,12 @@
     /* width: 200px; */
     /* display: flex; */
     flex-basis: calc(50% - 5px);
+    display: flex;
+    justify-content: space-around;
+}
+
+.savingThrows:nth-child(odd) {
+    border-right: 1px solid white;
 }
 
 /* Senses */

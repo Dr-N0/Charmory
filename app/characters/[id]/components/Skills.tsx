@@ -132,7 +132,16 @@ export default function Skills({
 
     return (
         <div className={style.skillsBox}>
-            <table className={style.table}>
+            <span className={style.title}>Skills</span>
+            <table className={style.skillsTable}>
+                <thead>
+                    <tr>
+                        <td>PROF</td>
+                        <td>MOD</td>
+                        <td>SKILL</td>
+                        <td>BONUS</td>
+                    </tr>
+                </thead>
                 <tbody>
                     {skillList.map((skill) => (
                         <tr key={skill.name}>
@@ -140,10 +149,12 @@ export default function Skills({
                             <td>{skill.mod}</td>
                             <td>{skill.name}</td>
                             <td>
+                                <p>
                                 {plus(
                                 proficencyBonus(skill.hasProficency) +
                                     computedValue(getAbilityValue(skill.mod))
                                 )}
+                                </p>
                             </td>
                         </tr>
                     ))}
