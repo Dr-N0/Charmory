@@ -4,6 +4,7 @@ export default function SavingThrows({
     abilities,
     proficencies,
     proficencyBonus,
+    profToSymbol,
     computedValue,
     plus
 }: any) {
@@ -49,12 +50,13 @@ export default function SavingThrows({
 
     return (
         <div className={style.savingThrowsBox}>
+            <span className={style.savingThrowsTitle}>Saving Throws</span>
             {savingThrowList.map((savingThrow) => {
                 return (
                     <div className={style.savingThrows}>
-                        <span>{savingThrow.alt}</span>
+                        <span>{profToSymbol(savingThrow.hasProficency)}</span>
+                        <span>{savingThrow.name}</span>
                         <span>{plus(proficencyBonus(savingThrow.hasProficency) + computedValue(savingThrow.value))}</span>
-                        <span>{savingThrow.value}</span>
                     </div>
                 )
             })}
