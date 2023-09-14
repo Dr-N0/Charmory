@@ -10,17 +10,17 @@ export default function Senses({
 
     const sensesList = [
         {
-            name: "Passive Wis (Perception)",
+            name: "Passive Perception",
             value: abilities?.wisdom,
             hasProficency: proficencies?.perception
         },
         {
-            name: "Passive Int (Investigation)",
+            name: "Passive Investigation",
             value: abilities?.intelligence,
             hasProficency: proficencies?.investigation
         },
         {
-            name: "Passive Wis (Insight)",
+            name: "Passive Insight",
             value: abilities?.wisdom,
             hasProficency: proficencies?.insight
         }
