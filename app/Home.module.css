@@ -38,7 +38,7 @@
     transition-property: color, background-color;
 }
 
-.hvrFade:hover, .hvrFade:focus, .hvrFade:active {
+.hvrFade:hover, .hvrFade:active {
     background-color: var(--secondary-color);
     color:white
 }
