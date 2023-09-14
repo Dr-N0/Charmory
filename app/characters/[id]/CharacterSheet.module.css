@@ -3,8 +3,7 @@
     flex-direction: column;
     gap: 20px;
     flex-basis: 50%;
-    height: 78vh;
-    overflow: scroll;
+    /* height: 73.5vh; */
 }
 
 .center {
@@ -129,18 +128,15 @@
 }
 
 /* Skills */
-.skillsContainer {
+.skillsBox {
     background-color: var(--background-box-color);
     padding-top: 5px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     border: 2px solid white;
     padding-bottom: 10px;
-    position: relative;
-}
-
-.skillsBox {
-    
+    /* overflow-y: scroll;
+    scrollbar-width: thin; */
 }
 
 .skillsTitle {
@@ -241,13 +237,55 @@
     border-radius: 0px;
 }
 
-/* .skillsBox {
-    
+/* Character Card */
+.characterCardBox {
+    height: 210px;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    padding: 10px;
+    padding-bottom: 25px;
+    border: 2px solid white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    background-color: var(--background-box-color);
 }
 
-.skill {
-    
-} */
+.characterCardTitle {
+    position: absolute;
+    font-size: 0.7em;
+    bottom: -15px; left: calc(50% - 48px);
+    background: var(--background-box-color);
+    border: 2px solid white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 5px;
+    z-index: 2;
+}
+
+.hpBoxRow {
+    display: flex;
+    flex-direction: row;
+}
+
+/* The "/" character */
+.hpBoxRow span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hpBox {
+    display: flex;
+    flex-direction: column;
+}
 
 /* Vital Values */
 .vitalValuesContainer {
@@ -255,6 +293,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 7px;
     background-color: var(--background-box-color);
 }
@@ -272,6 +311,7 @@
     text-align: center;
     font-family: 'Times New Roman', serif;
     word-wrap: break-word;
+    flex-basis: 48%;
 }
 
 .vitalValuesName {
@@ -313,24 +353,22 @@
 }
 
 /* Saving Throws */
-.savingThrowsContainer {
-    display: flex;
-    flex-direction: column;
-}
-
 .savingThrowsBox {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 7px;
+
     padding: 10px;
     padding-bottom: 25px;
     border: 2px solid white;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 7px;
+
     background-color: var(--background-box-color);
-    position: relative;
 }
 
 .savingThrowsTitle {
@@ -339,7 +377,8 @@
     bottom: -15px; left: calc(50% - 45px);
     background: var(--background-box-color);
     border: 2px solid white;
-    border-radius: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     padding: 5px;
     z-index: 2;
 }
@@ -348,8 +387,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     padding-right: 5px;
-    
 }
 
 .savingThrows span:nth-child(1) {
@@ -364,7 +403,6 @@
     text-overflow: ellipsis;
     overflow: hidden;
     width: 100px;
-    /* min-width: 80px; */
 }
 
 .savingThrows span:nth-child(3) {
@@ -399,17 +437,18 @@
 
 /* Senses */
 .sensesBox {
-    padding: 10px;
-    border: 2px solid white;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 7px;
     background-color: var(--background-box-color);
-    position: relative;
+    
+    padding: 10px;
+    border: 2px solid white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     padding-bottom: 25px;
 }
 
@@ -419,7 +458,8 @@
     bottom: -15px; left: calc(50% - 25px);
     background: var(--background-box-color);
     border: 2px solid white;
-    border-radius: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     padding: 5px;
     z-index: 2;
 }

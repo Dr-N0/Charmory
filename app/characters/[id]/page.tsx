@@ -1,11 +1,11 @@
 import { prisma } from '@/lib/prisma'
 import { getServerSession } from "next-auth"
 import { ApiError } from 'next/dist/server/api-utils';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from "@/lib/auth";
 import style from './CharacterSheet.module.css'
-import { Card } from '@/app/characters/page'
 
 import Attributes from './components/Attributes'
+import CharacterCard from './components/CharacterCard'
 import SavingThrows from './components/SavingThrows'
 import Senses from './components/Senses'
 import Skills from './components/Skills'
@@ -108,13 +108,6 @@ export default async function CharacterPage({ params, session }: any) {
 
   return (
     <main className={style.mainContainer}>
-      {/* Top Bar */}
-      <div>
-        <Card />
-        {/* Health */}
-        {/* Share + Short Rest + Long Rest */}
-      </div>
-
       <div className={style.characterSheetContainer}>
           <div className={style.statsContainer}>
             {/* Attributes */}
@@ -130,7 +123,7 @@ export default async function CharacterPage({ params, session }: any) {
 
             <div className={style.notTopOfStats}>
               {/* Skills */}
-              <div className={`${style.col} ${style.skillsContainer}`}>
+              <div className={`${style.col}`}>
                 <Skills
                   abilities={characterInfo.abilities}
                   proficencies={characterInfo.proficencies}
@@ -142,6 +135,9 @@ export default async function CharacterPage({ params, session }: any) {
               </div>
 
               <div className={`${style.col}`}>
+                {/* Character Card */}
+                <CharacterCard />
+
                 {/* Vital Values (Speed, AC, Prof Bonus, Init) */}
                 <div className={style.vitalValuesContainer}>
                   <div className={`${style.vitalValuesBox} ${style.speedCont}`}>
@@ -166,9 +162,8 @@ export default async function CharacterPage({ params, session }: any) {
                   </div>
                 </div>
 
-                {/* Saving Throws & Senses */}
-                <div className={style.savingThrowsContainer}>
-                  <SavingThrows 
+                {/* Saving Throws */}
+                <SavingThrows 
                     abilities={characterInfo.abilities}
                     proficencies={characterInfo.proficencies}
                     proficencyBonus={getProficencyBonus}
@@ -176,9 +171,9 @@ export default async function CharacterPage({ params, session }: any) {
                     computedValue={computedValue}
                     plus={plus}
                   />
-                </div>
-                <div className={style.sensesContainer}>
-                    <Senses
+
+                {/* Senses */}
+                <Senses
                       abilities={characterInfo.abilities}
                       proficencies={characterInfo.proficencies}
                       proficencyBonus={getProficencyBonus}
@@ -186,7 +181,6 @@ export default async function CharacterPage({ params, session }: any) {
                       plus={plus}
                       sesnseTypes={characterInfo.abilities?.wisdom}
                     />
-                </div>
               </div>
             </div>
 
@@ -197,7 +191,7 @@ export default async function CharacterPage({ params, session }: any) {
           </div>
       </div>
 
-      <pre>{asdf}</pre>
+      {/* <pre>{asdf}</pre> */}
     </main>
   );
 }
