@@ -100,39 +100,39 @@
 /* FADES */
 
 .greenFade {
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
     -webkit-transition-property: color, background-color, border-color;
     transition-property: color, background-color, border-color;
 }
 
-.greenFade:hover, .greenFade:focus, .greenFade:active {
+.greenFade:hover, .greenFade:active {
     background-color: rgb(66, 202, 48);
     border-color: rgb(66, 202, 48);
     color:white
 }
 
 .yellowFade {
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
     -webkit-transition-property: color, background-color, border-color;
     transition-property: color, background-color, border-color;
 }
 
-.yellowFade:hover, .yellowFade:focus, .yellowFade:active {
+.yellowFade:hover, .yellowFade:active {
     background-color: rgb(202, 192, 48);
     border-color: rgb(202, 192, 48);
     color:white
 }
 
 .redFade {
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
     -webkit-transition-property: color, background-color, border-color;
     transition-property: color, background-color, border-color;
 }
 
-.redFade:hover, .redFade:focus, .redFade:active {
+.redFade:hover, .redFade:active {
     background-color: rgb(202, 48, 48);
     border-color: rgb(202, 48, 48);
     color:white

@@ -3,7 +3,7 @@ import style from './Characters.module.css'
 import { prisma } from '@/lib/prisma'
 import CharacterSearchBar from '@/app/components/CharacterSearchBar';
 import { getServerSession } from "next-auth"
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from "@/lib/auth";
 
 export async function getServerSideProps() {
     const session = await getServerSession(authOptions);
@@ -47,7 +47,7 @@ export default async function CharactersPage({ session }: any) {
                 <div className={style.wrapper}>
                     <div className={style.headerWrapper}>
                         <h1>Characters</h1>
-                        <Link href={`/characters/build`}>
+                        <Link className='noSelect' href={`/characters/build`}>
                             <button className={style.greenFade}>Create!</button>
                         </Link>
                     </div>
@@ -73,14 +73,14 @@ function Character({character}: any) {
     return (
         <section className={style.characterBox}>
             <Card character={character} />
-            <div className={style.characterOptions}>
-                <Link href={`/characters/${id}`}>
+            <div className={`${style.characterOptions}`}>
+                <Link className='noSelect' href={`/characters/${id}`}>
                     <button className={style.greenFade}>View</button>
                 </Link>
-                <Link href={`/characters/edit`}>
+                <Link className='noSelect' href={`/characters/edit`}>
                     <button className={style.yellowFade}>Edit</button>
                 </Link>
-                <Link href={`/characters/delete`}>
+                <Link className='noSelect' href={`/characters/delete`}>
                     <button className={style.redFade}>Delete</button>
                 </Link>
             </div>
@@ -88,7 +88,7 @@ function Character({character}: any) {
     );
 }
 
-export function Card({character}: any) {
+function Card({character}: any) {
     const { id, name, ownerId } = character || {};
     
     return (
