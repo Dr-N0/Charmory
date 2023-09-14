@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import style from '@/app/Home.module.css'
 import { getServerSession } from "next-auth"
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from "@/lib/auth";
 import { LoginButton, LogoutButton } from '@/app/auth'
 
 export default async function Nav() {
     const session = await getServerSession(authOptions)
+
+    console.log(session)
 
     return (
         <nav className={`${style.nav}`}>
