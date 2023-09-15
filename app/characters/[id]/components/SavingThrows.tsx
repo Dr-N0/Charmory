@@ -55,7 +55,7 @@ export default function SavingThrows({
                 return (
                     <div className={style.savingThrows}>
                         <span>{profToSymbol(savingThrow.hasProficency)}</span>
-                        <span>{savingThrow.name}</span>
+                        <span>{savingThrow.alt}</span>
                         <span>{plus(proficencyBonus(savingThrow.hasProficency) + computedValue(savingThrow.value))}</span>
                     </div>
                 )
