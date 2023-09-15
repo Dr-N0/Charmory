@@ -136,7 +136,12 @@ export default async function CharacterPage({ params, session }: any) {
 
               <div className={`${style.col}`}>
                 {/* Character Card */}
-                <CharacterCard />
+                <CharacterCard
+                  health = {{
+                    current: characterInfo.healthCurrent,
+                    max: characterInfo.healthMax
+                  }}
+                  />
 
                 {/* Vital Values (Speed, AC, Prof Bonus, Init) */}
                 <div className={style.vitalValuesContainer}>
@@ -191,7 +196,7 @@ export default async function CharacterPage({ params, session }: any) {
           </div>
       </div>
 
-      {/* <pre>{asdf}</pre> */}
+      <pre>{asdf}</pre>
     </main>
   );
 }
