@@ -46,9 +46,10 @@ export default async function CharactersPage({ session }: any) {
             <section className={style.showcase}>
                 <div className={style.wrapper}>
                     <div className={style.headerWrapper}>
-                        <h1>Characters</h1>
-                        <Link className='noSelect' href={`/characters/build`}>
-                            <button className={style.greenFade}>Create!</button>
+                        <h1 className={style.armory}>Armory</h1>
+                        <h2>{user?.characters.length} / 10</h2>
+                        <Link className='noSelect' href={`/characters/builder`}>
+                            <button className={`${style.button} ${style.greenFade}`}>Create!</button>
                         </Link>
                     </div>
                     {/* <CharacterSearchBar /> */}
@@ -75,13 +76,13 @@ function Character({character}: any) {
             <Card character={character} />
             <div className={`${style.characterOptions}`}>
                 <Link className='noSelect' href={`/characters/${id}`}>
-                    <button className={style.greenFade}>View</button>
+                    <button className={`${style.button} ${style.greenFade}`}>View</button>
                 </Link>
-                <Link className='noSelect' href={`/characters/edit`}>
-                    <button className={style.yellowFade}>Edit</button>
+                <Link className='noSelect' href={`/characters/builder/${id}`}>
+                    <button className={`${style.button} ${style.yellowFade}`}>Edit</button>
                 </Link>
                 <Link className='noSelect' href={`/characters/delete`}>
-                    <button className={style.redFade}>Delete</button>
+                    <button className={`${style.button} ${style.redFade}`}>Delete</button>
                 </Link>
             </div>
         </section>
