@@ -7,8 +7,6 @@ import { LoginButton, LogoutButton } from '@/app/auth'
 export default async function Nav() {
     const session = await getServerSession(authOptions)
 
-    console.log(session)
-
     return (
         <nav className={`${style.nav}`}>
             <div>
@@ -23,8 +21,8 @@ export default async function Nav() {
 
             { session ?
                 (<>
-                    <Link href={`/characters`}>
-                        <button className={style.solidBackground}>
+                    <Link className={`${style.noSelect}`} href={`/characters`}>
+                        <button className={`${style.button} ${style.hvrFadeWhite} ${style.solidBackground}`}>
                             Characters
                         </button>
                     </Link>

@@ -1,0 +1,60 @@
+.char {
+    text-shadow: var(--random-color) 0 0 20px;
+}
+
+.rendererBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0px 20px;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.displayContainer {
+    flex-basis: 40%;
+
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.displayContainer div {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.workstationContainer div {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.displayInformation {
+    width: 50%;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.displayButtons button {
+    width: 150px;
+    gap: 10px;
+}
+
+.workstationContainer {
+    flex-basis: 60%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.title {
+    margin-left: auto;
+    margin-right: auto;
+}

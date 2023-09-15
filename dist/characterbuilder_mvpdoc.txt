@@ -1,0 +1,35 @@
+Home
+	Character Name
+Race
+	Name
+	Description
+	Traits
+
+Class
+	Name
+	Hit Die
+	Primary Ability (optional)
+	Saves (str & con)
+	Traits
+
+Abilities
+	6 spots to input values
+	PAST MVP (won't change gen method, will program after)
+
+Description
+	Background type
+	Skill and Tool Proficencies
+	Languages known
+	Background specific features
+	PAST MVP (Character details)
+
+Equipment
+	Background starting equipment/starting equipment options
+	PAST MVP (Option for using GOLD to pick what stuff you get)
+
+Advanced (Settings)
+	Advancement type (Milestone vs xp)
+	Hit Point type (Fixed or manual)
+	Encumberance? (yes or no)
+	Ignore coin weight (yes or no) (50 coins weigh 1 lb.)
+
