@@ -31,7 +31,7 @@ export default function Renderer({
             case 'equipment':
                 return <Equipment />
             default:
-                return "Workstation not being used atm"
+                return <h1>Workstation not being used atm</h1>
         }
     }
 
@@ -50,26 +50,47 @@ export default function Renderer({
                 any changes made inside the workstation like what
                 class was chosen and stuff */}
                 <div className={`${style.col} ${style.displayInformation} ${style.displayButtons}`}>
-                    <button onClick={(e:any) => setWorkstation(1)}>Choose Your Race</button>
-                    <button onClick={(e:any) => setWorkstation(2)}>Choose Your Class</button>
-                    <button onClick={(e:any) => setWorkstation(3)}>Set Ability Values</button>
-                    <button onClick={(e:any) => setWorkstation(4)}>Write Description</button>
-                    <button onClick={(e:any) => setWorkstation(5)}>Equipment</button>
+                    <div>
+                        <h2>Race</h2>
+                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(1)}>Pick Your Race</button>
+                    </div>
+                    <hr></hr>
+                    <div>
+                        <h2>Class</h2>
+                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(2)}>Choose Your Class</button>
+                    </div>
+                    <hr></hr>
+                    <div>
+                        <h2>Abilities</h2>
+                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(3)}>Set Ability Values</button>
+                    </div>
+                    <hr></hr>
+                    <div>
+                        <h2>Description</h2>
+                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(4)}>Write Description</button>
+                    </div>
+                    <hr></hr>
+                    <div>
+                        <h2>Equipment</h2>
+                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(5)}>Add Equipment</button>
+                    </div>
                 </div>
             </div>
-            <div className={`${style.col} ${style.workstationContainer}`}>
-                <h1 className={style.title}>Workstation</h1>
-                
-                <br></br>
-                
-                <div className={`${style.col} ${style.displayInformation}`}>
-                    {
-                        workstation == 1 ? renderSwitch('race') : 
-                        workstation == 2 ? renderSwitch('class') :
-                        workstation == 3 ? renderSwitch('abilities') :
-                        workstation == 4 ? renderSwitch('description') :
-                        workstation == 5 ? renderSwitch('equipment') : ""
-                    }
+            <div className={`${style.workstationContainer}`}>
+                <div className={`${style.col} ${style.wrapper}`}>
+                    <h1 className={style.title}>Workstation</h1>
+                    
+                    <br></br>
+                    
+                    <div className={`${style.col} ${style.displayInformation}`}>
+                        {
+                            workstation == 1 ? renderSwitch('race') : 
+                            workstation == 2 ? renderSwitch('class') :
+                            workstation == 3 ? renderSwitch('abilities') :
+                            workstation == 4 ? renderSwitch('description') :
+                            workstation == 5 ? renderSwitch('equipment') : renderSwitch('')
+                        }
+                    </div>
                 </div>
             </div>
         </main>
