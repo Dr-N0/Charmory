@@ -44,7 +44,7 @@ export default function Senses({
             setMaxHp("999");
         } else if (parseInt(target) < currentHp) {
             setCurrentHp(target);
-            setMaxHp(currentHp);
+            setMaxHp(target);
         } else {
             setMaxHp(target);
         }
@@ -91,8 +91,8 @@ export default function Senses({
                     <tr className={style.tableRow}>
                         <td>Rest</td>
                         <td className={style.rest}>
-                            <button className={`${style.button}`}>Short</button>
-                            <button className={`${style.button}`}>Long</button>
+                            <button className={`${style.hvrFadeWhite} ${style.button}`}>Short</button>
+                            <button className={`${style.hvrFadeWhite} ${style.button}`}>Long</button>
                         </td>
                     </tr>
                 </tbody>
