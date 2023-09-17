@@ -8,8 +8,8 @@ export default function Equipment({
 }: any) {
 
     return (
-        <div className={style.equipmentBox}>
-            <p>asdfsadf</p>
+        <div className={style.contentContainer}>
+            <h2 className={style.workstationTitle}>Equipment</h2>
         </div>
     );
 }
