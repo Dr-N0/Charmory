@@ -51,6 +51,9 @@ export default function Abilities({
         setGenMethod(e.target.value);
     }
 
+    // TODO: Ability row is static and pushes the screen
+    // when it gets too small 
+
     return (
         <div className={style.contentContainer}>
             <h2 className={style.workstationTitle}>Ability Scores</h2>
