@@ -38,7 +38,11 @@ export default function Renderer({
     return (
         <main className={style.rendererBox}>
             <div className={`${style.col} ${style.displayContainer}`}>
-                <h1 className={style.title}><span className={style.char}>Char </span>Info</h1>
+                <h1 className={style.title}>
+                    <span className={style.ch}>Ch </span>
+                    <span className={style.ar}>ar </span>
+                    <span>&nbsp;Info</span>
+                </h1>
                 
                 <br></br>
 
@@ -77,20 +81,19 @@ export default function Renderer({
                 </div>
             </div>
             <div className={`${style.workstationContainer}`}>
-                <div className={`${style.col} ${style.wrapper}`}>
-                    <h1 className={style.title}>Workstation</h1>
-                    
-                    <br></br>
-                    
-                    <div className={`${style.col} ${style.displayInformation}`}>
-                        {
-                            workstation == 1 ? renderSwitch('race') : 
-                            workstation == 2 ? renderSwitch('class') :
-                            workstation == 3 ? renderSwitch('abilities') :
-                            workstation == 4 ? renderSwitch('description') :
-                            workstation == 5 ? renderSwitch('equipment') : renderSwitch('')
-                        }
-                    </div>
+                <h1 className={style.title}>
+                    <span className={style.ar}>Ar</span>
+                    <span className={style.mory}>mory</span>
+                    <span>&nbsp;Station</span>
+                </h1>
+                <div className={`${style.wrapper}`}>
+                    {
+                        workstation == 1 ? renderSwitch('race') : 
+                        workstation == 2 ? renderSwitch('class') :
+                        workstation == 3 ? renderSwitch('abilities') :
+                        workstation == 4 ? renderSwitch('description') :
+                        workstation == 5 ? renderSwitch('equipment') : renderSwitch('')
+                    }
                 </div>
             </div>
         </main>
