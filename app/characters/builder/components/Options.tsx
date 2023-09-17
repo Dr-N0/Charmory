@@ -9,7 +9,7 @@ export default function Options({
 
     return (
         <div className={style.optionsBox}>
-            <p>asdfsadf</p>
+            <p>Options bit</p>
         </div>
     );
 }
