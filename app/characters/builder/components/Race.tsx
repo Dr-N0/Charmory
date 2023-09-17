@@ -8,6 +8,9 @@ export default function Race({
 }: any) {
     const raceList = [
         {
+            name: "Aarakocra",
+        },
+        {
             name: "Aasimar",
             variants: [
                 "Fallen Aasimar",
@@ -17,6 +20,12 @@ export default function Race({
         },
         {
             name: "Bugbear",
+        },
+        {
+            name: "Centaur",
+        },
+        {
+            name: "Changeling"
         },
         {
             name: "Dragonborn",
@@ -153,19 +162,23 @@ export default function Race({
         setFiltered(filteredItems);
     }
 
+    // TODO: Use shit descriptions of things and
+    // kick them if window size too small
+
     return (
-        <div className={style.raceBox}>
-            <h2>Race</h2>
+        <div className={style.contentContainer}>
+            <h2 className={style.workstationTitle}>Race</h2>
             <input
+                className={style.inputMain}
                 type="text"
                 value={searchItem}
                 onChange={handleInputChange}
                 placeholder='Type to search'
             />
-            <ul className={style.raceUl}>
+            <ul className={style.inputUl}>
                 {filtered.map((listValue: any) => {
                     return (
-                        <li key={listValue.name} className={style.raceLi}>{listValue.name}</li>
+                        <li key={listValue.name} className={style.inputLi}>{listValue.name}</li>
                     )
                 })}
             </ul>
