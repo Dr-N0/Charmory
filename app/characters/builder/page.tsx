@@ -64,8 +64,8 @@ export default function Builder() {
 
     return (
         <main className={style.mainContainer}>
-            <Renderer />
             <Options />
+            <Renderer />
         </main>
     );
 }

@@ -1,5 +1,13 @@
-.char {
-    text-shadow: var(--random-color) 0 0 20px;
+.ch {
+    text-shadow: var(--random-color) -5px 0 20px;
+}
+
+.ar {
+    text-shadow: white 0px 0px 20px;
+}
+
+.mory {
+    text-shadow: var(--opposite-random-color) 5px 0 20px;
 }
 
 .rendererBox {
@@ -40,6 +48,10 @@
     width: 100%;
 }
 
+.displayButtons div h2 {
+    margin-bottom: 5px;
+}
+
 .displayButtons button {
     width: 100%;
     height: 50px;
@@ -74,35 +86,34 @@
 .workstationContainer {
     flex-basis: 60%;
     
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    
-    height: 80vh;
+    height: 100%;
 
     background: linear-gradient(180deg,
         rgb(27, 27, 27, 0) 20%, 
         rgb(255, 61, 61) 100%
     );
     border-radius: 20px;
-    padding: 10px;
+    padding: 0px 10px 10px 10px;
 }
 
 .wrapper {
     background-color: var(--background-box-color);
     border-radius: 15px;
     padding: 10px;
-    height: 100%;
-}
 
-.workstationContainer div {
-    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    height: 75vh;
 }
 
 .title {
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 15px;
 }
 
 .hvrFadeWhite {
