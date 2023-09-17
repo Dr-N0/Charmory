@@ -9,6 +9,7 @@ export default function Class({
     const classList = [
         {
             name: "Artificer",
+            color: "#615230",
             subClasses: [
                 "Artillerist",
                 "Armorer",
@@ -18,6 +19,7 @@ export default function Class({
         },
         {
             name: "Barbarian",
+            color: "#CD7055",
             subClasses: [
                 "Path of the Zealot",
                 "Path of the Ancestral Guardian",
@@ -30,6 +32,7 @@ export default function Class({
         },
         {
             name: "Bard",
+            color: "#A87AAB",
             subClasses: [
                 "College of Eloquence",
                 "College of Swords",
@@ -42,6 +45,7 @@ export default function Class({
         },
         {
             name: "Cleric",
+            color: "#8E9092",
             subClasses: [
                 "Knowledge",
                 "Tempest Domain",
@@ -59,6 +63,7 @@ export default function Class({
         },
         {
             name: "Druid",
+            color: "#88934F",
             subClasses: [
                 "Circle of Dreams",
                 "Circle of Stars",
@@ -71,6 +76,7 @@ export default function Class({
         },
         {
             name: "Fighter",
+            color: "#583428",
             subClasses: [
                 "Cavalier",
                 "Psi Warrior",
@@ -85,6 +91,7 @@ export default function Class({
         },
         {
             name: "Monk",
+            color: "#1D90BC",
             subClasses: [
                 "Way of Mercy",
                 "Way of the Astral Self",
@@ -99,6 +106,7 @@ export default function Class({
         },
         {
             name: "Paladin",
+            color: "#A3862A",
             subClasses: [
                 "Oath of Devotion",
                 "Oath of Vengeance",
@@ -111,6 +119,7 @@ export default function Class({
         },
         {
             name: "Ranger",
+            color: "#558366",
             subClasses: [
                 "Swarmkeeper",
                 "Hunter",
@@ -124,6 +133,7 @@ export default function Class({
         },
         {
             name: "Rogue",
+            color: "#52534D",
             subClasses: [
                 "Assassin",
                 "Soulknife",
@@ -138,6 +148,7 @@ export default function Class({
         },
         {
             name: "Sorcerer",
+            color: "#BF5357",
             subClasses: [
                 "Shadow Magic",
                 "Divine Soul",
@@ -150,6 +161,7 @@ export default function Class({
         },
         {
             name: "Warlock",
+            color: "#7D4DB1",
             subClasses: [
                 "The Fiend",
                 "The Fathomless",
@@ -162,6 +174,7 @@ export default function Class({
         },
         {
             name: "Wizard",
+            color: "#285EB8",
             subClasses: [
                 "War Magic",
                 "School of Evocation",
@@ -195,21 +208,29 @@ export default function Class({
     }
 
     return (
-        <div className={style.classBox}>
-            <h2>Class</h2>
+        <div className={style.contentContainer}>
+            <h2 className={style.workstationTitle}>Class</h2>
             <input
+                className={style.inputMain}
                 type="text"
                 value={searchItem}
                 onChange={handleInputChange}
                 placeholder='Type to search'
             />
-            <ul className={style.classUl}>
+            <div className={style.inputValues}>
                 {filtered.map((listValue: any) => {
                     return (
-                        <li key={listValue.name} className={style.classLi}>{listValue.name}</li>
+                        <li
+                            key={listValue.name}
+                            className={style.classListValues}
+                            style={{
+                                backgroundColor: listValue.color
+                            }}>
+                            {listValue.name}
+                        </li>
                     )
                 })}
-            </ul>
+            </div>
         </div>
     );
 }
