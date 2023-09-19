@@ -4,11 +4,12 @@ import { ApiError } from 'next/dist/server/api-utils';
 import { authOptions } from "@/lib/auth";
 import style from './CharacterSheet.module.css'
 
-import Attributes from './components/Attributes'
-import CharacterCard from './components/CharacterCard'
-import SavingThrows from './components/SavingThrows'
-import Senses from './components/Senses'
-import Skills from './components/Skills'
+import Interactive from './Interactive'
+import Attributes from './stat_components/Attributes'
+import CharacterCard from './stat_components/CharacterCard'
+import SavingThrows from './stat_components/SavingThrows'
+import Senses from './stat_components/Senses'
+import Skills from './stat_components/Skills'
 
 // Values we still need
 // Inspiration, Defenses vs Conditions
@@ -191,9 +192,7 @@ export default async function CharacterPage({ params, session }: any) {
 
           </div>
           
-          <div className={style.interactiveContainer}>
-            <p>asdfadkfjlaslkfasjkl</p>
-          </div>
+          <Interactive />
       </div>
 
       <pre>{asdf}</pre>
