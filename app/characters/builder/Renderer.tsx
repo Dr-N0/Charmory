@@ -4,8 +4,6 @@ import { useState } from 'react'
 import style from './Builder.module.css'
 
 import dynamic from 'next/dynamic'
-import Link from 'next/link'
-import { prisma } from '@/lib/prisma'
 
 const Race = dynamic(() => import('./components/Race'), { loading: () => <Loading />})
 const Class = dynamic(() => import('./components/Class'), { loading: () => <Loading />})

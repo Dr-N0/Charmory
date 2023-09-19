@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-
+import Image from 'next/image'
 import style from './BuilderComponents.module.css'
 
 export default function Race({
@@ -178,7 +178,9 @@ export default function Race({
             <ul className={style.inputUl}>
                 {filtered.map((listValue: any) => {
                     return (
-                        <li key={listValue.name} className={style.inputLi}>{listValue.name}</li>
+                        <li key={listValue.name} className={style.inputLi}>
+                            {listValue.name}
+                        </li>
                     )
                 })}
             </ul>
