@@ -21,6 +21,7 @@ model Character {
 
   name            String?
   level           Int           @default(1)
+  feats           String[]      @default([])
   speed           Int           @default(30)
   armorClass      Int           @default(10)
   initiative      Int           @default(0)
@@ -35,6 +36,8 @@ model Character {
   abilities       Abilities?
   description     Description?
   equipment       Equipment?
+
+  inventory         Inventory?
 }
 
 // ===== Race =====
@@ -44,6 +47,9 @@ model Race {
   characterId String      @unique
 
   name        String?
+  size        Int?
+  languages   String[]    @default([])
+  variant     String?
 }
 
 // ===== Class =====
@@ -137,4 +143,52 @@ enum HowProficent {
   NONE
   PROFICENT
   EXTRA
+}
+
+model Inventory {
+  id          Int         @id @default(autoincrement())
+  character   Character   @relation(fields: [characterId], references: [id])
+  characterId String      @unique
+
+  armor       Armor?
+  weapons     Weapon[]
+  items       Item[]
+}
+
+model Armor {
+  id          Int         @id @default(autoincrement())
+  inventory   Inventory   @relation(fields: [inventoryId], references: [id])
+  inventoryId Int      @unique
+
+  name        String?
+  type        ItemType
+}
+model Weapon {
+  id          Int         @id @default(autoincrement())
+  inventory   Inventory   @relation(fields: [inventoryId], references: [id])
+  inventoryId Int      @unique
+
+  name        String?
+  type        ItemType
+  
+}
+model Item {
+  id          Int         @id @default(autoincrement())
+  inventory   Inventory   @relation(fields: [inventoryId], references: [id])
+  inventoryId Int      @unique
+
+  name        String?
+  type        ItemType
+  
+}
+
+enum ItemType {
+  ARMOR
+  WEAPON
+  RING
+  ROD
+  SCROLL
+  STAFF
+  WAND
+  MAGIC_ITEM
 }

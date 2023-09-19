@@ -13,11 +13,12 @@ async function main() {
     create: {
       email: 'test@test.com',
       password: password,
-      characters: {    // New field
+      characters: {
         create: [
           {
             name: 'Percival "Percy" Fredrickstein Von Musel Klossowski de Rolo III',
             level: 5,
+            feats: ["grapple", "alert"],
             speed: 30,
             armorClass: 14,
             initiative: 4,
@@ -88,6 +89,7 @@ async function main() {
           {
             name: 'EXTRA Percival Fredrickstein Von Musel Klossowski de Rolo III',
             level: 17,
+            feats: ["grapple", "alert"],
             speed: 40,
             armorClass: 12,
             initiative: 2,

@@ -22,6 +22,7 @@ CREATE TABLE "Character" (
     "ownerId" TEXT NOT NULL,
     "name" TEXT,
     "level" INTEGER NOT NULL DEFAULT 1,
+    "feats" TEXT[] DEFAULT ARRAY[]::TEXT[],
     "speed" INTEGER NOT NULL DEFAULT 30,
     "armorClass" INTEGER NOT NULL DEFAULT 10,
     "initiative" INTEGER NOT NULL DEFAULT 0,
@@ -37,6 +38,9 @@ CREATE TABLE "Race" (
     "id" SERIAL NOT NULL,
     "characterId" TEXT NOT NULL,
     "name" TEXT,
+    "size" INTEGER,
+    "languages" TEXT[] DEFAULT ARRAY[]::TEXT[],
+    "variant" TEXT,
 
     CONSTRAINT "Race_pkey" PRIMARY KEY ("id")
 );
@@ -116,6 +120,23 @@ CREATE TABLE "Proficencies" (
     CONSTRAINT "Proficencies_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "Inventory" (
+    "id" SERIAL NOT NULL,
+    "characterId" TEXT NOT NULL,
+
+    CONSTRAINT "Inventory_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Item" (
+    "id" SERIAL NOT NULL,
+    "inventoryId" INTEGER NOT NULL,
+    "name" TEXT,
+
+    CONSTRAINT "Item_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
@@ -137,6 +158,12 @@ CREATE UNIQUE INDEX "Equipment_characterId_key" ON "Equipment"("characterId");
 -- CreateIndex
 CREATE UNIQUE INDEX "Proficencies_characterId_key" ON "Proficencies"("characterId");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "Inventory_characterId_key" ON "Inventory"("characterId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Item_inventoryId_key" ON "Item"("inventoryId");
+
 -- AddForeignKey
 ALTER TABLE "Character" ADD CONSTRAINT "Character_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
@@ -157,3 +184,9 @@ ALTER TABLE "Equipment" ADD CONSTRAINT "Equipment_characterId_fkey" FOREIGN KEY 
 
 -- AddForeignKey
 ALTER TABLE "Proficencies" ADD CONSTRAINT "Proficencies_characterId_fkey" FOREIGN KEY ("characterId") REFERENCES "Character"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Inventory" ADD CONSTRAINT "Inventory_characterId_fkey" FOREIGN KEY ("characterId") REFERENCES "Character"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Item" ADD CONSTRAINT "Item_inventoryId_fkey" FOREIGN KEY ("inventoryId") REFERENCES "Inventory"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
