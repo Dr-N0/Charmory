@@ -19,11 +19,10 @@ export async function getServerSideProps() {
     };
 }
 
-async function getCharacters(params: any, session: any) {
+async function getCharacters(session: any) {
     const character = await prisma.character.findFirst({
         where: {
-            ownerId: session?.user?.id,
-            id: params.id
+            ownerId: session?.user?.id
         },
         include: {
           proficencies: true,
@@ -40,9 +39,28 @@ async function getCharacters(params: any, session: any) {
     return character;
 }
 
-export default async function Builder() {
-    const raceList = await prisma.race.findMany();
-    const classList = await prisma.class.findMany();
+export default async function Builder({session}:any) {
+    const character = await getCharacters(session);
+    console.log(await prisma.character.findMany({
+        include: {
+            proficencies: true,
+            race: true,
+            class: true,
+            abilities: true,
+            description: true,
+            equipment: true,
+          }
+    }))
+    const raceList = await prisma.race.findMany({
+        orderBy: {
+            name: 'asc', // Sort by name in ascending order
+        },
+    });
+    const classList = await prisma.class.findMany({
+        orderBy: {
+            name: 'asc', // Sort by name in ascending order
+        },
+    });
     const spellList = await prisma.spell.findMany();
 
     // TODO: On "create character" button press inside of /characters page.
@@ -68,10 +86,11 @@ export default async function Builder() {
     return (
         <main className={style.mainContainer}>
             <Options />
-            <Renderer 
-              raceList={raceList}
-              classList={classList}
-              spellList={spellList}
+            <Renderer
+                character={character}
+                raceList={raceList}
+                classList={classList}
+                spellList={spellList}
             />
         </main>
     );
