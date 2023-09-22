@@ -12,20 +12,23 @@ const Description = dynamic(() => import('./components/Description'), { loading:
 const Equipment = dynamic(() => import('./components/Equipment'), { loading: () => <Loading />})
 
 export default function Renderer({
+    character,
     raceList,
     classList,
     spellList
 }: any) {
     const [workstation, setWorkstation] = useState(0);
     const [currentRace, setCurrentRace] = useState("");
+    const [toggleRaceStation, setToggleRaceStation] = useState(false);
     const [currentClass, setCurrentClass] = useState("");
+    const [toggleClassStation, setToggleClassStation] = useState(false);
 
     function renderSwitch(param: string) {
         switch(param) {
             case 'race':
-                return <Race raceList={raceList} handleChooseRace={handleChooseRace} />
+                return <Race raceList={raceList} toggleRaceStation={toggleRaceStation} handleChooseRace={handleChooseRace} />
             case 'class':
-                return <Class classList={classList} handleChooseClass={handleChooseClass} getSpellsByClassName />
+                return <Class classList={classList} toggleClassStation={toggleClassStation} handleChooseClass={handleChooseClass} getSpellsByClassName />
             case 'abilities':
                 return <Abilities />
             case 'description':
@@ -37,12 +40,67 @@ export default function Renderer({
         }
     }
 
-    const handleChooseRace = (characterRace: any) => {
-        setCurrentRace(characterRace);
+    async function getCharacters(session: any) {
+        const response = await fetch("/api/getCharacters", {
+            headers: {
+            Authorization: `Bearer ${session.accessToken}`,
+            },
+        });
+        
+        if (!response.ok) {
+            throw new Error("Failed to fetch characters");
+        }
+        
+        const characters = await response.json();
+        return characters;
     }
 
-    const handleChooseClass = (characterClass: any) => {
+    async function handleChooseRace(characterRace: any) {
+        setCurrentRace(characterRace);
+        setToggleRaceStation(true);
+        const response = await fetch("/api/race", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                race: characterRace,
+                characterId: character?.id
+            }),
+        });
+        
+        if (!response.ok) {
+            setCurrentRace("");
+            setToggleClassStation(false);
+            throw new Error("Failed to set race");
+        }
+        
+        const data = await response.json();
+        return data;
+    }
+
+    async function handleChooseClass (characterClass: any) {
         setCurrentClass(characterClass);
+        setToggleClassStation(true);
+        const response = await fetch("/api/class", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                className: characterClass,
+                characterId: character.id
+            }),
+        });
+        
+        if (!response.ok) {
+            setCurrentClass("");
+            setToggleClassStation(false);
+            throw new Error("Failed to set class");
+        }
+
+        const data = await response.json();
+        return data;
     }
 
     return (
@@ -69,7 +127,7 @@ export default function Renderer({
                         <h2>Race</h2>
                         {currentRace == '' ?
                             (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(1)}>Pick Your Race</button>) :
-                            ("")
+                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(1)}>{currentRace}</button>)
                         }
                     </div>
                     <hr></hr>
@@ -77,7 +135,7 @@ export default function Renderer({
                         <h2>Class</h2>
                         {currentClass == '' ?
                             (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(2)}>Choose Your Class</button>) :
-                            ("")
+                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(2)}>{currentClass}</button>)
                         }
                         
                     </div>
