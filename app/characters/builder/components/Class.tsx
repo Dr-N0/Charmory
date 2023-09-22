@@ -2,14 +2,25 @@
 import { useState } from 'react'
 
 import style from './BuilderComponents.module.css'
-import classList from '@/lib/classList.json';
 
 export default function Class({
-    
+    classList,
+    handleChooseClass
 }: any) {
 
     const [searchItem, setSearchItem] = useState('');
     const [filtered, setFiltered] = useState(classList);
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedClass, setSelectedClass] = useState('');
+
+    const openModal = (name: any) => {
+        setIsOpen(true);
+        setSelectedClass(name);
+    };
+
+    const closeModal = () => {
+        setIsOpen(false);
+    };
 
     const handleInputChange = (e: any) => { 
         const searchTerm = e.target.value;
@@ -21,6 +32,12 @@ export default function Class({
 
         setFiltered(filteredItems);
     }
+
+    const classFeatureList = [
+        {
+            name: "racialTrait1"
+        }
+    ]
 
     return (
         <div className={style.contentContainer}>
@@ -40,11 +57,26 @@ export default function Class({
                             className={style.classListValues}
                             style={{
                                 backgroundColor: listValue.color
-                            }}>
+                            }}
+                            onClick={()=> openModal(listValue.name)}
+                            >
                             {listValue.name}
                         </li>
                     )
                 })}
+                {isOpen && (
+                    <div className={style.modal} onClick={closeModal}>
+                        <ul className={style.modalContent} onClick={(e) => e.stopPropagation()}>
+                            <span onClick={closeModal}>x</span>
+                            {classFeatureList.map((trait: any) => {return(
+                                <li key={trait.name} className={style.inputLi}>
+                                    {selectedClass}
+                                </li>
+                            )})}
+                            <button onClick={() => handleChooseClass(selectedClass)}>Select Class</button>
+                        </ul>
+                    </div>
+                )}
             </div>
         </div>
     );
