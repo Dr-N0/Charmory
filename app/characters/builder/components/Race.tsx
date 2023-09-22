@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
 
 export default function Race({
     raceList,
+    toggleRaceStation,
     handleChooseRace
 }: any) {
     const [searchItem, setSearchItem] = useState('');
@@ -23,6 +24,11 @@ export default function Race({
     const closeModal = () => {
         setIsOpen(false);
     };
+
+    const handleSelect = (selectedRace: any) => {
+        setIsOpen(false);
+        handleChooseRace(selectedRace);
+    }
 
     const handleInputChange = (e: any) => { 
         const searchTerm = e.target.value;
@@ -60,57 +66,61 @@ export default function Race({
     return (
         <div className={style.contentContainer}>
             <h2 className={style.workstationTitle}>Race</h2>
-            <input
-                className={style.inputMain}
-                type="text"
-                value={searchItem}
-                onChange={handleInputChange}
-                placeholder='Type to search'
-            />
-            <ul className={style.inputUl}>
-                {filtered.map((listValue: any) => {
-                    return (
-                        <li key={listValue.name} className={style.inputLi}>
-                            { listValue.variants.length > 0 ?
-                                <div className={style.inputDiv} onClick={()=> toggleVariants(listValue.name, listValue.variants)}>
-                                    {listValue.name} ({listValue.variants.length})
+            {toggleRaceStation ? (<div>asdf</div>) : (
+                <>
+                    <input
+                        className={style.inputMain}
+                        type="text"
+                        value={searchItem}
+                        onChange={handleInputChange}
+                        placeholder='Type to search'
+                    />
+                    <ul className={style.inputUl}>
+                        {filtered.map((listValue: any) => {
+                            return (
+                                <li key={listValue.name} className={style.inputLi}>
+                                    { listValue.variants.length > 0 ?
+                                        <div className={style.inputDiv} onClick={()=> toggleVariants(listValue.name, listValue.variants)}>
+                                            {listValue.name} ({listValue.variants.length})
 
-                                    {raceName == listValue.name && variantList ?
-                                        (<span className={style.dropdownArrow}>▼</span>) :
-                                        (<span className={style.dropdownArrow}>►</span>)
+                                            {raceName == listValue.name && variantList ?
+                                                (<span className={style.dropdownArrow}>▼</span>) :
+                                                (<span className={style.dropdownArrow}>►</span>)
+                                            }
+                                            {raceName == listValue.name && variantList ?
+                                                variantList.map((variant: any) => {
+                                                    return (
+                                                        <div key={variant} className={style.inputVariants} onClick={() => openModal(variant)} >
+                                                            {variant}
+                                                        </div>
+                                                    )
+                                                }) :
+                                                ("")
+                                            }
+                                        </div> :
+                                        (<span onClick={()=> openModal(listValue.name)} className={style.inputSpan}>
+                                            {listValue.name}
+                                        </span>)
                                     }
-                                    {raceName == listValue.name && variantList ?
-                                        variantList.map((variant: any) => {
-                                            return (
-                                                <div key={variant} className={style.inputVariants} onClick={() => openModal(variant)} >
-                                                    {variant}
-                                                </div>
-                                            )
-                                        }) :
-                                        ("")
-                                    }
-                                </div> :
-                                (<span onClick={()=> openModal(listValue.name)} className={style.inputSpan}>
-                                    {listValue.name}
-                                </span>)
-                            }
-                        </li>
-                    )
-                })}
-                {isOpen && (
-                    <div className={style.modal} onClick={closeModal}>
-                        <ul className={style.modalContent} onClick={(e) => e.stopPropagation()}>
-                            <span onClick={closeModal}>x</span>
-                            {racialTraitList.map((trait: any) => {return(
-                                <li key={trait.name} className={style.inputLi}>
-                                    {selectedRace}
                                 </li>
-                            )})}
-                            <button onClick={() => handleChooseRace(selectedRace)}>Select Race</button>
-                        </ul>
-                    </div>
-                )}
-            </ul>
+                            )
+                        })}
+                        {isOpen && (
+                            <div className={style.modal} onClick={closeModal}>
+                                <ul className={style.modalContent} onClick={(e) => e.stopPropagation()}>
+                                    <span onClick={closeModal}>x</span>
+                                    {racialTraitList.map((trait: any) => {return(
+                                        <li key={trait.name} className={style.inputLi}>
+                                            {selectedRace}
+                                        </li>
+                                    )})}
+                                    <button onClick={() => handleSelect(selectedRace)}>Select Race</button>
+                                </ul>
+                            </div>
+                        )}
+                    </ul>
+                </>
+            )}
         </div>
     );
 }
