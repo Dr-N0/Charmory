@@ -37,28 +37,64 @@ model Character {
   description     Description?
   equipment       Equipment?
 
-  inventory         Inventory?
+  inventory       Inventory?
 }
 
 // ===== Race =====
 model Race {
-  id          Int         @id @default(autoincrement())
-  character   Character   @relation(fields: [characterId], references: [id])
-  characterId String      @unique
+  id              Int             @id @default(autoincrement())
+  character       Character?      @relation(fields: [characterId], references: [id])
+  characterId     String?         @unique
 
-  name        String?
-  size        Int?
-  languages   String[]    @default([])
-  variant     String?
+  name            String          @unique
+  variants        String[]
+  racialTraits    RacialTraits?
+}
+model RacialTraits {
+  id              Int       @id @default(autoincrement())
+  race            Race      @relation(fields: [raceName], references: [name])
+  raceName        String    @unique
+
+  name            String    @unique
+  age             Int       @default(1)
+  size            Size      @default(MEDIUM)
+  languages       String[]  @default([])
+  abilityBonuses  Json
+  racialAbilities Json[]
+}
+
+enum Size {
+  TINY
+  SMALL
+  MEDIUM
+  LARGE
+  HUGE
 }
 
 // ===== Class =====
 model Class {
-  id          Int         @id @default(autoincrement())
-  character   Character   @relation(fields: [characterId], references: [id])
-  characterId String      @unique
+  id            Int           @id @default(autoincrement())
+  character     Character?    @relation(fields: [characterId], references: [id])
+  characterId   String?       @unique
 
-  name        String?
+  name          String        @unique
+  color         String
+  spells        Spell[]
+  subClasses    String[]
+
+  classFeatures ClassFeatures?
+}
+
+model ClassFeatures {
+  id                Int         @id @default(autoincrement())
+  class             Class       @relation(fields: [className], references: [name])
+  className         String      @unique
+
+  armorProficency   String[]
+  weaponProficency  String[]
+  toolProficency    String[]
+  savingThrowBonus  String[]
+  skillProfOptions  String[]
 }
 
 // ===== Abilities =====
@@ -69,14 +105,14 @@ model Abilities {
 
   genMethod     GenMethod   @default(MANUAL)
 
-  strength      Int
-  dexterity     Int
-  constitution  Int
-  intelligence  Int
-  wisdom        Int
-  charisma      Int
+  strength      Int         @default(10)
+  dexterity     Int         @default(10)
+  constitution  Int         @default(10)
+  intelligence  Int         @default(10)
+  wisdom        Int         @default(10)
+  charisma      Int         @default(10)
 
-  senses        Senses[]
+  senses        Senses[]    @default([])
 }
 enum GenMethod {
   MANUAL
@@ -98,6 +134,14 @@ model Description {
 
   background  String?
 }
+
+// model Background {
+//   id            Int           @id @default(autoincrement())
+//   descirption   Description   @relation(fields: [descirptionId], references: [id])
+//   descirptionId Int           @unique
+
+//   name          String?
+// }
 
 // ===== Equipment =====
 model Equipment {
@@ -191,4 +235,20 @@ enum ItemType {
   STAFF
   WAND
   MAGIC_ITEM
+}
+
+model Spell {
+  id           Int      @id @default(autoincrement())
+  class        Class    @relation(fields: [className], references: [name])
+  className    String
+
+  name         String
+
+  level        Int
+  school       String
+  castingTime  String
+  range        String
+  components   Json
+  duration     String
+  description  String
 }
