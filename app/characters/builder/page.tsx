@@ -40,7 +40,10 @@ async function getCharacters(params: any, session: any) {
     return character;
 }
 
-export default function Builder() {
+export default async function Builder() {
+    const raceList = await prisma.race.findMany();
+    const classList = await prisma.class.findMany();
+    const spellList = await prisma.spell.findMany();
 
     // TODO: On "create character" button press inside of /characters page.
     // Create a dummy character entry inside the db with the "finished" tag set to false (which will send user back to the build page)
@@ -65,7 +68,11 @@ export default function Builder() {
     return (
         <main className={style.mainContainer}>
             <Options />
-            <Renderer />
+            <Renderer 
+              raceList={raceList}
+              classList={classList}
+              spellList={spellList}
+            />
         </main>
     );
 }

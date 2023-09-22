@@ -12,16 +12,20 @@ const Description = dynamic(() => import('./components/Description'), { loading:
 const Equipment = dynamic(() => import('./components/Equipment'), { loading: () => <Loading />})
 
 export default function Renderer({
-    
+    raceList,
+    classList,
+    spellList
 }: any) {
     const [workstation, setWorkstation] = useState(0);
+    const [currentRace, setCurrentRace] = useState("");
+    const [currentClass, setCurrentClass] = useState("");
 
     function renderSwitch(param: string) {
         switch(param) {
             case 'race':
-                return <Race />
+                return <Race raceList={raceList} handleChooseRace={handleChooseRace} />
             case 'class':
-                return <Class />
+                return <Class classList={classList} handleChooseClass={handleChooseClass} getSpellsByClassName />
             case 'abilities':
                 return <Abilities />
             case 'description':
@@ -33,7 +37,16 @@ export default function Renderer({
         }
     }
 
+    const handleChooseRace = (characterRace: any) => {
+        setCurrentRace(characterRace);
+    }
+
+    const handleChooseClass = (characterClass: any) => {
+        setCurrentClass(characterClass);
+    }
+
     return (
+        <>
         <main className={style.rendererBox}>
             <div className={`${style.col} ${style.displayContainer}`}>
                 <h1 className={style.title}>
@@ -54,12 +67,19 @@ export default function Renderer({
                 <div className={`${style.col} ${style.displayInformation} ${style.displayButtons}`}>
                     <div>
                         <h2>Race</h2>
-                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(1)}>Pick Your Race</button>
+                        {currentRace == '' ?
+                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(1)}>Pick Your Race</button>) :
+                            ("")
+                        }
                     </div>
                     <hr></hr>
                     <div>
                         <h2>Class</h2>
-                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(2)}>Choose Your Class</button>
+                        {currentClass == '' ?
+                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(2)}>Choose Your Class</button>) :
+                            ("")
+                        }
+                        
                     </div>
                     <hr></hr>
                     <div>
@@ -95,6 +115,7 @@ export default function Renderer({
                 </div>
             </div>
         </main>
+        </>
     );
 }
 
