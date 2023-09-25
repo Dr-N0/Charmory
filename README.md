@@ -32,6 +32,14 @@ Secure your character sheets and data with user authentication powered by NextAu
 ### 6. Database Storage with Prisma and PostgreSQL
 We use Prisma as our database ORM (Object-Relational Mapping) and PostgreSQL as the database backend. This combination provides a robust and efficient way to store and retrieve character data, ensuring data integrity and reliability.
 
+## Photos
+
+![image](https://github.com/Dr-N0/Charmory/assets/15280703/2b90be9d-91a7-4209-9510-ce5dcf813334)
+
+![image](https://github.com/Dr-N0/Charmory/assets/15280703/85429dd1-0bae-4db3-9e78-36349ec97750)
+
+![image](https://github.com/Dr-N0/Charmory/assets/15280703/876c39f7-3737-4db9-b427-6c8ba4384bc6)
+
 ## Getting Started
 
 Before you dive into character creation, make sure you have the following prerequisites installed on your system:
@@ -106,3 +114,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 Enjoy your journey into the world of Dungeons and Dragons with Charmory. May your characters be heroic and your adventures legendary! If you have any questions or encounter any issues, feel free to reach out to our community or open an issue on our GitHub repository. Happy gaming!
+
