@@ -1,0 +1,109 @@
+/* custom.css */
+
+.loginCont {
+    padding-top: 5rem;
+    min-height: 100vh;
+}
+
+.loginWrapper {
+    display: flex;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.padding_Wrapper {
+    border-radius: 10px;
+    padding: 10px;
+    background: linear-gradient(180deg,
+        rgb(27, 27, 27, 0) 20%, 
+        rgb(255, 61, 61) 100%
+    );
+}
+
+.color_wrap {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-radius: 7px;
+    background-color: var(--background-box-color);;
+}
+
+@media (min-width: 768px) { 
+    .padding_Wrapper {
+        width: 66.666667%;
+    }
+}
+@media (min-width: 1024px) { 
+    .padding_Wrapper {
+        width: 41.666667%;
+    }
+}
+
+.inputStyles {
+    display: block;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    margin: 0;
+    border-radius: 0.25rem;
+    border-width: 1px;
+    border-color: #D1D5DB;
+    border-style: solid;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    color: white;
+    background-clip: padding-box;
+    background-color: #303030;
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.error {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.25rem;
+    text-align: center;
+    background-color: #FCA5A5;
+}
+
+.margBot {
+    margin-bottom: 1.5rem; 
+}
+
+.submitButton {
+    padding: 1rem 1.75rem;
+    border-radius: 0.5rem; /* Rounded corners */
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    color: #ffffff;
+    text-transform: uppercase;
+    background-color: var(--secondary-color);
+    transition: all 0.2s ease; /* Combine all transition properties */
+    cursor: pointer; /* Add pointer cursor on hover */
+    outline: none; /* Remove outline */
+    border: none; /* Remove default border */
+}
+
+.submitButton:hover {
+    background-color: rgb(131, 0, 0); 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
+}
+
+.submitButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

@@ -16,8 +16,8 @@ model User {
 
 model Character {
   id              String        @id @default(uuid())
-  owner           User          @relation(fields: [ownerId], references: [id])
-  ownerId         String
+  owner           User          @relation(fields: [ownerEmail], references: [email])
+  ownerEmail      String
 
   name            String?
   level           Int           @default(1)

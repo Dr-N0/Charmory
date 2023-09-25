@@ -3,6 +3,8 @@
 import { signIn } from "next-auth/react";
 import { ChangeEvent, useState } from "react";
 
+import style from '@/app/Authentication.module.css'
+
 export const RegisterForm = () => {
   const [loading, setLoading] = useState(false);
   const [formValues, setFormValues] = useState({
@@ -43,15 +45,12 @@ export const RegisterForm = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const input_style =
-    "form-control block w-full px-4 py-5 text-sm font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none";
-
   return (
     <form onSubmit={onSubmit}>
       {error && (
-        <p className="text-center bg-red-300 py-4 mb-6 rounded">{error}</p>
+        <p className={style.error}>{error}</p>
       )}
-      <div className="mb-6">
+      <div className={style.margBot}>
         <input
           required
           type="email"
@@ -59,10 +58,10 @@ export const RegisterForm = () => {
           value={formValues.email}
           onChange={handleChange}
           placeholder="Email address"
-          className={`${input_style}`}
+          className={`${style.inputStyles}`}
         />
       </div>
-      <div className="mb-6">
+      <div className={style.margBot}>
         <input
           required
           type="password"
@@ -70,13 +69,13 @@ export const RegisterForm = () => {
           value={formValues.password}
           onChange={handleChange}
           placeholder="Password"
-          className={`${input_style}`}
+          className={`${style.inputStyles}`}
         />
       </div>
       <button
         type="submit"
-        style={{ backgroundColor: `${loading ? "#ccc" : "#3446eb"}` }}
-        className="inline-block px-7 py-4 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+        style={{ backgroundColor: `${loading ? "#ccc" : ""}` }}
+        className={style.submitButton}
         disabled={loading}
       >
         {loading ? "loading..." : "Sign Up"}

@@ -18,6 +18,10 @@
     box-sizing: border-box;
 }
 
+.armory {
+    text-shadow: var(--opposite-random-color) 0 0 20px;
+}
+
 .showcase {
     position: relative;
     margin: auto;
@@ -63,7 +67,7 @@
     padding: 10px;
     border-radius: 10px;
     background-color: #303030;
-    flex-basis: 33.333333%;
+    flex-basis: 32%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -77,6 +81,8 @@
 .subInfo {
     overflow-x: hidden;
     text-overflow: ellipsis;
+    color: #888; /* Adjust the color as needed */
+    margin-top: 5px;
 }
 
 .characterOptions {
@@ -84,39 +90,36 @@
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 5px;
+    
+}
+
+.characterOptions a {
+    flex-grow: 1;
 }
 
 .characterOptions button {
     padding: 0;
     min-width: 100px;
+    width: 100%;
 }
 
-.armory {
-    text-shadow: var(--opposite-random-color) 0 0 20px;
+.cardBox h2{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* MEDIA */
 
-@media (max-width: 420px) {
-    .characterOptions button {
-        padding: 0;
-        min-width: 80px;
-    }
-}
-
-@media (max-width: 790px) {
-    .characterBox {
-        flex-basis: 100%;
-    }
-}
-
-@media (max-width: 1150px) and (min-width: 790px) {
-    .characterContainer {
-        justify-content: space-between;
-        gap: 0px;
-    }
+@media (max-width: 900px) and (min-width: 612px) {
     .characterBox {
         flex-basis: 49.5%;
+    }
+}
+
+@media (max-width: 613px) {
+    .characterBox {
+        flex-basis: 100%;
     }
 }
 

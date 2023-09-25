@@ -21,26 +21,22 @@ async function getUser(session: any) {
             email: session?.user?.email
         },
         include: {
-            characters: true,
+            characters: {
+                include: {
+                    race: true,
+                    class: true,
+                    abilities: true,
+                    description: true,
+                    equipment: true,
+                }
+            },
         },
     })
     return user;
 }
 
-async function getCharacters(session: any, user: any) {
-    const character = await prisma.character.findFirst({
-        where: {
-            ownerId: session?.user?.id,
-            id: user?.character?.id
-        },
-    })
-    return character;
-}
-
 export default async function CharactersPage({ session }: any) {
     const user = await getUser(session);
-    const characterInfo = await getCharacters(session, user);
-
     return (
         <div>
             <section className={style.showcase}>
@@ -52,13 +48,17 @@ export default async function CharactersPage({ session }: any) {
                             <button className={`${style.button} ${style.greenFade}`}>Create!</button>
                         </Link>
                     </div>
-                    {/* <CharacterSearchBar /> */}
                     <div className={style.characterContainer}>
                         {user?.characters?.map((character) => {
                             return <Character 
                                 key={character.id} 
                                 character={character} 
-                                characterInfo={characterInfo}
+                            />;
+                        })}
+                        {user?.characters?.map((character) => {
+                            return <Character 
+                                key={character.id} 
+                                character={character} 
                             />;
                         })}
                     </div>
@@ -69,16 +69,21 @@ export default async function CharactersPage({ session }: any) {
 }
 
 function Character({character}: any) {
-    const { id } = character || {};
-
     return (
         <section className={style.characterBox}>
-            <Card character={character} />
+            <div className={style.cardBox}>
+                <h2 className={style.cardName}>{character.name}</h2>
+                <div className={style.subInfo}>
+                    <span>Level {character.level}</span>
+                    <span>Race: {character.race?.name}</span>
+                    <span>Class: {character.class?.name}</span>
+                </div>
+            </div>
             <div className={`${style.characterOptions}`}>
-                <Link className='noSelect' href={`/characters/${id}`}>
+                <Link className='noSelect' href={`/characters/${character.id}`}>
                     <button className={`${style.button} ${style.greenFade}`}>View</button>
                 </Link>
-                <Link className='noSelect' href={`/characters/builder/${id}`}>
+                <Link className='noSelect' href={`/characters/builder/${character.id}`}>
                     <button className={`${style.button} ${style.yellowFade}`}>Edit</button>
                 </Link>
                 <Link className='noSelect' href={`/characters/delete`}>
@@ -86,20 +91,5 @@ function Character({character}: any) {
                 </Link>
             </div>
         </section>
-    );
-}
-
-function Card({character}: any) {
-    const { id, name, ownerId } = character || {};
-    
-    return (
-        <div>
-            <h2>{name}</h2>
-            <div className={style.subInfo}>
-                <span>{id}</span>
-                <span>{ownerId}</span>
-                <span>{ownerId}</span>
-            </div>
-        </div>
     );
 }

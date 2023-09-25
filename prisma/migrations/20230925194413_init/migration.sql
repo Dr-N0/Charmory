@@ -25,7 +25,7 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "Character" (
     "id" TEXT NOT NULL,
-    "ownerId" TEXT NOT NULL,
+    "ownerEmail" TEXT NOT NULL,
     "name" TEXT,
     "level" INTEGER NOT NULL DEFAULT 1,
     "feats" TEXT[] DEFAULT ARRAY[]::TEXT[],
@@ -256,7 +256,7 @@ CREATE UNIQUE INDEX "Weapon_inventoryId_key" ON "Weapon"("inventoryId");
 CREATE UNIQUE INDEX "Item_inventoryId_key" ON "Item"("inventoryId");
 
 -- AddForeignKey
-ALTER TABLE "Character" ADD CONSTRAINT "Character_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Character" ADD CONSTRAINT "Character_ownerEmail_fkey" FOREIGN KEY ("ownerEmail") REFERENCES "User"("email") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Race" ADD CONSTRAINT "Race_characterId_fkey" FOREIGN KEY ("characterId") REFERENCES "Character"("id") ON DELETE SET NULL ON UPDATE CASCADE;
