@@ -116,8 +116,10 @@ export default function Renderer({
                 <br></br>
 
                 <div className={style.name}>
-                    <span>Name: </span><input placeholder='name'></input>
+                    <span>Name: </span>
+                    <input></input>
                 </div>
+                <br></br>
 
                 {/* Dynamically update IN SHORT CONDENSED TEXT
                 any changes made inside the workstation like what

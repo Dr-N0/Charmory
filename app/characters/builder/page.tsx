@@ -85,7 +85,7 @@ export default async function Builder({session}:any) {
 
     return (
         <main className={style.mainContainer}>
-            <Options />
+            {/* <Options /> */}
             <Renderer
                 character={character}
                 raceList={raceList}
