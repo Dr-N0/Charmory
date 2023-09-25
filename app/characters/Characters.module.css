@@ -113,11 +113,11 @@
 
 @media (max-width: 900px) and (min-width: 612px) {
     .characterBox {
-        flex-basis: 49.5%;
+        flex-basis: 49%;
     }
 }
 
-@media (max-width: 613px) {
+@media (max-width: 612px) {
     .characterBox {
         flex-basis: 100%;
     }
