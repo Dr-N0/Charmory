@@ -18,6 +18,7 @@ model Character {
   id              String        @id @default(uuid())
   owner           User          @relation(fields: [ownerEmail], references: [email])
   ownerEmail      String
+  createdAt       DateTime      @default(now())
 
   name            String?
   level           Int           @default(1)
