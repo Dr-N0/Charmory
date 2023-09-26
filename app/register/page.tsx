@@ -9,6 +9,8 @@ export default function RegisterPage() {
         <div className={style.loginWrapper}>
           <div className={style.padding_Wrapper}>
             <div className={style.color_wrap}>
+              <h1>Register</h1>
+              <br></br>
               <RegisterForm />
             </div>
           </div>

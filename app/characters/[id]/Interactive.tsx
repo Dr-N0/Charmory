@@ -1,11 +1,11 @@
 'use client'
 import { useState } from 'react'
 
-import style from './CharacterSheet.module.css'
-
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { prisma } from '@/lib/prisma'
+import Image from 'next/image'
+import style from './CharacterSheet.module.css'
 
 import Combat from './interactive_components/Combat'
 const Features = dynamic(() => import('./interactive_components/Features'), { loading: () => <Loading />})
@@ -36,12 +36,40 @@ export default function Interactive({
         <div className={style.interactiveContainer}>
             <div className={`${style.workstationContainer}`}>
                 <div className={`${style.wrapper}`}>
-                    <div className={style.navButtons}>
-                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setTab(1)}>Combat</button>
-                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setTab(2)}>Features & Traits</button>
-                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setTab(3)}>Equipment</button>
-                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setTab(4)}>Background</button>
-                    </div>
+                    <nav className={style.navButtonBox}>
+                        <Image
+                            className={`${style.navIcons}`}
+                            src="/sword.png"
+                            width={50}
+                            height={50}
+                            alt="Picture of the author"
+                            onClick={(e:any) => setTab(1)}
+                        />
+                        <Image
+                            className={`${style.navIcons}`}
+                            src="/sword.png"
+                            width={50}
+                            height={50}
+                            alt="Picture of the author"
+                            onClick={(e:any) => setTab(2)}
+                        />Features & Traits
+                        <Image
+                            className={`${style.navIcons}`}
+                            src="/sword.png"
+                            width={50}
+                            height={50}
+                            alt="Picture of the author"
+                            onClick={(e:any) => setTab(3)}
+                        />Equipment
+                        <Image
+                            className={`${style.navIcons}`}
+                            src="/sword.png"
+                            width={50}
+                            height={50}
+                            alt="Picture of the author"
+                            onClick={(e:any) => setTab(4)}
+                        />Background
+                    </nav>
                     {
                         tab == 1 ? interactiveSwitch('combat') : 
                         tab == 2 ? interactiveSwitch('feat') :

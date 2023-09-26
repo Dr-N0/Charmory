@@ -27,7 +27,7 @@ export async function getServerSideProps() {
 async function getCharacters(params: any, session: any) {
     const character = await prisma.character.findFirst({
         where: {
-            ownerId: session?.user?.id,
+            ownerEmail: session?.user?.email,
             id: params.id
         },
         include: {

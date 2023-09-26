@@ -78,7 +78,7 @@ export const LoginForm = () => {
       </div>
       <button
         type="submit"
-        style={{ backgroundColor: `${loading ? "#ccc" : ""}` }}
+        style={{ backgroundColor: `${loading ? "#ccc" : ""}`, borderColor: `${loading ? "#ccc" : ""}`}}
         className={style.submitButton}
         disabled={loading}
       >

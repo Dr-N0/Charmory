@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import style from './Characters.module.css'
 import { prisma } from '@/lib/prisma'
-import CharacterSearchBar from '@/app/components/CharacterSearchBar';
+import CharacterSearchBar from '@/app/_components/CharacterSearchBar';
 import { getServerSession } from "next-auth"
 import { authOptions } from "@/lib/auth";
 

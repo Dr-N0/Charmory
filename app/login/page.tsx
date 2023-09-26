@@ -9,6 +9,8 @@ export default function LoginPage() {
         <div className={style.loginWrapper}>
           <div className={style.padding_Wrapper}>
             <div className={style.color_wrap}>
+              <h1>Log In</h1>
+              <br></br>
               <LoginForm />
             </div>
           </div>

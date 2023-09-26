@@ -49,15 +49,15 @@
     display: block;
     padding-left: 1rem;
     padding-right: 1rem;
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     margin: 0;
     border-radius: 0.25rem;
     border-width: 1px;
     border-color: #D1D5DB;
     border-style: solid;
     width: 100%;
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.25rem;
     font-weight: 400;
     color: white;
@@ -83,10 +83,12 @@
 }
 
 .submitButton {
+    font-family: Arial, Helvetica, sans-serif;
     padding: 1rem 1.75rem;
     border-radius: 0.5rem; /* Rounded corners */
+    border: 3px solid rgb(131, 0, 0);
     width: 100%;
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.25rem;
     font-weight: 500;
     color: #ffffff;
@@ -95,11 +97,11 @@
     transition: all 0.2s ease; /* Combine all transition properties */
     cursor: pointer; /* Add pointer cursor on hover */
     outline: none; /* Remove outline */
-    border: none; /* Remove default border */
 }
 
 .submitButton:hover {
-    background-color: rgb(131, 0, 0); 
+    background-color: rgb(131, 0, 0);
+    border: 3px solid var(--secondary-color);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
 }
 

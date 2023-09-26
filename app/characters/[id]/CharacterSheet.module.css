@@ -665,6 +665,23 @@
     margin-bottom: 15px;
 }
 
-.navButtons {
+.navButtonBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    filter: invert(15%) sepia(91%) saturate(6555%) hue-rotate(1deg) brightness(112%) contrast(119%);
+}
 
+.navIcons {
+    border: 1px solid red;
+    border-radius: 50%;
+    padding: 5px;
+    transition: filter 0.2s;
+    cursor: pointer;
+}
+
+.navIcons:hover {
+    filter: brightness(0) invert(1);
 }
