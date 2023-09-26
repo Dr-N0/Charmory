@@ -22,6 +22,7 @@ async function getUser(session: any) {
         },
         include: {
             characters: {
+                orderBy: { createdAt: 'asc' },
                 include: {
                     race: true,
                     class: true,
@@ -37,6 +38,7 @@ async function getUser(session: any) {
 
 export default async function CharactersPage({ session }: any) {
     const user = await getUser(session);
+
     return (
         <div>
             <section className={style.showcase}>
@@ -75,8 +77,8 @@ function Character({character}: any) {
                 <h2 className={style.cardName}>{character.name}</h2>
                 <div className={style.subInfo}>
                     <span>Level {character.level}</span>
-                    <span>Race: {character.race?.name}</span>
-                    <span>Class: {character.class?.name}</span>
+                    <span>{character.race?.name}</span>
+                    <span>{character.class?.name}</span>
                 </div>
             </div>
             <div className={`${style.characterOptions}`}>
