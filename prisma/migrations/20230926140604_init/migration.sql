@@ -26,6 +26,7 @@ CREATE TABLE "User" (
 CREATE TABLE "Character" (
     "id" TEXT NOT NULL,
     "ownerEmail" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "name" TEXT,
     "level" INTEGER NOT NULL DEFAULT 1,
     "feats" TEXT[] DEFAULT ARRAY[]::TEXT[],
