@@ -81,9 +81,45 @@
 .subInfo {
     overflow-x: hidden;
     text-overflow: ellipsis;
-    color: #888; /* Adjust the color as needed */
+    color: #c2c2c2; /* Adjust the color as needed */
     margin-top: 5px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 5px;
 }
+
+.subInfo span {
+    flex: 1 1 auto;
+    position: relative;
+    text-align: center;
+    padding: 10px 0px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.subInfo span:first-child, .subInfo span:nth-child(2) {
+    width: calc(100% - 10px);
+}
+
+.subInfo span:nth-child(2), .subInfo span:nth-child(3) {
+    padding-left: 5px;
+}
+
+.subInfo span + span::before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 50%;
+    left: 0;
+    top: 25%;
+    border-left: 2px solid #FC3D3D;
+}
+
+/** Optional for OPs exact layout */
 
 .characterOptions {
     display: flex;
