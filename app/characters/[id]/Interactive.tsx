@@ -37,38 +37,46 @@ export default function Interactive({
             <div className={`${style.workstationContainer}`}>
                 <div className={`${style.wrapper}`}>
                     <nav className={style.navButtonBox}>
-                        <Image
-                            className={`${style.navIcons}`}
-                            src="/sword.png"
-                            width={50}
-                            height={50}
-                            alt="Picture of the author"
-                            onClick={(e:any) => setTab(1)}
-                        />
-                        <Image
-                            className={`${style.navIcons}`}
-                            src="/sword.png"
-                            width={50}
-                            height={50}
-                            alt="Picture of the author"
-                            onClick={(e:any) => setTab(2)}
-                        />Features & Traits
-                        <Image
-                            className={`${style.navIcons}`}
-                            src="/sword.png"
-                            width={50}
-                            height={50}
-                            alt="Picture of the author"
-                            onClick={(e:any) => setTab(3)}
-                        />Equipment
-                        <Image
-                            className={`${style.navIcons}`}
-                            src="/sword.png"
-                            width={50}
-                            height={50}
-                            alt="Picture of the author"
-                            onClick={(e:any) => setTab(4)}
-                        />Background
+                        <span className={`${style.navButton}`}>
+                            <Image
+                                className={`${style.navIcons} ${style.combat}`}
+                                src="/sword.png"
+                                width={50}
+                                height={50}
+                                alt="Picture of the author"
+                                onClick={(e:any) => setTab(1)}
+                            />
+                        </span>
+                        <span className={`${style.navButton}`}>
+                            <Image
+                                className={`${style.navIcons} ${style.features}`}
+                                src="/features.png"
+                                width={50}
+                                height={50}
+                                alt="Picture of the author"
+                                onClick={(e:any) => setTab(2)}
+                            />
+                        </span>
+                        <span className={`${style.navButton}`}>
+                            <Image
+                                className={`${style.navIcons} ${style.equipment}`}
+                                src="/equipment.png"
+                                width={50}
+                                height={50}
+                                alt="Picture of the author"
+                                onClick={(e:any) => setTab(3)}
+                            />
+                        </span>
+                        <span className={`${style.navButton}`}>
+                            <Image
+                                className={`${style.navIcons} ${style.background}`}
+                                src="/background.png"
+                                width={50}
+                                height={50}
+                                alt="Picture of the author"
+                                onClick={(e:any) => setTab(4)}
+                            />
+                        </span>
                     </nav>
                     {
                         tab == 1 ? interactiveSwitch('combat') : 
