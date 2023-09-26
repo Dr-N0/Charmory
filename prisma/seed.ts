@@ -10829,84 +10829,93 @@ async function main() {
                 name: 'Equipment Name'
               }
             }
-          },
-          {
-            name: 'EXTRA Percival Fredrickstein Von Musel Klossowski de Rolo III',
-            level: 17,
-            feats: ["grapple", "alert"],
-            speed: 40,
-            armorClass: 12,
-            initiative: 2,
-            proficencies: {
-              create: {
-                savingStrength: 'NONE',
-                savingDexterity: 'EXTRA',
-                savingConstitution: 'NONE',
-                savingIntelligence: 'NONE',
-                savingWisdom: 'NONE',
-                savingCharisma: 'NONE',
-                
-                acrobatics: 'NONE',
-                animalHandling: 'NONE',
-                arcana: 'NONE',
-                athletics: 'NONE',
-                deception: 'NONE',
-                history: 'NONE',
-                insight: 'NONE',
-                intimidation: 'NONE',
-                investigation: 'NONE',
-                medicine: 'EXTRA',
-                nature: 'NONE',
-                perception: 'NONE',
-                performance: 'NONE',
-                persuasion: 'NONE',
-                religion: 'EXTRA',
-                sleightOfHand: 'NONE',
-                stealth: 'NONE',
-                survival: 'EXTRA',
-              },
-            },
-            inspiration: false,
-            healthMax: 40,
-            healthCurrent: 10,
-            race: {
-              connect: {
-                id: randomRace2.id, // Connect to the existing race
-              },
-            },
-            class: {
-              connect: {
-                id: randomClass2.id, // Connect to the existing class
-              },
-            },
-            abilities: {
-              create: {
-                genMethod: 'MANUAL',
-                strength: 12,
-                dexterity: 14,
-                constitution: 16,
-                intelligence: 10,
-                wisdom: 12,
-                charisma: 14
-              }
-            },
-            description: {
-              create: {
-                background: 'Extra Character Background'
-              }
-            },
-            equipment: {
-              create: {
-                name: 'Extra Equipment Name'
-              }
-            }
           }
         ]
       }
     }
   })
-  
+
+  const ownerEmail = user.email;
+
+
+  const secondCharacter = await prisma.character.create({
+    data: {
+      ownerEmail: ownerEmail,
+      name: 'EXTRA Percival Fredrickstein Von Musel Klossowski de Rolo III',
+      level: 17,
+      feats: ["grapple", "alert"],
+      speed: 40,
+      armorClass: 12,
+      initiative: 2,
+      proficencies: {
+        create: {
+          savingStrength: 'NONE',
+          savingDexterity: 'EXTRA',
+          savingConstitution: 'NONE',
+          savingIntelligence: 'NONE',
+          savingWisdom: 'NONE',
+          savingCharisma: 'NONE',
+          
+          acrobatics: 'NONE',
+          animalHandling: 'NONE',
+          arcana: 'NONE',
+          athletics: 'NONE',
+          deception: 'NONE',
+          history: 'NONE',
+          insight: 'NONE',
+          intimidation: 'NONE',
+          investigation: 'NONE',
+          medicine: 'EXTRA',
+          nature: 'NONE',
+          perception: 'NONE',
+          performance: 'NONE',
+          persuasion: 'NONE',
+          religion: 'EXTRA',
+          sleightOfHand: 'NONE',
+          stealth: 'NONE',
+          survival: 'EXTRA',
+        },
+      },
+      inspiration: false,
+      healthMax: 40,
+      healthCurrent: 10,
+      race: {
+        connect: {
+          id: randomRace2.id, // Connect to the existing race
+        },
+      },
+      class: {
+        connect: {
+          id: randomClass2.id, // Connect to the existing class
+        },
+      },
+      abilities: {
+        create: {
+          genMethod: 'MANUAL',
+          strength: 12,
+          dexterity: 14,
+          constitution: 16,
+          intelligence: 10,
+          wisdom: 12,
+          charisma: 14
+        }
+      },
+      description: {
+        create: {
+          background: 'Extra Character Background'
+        }
+      },
+      equipment: {
+        create: {
+          name: 'Extra Equipment Name'
+        }
+      }
+    },
+  });
+
   console.log({ user });
+
+  console.log({ secondCharacter })
 }
 main()
   .then(() => prisma.$disconnect())
