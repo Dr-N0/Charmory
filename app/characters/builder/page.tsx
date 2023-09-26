@@ -22,7 +22,7 @@ export async function getServerSideProps() {
 async function getCharacters(session: any) {
     const character = await prisma.character.findFirst({
         where: {
-            ownerId: session?.user?.id
+            ownerEmail: session?.user?.email
         },
         include: {
           proficencies: true,
@@ -85,7 +85,7 @@ export default async function Builder({session}:any) {
 
     return (
         <main className={style.mainContainer}>
-            {/* <Options /> */}
+            <Options />
             <Renderer
                 character={character}
                 raceList={raceList}
