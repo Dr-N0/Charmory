@@ -3,6 +3,13 @@ A Dungeons and Dragons Character Creator
 
 Welcome to the Dungeons and Dragons Character Creator, a powerful and flexible web application built with Next.js 13, React.js, NextAuth, Prisma, and PostgreSQL. Whether you're a seasoned Dungeon Master (DM) or a beginner adventurer, this application is designed to enhance your D&D experience by providing you with a robust toolset for creating and customizing your characters with ease.
 
+### Todo
+100% - Home page
+100% - Character Selection
+50% - Character Builder - Equipment and Description portion, Features and Traits display for modal boxes and after class/race selection
+70% - Character Sheet - Interactive component half of the character sheet
+
+
 ## Table of Contents
 
 - [Features](#features)
