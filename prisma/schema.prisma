@@ -26,35 +26,36 @@ model Character {
   speed           Int           @default(30)
   armorClass      Int           @default(10)
   initiative      Int           @default(0)
-  proficencies    Proficencies?
+  proficencies    Json?
   inspiration     Boolean       @default(false)
 
   healthMax       Int
   healthCurrent   Int
   
-  race            Race?
-  class           Class?
-  abilities       Abilities?
-  description     Description?
-  equipment       Equipment?
+  race            Json?
+  class           Json?
+  abilities       Json?
+  description     Json?
+  equipment       Json?
 
-  inventory       Inventory?
+  inventory       Json?
+
+  height          String?
+  eyeColor        String?
 }
 
 // ===== Race =====
 model Race {
   id              Int             @id @default(autoincrement())
-  character       Character?      @relation(fields: [characterId], references: [id])
-  characterId     String?         @unique
-
   name            String          @unique
   variants        String[]
   racialTraits    RacialTraits?
 }
+
 model RacialTraits {
   id              Int       @id @default(autoincrement())
-  race            Race      @relation(fields: [raceName], references: [name])
-  raceName        String    @unique
+  race            Race      @relation(fields: [raceId], references: [id])
+  raceId          Int       @unique
 
   name            String    @unique
   age             Int       @default(1)
@@ -75,9 +76,6 @@ enum Size {
 // ===== Class =====
 model Class {
   id            Int           @id @default(autoincrement())
-  character     Character?    @relation(fields: [characterId], references: [id])
-  characterId   String?       @unique
-
   name          String        @unique
   color         String
   spells        Spell[]
@@ -88,8 +86,8 @@ model Class {
 
 model ClassFeatures {
   id                Int         @id @default(autoincrement())
-  class             Class       @relation(fields: [className], references: [name])
-  className         String      @unique
+  class             Class       @relation(fields: [classId], references: [id])
+  classId           Int         @unique
 
   armorProficency   String[]
   weaponProficency  String[]
@@ -101,9 +99,6 @@ model ClassFeatures {
 // ===== Abilities =====
 model Abilities {
   id            Int         @id @default(autoincrement())
-  character     Character   @relation(fields: [characterId], references: [id])
-  characterId   String      @unique
-
   genMethod     GenMethod   @default(MANUAL)
 
   strength      Int         @default(10)
@@ -128,35 +123,27 @@ enum Senses {
 }
 
 // ===== Description =====
-model Description {
-  id          Int         @id @default(autoincrement())
-  character   Character   @relation(fields: [characterId], references: [id])
-  characterId String      @unique
+model Background {
+  id                  Int             @id @default(autoincrement())
 
-  background  String?
+  name                String          @unique
+  explanation         String
+  skillProficiencies  String[]        @default([])
+  toolProficiencies   String[]        @default([])
+  extraLanguages      Int             @default(0)
+  extraEquipment      String[]        @default([])
+  features            Json[]          @default([])
 }
-
-// model Background {
-//   id            Int           @id @default(autoincrement())
-//   descirption   Description   @relation(fields: [descirptionId], references: [id])
-//   descirptionId Int           @unique
-
-//   name          String?
-// }
 
 // ===== Equipment =====
 model Equipment {
   id          Int         @id @default(autoincrement())
-  character   Character   @relation(fields: [characterId], references: [id])
-  characterId String      @unique
 
   name        String?
 }
 
 model Proficencies {
   id            Int         @id @default(autoincrement())
-  character     Character   @relation(fields: [characterId], references: [id])
-  characterId   String      @unique
 
   savingStrength      HowProficent  @default(NONE)
   savingDexterity     HowProficent  @default(NONE)
@@ -192,8 +179,6 @@ enum HowProficent {
 
 model Inventory {
   id          Int         @id @default(autoincrement())
-  character   Character   @relation(fields: [characterId], references: [id])
-  characterId String      @unique
 
   armor       Armor?
   weapons     Weapon[]
