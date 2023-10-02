@@ -24,14 +24,6 @@ async function getCharacters(session: any) {
         where: {
             ownerEmail: session?.user?.email
         },
-        include: {
-          proficencies: true,
-          race: true,
-          class: true,
-          abilities: true,
-          description: true,
-          equipment: true,
-        }
     })
     if (!character) {
       throw new ApiError(403, 'Character not found');
@@ -41,16 +33,7 @@ async function getCharacters(session: any) {
 
 export default async function Builder({session}:any) {
     const character = await getCharacters(session);
-    console.log(await prisma.character.findMany({
-        include: {
-            proficencies: true,
-            race: true,
-            class: true,
-            abilities: true,
-            description: true,
-            equipment: true,
-          }
-    }))
+    console.log(await prisma.character.findMany())
     const raceList = await prisma.race.findMany({
         orderBy: {
             name: 'asc', // Sort by name in ascending order
@@ -61,6 +44,14 @@ export default async function Builder({session}:any) {
             name: 'asc', // Sort by name in ascending order
         },
     });
+    const backgroundList = await prisma.background.findMany({
+        orderBy: {
+            name: 'asc', // Sort by name in ascending order
+        },
+    });
+
+
+
     const spellList = await prisma.spell.findMany();
 
     // TODO: On "create character" button press inside of /characters page.
@@ -88,9 +79,11 @@ export default async function Builder({session}:any) {
             <Options />
             <Renderer
                 character={character}
+                spellList={spellList}
                 raceList={raceList}
                 classList={classList}
-                spellList={spellList}
+                backgroundList={backgroundList}
+                
             />
         </main>
     );
