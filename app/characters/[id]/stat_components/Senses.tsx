@@ -5,7 +5,6 @@ export default function Senses({
     proficencies,
     proficencyBonus,
     computedValue,
-    senseTypes,
 }: any) {
 
     const sensesList = [
