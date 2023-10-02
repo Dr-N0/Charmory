@@ -678,7 +678,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border: 3px solid #db3434; */
     border: 3px solid transparent;
     border-radius: 50%;
     transition: 0.5s;
@@ -688,7 +687,6 @@
 .navButton:hover,
 .navButton:focus {
   background-color: rgb(45, 45, 45);
-
   cursor: pointer;
 }
 
