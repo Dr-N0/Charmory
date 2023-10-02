@@ -23,13 +23,6 @@ async function getUser(session: any) {
         include: {
             characters: {
                 orderBy: { createdAt: 'asc' },
-                include: {
-                    race: true,
-                    class: true,
-                    abilities: true,
-                    description: true,
-                    equipment: true,
-                }
             },
         },
     })
