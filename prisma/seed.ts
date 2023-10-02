@@ -367,6 +367,43 @@ async function main() {
       ...rce,
     })),
   });
+
+  const backgrounds = [
+    {
+      "name": "Acolyte",
+      "explanation": "You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric - performing sacred rites is not the same thing as channeling divine power.\n\nChoose a god, a pantheon of gods, or some other quasi-divine being, and work with your DM to detail the nature of your religious service. Were you a lesser functionary in a temple, raised from childhood to assist the priests in the sacred rites? Or were you a high priest who suddenly experienced a call to serve your god in a different way? Perhaps you were the leader of a small cult outside of any established temple structure, or even an occult group that served a fiendish master that you now deny.",
+      "skillProficiencies": ["Insight", "Religion"],
+      "toolProficiencies": [],
+      "extraLanguages": 2,
+      "extraEquipment": ["A holy symbol (a gift to you when you entered the priesthood)", "A prayer book or prayer wheel", "5 sticks of incense", "vestments", "A set of common clothes", "A pouch containing 15gp"],
+      "features": [
+          {
+            "name": "Shelter of the Faithful",
+            "description": "As an acolyte, you command the respect of those who share your faith, and you can perform the religious ceremonies of your deity. You and your adventuring companions can expect to receive free healing and care at a temple, shrine, or other established presence of your faith, though you must provide any material components needed for spells. Those who share your religion will support you (but only you) at a modest lifestyle.\n\nYou might also have ties to a specific temple dedicated to your chosen deity or pantheon, and you have a residence there. This could be the temple where you used to serve, if you remain on good terms with it, or a temple where you have found a new home. While near your temple, you can call upon the priests for assistance, provided the assistance you ask for is not hazardous and you remain in good standing with your temple."
+        }
+      ]
+    },
+    {
+      "name": "Urchin",
+      "explanation": "You grew up on the streets alone, orphaned, and poor, You had no one to watch over you or to provide for you, so you learned to provide for yourself. You fought fiercely over food and kept a constant watch out for other desperate souls who might steal from you. You slept on rooftops and in alleyways, exposed to the elements, and endured sickness without the advantage of medicine or a place to recuperate. You've survived despite all odds, and did so through cunning, strength, speed, or some combination of each.\n\nYou begin your adventuring career with enough money to live modestly but securely for at least ten days. How did you come by that money? What allowed you to break free of your desperate circumstances and embark on a better life?",
+      "skillProficiencies": ["Sleight of Hand", "Stealth"],
+      "toolProficiencies": ["Disguise kit", "Thieves' tools"],
+      "extraLanguages": 0,
+      "extraEquipment": ["A small knife", "A map of the city you grew up in", "A pet mouse", "A token to remember your parents by", "A set of common clothes", "A pouch containing 10gp"],
+      "features": [
+        {
+          "name": "City Secrets",
+          "description": "You know the secret patterns and flow to cities and can find passages through the urban sprawl that others would miss. When you are not in combat, you (and companions you lead) can travel between any two locations in the city twice as fast as your speed would normally allow."
+        }
+      ],
+    },
+  ];
+
+  await prisma.background.createMany({
+    data: backgrounds.map((bkgrd) => ({
+      ...bkgrd,
+    })),
+  });
   
   const spells = [
     {
@@ -10743,13 +10780,19 @@ async function main() {
   // Fetch all races and classes from the database
   const allRaces = await prisma.race.findMany();
   const allClasses = await prisma.class.findMany();
+  const allBackgrounds = await prisma.background.findMany();
 
   // Randomly select a race and class from the fetched records
-  const randomRace = allRaces[Math.floor(Math.random() * allRaces.length)];
-  const randomClass = allClasses[Math.floor(Math.random() * allClasses.length)];
+  const randomRace = JSON.stringify(allRaces[Math.floor(Math.random() * allRaces.length)]);
+  const randomClass = JSON.stringify(allClasses[Math.floor(Math.random() * allClasses.length)]);
+  const randomBackground = JSON.stringify(allBackgrounds[Math.floor(Math.random() * allBackgrounds.length)]);
+  
   // Randomly select a race and class from the fetched records
-  const randomRace2 = allRaces[Math.floor(Math.random() * allRaces.length)];
-  const randomClass2 = allClasses[Math.floor(Math.random() * allClasses.length)];
+  const randomRace2 = JSON.stringify(allRaces[Math.floor(Math.random() * allRaces.length)]);
+  const randomClass2 = JSON.stringify(allClasses[Math.floor(Math.random() * allClasses.length)]);
+  const randomBackground2 = JSON.stringify(allBackgrounds[Math.floor(Math.random() * allBackgrounds.length)]);
+
+  // TODO: Need to create a new race and use the values inside of the race DB as a template, not to connect those values to a character. When we do that we'll have to separate the DB values that're being attributed to a character and the ones that are being used as templates
 
   const user = await prisma.user.upsert({
     where: { email: 'test@test.com' },
@@ -10767,67 +10810,49 @@ async function main() {
             armorClass: 14,
             initiative: 4,
             proficencies: {
-              create: {
-                savingStrength: 'PROFICENT',
-                savingDexterity: 'PROFICENT',
-                savingConstitution: 'NONE',
-                savingIntelligence: 'PROFICENT',
-                savingWisdom: 'NONE',
-                savingCharisma: 'PROFICENT',
-                
-                acrobatics: 'NONE',
-                animalHandling: 'PROFICENT',
-                arcana: 'NONE',
-                athletics: 'NONE',
-                deception: 'PROFICENT',
-                history: 'NONE',
-                insight: 'NONE',
-                intimidation: 'PROFICENT',
-                investigation: 'NONE',
-                medicine: 'NONE',
-                nature: 'NONE',
-                perception: 'PROFICENT',
-                performance: 'NONE',
-                persuasion: 'NONE',
-                religion: 'NONE',
-                sleightOfHand: 'PROFICENT',
-                stealth: 'NONE',
-                survival: 'PROFICENT',
-              }
+              savingStrength: 'PROFICENT',
+              savingDexterity: 'PROFICENT',
+              savingConstitution: 'NONE',
+              savingIntelligence: 'PROFICENT',
+              savingWisdom: 'NONE',
+              savingCharisma: 'PROFICENT',
+              
+              acrobatics: 'NONE',
+              animalHandling: 'PROFICENT',
+              arcana: 'NONE',
+              athletics: 'NONE',
+              deception: 'PROFICENT',
+              history: 'NONE',
+              insight: 'NONE',
+              intimidation: 'PROFICENT',
+              investigation: 'NONE',
+              medicine: 'NONE',
+              nature: 'NONE',
+              perception: 'PROFICENT',
+              performance: 'NONE',
+              persuasion: 'NONE',
+              religion: 'NONE',
+              sleightOfHand: 'PROFICENT',
+              stealth: 'NONE',
+              survival: 'PROFICENT',
             },
             inspiration: true,
             healthMax: 29,
             healthCurrent: 20,
-            race: {
-              connect: {
-                id: randomRace.id, // Connect to the existing race
-              },
-            },
-            class: {
-              connect: {
-                id: randomClass.id, // Connect to the existing class
-              },
-            },
+            race: randomRace,
+            class: randomClass,
             abilities: {
-              create: {
-                genMethod: 'MANUAL',
-                strength: 10,
-                dexterity: 12,
-                constitution: 14,
-                intelligence: 8,
-                wisdom: 10,
-                charisma: 16
-              }
+              genMethod: 'MANUAL',
+              strength: 10,
+              dexterity: 12,
+              constitution: 14,
+              intelligence: 8,
+              wisdom: 10,
+              charisma: 16
             },
-            description: {
-              create: {
-                background: 'Character Background'
-              }
-            },
+            description: randomBackground,
             equipment: {
-              create: {
-                name: 'Equipment Name'
-              }
+              name: 'Equipment Name'
             }
           }
         ]
@@ -10836,7 +10861,6 @@ async function main() {
   })
 
   const ownerEmail = user.email;
-
 
   const secondCharacter = await prisma.character.create({
     data: {
@@ -10848,67 +10872,49 @@ async function main() {
       armorClass: 12,
       initiative: 2,
       proficencies: {
-        create: {
-          savingStrength: 'NONE',
-          savingDexterity: 'EXTRA',
-          savingConstitution: 'NONE',
-          savingIntelligence: 'NONE',
-          savingWisdom: 'NONE',
-          savingCharisma: 'NONE',
-          
-          acrobatics: 'NONE',
-          animalHandling: 'NONE',
-          arcana: 'NONE',
-          athletics: 'NONE',
-          deception: 'NONE',
-          history: 'NONE',
-          insight: 'NONE',
-          intimidation: 'NONE',
-          investigation: 'NONE',
-          medicine: 'EXTRA',
-          nature: 'NONE',
-          perception: 'NONE',
-          performance: 'NONE',
-          persuasion: 'NONE',
-          religion: 'EXTRA',
-          sleightOfHand: 'NONE',
-          stealth: 'NONE',
-          survival: 'EXTRA',
-        },
+        savingStrength: 'NONE',
+        savingDexterity: 'EXTRA',
+        savingConstitution: 'NONE',
+        savingIntelligence: 'NONE',
+        savingWisdom: 'NONE',
+        savingCharisma: 'NONE',
+        
+        acrobatics: 'NONE',
+        animalHandling: 'NONE',
+        arcana: 'NONE',
+        athletics: 'NONE',
+        deception: 'NONE',
+        history: 'NONE',
+        insight: 'NONE',
+        intimidation: 'NONE',
+        investigation: 'NONE',
+        medicine: 'EXTRA',
+        nature: 'NONE',
+        perception: 'NONE',
+        performance: 'NONE',
+        persuasion: 'NONE',
+        religion: 'EXTRA',
+        sleightOfHand: 'NONE',
+        stealth: 'NONE',
+        survival: 'EXTRA',
       },
       inspiration: false,
       healthMax: 40,
       healthCurrent: 10,
-      race: {
-        connect: {
-          id: randomRace2.id, // Connect to the existing race
-        },
-      },
-      class: {
-        connect: {
-          id: randomClass2.id, // Connect to the existing class
-        },
-      },
+      race: randomRace2,
+      class: randomClass2,
       abilities: {
-        create: {
-          genMethod: 'MANUAL',
-          strength: 12,
-          dexterity: 14,
-          constitution: 16,
-          intelligence: 10,
-          wisdom: 12,
-          charisma: 14
-        }
+        genMethod: 'MANUAL',
+        strength: 12,
+        dexterity: 14,
+        constitution: 16,
+        intelligence: 10,
+        wisdom: 12,
+        charisma: 14
       },
-      description: {
-        create: {
-          background: 'Extra Character Background'
-        }
-      },
+      description: randomBackground2,
       equipment: {
-        create: {
-          name: 'Extra Equipment Name'
-        }
+        name: 'Extra Equipment Name'
       }
     },
   });

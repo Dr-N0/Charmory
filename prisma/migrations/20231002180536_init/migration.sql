@@ -33,9 +33,18 @@ CREATE TABLE "Character" (
     "speed" INTEGER NOT NULL DEFAULT 30,
     "armorClass" INTEGER NOT NULL DEFAULT 10,
     "initiative" INTEGER NOT NULL DEFAULT 0,
+    "proficencies" JSONB,
     "inspiration" BOOLEAN NOT NULL DEFAULT false,
     "healthMax" INTEGER NOT NULL,
     "healthCurrent" INTEGER NOT NULL,
+    "race" JSONB,
+    "class" JSONB,
+    "abilities" JSONB,
+    "description" JSONB,
+    "equipment" JSONB,
+    "inventory" JSONB,
+    "height" TEXT,
+    "eyeColor" TEXT,
 
     CONSTRAINT "Character_pkey" PRIMARY KEY ("id")
 );
@@ -43,7 +52,6 @@ CREATE TABLE "Character" (
 -- CreateTable
 CREATE TABLE "Race" (
     "id" SERIAL NOT NULL,
-    "characterId" TEXT,
     "name" TEXT NOT NULL,
     "variants" TEXT[],
 
@@ -53,7 +61,7 @@ CREATE TABLE "Race" (
 -- CreateTable
 CREATE TABLE "RacialTraits" (
     "id" SERIAL NOT NULL,
-    "raceName" TEXT NOT NULL,
+    "raceId" INTEGER NOT NULL,
     "name" TEXT NOT NULL,
     "age" INTEGER NOT NULL DEFAULT 1,
     "size" "Size" NOT NULL DEFAULT 'MEDIUM',
@@ -67,7 +75,6 @@ CREATE TABLE "RacialTraits" (
 -- CreateTable
 CREATE TABLE "Class" (
     "id" SERIAL NOT NULL,
-    "characterId" TEXT,
     "name" TEXT NOT NULL,
     "color" TEXT NOT NULL,
     "subClasses" TEXT[],
@@ -78,7 +85,7 @@ CREATE TABLE "Class" (
 -- CreateTable
 CREATE TABLE "ClassFeatures" (
     "id" SERIAL NOT NULL,
-    "className" TEXT NOT NULL,
+    "classId" INTEGER NOT NULL,
     "armorProficency" TEXT[],
     "weaponProficency" TEXT[],
     "toolProficency" TEXT[],
@@ -91,7 +98,6 @@ CREATE TABLE "ClassFeatures" (
 -- CreateTable
 CREATE TABLE "Abilities" (
     "id" SERIAL NOT NULL,
-    "characterId" TEXT NOT NULL,
     "genMethod" "GenMethod" NOT NULL DEFAULT 'MANUAL',
     "strength" INTEGER NOT NULL DEFAULT 10,
     "dexterity" INTEGER NOT NULL DEFAULT 10,
@@ -105,18 +111,22 @@ CREATE TABLE "Abilities" (
 );
 
 -- CreateTable
-CREATE TABLE "Description" (
+CREATE TABLE "Background" (
     "id" SERIAL NOT NULL,
-    "characterId" TEXT NOT NULL,
-    "background" TEXT,
+    "name" TEXT NOT NULL,
+    "explanation" TEXT NOT NULL,
+    "skillProficiencies" TEXT[] DEFAULT ARRAY[]::TEXT[],
+    "toolProficiencies" TEXT[] DEFAULT ARRAY[]::TEXT[],
+    "extraLanguages" INTEGER NOT NULL DEFAULT 0,
+    "extraEquipment" TEXT[] DEFAULT ARRAY[]::TEXT[],
+    "features" JSONB[] DEFAULT ARRAY[]::JSONB[],
 
-    CONSTRAINT "Description_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Background_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Equipment" (
     "id" SERIAL NOT NULL,
-    "characterId" TEXT NOT NULL,
     "name" TEXT,
 
     CONSTRAINT "Equipment_pkey" PRIMARY KEY ("id")
@@ -125,7 +135,6 @@ CREATE TABLE "Equipment" (
 -- CreateTable
 CREATE TABLE "Proficencies" (
     "id" SERIAL NOT NULL,
-    "characterId" TEXT NOT NULL,
     "savingStrength" "HowProficent" NOT NULL DEFAULT 'NONE',
     "savingDexterity" "HowProficent" NOT NULL DEFAULT 'NONE',
     "savingConstitution" "HowProficent" NOT NULL DEFAULT 'NONE',
@@ -157,7 +166,6 @@ CREATE TABLE "Proficencies" (
 -- CreateTable
 CREATE TABLE "Inventory" (
     "id" SERIAL NOT NULL,
-    "characterId" TEXT NOT NULL,
 
     CONSTRAINT "Inventory_pkey" PRIMARY KEY ("id")
 );
@@ -212,40 +220,22 @@ CREATE TABLE "Spell" (
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Race_characterId_key" ON "Race"("characterId");
-
--- CreateIndex
 CREATE UNIQUE INDEX "Race_name_key" ON "Race"("name");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "RacialTraits_raceName_key" ON "RacialTraits"("raceName");
+CREATE UNIQUE INDEX "RacialTraits_raceId_key" ON "RacialTraits"("raceId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "RacialTraits_name_key" ON "RacialTraits"("name");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Class_characterId_key" ON "Class"("characterId");
-
--- CreateIndex
 CREATE UNIQUE INDEX "Class_name_key" ON "Class"("name");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "ClassFeatures_className_key" ON "ClassFeatures"("className");
+CREATE UNIQUE INDEX "ClassFeatures_classId_key" ON "ClassFeatures"("classId");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Abilities_characterId_key" ON "Abilities"("characterId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Description_characterId_key" ON "Description"("characterId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Equipment_characterId_key" ON "Equipment"("characterId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Proficencies_characterId_key" ON "Proficencies"("characterId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Inventory_characterId_key" ON "Inventory"("characterId");
+CREATE UNIQUE INDEX "Background_name_key" ON "Background"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Armor_inventoryId_key" ON "Armor"("inventoryId");
@@ -260,31 +250,10 @@ CREATE UNIQUE INDEX "Item_inventoryId_key" ON "Item"("inventoryId");
 ALTER TABLE "Character" ADD CONSTRAINT "Character_ownerEmail_fkey" FOREIGN KEY ("ownerEmail") REFERENCES "User"("email") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Race" ADD CONSTRAINT "Race_characterId_fkey" FOREIGN KEY ("characterId") REFERENCES "Character"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "RacialTraits" ADD CONSTRAINT "RacialTraits_raceId_fkey" FOREIGN KEY ("raceId") REFERENCES "Race"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "RacialTraits" ADD CONSTRAINT "RacialTraits_raceName_fkey" FOREIGN KEY ("raceName") REFERENCES "Race"("name") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Class" ADD CONSTRAINT "Class_characterId_fkey" FOREIGN KEY ("characterId") REFERENCES "Character"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "ClassFeatures" ADD CONSTRAINT "ClassFeatures_className_fkey" FOREIGN KEY ("className") REFERENCES "Class"("name") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Abilities" ADD CONSTRAINT "Abilities_characterId_fkey" FOREIGN KEY ("characterId") REFERENCES "Character"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Description" ADD CONSTRAINT "Description_characterId_fkey" FOREIGN KEY ("characterId") REFERENCES "Character"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Equipment" ADD CONSTRAINT "Equipment_characterId_fkey" FOREIGN KEY ("characterId") REFERENCES "Character"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Proficencies" ADD CONSTRAINT "Proficencies_characterId_fkey" FOREIGN KEY ("characterId") REFERENCES "Character"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Inventory" ADD CONSTRAINT "Inventory_characterId_fkey" FOREIGN KEY ("characterId") REFERENCES "Character"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "ClassFeatures" ADD CONSTRAINT "ClassFeatures_classId_fkey" FOREIGN KEY ("classId") REFERENCES "Class"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Armor" ADD CONSTRAINT "Armor_inventoryId_fkey" FOREIGN KEY ("inventoryId") REFERENCES "Inventory"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
