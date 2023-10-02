@@ -30,14 +30,6 @@ async function getCharacters(params: any, session: any) {
             ownerEmail: session?.user?.email,
             id: params.id
         },
-        include: {
-          proficencies: true,
-          race: true,
-          class: true,
-          abilities: true,
-          description: true,
-          equipment: true,
-        }
     })
     if (!character) {
       throw new ApiError(403, 'Character not found');
@@ -49,6 +41,7 @@ export default async function CharacterPage({ params, session }: any) {
   const characterInfo = await getCharacters(params, session);
 
   let asdf = JSON.stringify(characterInfo, null, '\t');
+  // let asdf = JSON.stringify(characterInfo.abilities)
 
   function plus(value: any) {
     return value >= 0 ? "+" + value : value;
@@ -185,7 +178,6 @@ export default async function CharacterPage({ params, session }: any) {
                       proficencyBonus={getProficencyBonus}
                       computedValue={computedValue}
                       plus={plus}
-                      sesnseTypes={characterInfo.abilities?.wisdom}
                     />
               </div>
             </div>
