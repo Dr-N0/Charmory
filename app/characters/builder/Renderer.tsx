@@ -13,9 +13,10 @@ const Equipment = dynamic(() => import('./components/Equipment'), { loading: () 
 
 export default function Renderer({
     character,
+    spellList,
     raceList,
     classList,
-    spellList
+    backgroundList,
 }: any) {
     const [workstation, setWorkstation] = useState(0);
     const [currentRace, setCurrentRace] = useState("");
@@ -32,7 +33,7 @@ export default function Renderer({
             case 'abilities':
                 return <Abilities />
             case 'description':
-                return <Description />
+                return <Description backgroundList={backgroundList} />
             case 'equipment':
                 return <Equipment />
             default:
