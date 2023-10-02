@@ -4,83 +4,15 @@ import { useState } from 'react'
 import style from './BuilderComponents.module.css'
 
 export default function Description({
-    
+    backgroundList,
 }: any) {
-    const backgroundList = [
-        {
-            name: "Acolyte",
-            description: "",
-            bonuses: [],
-        },
-        {
-            name: "Charlatan",
-            description: "",
-            bonuses: [],
-        },
-        {
-            name: "Criminal",
-            description: "",
-            bonuses: [],
-        },
-        {
-            name: "Entertainer",
-            description: "",
-            bonuses: [],
-        },
-        {
-            name: "Folk Hero",
-            description: "",
-            bonuses: [],
-        },
-        {
-            name: "Guild Artisan",
-            description: "",
-            bonuses: [],
-        },
-        {
-            name: "Hermit",
-            description: "",
-            bonuses: [],
-        },
-        {
-            name: "Noble",
-            description: "",
-            bonuses: [],
-        },
-        
-        {
-            name: "Outlander",
-            description: "",
-            bonuses: [],
-        },
-        {
-            name: "Sage",
-            description: "",
-            bonuses: [],
-        },
-        {
-            name: "Sailor",
-            description: "",
-            bonuses: [],
-        },
-        {
-            name: "Soldier",
-            description: "",
-            bonuses: [],
-        },
-        {
-            name: "Urchin",
-            description: "",
-            bonuses: [],
-        },
-    ]
 
     const [backgroundName, setBackgroundName] = useState(backgroundList[0].name);
     const [backgroundDesc, setBackgroundDesc] = useState(backgroundList[0].description);
     const [backgroundBonus, setBackgroundBonus] = useState(backgroundList[0].bonuses);
 
     function handleBackground(e: any){
-        var selectedValue = backgroundList.map(value => {
+        var selectedValue = backgroundList.map((value: any) => {
             if (value.name == e.target.value) {
                 setBackgroundName(value.name);
                 setBackgroundDesc(value.description);
