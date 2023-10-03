@@ -133,6 +133,7 @@ model Background {
   extraLanguages      Int             @default(0)
   extraEquipment      String[]        @default([])
   features            Json[]          @default([])
+  variants            Json[]          @default([])
 }
 
 // ===== Equipment =====

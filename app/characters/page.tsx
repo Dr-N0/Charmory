@@ -70,8 +70,8 @@ function Character({character}: any) {
                 <h2 className={style.cardName}>{character.name}</h2>
                 <div className={style.subInfo}>
                     <span>Level {character.level}</span>
-                    <span>{character.race?.name}</span>
-                    <span>{character.class?.name}</span>
+                    <span>{character.race.name}</span>
+                    <span>{character.class.name}</span>
                 </div>
             </div>
             <div className={`${style.characterOptions}`}>

@@ -384,6 +384,205 @@ async function main() {
       ]
     },
     {
+      "name": "Charlatan",
+      "explanation": "You have always had a way with people. You know what makes them tick, you can tease out their hearts' desires after a few minutes of conversation, and with a few leading questions you can read them like they were children's books. It's a useful talent, and one that you're perfectly willing to use for your advantage.\n\nYou know what people want and you deliver, or rather, you promise to deliver. Common sense should steer people away from things that sound too good to be true, but common sense seems to be in short supply when you're around. The bottle of pink colored liquid will surely cure that unseemly rash, this ointment – nothing more than a bit of fat with a sprinkle of silver dust can restore youth and vigor, and there's a bridge in the city that just happens to be for sale. These marvels sound implausible, but you make them sound like the real deal.",
+      "skillProficiencies": ["Deception", "Sleight of Hand"],
+      "toolProficiencies": ["Disguise kit", "Forgery kit"],
+      "extraLanguages": 0,
+      "extraEquipment": [
+          "A set of fine clothes",
+          "A disguise kit",
+          "Tools of the con of your choice (ten stoppered bottles filled with colored liquid, a set of weighted dice, a deck of marked cards, or a signet ring of an imaginary duke)",
+          "A pouch containing 15gp"
+      ],
+      "features": [
+          {
+              "name": "Favorite Schemes",
+              "explanation": "Every charlatan has an angle they use in preference to other schemes. Choose a favorite scam or roll on the table below.",
+              "schemes": [
+                  "I cheat at games of chance.",
+                  "I shave coins or forge documents.",
+                  "I insinuate myself into people's lives to prey on their weakness and secure their fortunes.",
+                  "I put on new identities like clothes.",
+                  "I run sleight-of-hand cons on street corners.",
+                  "I convince people that worthless junk is worth their hard-earned money."
+              ]
+          },
+          {
+              "name": "False Identity",
+              "explanation": "You have created a second identity that includes documentation, established acquaintances, and disguises that allow you to assume that persona. Additionally, you can forge documents including official papers and personal letters, as long as you have seen an example of the kind of document or the handwriting you are trying to copy."
+          }
+      ]
+    },
+    {
+      "name": "Criminal",
+      "explanation": "You are an experienced criminal with a history of breaking the law. You have spent a lot of time among other criminals and still have contacts within the criminal underworld. You're far closer than most people to the world of murder, theft, and violence that pervades the underbelly of civilization, and you have survived up to this point by flouting the rules and regulations of society.",
+      "skillProficiencies": ["Deception", "Stealth"],
+      "toolProficiencies": ["One type of gaming set", "Thieves' tools"],
+      "extraLanguages": 0,
+      "extraEquipment": [
+        "A crowbar",
+        "A set of dark common clothes including a hood",
+        "A pouch containing 15gp"
+      ],
+      "features": [
+        {
+          "name": "Criminal Specialty",
+          "explanation": "There are many kinds of criminals, and within a thieves' guild or similar criminal organization, individual members have particular specialties. Even criminals who operate outside of such organizations have strong preferences for certain kinds of crimes over others. Choose the role you played in your criminal life, or roll on the table below.",
+          "specialties": [
+            "Blackmailer",
+            "Burglar",
+            "Enforcer",
+            "Fence",
+            "Highway robber",
+            "Hired killer",
+            "Pickpocket",
+            "Smuggler"
+          ]
+        },
+        {
+          "name": "Criminal Contact",
+          "explanation": "You have a reliable and trustworthy contact who acts as your liaison to a network of other criminals. You know how to get messages to and from your contact, even over great distances; specifically, you know the local messengers, corrupt caravan masters, and seedy sailors who can deliver messages for you."
+        }
+      ],
+      "variants": [
+        {
+          "name": "Spy",
+          "explanation": "Although your capabilities are not much different from those of a burglar or smuggler, you learned and practiced them in a very different context: as an espionage agent. You might have been an officially sanctioned agent of the crown, or perhaps you sold the secrets you uncovered to the highest bidder."
+        }
+      ]
+    },
+    {
+      "name": "Entertainer",
+      "explanation": "You thrive in front of an audience. You know how to entrance them, entertain them, and even inspire them. Your poetics can stir the hearts of those who hear you, awakening grief or joy, laughter or anger. Your music raises their spirits or captures their sorrow. Your dance steps captivate, your humor cuts to the quick. Whatever techniques you use, your art is your life.",
+      "skillProficiencies": ["Acrobatics", "Performance"],
+      "toolProficiencies": ["Disguise kit", "One type of musical instrument"],
+      "extraLanguages": 0,
+      "extraEquipment": [
+          "A musical instrument (one of your choice)",
+          "The favor of an admirer (love letter, lock of hair, or trinket)",
+          "A costume",
+          "A pouch containing 15gp"
+      ],
+      "features": [
+          {
+              "name": "Entertainer Routines",
+              "explanation": "A good entertainer is versatile, spicing up every performance with a variety of different routines. Choose one to three routines or roll on the table below to define your expertise as an entertainer.",
+              "routines": [
+                  "Actor",
+                  "Dancer",
+                  "Fire-eater",
+                  "Jester",
+                  "Juggler",
+                  "Instrumentalist",
+                  "Poet",
+                  "Singer",
+                  "Storyteller",
+                  "Tumbler"
+              ]
+          },
+          {
+              "name": "By Popular Demand",
+              "explanation": "You can always find a place to perform, usually in an inn or tavern but possibly with a circus, at a theater, or even in a noble's court. At such a place, you receive free lodging and food of a modest or comfortable standard (depending on the quality of the establishment), as long as you perform each night. In addition, your performance makes you something of a local figure. When strangers recognize you in a town where you have performed, they typically take a liking to you."
+          }
+      ],
+      "variants": [
+          {
+              "name": "Gladiator",
+              "explanation": "A gladiator is as much an entertainer as any minstrel or circus performer trained to make the arts of combat into a spectacle the crowd can enjoy. This kind of flashy combat is your entertainer routine, though you might also have some skills as a tumbler or actor. Using your By Popular Demand feature, you can find a place to perform in any place that features combat for entertainment-perhaps a gladiatorial arena or secret pit fighting club. You can replace the musical instrument in your equipment package with an inexpensive but unusual weapon, such as a trident or net."
+          }
+      ]
+    },
+    {
+      "name": "Folk Hero",
+      "explanation": "You come from a humble social rank, but you are destined for so much more. Already the people of your home village regard you as their champion, and your destiny calls you to stand against the tyrants and monsters that threaten the common folk everywhere.",
+      "skillProficiencies": ["Animal Handling", "Survival"],
+      "toolProficiencies": ["One type of artisan's tools", "Vehicles (land)"],
+      "extraLanguages": 0,
+      "extraEquipment": [
+        "A set of artisan's tools (one of your choice)",
+        "A shovel",
+        "An iron pot",
+        "A set of common clothes",
+        "A pouch containing 10gp"
+      ],
+      "features": [
+        {
+          "name": "Defining Event",
+          "explanation": "You previously pursued a simple profession among the peasantry, perhaps as a farmer, miner, servant, shepherd, woodcutter, or gravedigger. But something happened that set you on a different path and marked you for greater things. Choose or randomly determine a defining event that marked you as a hero of the people.",
+          "events": [
+            "I stood up to a tyrant's agents.",
+            "I saved people during a natural disaster.",
+            "I stood alone against a terrible monster.",
+            "I stole from a corrupt merchant to help the poor.",
+            "I led a militia to fight off an invading army.",
+            "I broke into a tyrant's castle and stole weapons to arm the people.",
+            "I trained the peasantry to use farm implements as weapons against a tyrant's soldiers.",
+            "A lord rescinded an unpopular decree after I led a symbolic act of protect against it.",
+            "A celestial, fey, or similar creature gave me a blessing or revealed my secret origin.",
+            "Recruited into a lord's army, I rose to leadership and was commended for my heroism."
+          ]
+        },
+        {
+          "name": "Rustic Hospitality",
+          "explanation": "Since you come from the ranks of the common folk, you fit in among them with ease. You can find a place to hide, rest, or recuperate among other commoners, unless you have shown yourself to be a danger to them. They will shield you from the law or anyone else searching for you, though they will not risk their lives for you."
+        }
+      ]
+    },
+    {
+      "name": "Guild Artisan",
+      "explanation": "You are a member of an artisan's guild, skilled in a particular field and closely associated with other artisans. You are a well-established part of the mercantile world, freed by talent and wealth from the constraints of a feudal social order. You learned your skills as an apprentice to a master artisan, under the sponsorship of your guild, until you became a master in your own right.",
+      "skillProficiencies": ["Insight", "Persuasion"],
+      "toolProficiencies": ["One type of artisan's tools"],
+      "extraLanguages": 1,
+      "extraEquipment": [
+        "A set of artisan's tools (one of your choice)",
+        "A letter of introduction from your guild",
+        "A set of traveler's clothes",
+        "A pouch containing 15gp"
+      ],
+      "variants": [
+        {
+          "name": "Guild Merchant",
+          "explanation": "Instead of an artisans' guild, you might belong to a guild of traders, caravan masters, or shopkeepers. You don't craft items yourself but earn a living by buying and selling the works of others (or the raw materials artisans need to practice their craft). Your guild might be a large merchant consortium (or family) with interests across the region. Perhaps you transported goods from one place to another, by ship, wagon, or caravan, or bought them from traveling traders and sold them in your own little shop. In some ways, the traveling merchant's life lends itself to adventure far more than the life of an artisan.",
+          "extraToolProficiency": ["Navigator's tools", "An additional language"],
+          "extraEquipment": ["A mule", "A cart"]
+        },
+      ],
+      "features": [
+        {
+          "name": "Guild Business",
+          "explanation": "Guilds are generally found in cities large enough to support several artisans practicing the same trade. However, your guild might instead be a loose network of artisans who each work in a different village within a larger realm. Work with your DM to determine the nature of your guild. You can select your guild business from the Guild Business table or roll randomly.",
+          "guildBusinessOptions": [
+            "Alchemists and apothecaries",
+            "Armorers, locksmiths, and finesmiths",
+            "Brewers, distillers, and vintners",
+            "Calligraphers, scribes, and scriveners",
+            "Carpenters, roofers, and plasterers",
+            "Cartographers, surveyors, and chart-makers",
+            "Cobblers and shoemakers",
+            "Cooks and bakers",
+            "Glassblowers and glaziers",
+            "Jewelers and gemcutters",
+            "Leatherworkers, skinners, and tanners",
+            "Masons and stonecutters",
+            "Painters, limners, and sign-makers",
+            "Potters and tile-makers",
+            "Shipwrights and sailmakers",
+            "Smiths and metal-forgers",
+            "Tinkers, pewterers, and casters",
+            "Wagon-makers and wheelwrights",
+            "Weavers and dyers",
+            "Woodcarvers, coopers, and bowyers"
+          ],
+        },
+        {
+          "name": "Guild Membership",
+          "explanation": "As an established and respected member of a guild, you can rely on certain benefits that membership provides. Your fellow guild members will provide you with lodging and food if necessary, and pay for your funeral if needed. In some cities and towns, a guildhall offers a central place to meet other members of your profession, which can be a good place to meet potential patrons, allies, or hirelings.\n\nGuilds often wield tremendous political power. If you are accused of a crime, your guild will support you if a good case can be made for your innocence or the crime is justifiable. You can also gain access to powerful political figures through the guild, if you are a member in good standing. Such connections might require the donation of money or magic items to the guild's coffers.\n\nYou must pay dues of 5 gp per month to the guild. If you miss payments, you must make up back dues to remain in the guild's good graces."
+        }
+      ]
+    },    
+    {
       "name": "Urchin",
       "explanation": "You grew up on the streets alone, orphaned, and poor, You had no one to watch over you or to provide for you, so you learned to provide for yourself. You fought fiercely over food and kept a constant watch out for other desperate souls who might steal from you. You slept on rooftops and in alleyways, exposed to the elements, and endured sickness without the advantage of medicine or a place to recuperate. You've survived despite all odds, and did so through cunning, strength, speed, or some combination of each.\n\nYou begin your adventuring career with enough money to live modestly but securely for at least ten days. How did you come by that money? What allowed you to break free of your desperate circumstances and embark on a better life?",
       "skillProficiencies": ["Sleight of Hand", "Stealth"],
@@ -393,7 +592,7 @@ async function main() {
       "features": [
         {
           "name": "City Secrets",
-          "description": "You know the secret patterns and flow to cities and can find passages through the urban sprawl that others would miss. When you are not in combat, you (and companions you lead) can travel between any two locations in the city twice as fast as your speed would normally allow."
+          "explanation": "You know the secret patterns and flow to cities and can find passages through the urban sprawl that others would miss. When you are not in combat, you (and companions you lead) can travel between any two locations in the city twice as fast as your speed would normally allow."
         }
       ],
     },
@@ -10783,14 +10982,14 @@ async function main() {
   const allBackgrounds = await prisma.background.findMany();
 
   // Randomly select a race and class from the fetched records
-  const randomRace = JSON.stringify(allRaces[Math.floor(Math.random() * allRaces.length)]);
-  const randomClass = JSON.stringify(allClasses[Math.floor(Math.random() * allClasses.length)]);
-  const randomBackground = JSON.stringify(allBackgrounds[Math.floor(Math.random() * allBackgrounds.length)]);
+  const randomRace = allRaces[Math.floor(Math.random() * allRaces.length)];
+  const randomClass = allClasses[Math.floor(Math.random() * allClasses.length)];
+  const randomBackground = allBackgrounds[Math.floor(Math.random() * allBackgrounds.length)];
   
   // Randomly select a race and class from the fetched records
-  const randomRace2 = JSON.stringify(allRaces[Math.floor(Math.random() * allRaces.length)]);
-  const randomClass2 = JSON.stringify(allClasses[Math.floor(Math.random() * allClasses.length)]);
-  const randomBackground2 = JSON.stringify(allBackgrounds[Math.floor(Math.random() * allBackgrounds.length)]);
+  const randomRace2 = allRaces[Math.floor(Math.random() * allRaces.length)];
+  const randomClass2 = allClasses[Math.floor(Math.random() * allClasses.length)];
+  const randomBackground2 = allBackgrounds[Math.floor(Math.random() * allBackgrounds.length)];
 
   // TODO: Need to create a new race and use the values inside of the race DB as a template, not to connect those values to a character. When we do that we'll have to separate the DB values that're being attributed to a character and the ones that are being used as templates
 

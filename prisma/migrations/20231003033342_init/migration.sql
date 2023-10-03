@@ -120,6 +120,7 @@ CREATE TABLE "Background" (
     "extraLanguages" INTEGER NOT NULL DEFAULT 0,
     "extraEquipment" TEXT[] DEFAULT ARRAY[]::TEXT[],
     "features" JSONB[] DEFAULT ARRAY[]::JSONB[],
+    "variants" JSONB[] DEFAULT ARRAY[]::JSONB[],
 
     CONSTRAINT "Background_pkey" PRIMARY KEY ("id")
 );
