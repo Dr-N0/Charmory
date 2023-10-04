@@ -371,21 +371,21 @@ async function main() {
   const backgrounds = [
     {
       "name": "Acolyte",
-      "explanation": "You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric - performing sacred rites is not the same thing as channeling divine power.\n\nChoose a god, a pantheon of gods, or some other quasi-divine being, and work with your DM to detail the nature of your religious service. Were you a lesser functionary in a temple, raised from childhood to assist the priests in the sacred rites? Or were you a high priest who suddenly experienced a call to serve your god in a different way? Perhaps you were the leader of a small cult outside of any established temple structure, or even an occult group that served a fiendish master that you now deny.",
+      "explanation": "You have spent your life in the service of a temple to a specific god or pantheon of gods. You act as an intermediary between the realm of the holy and the mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers into the presence of the divine. You are not necessarily a cleric - performing sacred rites is not the same thing as channeling divine power.",
       "skillProficiencies": ["Insight", "Religion"],
       "toolProficiencies": [],
       "extraLanguages": 2,
-      "extraEquipment": ["A holy symbol (a gift to you when you entered the priesthood)", "A prayer book or prayer wheel", "5 sticks of incense", "vestments", "A set of common clothes", "A pouch containing 15gp"],
+      "extraEquipment": ["A holy symbol (a gift to you when you entered the priesthood)", "A prayer book or prayer wheel", "5 sticks of incense", "Vestments", "A set of common clothes", "A pouch containing 15gp"],
       "features": [
           {
             "name": "Shelter of the Faithful",
-            "description": "As an acolyte, you command the respect of those who share your faith, and you can perform the religious ceremonies of your deity. You and your adventuring companions can expect to receive free healing and care at a temple, shrine, or other established presence of your faith, though you must provide any material components needed for spells. Those who share your religion will support you (but only you) at a modest lifestyle.\n\nYou might also have ties to a specific temple dedicated to your chosen deity or pantheon, and you have a residence there. This could be the temple where you used to serve, if you remain on good terms with it, or a temple where you have found a new home. While near your temple, you can call upon the priests for assistance, provided the assistance you ask for is not hazardous and you remain in good standing with your temple."
+            "explanation": "As an acolyte, you command the respect of those who share your faith, and you can perform the religious ceremonies of your deity. You and your adventuring companions can expect to receive free healing and care at a temple, shrine, or other established presence of your faith, though you must provide any material components needed for spells. Those who share your religion will support you (but only you) at a modest lifestyle.\n\nYou might also have ties to a specific temple dedicated to your chosen deity or pantheon, and you have a residence there. This could be the temple where you used to serve, if you remain on good terms with it, or a temple where you have found a new home. While near your temple, you can call upon the priests for assistance, provided the assistance you ask for is not hazardous and you remain in good standing with your temple."
         }
       ]
     },
     {
       "name": "Charlatan",
-      "explanation": "You have always had a way with people. You know what makes them tick, you can tease out their hearts' desires after a few minutes of conversation, and with a few leading questions you can read them like they were children's books. It's a useful talent, and one that you're perfectly willing to use for your advantage.\n\nYou know what people want and you deliver, or rather, you promise to deliver. Common sense should steer people away from things that sound too good to be true, but common sense seems to be in short supply when you're around. The bottle of pink colored liquid will surely cure that unseemly rash, this ointment – nothing more than a bit of fat with a sprinkle of silver dust can restore youth and vigor, and there's a bridge in the city that just happens to be for sale. These marvels sound implausible, but you make them sound like the real deal.",
+      "explanation": "You have always had a way with people. You know what makes them tick, you can tease out their hearts' desires after a few minutes of conversation, and with a few leading questions you can read them like they were children's books. It's a useful talent, and one that you're perfectly willing to use for your advantage.\n\nYou know what people want and you deliver, or rather, you promise to deliver. Common sense should steer people away from things that sound too good to be true, but common sense seems to be in short supply when you're around. The bottle of pink colored liquid will surely cure that unseemly rash, this ointment - nothing more than a bit of fat with a sprinkle of silver dust can restore youth and vigor, and there's a bridge in the city that just happens to be for sale. These marvels sound implausible, but you make them sound like the real deal.",
       "skillProficiencies": ["Deception", "Sleight of Hand"],
       "toolProficiencies": ["Disguise kit", "Forgery kit"],
       "extraLanguages": 0,
@@ -398,7 +398,7 @@ async function main() {
       "features": [
           {
               "name": "Favorite Schemes",
-              "explanation": "Every charlatan has an angle they use in preference to other schemes. Choose a favorite scam or roll on the table below.",
+              "explanation": "Every charlatan has an angle they use in preference to other schemes. Choose a favorite scam some examples include.",
               "schemes": [
                   "I cheat at games of chance.",
                   "I shave coins or forge documents.",
@@ -428,7 +428,7 @@ async function main() {
       "features": [
         {
           "name": "Criminal Specialty",
-          "explanation": "There are many kinds of criminals, and within a thieves' guild or similar criminal organization, individual members have particular specialties. Even criminals who operate outside of such organizations have strong preferences for certain kinds of crimes over others. Choose the role you played in your criminal life, or roll on the table below.",
+          "explanation": "There are many kinds of criminals, and within a thieves' guild or similar criminal organization, individual members have particular specialties. Even criminals who operate outside of such organizations have strong preferences for certain kinds of crimes over others. Choose the role you played in your criminal life, some examples include.",
           "specialties": [
             "Blackmailer",
             "Burglar",
@@ -581,7 +581,205 @@ async function main() {
           "explanation": "As an established and respected member of a guild, you can rely on certain benefits that membership provides. Your fellow guild members will provide you with lodging and food if necessary, and pay for your funeral if needed. In some cities and towns, a guildhall offers a central place to meet other members of your profession, which can be a good place to meet potential patrons, allies, or hirelings.\n\nGuilds often wield tremendous political power. If you are accused of a crime, your guild will support you if a good case can be made for your innocence or the crime is justifiable. You can also gain access to powerful political figures through the guild, if you are a member in good standing. Such connections might require the donation of money or magic items to the guild's coffers.\n\nYou must pay dues of 5 gp per month to the guild. If you miss payments, you must make up back dues to remain in the guild's good graces."
         }
       ]
-    },    
+    },
+    {
+      "name": "Hermit",
+      "explanation": "You lived in seclusion - either in a sheltered community such as a monastery, or entirely alone - for a formative part of your life. In your time apart from the clamor of society, you found quiet, solitude, and perhaps some of the answers you were looking for.",
+      "skillProficiencies": ["Medicine", "Religion"],
+      "toolProficiencies": ["Herbalism kit"],
+      "extraLanguages": 1,
+      "extraEquipment": [
+        "A scroll case stuffed full of notes from your studies or prayers",
+        "A winter blanket",
+        "A set of common clothes",
+        "An herbalism kit",
+        "5gp"
+      ],
+      "features": [
+        {
+          "name": "Life of Seclusion",
+          "explanation": "What was the reason for your isolation, and what changed to allow you to end your solitude? You can work with your DM to determine the exact nature of your seclusion, or you can choose to roll on the table below to determine the reason behind your seclusion.",
+          "lifeOfSeclusionOptions": [
+            "I was searching for spiritual enlightenment.",
+            "I was partaking of communal living in accordance with the dictates of a religious order.",
+            "I was exiled for a crime I didn't commit.",
+            "I retreated from society after a life-altering event.",
+            "I needed a quiet place to work on my art, literature, music, or manifesto.",
+            "I needed to commune with nature, far from civilization.",
+            "I was the caretaker of an ancient ruin or relic.",
+            "I was a pilgrim in search of a person, place, or relic of spiritual significance."
+          ]
+        },
+        {
+          "name": "Discovery",
+          "explanation": "The quiet seclusion of your extended hermitage gave you access to a unique and powerful discovery. The exact nature of this revelation depends on the nature of your seclusion. It might be a great truth about the cosmos, the deities, the powerful beings of the outer planes, or the forces of nature. It could be a site that no one else has ever seen. You might have uncovered a fact that has long been forgotten, or unearthed some relic of the past that could rewrite history. It might be information that would be damaging to the people who or consigned you to exile, and hence the reason for your return to society.\n\nWork with your DM to determine the details of your discovery and its impact on the campaign."
+        }
+      ]
+    },
+    {
+      "name": "Noble",
+      "explanation": "You understand wealth, power, and privilege. You carry a noble title, and your family owns land, collects taxes, and wields significant political influence. You might be a pampered aristocrat unfamiliar with work or discomfort, a former merchant just elevated to the nobility, or a disinherited scoundrel with a disproportionate sense of entitlement. Or you could be an honest, hard-working landowner who cares deeply about the people who live and work on your land, keenly aware of your responsibility to them.",
+      "skillProficiencies": ["History", "Persuasion"],
+      "toolProficiencies": ["One type of gaming set"],
+      "extraLanguages": 1,
+      "extraEquipment": [
+        "A set of fine clothes",
+        "A signet ring",
+        "A scroll of pedigree",
+        "A purse containing 25gp"
+      ],
+      "variants": [
+        {
+          "name": "Noble: Knight",
+          "explanation": "A knighthood is among the lowest noble titles in most societies, but it can be a path to higher status. If you wish to be a knight, choose the Retainers feature below instead of the Position of Privilege feature. One of your commoner retainers is replaced by a noble who serves as your squire, aiding you in exchange for training on his or her own path to knighthood. Your two remaining retainers might include a groom to care for your horse and a servant who polishes your armor (and even helps you put it on).\n\nAs an emblem of chivalry and the ideals of courtly love, you might include among your equipment a banner or other token from a noble lord or lady to whom you have given your heart - in a chaste sort of devotion. (This person could be your bond.)"
+        },
+      ],
+      "features": [
+        {
+          "name": "Position of Privilege",
+          "explanation": "Thanks to your noble birth, people are inclined to think the best of you. You are welcome in high society, and people assume you have the right to be wherever you are. The common folk make every effort to accommodate you and avoid your displeasure, and other people of high birth treat you as a member of the same social sphere. You can secure an audience with a local noble if you need to."
+        },
+        {
+          "name": "Retainers",
+          "explanation": "If your character has a noble background, you may select this background feature instead of Position of Privilege.\n\nYou have the service of three retainers loyal to your family. These retainers can be attendants or messengers, and one might be a majordomo. Your retainers are commoners who can perform mundane tasks for you, but they do not fight for you, will not follow you into obviously dangerous areas (such as dungeons), and will leave if they are frequently endangered or abused."
+        }
+      ]
+    },
+    {
+      "name": "Outlander",
+      "explanation": "You grew up in the wilds, far from civilization and the comforts of town and technology. You've witnessed the migration of herds larger than forests, survived weather more extreme than any city-dweller could comprehend, and enjoyed the solitude of being the only thinking creature for miles in any direction. The wilds are in your blood, whether you were a nomad, an explorer, a recluse, a hunter-gatherer, or even a marauder. Even in places where you don't know the specific features of the terrain, you know the ways of the wild.",
+      "skillProficiencies": ["Athletics", "Survival"],
+      "toolProficiencies": ["One type of musical instrument"],
+      "extraLanguages": 1,
+      "extraEquipment": [
+        "A staff",
+        "A hunting trap",
+        "A trophy from an animal you killed",
+        "A set of traveler's clothes",
+        "A pouch containing 10gp"
+      ],
+      "features": [
+        {
+          "name": "Origin",
+          "explanation": "You've been to strange places and seen things that others cannot begin to fathom. Consider some of the distant lands you have visited, and how they impacted you. You can roll on the following table to determine your occupation during your time in the wild, or choose one that best fits your character.",
+          "originOptions": [
+            "Forester",
+            "Trapper",
+            "Homesteader",
+            "Guide",
+            "Exile or outcast",
+            "Bounty hunter",
+            "Pilgrim",
+            "Tribal nomad",
+            "Hunter-gatherer",
+            "Tribal marauder"
+          ]
+        },
+        {
+          "name": "Wanderer",
+          "explanation": "You have an excellent memory for maps and geography, and you can always recall the general layout of terrain, settlements, and other features around you. In addition, you can find food and fresh water for yourself and up to five other people each day, provided that the land offers berries, small game, water, and so forth."
+        }
+      ]
+    },
+    {
+      "name": "Sage",
+      "explanation": "You spent years learning the lore of the multiverse. You scoured manuscripts, studied scrolls, and listened to the greatest experts on the subjects that interest you. Your efforts have made you a master in your fields of study.",
+      "skillProficiencies": ["Arcana", "History"],
+      "toolProficiencies": [],
+      "extraLanguages": 2,
+      "extraEquipment": [
+        "A bottle of ink",
+        "A quill",
+        "A small knife",
+        "A letter from a dead colleague posing a question you have not yet been able to answer",
+        "A set of common clothes",
+        "A pouch containing 10gp"
+      ],
+      "features": [
+        {
+          "name": "Specialty",
+          "explanation": "To determine the nature of your scholarly training, roll a d8 or choose from the options in the table below.",
+          "sageSpecialtyOptions": [
+            "Alchemist",
+            "Astronomer",
+            "Discredited academic",
+            "Librarian",
+            "Professor",
+            "Researcher",
+            "Wizard's apprentice",
+            "Scribe"
+          ]
+        },
+        {
+          "name": "Researcher",
+          "explanation": "When you attempt to learn or recall a piece of lore, if you do not know that information, you often know where and from whom you can obtain it. Usually, this information comes from a library, scriptorium, university, or a sage or other learned person or creature. Your DM might rule that the knowledge you seek is secreted away in an almost inaccessible place, or that it simply cannot be found. Unearthing the deepest secrets of the multiverse can require an adventure or even a whole campaign."
+        }
+      ]
+    },
+    {
+      "name": "Sailor",
+      "explanation": "You sailed on a seagoing vessel for years. In that time, you faced down mighty storms, monsters of the deep, and those who wanted to sink your craft to the bottomless depths. Your first love is the distant line of the horizon, but the time has come to try your hand at something new.",
+      "skillProficiencies": ["Athletics", "Perception"],
+      "toolProficiencies": ["Navigator's tools", "Vehicles (water)"],
+      "extraLanguages": 0,
+      "extraEquipment": [
+        "A belaying pin (club)",
+        "50 feet of silk rope",
+        "A lucky charm such as a rabbit foot or a small stone with a hole in the center (or you may roll for a random trinket on the Trinkets table in chapter 5)",
+        "A set of common clothes",
+        "A pouch containing 10gp"
+      ],
+      "variants": [
+        {
+          "name": "Pirate",
+          "explanation": "You spent your youth under the sway of a dread pirate, a ruthless cutthroat who taught you how to survive in a world of sharks and savages. You've indulged in larceny on the high seas and sent more than one deserving soul to a briny grave. Fear and bloodshed are no strangers to you, and you've garnered a somewhat unsavory reputation in many a port town.\n\nIf you decide that your sailing career involved piracy, you can choose the Bad Reputation feature below instead of the Ship's Passage feature."
+        }
+      ],
+      "features": [
+        {
+          "name": "Ship's Passage",
+          "explanation": "When you need to, you can secure free passage on a sailing ship for yourself and your adventuring companions. You might sail on the ship you served on, or another ship you have good relations with (perhaps one captained by a former crewmate). Because you're calling in a favor, you can't be certain of a schedule or route that will meet your every need. Your DM will determine how long it takes to get where you need to go. In return for your free passage, you and your companions are expected to assist the crew during the voyage."
+        },
+        {
+          "name": "Bad Reputation",
+          "explanation": "If your character has a pirate background, you may select this background feature instead of Ship's Passage.\n\nNo matter where you go, people are afraid of you due to your reputation. When you are in a civilized settlement, you can get away with minor criminal offenses, such as refusing to pay for food at a tavern or breaking down doors at a local shop, since most people will not report your activity to the authorities."
+        }
+      ]
+    },
+    {
+      "name": "Soldier",
+      "explanation": "War has been your life for as long as you care to remember. You trained as a youth, studied the use of weapons and armor, learned basic survival techniques, including how to stay alive on the battlefield. You might have been part of a standing national army or a mercenary company, or perhaps a member of a local militia who rose to prominence during a recent war.",
+      "skillProficiencies": ["Athletics", "Intimidation"],
+      "toolProficiencies": ["One type of gaming set", "Vehicles (land)"],
+      "extraLanguages": 0,
+      "extraEquipment": [
+        "An insignia of rank",
+        "A trophy taken from a fallen enemy (a dagger, broken blade, or piece of a banner)",
+        "A set of bone dice or a deck of cards",
+        "A set of common clothes",
+        "A pouch containing 10gp"
+      ],
+      "features": [
+        {
+          "name": "Specialty",
+          "explanation": "During your time as a soldier, you had a specific role to play in your unit or army. Roll a d8 or choose from the options in the table below to determine your role:",
+          "soldierSpecialtyOptions": [
+            "Officer",
+            "Scout",
+            "Infantry",
+            "Cavalry",
+            "Healer",
+            "Quartermaster",
+            "Standard bearer",
+            "Support staff (cook, blacksmith, or the like)"
+          ]
+        },
+        {
+          "name": "Military Rank",
+          "explanation": "You have a military rank from your career as a soldier. Soldiers loyal to your former military organization still recognize your authority and influence, and they defer to you if they are of a lower rank. You can invoke your rank to exert influence over other soldiers and requisition simple equipment or horses for temporary use. You can also usually gain access to friendly military encampments and fortresses where your rank is recognized."
+        }
+      ]
+    },
     {
       "name": "Urchin",
       "explanation": "You grew up on the streets alone, orphaned, and poor, You had no one to watch over you or to provide for you, so you learned to provide for yourself. You fought fiercely over food and kept a constant watch out for other desperate souls who might steal from you. You slept on rooftops and in alleyways, exposed to the elements, and endured sickness without the advantage of medicine or a place to recuperate. You've survived despite all odds, and did so through cunning, strength, speed, or some combination of each.\n\nYou begin your adventuring career with enough money to live modestly but securely for at least ten days. How did you come by that money? What allowed you to break free of your desperate circumstances and embark on a better life?",
@@ -11117,10 +11315,6 @@ async function main() {
       }
     },
   });
-
-  console.log({ user });
-
-  console.log({ secondCharacter })
 }
 main()
   .then(() => prisma.$disconnect())

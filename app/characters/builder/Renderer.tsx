@@ -23,17 +23,19 @@ export default function Renderer({
     const [toggleRaceStation, setToggleRaceStation] = useState(false);
     const [currentClass, setCurrentClass] = useState("");
     const [toggleClassStation, setToggleClassStation] = useState(false);
+    const [currentBackground, setCurrentBackground] = useState("");
+    const [toggleBackgroundStation, setToggleBackgroundStation] = useState(false);
 
     function renderSwitch(param: string) {
         switch(param) {
             case 'race':
                 return <Race raceList={raceList} toggleRaceStation={toggleRaceStation} handleChooseRace={handleChooseRace} />
             case 'class':
-                return <Class classList={classList} toggleClassStation={toggleClassStation} handleChooseClass={handleChooseClass} getSpellsByClassName />
+                return <Class classList={classList} toggleClassStation={toggleClassStation} handleChooseClass={handleChooseClass} />
             case 'abilities':
                 return <Abilities />
             case 'description':
-                return <Description backgroundList={backgroundList} />
+                return <Description backgroundList={backgroundList} toggleBackgroundStation={toggleBackgroundStation} handleChooseBackground={handleChooseBackground} />
             case 'equipment':
                 return <Equipment />
             default:
@@ -80,7 +82,7 @@ export default function Renderer({
         return data;
     }
 
-    async function handleChooseClass (characterClass: any) {
+    async function handleChooseClass(characterClass: any) {
         setCurrentClass(characterClass);
         setToggleClassStation(true);
         const response = await fetch("/api/class", {
@@ -104,6 +106,30 @@ export default function Renderer({
         return data;
     }
 
+    async function handleChooseBackground(characterBackground: any) {
+        setCurrentBackground(characterBackground);
+        setToggleBackgroundStation(true);
+        // const response = await fetch("/api/background", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         className: characterBackground,
+        //         characterId: character.id
+        //     }),
+        // });
+        
+        // if (!response.ok) {
+        //     setCurrentBackground("");
+        //     setToggleClassStation(false);
+        //     throw new Error("Failed to set class");
+        // }
+
+        // const data = await response.json();
+        // return data;
+    }
+
     return (
         <>
         <main className={style.rendererBox}>
@@ -117,7 +143,7 @@ export default function Renderer({
                 <br></br>
 
                 <div className={style.name}>
-                    <span>Name: </span>
+                    <h2>Name: </h2>
                     <input></input>
                 </div>
                 <br></br>
@@ -129,33 +155,51 @@ export default function Renderer({
                     <div>
                         <h2>Race</h2>
                         {currentRace == '' ?
-                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(1)}>Pick Your Race</button>) :
-                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(1)}>{currentRace}</button>)
+                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(1)}>
+                                Pick Your Race
+                            </button>) :
+                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(1)}>
+                                {currentRace}
+                            </button>)
                         }
                     </div>
                     <hr></hr>
                     <div>
                         <h2>Class</h2>
                         {currentClass == '' ?
-                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(2)}>Choose Your Class</button>) :
-                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(2)}>{currentClass}</button>)
+                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(2)}>
+                                Choose Your Class
+                            </button>) :
+                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(2)}>
+                                {currentClass}
+                            </button>)
                         }
-                        
                     </div>
                     <hr></hr>
                     <div>
                         <h2>Abilities</h2>
-                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(3)}>Set Ability Values</button>
+                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(3)}>
+                            Set Ability Values
+                        </button>
                     </div>
                     <hr></hr>
                     <div>
                         <h2>Description</h2>
-                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(4)}>Write Description</button>
+                        {currentBackground == '' ?
+                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(4)}>
+                                Select A Background
+                            </button>) :
+                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(4)}>
+                                <span>{currentBackground}</span>
+                            </button>)
+                        }
                     </div>
                     <hr></hr>
                     <div>
                         <h2>Equipment</h2>
-                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(5)}>Add Equipment</button>
+                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(5)}>
+                            Add Equipment
+                        </button>
                     </div>
                 </div>
             </div>

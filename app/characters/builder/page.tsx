@@ -83,7 +83,6 @@ export default async function Builder({session}:any) {
                 raceList={raceList}
                 classList={classList}
                 backgroundList={backgroundList}
-                
             />
         </main>
     );

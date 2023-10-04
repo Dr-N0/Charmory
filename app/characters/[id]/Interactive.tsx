@@ -43,7 +43,7 @@ export default function Interactive({
                                 src="/sword.png"
                                 width={50}
                                 height={50}
-                                alt="Picture of the author"
+                                alt="Sword"
                                 onClick={(e:any) => setTab(1)}
                             />
                         </span>
@@ -53,7 +53,7 @@ export default function Interactive({
                                 src="/features.png"
                                 width={50}
                                 height={50}
-                                alt="Picture of the author"
+                                alt="Features"
                                 onClick={(e:any) => setTab(2)}
                             />
                         </span>
@@ -63,7 +63,7 @@ export default function Interactive({
                                 src="/equipment.png"
                                 width={50}
                                 height={50}
-                                alt="Picture of the author"
+                                alt="Equipment"
                                 onClick={(e:any) => setTab(3)}
                             />
                         </span>
@@ -73,7 +73,7 @@ export default function Interactive({
                                 src="/background.png"
                                 width={50}
                                 height={50}
-                                alt="Picture of the author"
+                                alt="Background"
                                 onClick={(e:any) => setTab(4)}
                             />
                         </span>

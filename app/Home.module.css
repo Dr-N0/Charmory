@@ -52,9 +52,13 @@
     transition-property: color, background-color;
 }
 
-.hvrFadeWhite:hover, .hvrFadeWhite:active {
+.hvrFadeWhite:hover {
     background-color: grey;
-    color:white
+    color:white;
+}
+
+.hvrFadeWhite:active {
+    background-color: rgb(68, 68, 68); /* Adjust the color as needed */
 }
 
 .button {
