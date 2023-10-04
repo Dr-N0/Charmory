@@ -53,7 +53,10 @@ CREATE TABLE "Character" (
 CREATE TABLE "Race" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "variants" TEXT[],
+    "color" TEXT,
+    "description" TEXT,
+    "keywords" TEXT[] DEFAULT ARRAY[]::TEXT[],
+    "variants" JSONB[] DEFAULT ARRAY[]::JSONB[],
 
     CONSTRAINT "Race_pkey" PRIMARY KEY ("id")
 );

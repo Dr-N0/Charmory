@@ -36,15 +36,11 @@
     width: 99%;
 }
 
-.inputDiv {
+.inputBox {
     padding: 15px 20px;
     width: 100%;
     height: 100%;
 }
-
-/* .inputDiv:hover {
-    
-} */
 
 .inputVariants {
     padding: 15px 20px;
@@ -57,8 +53,40 @@
     width: 100%;
 }
 
-.dropdownArrow {
+.listHeading {
+    
+}
+
+.raceName {
+    width: 100%;
+}
+
+.dropDownArrow {
     float: right;
+    width: 0; 
+    height: 0; 
+}
+
+.dropDownDArrow {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    
+    border-top: 15px solid rgb(255, 255, 255);
+}
+
+.dropDownRArrow {
+    border-right: none;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    
+    border-left: 15px solid rgb(255, 255, 255);
+}
+
+.raceDescription {
+    display: inline-block;
+    width: 100%;
+    padding: 10px 0px;
+    color: rgb(211, 211, 211);
 }
 
 .inputMain {

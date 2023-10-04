@@ -202,166 +202,433 @@ async function main() {
   
   const races = [
     {
-      "name": "Aarakocra",
+        "name": "Aarakocra",
+        "color": "rgba(135, 206, 235, 0.55)",
+        "description": "Avian humanoids with bird-like features.",
+        "keywords": ["feathered", "bird-like", "flyers"]
     },
     {
         "name": "Aasimar",
+        "color": "rgba(168, 0, 0, 0.55)",
+        "description": "Descendants of celestial beings, embodying a harmony between mortal and divine qualities.",
+        "keywords": ["celestial", "descendants", "balance"],
         "variants": [
-            "Fallen Aasimar",
-            "Protector Aasimar",
-            "Scourge Aasimar"
+            {
+                "name": "Fallen Aasimar",
+                "color": "rgba(139, 69, 19, 0.55)",
+                "description": "Aasimar touched by dark forces, embodying a fall from grace.",
+                "keywords": ["fallen", "dark forces"]
+            },
+            {
+                "name": "Protector Aasimar",
+                "color": "rgba(152, 251, 152, 0.55)",
+                "description": "Aasimar blessed with celestial qualities, dedicated to protecting others.",
+                "keywords": ["protector", "blessed"]
+            },
+            {
+                "name": "Scourge Aasimar",
+                "color": "rgba(220, 20, 60, 0.55)",
+                "description": "Aasimar bearing the power of the heavens, emitting radiant energy.",
+                "keywords": ["scourge", "radiant energy"]
+            }
         ]
     },
     {
-        "name": "Bugbear"
+        "name": "Bugbear",
+        "color": "rgba(105, 105, 105, 0.55)",
+        "description": "Hulking and stealthy creatures with sharp claws and keen senses.",
+        "keywords": ["hulking", "stealthy", "sharp claws"]
     },
     {
-        "name": "Centaur"
+        "name": "Centaur",
+        "color": "rgba(139, 69, 19, 0.55)",
+        "description": "Majestic beings with the upper body of a human and the lower body of a horse.",
+        "keywords": ["majestic", "human", "horse"]
     },
     {
-        "name": "Changeling"
+        "name": "Changeling",
+        "color": "rgba(255, 215, 0, 0.55)",
+        "description": "Shape-shifters known for their ability to adopt various appearances.",
+        "keywords": ["shape-shifters", "various appearances", "change"]
     },
     {
-        "name": "Dragonborn"
+        "name": "Dragonborn",
+        "color": "rgba(255, 69, 0, 0.55)",
+        "description": "Proud and honorable humanoid dragons with diverse breath weapons.",
+        "keywords": ["proud", "honorable", "dragons"]
     },
     {
-        "name": "Duergar"
+        "name": "Duergar",
+        "color": "rgba(47, 79, 79, 0.55)",
+        "description": "Underground-dwelling dwarves with innate abilities and resistance to magic.",
+        "keywords": ["underground-dwelling", "dwarves", "resistance to magic"]
     },
     {
         "name": "Dwarf",
+        "color": "rgba(205, 133, 63, 0.55)",
+        "description": "Stout and skilled miners and craftsmen, known for their resilience.",
+        "keywords": ["stout", "miners", "resilience"],
         "variants": [
-            "Hill Dwarf",
-            "Mountain Dwarf"
+            {
+                "name": "Hill Dwarf",
+                "color": "rgba(139, 69, 19, 0.55)",
+                "description": "Dwarves hailing from mountainous regions, known for their hardiness.",
+                "keywords": ["mountainous regions", "hardiness", "dwarves"]
+            },
+            {
+                "name": "Mountain Dwarf",
+                "color": "rgba(165, 42, 42, 0.55)",
+                "description": "Dwarves with a natural affinity for mining and forging in the mountains.",
+                "keywords": ["mining", "forging", "mountains"]
+            }
         ]
     },
     {
         "name": "Eladrin",
+        "color": "rgba(0, 250, 154, 0.55)",
+        "description": "Ethereal elves tied to the seasons, each possessing unique magical traits.",
+        "keywords": ["ethereal", "elves", "seasons"],
         "variants": [
-            "Autumn Eladrin",
-            "Spring Eladrin",
-            "Summer Eladrin",
-            "Winter Eladrin"
+            {
+                "name": "Autumn Eladrin",
+                "color": "rgba(139, 69, 19, 0.55)",
+                "description": "Eladrin embodying the essence of autumn, with nature-based powers.",
+                "keywords": ["autumn", "nature-based powers", "eladrin"]
+            },
+            {
+                "name": "Spring Eladrin",
+                "color": "rgba(0, 255, 127, 0.55)",
+                "description": "Eladrin attuned to the rebirth and growth of spring, radiating life.",
+                "keywords": ["spring", "rebirth", "radiating life"]
+            },
+            {
+                "name": "Summer Eladrin",
+                "color": "rgba(255, 215, 0, 0.55)",
+                "description": "Eladrin embodying the warmth and power of summer, wielding fire magic.",
+                "keywords": ["summer", "warmth", "fire magic"]
+            },
+            {
+                "name": "Winter Eladrin",
+                "color": "rgba(135, 206, 235, 0.55)",
+                "description": "Eladrin associated with the frost and cold of winter, possessing ice-based abilities.",
+                "keywords": ["winter", "frost", "ice-based abilities"]
+            }
         ]
     },
     {
         "name": "Elf",
+        "color": "rgba(34, 139, 34, 0.55)",
+        "description": "Graceful and long-lived beings with a deep connection to nature.",
+        "keywords": ["graceful", "long-lived", "nature"],
         "variants": [
-            "High Elf",
-            "Sea Elf",
-            "Wood Elf"
+            {
+                "name": "High Elf",
+                "color": "rgba(135, 206, 235, 0.55)",
+                "description": "Elves with a natural aptitude for magic and a strong connection to the arcane.",
+                "keywords": ["high elf", "magic", "arcane"]
+            },
+            {
+                "name": "Sea Elf",
+                "color": "rgba(30, 144, 255, 0.55)",
+                "description": "Elves adapted to life underwater, with aquatic features and agility.",
+                "keywords": ["sea elf", "underwater", "aquatic features"]
+            },
+            {
+                "name":             "Wood Elf",
+                "color": "rgba(34, 139, 34, 0.55)",
+                "description": "Elves with a deep affinity for forests and woodlands, skilled in archery.",
+                "keywords": ["wood elf", "forests", "skilled in archery"]
+            }
         ]
     },
     {
-        "name": "Fairy"
+        "name": "Fairy",
+        "color": "rgba(255, 105, 180, 0.55)",
+        "description": "Tiny, whimsical creatures with delicate wings and a connection to nature.",
+        "keywords": ["tiny", "whimsical", "delicate wings"]
     },
     {
-        "name": "Firbolg"
+        "name": "Firbolg",
+        "color": "rgba(0, 100, 0, 0.55)",
+        "description": "Giant-kin known for their peaceful nature, mystical abilities, and natural affinity.",
+        "keywords": ["giant-kin", "peaceful", "mystical abilities"]
     },
     {
         "name": "Genasi",
+        "color": "rgba(119, 136, 153, 0.55)",
+        "description": "Descendants of elemental beings, Genasi embody the power of air, earth, fire, or water.",
+        "keywords": ["elemental beings", "genasi", "power of elements"],
         "variants": [
-            "Air Genasi",
-            "Earth Genasi",
-            "Fire Genasi",
-            "Water Genasi"
+            {
+                "name": "Air Genasi",
+                "color": "rgba(135, 206, 235, 0.55)",
+                "description": "Genasi touched by the element of air, with features reflecting their ethereal nature.",
+                "keywords": ["air genasi", "element of air", "ethereal"]
+            },
+            {
+                "name": "Earth Genasi",
+                "color": "rgba(139, 69, 19, 0.55)",
+                "description": "Genasi with earth-infused heritage, showing resilience and a strong connection to the ground.",
+                "keywords": ["earth genasi", "earth-infused", "resilience"]
+            },
+            {
+                "name": "Fire Genasi",
+                "color": "rgba(255, 69, 0, 0.55)",
+                "description": "Genasi whose ancestry links them to the elemental plane of fire, embodying its passion and heat.",
+                "keywords": ["fire genasi", "elemental plane of fire", "passion"]
+            },
+            {
+                "name": "Water Genasi",
+                "color": "rgba(30, 144, 255, 0.55)",
+                "description": "Genasi influenced by the elemental essence of water, displaying fluidity and adaptability.",
+                "keywords": ["water genasi", "elemental essence of water", "fluidity"]
+            }
         ]
     },
     {
         "name": "Gith",
+        "color": "rgba(72, 61, 139, 0.55)",
+        "description": "Psionically gifted beings shaped by the conflicts between Githyanki and Githzerai.",
+        "keywords": ["psionically gifted", "gith", "conflicts"],
         "variants": [
-            "Githyanki",
-            "Githzerai"
+            {
+                "name": "Githyanki",
+                "color": "rgba(165, 42, 42, 0.55)",
+                "description": "Warrior-focused Gith with a martial and militaristic society.",
+                "keywords": ["githyanki", "warrior-focused", "militaristic"]
+            },
+            {
+                "name": "Githzerai",
+                "color": "rgba(112, 128, 144, 0.55)",
+                "description": "Philosophical Gith with a focus on individualism and psychic abilities.",
+                "keywords": ["githzerai", "philosophical", "psychic abilities"]
+            }
         ]
     },
     {
         "name": "Gnome",
+        "color": "rgba(255, 215, 0, 0.55)",
+        "description": "Small, inventive beings with a knack for technology, illusion, and humor.",
+        "keywords": ["small", "inventive", "technology"],
         "variants": [
-            "Deep Gnome",
-            "Forest Gnome",
-            "Rock Gnome"
+            {
+                "name": "Deep Gnome",
+                "color": "rgba(47, 79, 79, 0.55)",
+                "description": "Subterranean Gnomes with innate magic and stealth abilities.",
+                "keywords": ["deep gnome", "subterranean", "stealth abilities"]
+            },
+            {
+                "name": "Forest Gnome",
+                "color": "rgba(50, 205, 50, 0.55)",
+                "description": "Gnomes with a deep connection to nature and a talent for illusion magic.",
+                "keywords": ["forest gnome", "nature", "illusion magic"]
+            },
+            {
+                "name": "Rock Gnome",
+                "color": "rgba(165, 42, 42, 0.55)",
+                "description": "Gnomes known for their engineering skills and inventive creations.",
+                "keywords": ["rock gnome", "engineering skills", "inventive creations"]
+            }
         ]
     },
     {
-        "name": "Goblin"
+        "name": "Goblin",
+        "color": "rgba(140, 154, 96, 0.55)",
+        "description": "Small and cunning creatures with a penchant for mischief and survival.",
+        "keywords": ["small", "cunning", "mischief"]
     },
     {
-        "name": "Goliath"
+        "name": "Goliath",
+        "color": "rgba(105, 105, 105, 0.55)",
+        "description": "Powerful and resilient mountain-dwelling beings, known for their endurance.",
+        "keywords": ["powerful", "resilient", "mountain-dwelling"]
     },
     {
-        "name": "Half-Elf"
+        "name": "Half-Elf",
+        "color": "rgba(210, 180, 140, 0.55)",
+        "description": "Individuals with a mix of human and elven ancestry, embodying adaptability.",
+        "keywords": ["half-elf", "human", "elven ancestry"]
     },
     {
-        "name": "Half-Orc"
+        "name": "Half-Orc",
+        "color": "rgba(165, 42, 42, 0.55)",
+        "description": "Robust and strong humanoids with both orc and human lineage.",
+        "keywords": ["robust", "strong", "orc and human lineage"]
     },
     {
-        "name": "Halfling",
-        "variants": [
-            "Lightfoot Halfling",
-            "Stout Halfling"
+      "name": "Halfling",
+      "color": "rgba(222, 184, 135, 0.55)",
+      "description": "Small and nimble beings with a talent for stealth and luck.",
+      "keywords": ["small", "nimble", "stealth and luck"],
+      "variants": [
+          {
+              "name": "Lightfoot Halfling",
+              "color": "rgba(240, 230, 140, 0.55)",
+              "description": "Halflings known for their stealthy nature and ease in blending into crowds.",
+              "keywords": ["lightfoot halfling", "stealthy nature", "blending into crowds"]
+            },
+            {
+                "name": "Stout Halfling",
+                "color": "rgba(139, 69, 19, 0.55)",
+                "description": "Halflings with exceptional resilience and resistance to poison.",
+                "keywords": ["stout halfling", "resilience", "resistance to poison"]
+            }
         ]
     },
     {
-        "name": "Harengon"
+        "name": "Harengon",
+        "color": "rgb(120, 107, 61, 0.55)",
+        "description": "Humanoid rabbits with a strong sense of community and agile mobility.",
+        "keywords": ["harengon", "rabbits", "community"]
     },
     {
-        "name": "Hobgoblin"
+        "name": "Hobgoblin",
+        "color": "rgba(139, 69, 19, 0.55)",
+        "description": "Militaristic and disciplined humanoids with a strategic mindset.",
+        "keywords": ["hobgoblin", "militaristic", "disciplined"]
     },
     {
-        "name": "Human"
+        "name": "Human",
+        "color": "rgba(198, 134, 66, 0.55)",
+        "description": "Versatile and ambitious beings with diverse cultures and adaptability.",
+        "keywords": ["human", "versatile", "ambitious"]
     },
     {
-        "name": "Kenku"
+        "name": "Kenku",
+        "color": "rgba(0, 0, 0, 0.55)",
+        "description": "Avian humanoids known for mimicry and artistic talents.",
+        "keywords": ["kenku", "avian", "mimicry"]
     },
     {
-        "name": "Kobold"
+        "name": "Kobold",
+        "color": "rgba(255, 69, 0, 0.55)",
+        "description": "Small, reptilian creatures with a focus on traps, tunnels, and dragon-worship.",
+        "keywords": ["kobold", "reptilian", "traps and tunnels"]
     },
     {
-        "name": "Lizardfolk"
+        "name": "Lizardfolk",
+        "color": "rgba(0, 128, 0, 0.55)",
+        "description": "Reptilian humanoids with a connection to nature, known for adaptability.",
+        "keywords": ["lizardfolk", "reptilian", "nature"]
     },
     {
-        "name": "Minotaur"
+        "name": "Minotaur",
+        "color": "rgba(139, 69, 19, 0.55)",
+        "description": "Powerful humanoid creatures with the head of a bull and a strong sense of honor.",
+        "keywords": ["minotaur", "powerful", "honor"]
     },
     {
-        "name": "Orc"
+        "name": "Orc",
+        "color": "rgba(165, 42, 42, 0.55)",
+        "description": "Strong and aggressive humanoids with a history of tribal societies.",
+        "keywords": ["orc", "strong", "aggressive"]
     },
     {
-        "name": "Satyr"
+        "name": "Satyr",
+        "color": "rgba(139, 69, 19, 0.55)",
+        "description": "Joyful and carefree beings with a love for music, revelry, and the natural world.",
+        "keywords": ["satyr", "joyful", "music"]
     },
     {
-        "name": "Shadar-Kai"
+        "name": "Shadar-Kai",
+        "color": "rgba(72, 61, 139, 0.55)",
+        "description": "Shadowfell-touched elves with a connection to the Plane of Shadow.",
+        "keywords": ["shadar-kai", "shadowfell-touched", "plane of shadow"]
     },
     {
-        "name": "Shifter"
-
+        "name": "Shifter",
+        "color": "rgba(87, 80, 72, 0.55)",
+        "description": "Humanoids with lycanthropic ancestry, possessing traits of shape-shifting.",
+        "keywords": ["shifter", "lycanthropic ancestry", "shape-shifting"]
     },
     {
-        "name": "Tabaxi"
+        "name": "Tabaxi",
+        "color": "rgba(255, 215, 0, 0.55)",
+        "description": "Feline humanoids known for their curiosity, agility, and love of adventure.",
+        "keywords": ["tabaxi", "feline", "curiosity"]
     },
     {
         "name": "Tiefling",
+        "color": "rgba(139, 0, 0, 0.55)",
+        "description": "Descendants of infernal beings, Tieflings bear demonic traits and often grapple with their dark lineage.",
+        "keywords": ["tiefling", "infernal beings", "demonic traits"],
         "variants": [
-            "Asmodeus Tiefling",
-            "Baalzebul Tiefling",
-            "Dispater Tiefling",
-            "Fierna Tiefling",
-            "Glasya Tiefling",
-            "Levistus Tiefling",
-            "Mammon Tiefling",
-            "Mephistopheles Tiefling",
-            "Zariel Tiefling"
+            {
+                "name": "Asmodeus Tiefling",
+                "color": "rgba(255, 69, 0, 0.55)",
+                "description": "Tieflings tied to Asmodeus, the Lord of the Nine Hells, embodying infernal authority and cunning.",
+                "keywords": ["asmodeus tiefling", "lord of the nine hells", "infernal authority"]
+            },
+            {
+                "name": "Baalzebul Tiefling",
+                "color": "rgba(165, 42, 42, 0.55)",
+                "description": "Tieflings connected to Baalzebul, the Lord of the Flies, often exuding a sense of decay and pestilence.",
+                "keywords": ["baalzebul tiefling", "lord of the flies", "decay and pestilence"]
+            },
+            {
+                "name": "Dispater Tiefling",
+                "color": "rgba(47, 79, 79, 0.55)",
+                "description": "Tieflings with ties to Dispater, the Iron Duke, showcase discipline and a penchant for order.",
+                "keywords": ["dispater tiefling", "iron duke", "discipline and order"]
+            },
+            {
+                "name": "Fierna Tiefling",
+                "color": "rgba(205, 92, 92, 0.55)",
+                "description": "Tieflings aligned with Fierna, the Princess of Hell, often exhibit charm and persuasive abilities.",
+                "keywords": ["fierna tiefling", "princess of hell", "charm and persuasion"]
+            },
+            {
+                "name": "Glasya Tiefling",
+                "color": "rgba(255, 192, 203, 0.55)",
+                "description": "Tieflings influenced by Glasya, the Duchess of Hell, embodying subtlety and guile.",
+                "keywords": ["glasya tiefling", "duchess of hell", "subtlety and guile"]
+            },
+            {
+                "name": "Levistus Tiefling",
+                "color": "rgba(70, 130, 180, 0.55)",
+                "description": "Tieflings tied to Levistus, the Lord of Stygia, often exude an aura of icy coldness and resilience.",
+                "keywords": ["levistus tiefling", "lord of stygia", "icy coldness and resilience"]
+            },
+            {
+                "name": "Mammon Tiefling",
+                "color": "rgba(255, 140, 0, 0.55)",
+                "description": "Tieflings with connections to Mammon, the Archduke of Minauros, often seek wealth and material gain.",
+                "keywords": ["mammon tiefling", "archduke of minauros", "wealth and material gain"]
+            },
+            {
+                "name": "Mephistopheles Tiefling",
+                "color": "rgba(255, 0, 0, 0.55)",
+                "description": "Tieflings influenced by Mephistopheles, the Lord of Cania, embodying devilish cunning and manipulation.",
+                "keywords": ["mephistopheles tiefling", "lord of cania", "devilish cunning and manipulation"]
+            },
+            {
+                "name": "Zariel Tiefling",
+                "color": "rgba(0, 0, 128, 0.55)",
+                "description": "Tieflings with ties to Zariel, the Fallen Angel, often exhibit a martial and warlike demeanor.",
+                "keywords": ["zariel tiefling", "fallen angel", "martial and warlike"]
+            }
         ]
     },
     {
-        "name": "Tortle"
+        "name": "Tortle",
+        "color": "rgba(0, 128, 128, 0.55)",
+        "description": "Turtle-like humanoids with natural shells and a connection to the sea.",
+        "keywords": ["tortle", "turtle-like", "sea"]
     },
     {
-        "name": "Triton"
+        "name": "Triton",
+        "color": "rgba(30, 144, 255, 0.55)",
+        "description": "Amphibious beings with aquatic features, guardians of the ocean depths.",
+        "keywords": ["triton", "amphibious", "guardians of the ocean depths"]
     },
     {
-        "name": "Yuan-ti"
+        "name": "Yuan-ti",
+        "color": "rgba(85, 107, 47, 0.55)",
+        "description": "Snake-like humanoids with a mix of human and serpent characteristics.",
+        "keywords": ["yuan-ti", "snake-like", "human and serpent characteristics"]
     }
   ];
-  
+
   await prisma.race.createMany({
     data: races.map((rce) => ({
       ...rce,
@@ -11174,18 +11441,26 @@ async function main() {
     })),
   });
 
+  // Function to get a random variant of a race if available, otherwise return the initial race
+  function getRandomRaceWithVariant(race: any) {
+    if (race.variants.length > 0) {
+      return race.variants[Math.floor(Math.random() * race.variants.length)];
+    }
+    return race;
+  }
+
   // Fetch all races and classes from the database
   const allRaces = await prisma.race.findMany();
   const allClasses = await prisma.class.findMany();
   const allBackgrounds = await prisma.background.findMany();
 
   // Randomly select a race and class from the fetched records
-  const randomRace = allRaces[Math.floor(Math.random() * allRaces.length)];
+  const randomRace = getRandomRaceWithVariant(allRaces[Math.floor(Math.random() * allRaces.length)]);
   const randomClass = allClasses[Math.floor(Math.random() * allClasses.length)];
   const randomBackground = allBackgrounds[Math.floor(Math.random() * allBackgrounds.length)];
   
   // Randomly select a race and class from the fetched records
-  const randomRace2 = allRaces[Math.floor(Math.random() * allRaces.length)];
+  const randomRace2 = getRandomRaceWithVariant(allRaces[Math.floor(Math.random() * allRaces.length)]);
   const randomClass2 = allClasses[Math.floor(Math.random() * allClasses.length)];
   const randomBackground2 = allBackgrounds[Math.floor(Math.random() * allBackgrounds.length)];
 

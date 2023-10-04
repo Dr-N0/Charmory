@@ -48,7 +48,10 @@ model Character {
 model Race {
   id              Int             @id @default(autoincrement())
   name            String          @unique
-  variants        String[]
+  color           String?
+  description     String?
+  keywords        String[]        @default([])
+  variants        Json[]          @default([])
   racialTraits    RacialTraits?
 }
 
