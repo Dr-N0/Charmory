@@ -7,199 +7,6 @@ async function main() {
   const password = await hash('test', 12)
   console.log(password)
 
-  const classes = [
-    {
-      "name": "Artificer",
-      "color": "#615230",
-      "subClasses": [
-          "Artillerist",
-          "Armorer",
-          "Battle Smith",
-          "Alchemist"
-      ]
-    },
-    {
-      "name": "Barbarian",
-      "color": "#CD7055",
-      "subClasses": [
-          "Path of the Zealot",
-          "Path of the Ancestral Guardian",
-          "Path of the Berserker",
-          "Path of the Totem Warrior",
-          "Path of the Storm Herald",
-          "Path of Wild Magic",
-          "Path of the Beast"
-      ]
-    },
-    {
-      "name": "Bard",
-      "color": "#A87AAB",
-      "subClasses": [
-          "College of Eloquence",
-          "College of Swords",
-          "College of Whispers",
-          "College of Creation",
-          "College of Glamor",
-          "College of Valor",
-          "College of Lore"
-      ]
-    },
-    {
-      "name": "Cleric",
-      "color": "#8E9092",
-      "subClasses": [
-          "Knowledge",
-          "Tempest Domain",
-          "War Domain",
-          "Forge Domain",
-          "Order Domain",
-          "Twilight Domain",
-          "Peace Domain",
-          "Nature Domain",
-          "Grave Domain",
-          "Light Domain",
-          "Life Domain",
-          "Trickery Domain"
-      ]
-    },
-    {
-      "name": "Druid",
-      "color": "#88934F",
-      "subClasses": [
-          "Circle of Dreams",
-          "Circle of Stars",
-          "Circle of the Shepherd",
-          "Circle of Spores",
-          "Circle of the Moon",
-          "Circle of the Land",
-          "Circle of Wildfire"
-      ]
-    },
-    {
-      "name": "Fighter",
-      "color": "#583428",
-      "subClasses": [
-          "Cavalier",
-          "Psi Warrior",
-          "Arcane Archer",
-          "Samurai",
-          "Rune Knight",
-          "Echo Knight",
-          "Champion",
-          "Eldritch Knight",
-          "Battle Master"
-      ]
-    },
-    {
-      "name": "Monk",
-      "color": "#1D90BC",
-      "subClasses": [
-          "Way of Mercy",
-          "Way of the Astral Self",
-          "Way of Shadow",
-          "Way of the Drunken Master",
-          "Way of the Sun Soul",
-          "Way of the Kensei",
-          "Way of the Ascendant Dragon",
-          "Way of the Four Elements",
-          "Way of the Open Hand"
-      ]
-    },
-    {
-      "name": "Paladin",
-      "color": "#A3862A",
-      "subClasses": [
-          "Oath of Devotion",
-          "Oath of Vengeance",
-          "Oath of the Watchers",
-          "Oath of Glory",
-          "Oath of Conquest",
-          "Oath of Redemption",
-          "Oath of the Ancients"
-      ]
-    },
-    {
-      "name": "Ranger",
-      "color": "#558366",
-      "subClasses": [
-          "Swarmkeeper",
-          "Hunter",
-          "Monster Slayer",
-          "Drakewarden",
-          "Beast Master",
-          "Gloom Stalker",
-          "Horizon Walker",
-          "Fey Wanderer"
-      ]
-    },
-    {
-      "name": "Rogue",
-      "color": "#52534D",
-      "subClasses": [
-          "Assassin",
-          "Soulknife",
-          "Inquisitive",
-          "Swashbuckler",
-          "Mastermind",
-          "Scout",
-          "Arcane Trickster",
-          "Phantom",
-          "Thief"
-      ]
-    },
-    {
-      "name": "Sorcerer",
-      "color": "#BF5357",
-      "subClasses": [
-          "Shadow Magic",
-          "Divine Soul",
-          "Aberrant Mind",
-          "Wild Magic",
-          "Draconic Bloodline",
-          "Storm Sorcery",
-          "Clockwork Soul"
-      ]
-    },
-    {
-      "name": "Warlock",
-      "color": "#7D4DB1",
-      "subClasses": [
-          "The Fiend",
-          "The Fathomless",
-          "The Archfey",
-          "The Celestial",
-          "The Great Old One",
-          "The Genie",
-          "The Hexblade"
-      ]
-    },
-    {
-      "name": "Wizard",
-      "color": "#285EB8",
-      "subClasses": [
-          "War Magic",
-          "School of Evocation",
-          "School of Divination",
-          "School of Conjuration",
-          "Graviturgy Magic",
-          "Bladesinging",
-          "School of Abjuration",
-          "Chronurgy Magic",
-          "School of Transmutation",
-          "School of Illusion",
-          "School of Necromancy",
-          "Order of Scribes",
-          "School of Enchantment"
-      ]
-    }
-  ];
-  
-  await prisma.class.createMany({
-    data: classes.map((cls) => ({
-      ...cls,
-    })),
-  });
-  
   const races = [
     {
         "name": "Aarakocra",
@@ -635,6 +442,199 @@ async function main() {
     })),
   });
 
+  const classes = [
+    {
+      "name": "Artificer",
+      "color": "#615230",
+      "subClasses": [
+          "Artillerist",
+          "Armorer",
+          "Battle Smith",
+          "Alchemist"
+      ]
+    },
+    {
+      "name": "Barbarian",
+      "color": "#CD7055",
+      "subClasses": [
+          "Path of the Zealot",
+          "Path of the Ancestral Guardian",
+          "Path of the Berserker",
+          "Path of the Totem Warrior",
+          "Path of the Storm Herald",
+          "Path of Wild Magic",
+          "Path of the Beast"
+      ]
+    },
+    {
+      "name": "Bard",
+      "color": "#A87AAB",
+      "subClasses": [
+          "College of Eloquence",
+          "College of Swords",
+          "College of Whispers",
+          "College of Creation",
+          "College of Glamor",
+          "College of Valor",
+          "College of Lore"
+      ]
+    },
+    {
+      "name": "Cleric",
+      "color": "#8E9092",
+      "subClasses": [
+          "Knowledge",
+          "Tempest Domain",
+          "War Domain",
+          "Forge Domain",
+          "Order Domain",
+          "Twilight Domain",
+          "Peace Domain",
+          "Nature Domain",
+          "Grave Domain",
+          "Light Domain",
+          "Life Domain",
+          "Trickery Domain"
+      ]
+    },
+    {
+      "name": "Druid",
+      "color": "#88934F",
+      "subClasses": [
+          "Circle of Dreams",
+          "Circle of Stars",
+          "Circle of the Shepherd",
+          "Circle of Spores",
+          "Circle of the Moon",
+          "Circle of the Land",
+          "Circle of Wildfire"
+      ]
+    },
+    {
+      "name": "Fighter",
+      "color": "#583428",
+      "subClasses": [
+          "Cavalier",
+          "Psi Warrior",
+          "Arcane Archer",
+          "Samurai",
+          "Rune Knight",
+          "Echo Knight",
+          "Champion",
+          "Eldritch Knight",
+          "Battle Master"
+      ]
+    },
+    {
+      "name": "Monk",
+      "color": "#1D90BC",
+      "subClasses": [
+          "Way of Mercy",
+          "Way of the Astral Self",
+          "Way of Shadow",
+          "Way of the Drunken Master",
+          "Way of the Sun Soul",
+          "Way of the Kensei",
+          "Way of the Ascendant Dragon",
+          "Way of the Four Elements",
+          "Way of the Open Hand"
+      ]
+    },
+    {
+      "name": "Paladin",
+      "color": "#A3862A",
+      "subClasses": [
+          "Oath of Devotion",
+          "Oath of Vengeance",
+          "Oath of the Watchers",
+          "Oath of Glory",
+          "Oath of Conquest",
+          "Oath of Redemption",
+          "Oath of the Ancients"
+      ]
+    },
+    {
+      "name": "Ranger",
+      "color": "#558366",
+      "subClasses": [
+          "Swarmkeeper",
+          "Hunter",
+          "Monster Slayer",
+          "Drakewarden",
+          "Beast Master",
+          "Gloom Stalker",
+          "Horizon Walker",
+          "Fey Wanderer"
+      ]
+    },
+    {
+      "name": "Rogue",
+      "color": "#52534D",
+      "subClasses": [
+          "Assassin",
+          "Soulknife",
+          "Inquisitive",
+          "Swashbuckler",
+          "Mastermind",
+          "Scout",
+          "Arcane Trickster",
+          "Phantom",
+          "Thief"
+      ]
+    },
+    {
+      "name": "Sorcerer",
+      "color": "#BF5357",
+      "subClasses": [
+          "Shadow Magic",
+          "Divine Soul",
+          "Aberrant Mind",
+          "Wild Magic",
+          "Draconic Bloodline",
+          "Storm Sorcery",
+          "Clockwork Soul"
+      ]
+    },
+    {
+      "name": "Warlock",
+      "color": "#7D4DB1",
+      "subClasses": [
+          "The Fiend",
+          "The Fathomless",
+          "The Archfey",
+          "The Celestial",
+          "The Great Old One",
+          "The Genie",
+          "The Hexblade"
+      ]
+    },
+    {
+      "name": "Wizard",
+      "color": "#285EB8",
+      "subClasses": [
+          "War Magic",
+          "School of Evocation",
+          "School of Divination",
+          "School of Conjuration",
+          "Graviturgy Magic",
+          "Bladesinging",
+          "School of Abjuration",
+          "Chronurgy Magic",
+          "School of Transmutation",
+          "School of Illusion",
+          "School of Necromancy",
+          "Order of Scribes",
+          "School of Enchantment"
+      ]
+    }
+  ];
+  
+  await prisma.class.createMany({
+    data: classes.map((cls) => ({
+      ...cls,
+    })),
+  });
+  
   const backgrounds = [
     {
       "name": "Acolyte",
