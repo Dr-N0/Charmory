@@ -37,14 +37,34 @@
 }
 
 .inputBox {
-    padding: 15px 20px;
+    padding: 14px 14px;
+    border-radius: 3px;
     width: 100%;
     height: 100%;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.inputBox:hover {
+    border: 1px solid white;
+}
+
+.variantBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .inputVariants {
-    padding: 15px 20px;
+    padding: 14px 14px;
+    border-radius: 3px;
     width: 100%;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.inputVariants:hover {
+    border: 1px solid white;
 }
 
 .inputSpan {
@@ -86,7 +106,7 @@
     display: inline-block;
     width: 100%;
     padding: 10px 0px;
-    color: rgb(211, 211, 211);
+    color: rgb(230, 230, 230);
 }
 
 .inputMain {
@@ -135,6 +155,12 @@
     width: 99%;
     height: 60px;
     border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.classListValues:hover {
+    border: 1px solid white;
 }
 
 .abilityBox {

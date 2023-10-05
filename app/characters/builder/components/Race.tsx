@@ -96,23 +96,25 @@ export default function Race({
 
                                             <i className={style.raceDescription}>"{listValue.description}"</i>
                                         </div>
-                                        {raceName == listValue.name && variantList ?
-                                            variantList.map((variant: any) => {
-                                                return (
-                                                    <div
-                                                    key={variant.name}
-                                                    className={style.inputVariants}
-                                                    style={{
-                                                        backgroundColor: variant.color
-                                                    }}
-                                                    onClick={() => openModal(variant.name)}>
-                                                        {variant.name}
-                                                        <p><i>{variant.description}</i></p>
-                                                    </div>
-                                                )
-                                            }) :
-                                            ("")
-                                        }
+                                        <div className={style.variantBox}>
+                                            {raceName == listValue.name && variantList ?
+                                                variantList.map((variant: any) => {
+                                                    return (
+                                                        <div
+                                                        key={variant.name}
+                                                        className={style.inputVariants}
+                                                        style={{
+                                                            backgroundColor: variant.color
+                                                        }}
+                                                        onClick={() => openModal(variant.name)}>
+                                                            {variant.name}
+                                                            <p style={{marginTop: 5}}><i>"{variant.description}"</i></p>
+                                                        </div>
+                                                    )
+                                                }) :
+                                                ("")
+                                            }
+                                        </div>
                                     </div> :
                                     (<span
                                         className={style.inputBox}
@@ -120,7 +122,8 @@ export default function Race({
                                             backgroundColor: listValue.color
                                         }}
                                         onClick={()=> openModal(listValue.name)}>
-                                        {listValue.name} - {listValue.description}
+                                        {listValue.name}
+                                        <p style={{marginTop: 5}}><i>"{listValue.description}"</i></p>
                                     </span>)
                                 }
                             </li>
