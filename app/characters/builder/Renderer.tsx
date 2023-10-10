@@ -17,14 +17,19 @@ export default function Renderer({
     raceList,
     classList,
     backgroundList,
+    equipmentList,
 }: any) {
     const [workstation, setWorkstation] = useState(0);
+    const [name, setName] = useState(character.name);
+    const [previousName, setPreviousName] = useState(".");
     const [currentRace, setCurrentRace] = useState("");
     const [toggleRaceStation, setToggleRaceStation] = useState(false);
     const [currentClass, setCurrentClass] = useState("");
     const [toggleClassStation, setToggleClassStation] = useState(false);
     const [currentBackground, setCurrentBackground] = useState("");
     const [toggleBackgroundStation, setToggleBackgroundStation] = useState(false);
+    const [currentPack, setCurrentPack] = useState("");
+    const [toggleEquipmentStation, setToggleEquipmentStation] = useState(false);
 
     function renderSwitch(param: string) {
         switch(param) {
@@ -37,37 +42,53 @@ export default function Renderer({
             case 'description':
                 return <Description backgroundList={backgroundList} toggleBackgroundStation={toggleBackgroundStation} handleChooseBackground={handleChooseBackground} />
             case 'equipment':
-                return <Equipment />
+                return <Equipment equipmentList={equipmentList} toggleEquipmentStation={toggleEquipmentStation} handleChooseEquipmentPack={handleChooseEquipmentPack}/>
             default:
                 return <h1>Workstation not being used atm</h1>
         }
     }
 
-    async function getCharacters(session: any) {
-        const response = await fetch("/api/getCharacters", {
-            headers: {
-            Authorization: `Bearer ${session.accessToken}`,
-            },
-        });
-        
-        if (!response.ok) {
-            throw new Error("Failed to fetch characters");
-        }
-        
-        const characters = await response.json();
-        return characters;
+    function currentName(e: any){
+        setName(e.target.value);
     }
 
-    async function handleChooseRace(characterRace: any) {
-        setCurrentRace(characterRace);
+    // TODO: RATE LIMIT THE FUCK OUT OF THIS
+    async function saveName(e: any) {
+        if (name != previousName) {
+            const response = await fetch("/api/name", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: name,
+                    characterId: character?.id
+                }),
+            });
+            
+            if (!response.ok) {
+                throw new Error("Failed to post name");
+            }
+
+            setPreviousName(name);
+        }
+    }
+
+    async function handleChooseRace(characterRace: any, characterVariant: any) {
+        if (characterVariant) {
+            setCurrentRace(characterVariant);
+        } else {
+            setCurrentRace(characterRace);
+        }
         setToggleRaceStation(true);
         const response = await fetch("/api/race", {
             method: "POST",
             headers: {
-            "Content-Type": "application/json",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 race: characterRace,
+                variant: characterVariant,
                 characterId: character?.id
             }),
         });
@@ -109,25 +130,49 @@ export default function Renderer({
     async function handleChooseBackground(characterBackground: any) {
         setCurrentBackground(characterBackground);
         setToggleBackgroundStation(true);
-        // const response = await fetch("/api/background", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify({
-        //         className: characterBackground,
-        //         characterId: character.id
-        //     }),
-        // });
+        const response = await fetch("/api/background", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                background: characterBackground,
+                characterId: character.id
+            }),
+        });
         
-        // if (!response.ok) {
-        //     setCurrentBackground("");
-        //     setToggleClassStation(false);
-        //     throw new Error("Failed to set class");
-        // }
+        if (!response.ok) {
+            setCurrentBackground("");
+            setToggleClassStation(false);
+            throw new Error("Failed to set class");
+        }
 
-        // const data = await response.json();
-        // return data;
+        const data = await response.json();
+        return data;
+    }
+
+    async function handleChooseEquipmentPack(selectedPack: any) {
+        setCurrentPack(selectedPack);
+        setToggleEquipmentStation(true);
+        const response = await fetch("/api/equipment", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                pack: selectedPack,
+                characterId: character.id
+            }),
+        });
+        
+        if (!response.ok) {
+            setCurrentPack("");
+            setToggleClassStation(false);
+            throw new Error("Failed to set class");
+        }
+
+        const data = await response.json();
+        return data;
     }
 
     return (
@@ -144,7 +189,10 @@ export default function Renderer({
 
                 <div className={style.name}>
                     <h2>Name: </h2>
-                    <input></input>
+                    <input
+                        value={name}
+                        onBlur={(event) => saveName(event)}
+                        onChange={(event) => currentName(event)}></input>
                 </div>
                 <br></br>
 

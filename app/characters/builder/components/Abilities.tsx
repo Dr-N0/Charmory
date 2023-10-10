@@ -173,6 +173,10 @@ export default function Abilities({
         }
     };
 
+    const select = (event: any) => {
+        event.target.select();
+    };
+
     // TODO: Ability row is static and pushes the screen
     // when it gets too small 
 
@@ -208,6 +212,7 @@ export default function Abilities({
                                     max="18"
                                     onBlur={(event) => handleManualSave("strength", event)}
                                     onChange={(event) => handleManualInput("strength", event)}
+                                    onClick={select}
                                 />
                                 <input
                                     className={style.manualInput}
@@ -217,6 +222,7 @@ export default function Abilities({
                                     max="18"
                                     onBlur={(event) => handleManualSave("dexterity", event)}
                                     onChange={(event) => handleManualInput("dexterity", event)}
+                                    onClick={select}
                                 />
                                 <input
                                     className={style.manualInput}
@@ -226,6 +232,7 @@ export default function Abilities({
                                     max="18"
                                     onBlur={(event) => handleManualSave("constitution", event)}
                                     onChange={(event) => handleManualInput("constitution", event)}
+                                    onClick={select}
                                 />
                                 <input
                                     className={style.manualInput}
@@ -235,6 +242,7 @@ export default function Abilities({
                                     max="18"
                                     onBlur={(event) => handleManualSave("intelligence", event)}
                                     onChange={(event) => handleManualInput("intelligence", event)}
+                                    onClick={select}
                                 />
                                 <input
                                     className={style.manualInput}
@@ -244,6 +252,7 @@ export default function Abilities({
                                     max="18"
                                     onBlur={(event) => handleManualSave("wisdom", event)}
                                     onChange={(event) => handleManualInput("wisdom", event)}
+                                    onClick={select}
                                 />
                                 <input
                                     className={style.manualInput}
@@ -253,6 +262,7 @@ export default function Abilities({
                                     max="18"
                                     onBlur={(event) => handleManualSave("charisma", event)}
                                     onChange={(event) => handleManualInput("charisma", event)}
+                                    onClick={select}
                                 />
                             </div>
                             <hr></hr>
