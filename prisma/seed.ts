@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import { hash } from 'bcrypt'
+import { execSync } from 'child_process';
 
 const prisma = new PrismaClient()
 
@@ -1068,6 +1069,1322 @@ async function main() {
       ...bkgrd,
     })),
   });
+
+  const packs = [
+    {
+      "name": "Burglar's Pack",
+      "cost": 16,
+      "contents": [
+        {"item": "backpack", "qty": 1},
+        {"item": "bag of 1,000 ball bearings", "qty": 1},
+        {"item": "10 feet of string", "qty": 1},
+        {"item": "bell", "qty": 1},
+        {"item": "5 candles", "qty": 5},
+        {"item": "crowbar", "qty": 1},
+        {"item": "hammer", "qty": 1},
+        {"item": "10 pitons", "qty": 10},
+        {"item": "hooded lantern", "qty": 1},
+        {"item": "2 flasks of oil", "qty": 2},
+        {"item": "5 days rations", "qty": 5},
+        {"item": "tinderbox", "qty": 1},
+        {"item": "waterskin", "qty": 1},
+        {"item": "50 feet of hempen rope", "qty": 1}
+      ]
+    },
+    {
+      "name": "Diplomat's Pack",
+      "cost": 39,
+      "contents": [
+        {"item": "chest", "qty": 1},
+        {"item": "2 cases for maps and scrolls", "qty": 2},
+        {"item": "set of fine clothes", "qty": 1},
+        {"item": "bottle of ink", "qty": 1},
+        {"item": "ink pen", "qty": 1},
+        {"item": "lamp", "qty": 1},
+        {"item": "2 flasks of oil", "qty": 2},
+        {"item": "5 sheets of paper", "qty": 5},
+        {"item": "vial of perfume", "qty": 1},
+        {"item": "sealing wax", "qty": 1},
+        {"item": "soap", "qty": 1}
+      ]
+    },
+    {
+      "name": "Dungeoneer's Pack",
+      "cost": 12,
+      "contents": [
+        {"item": "backpack", "qty": 1},
+        {"item": "crowbar", "qty": 1},
+        {"item": "hammer", "qty": 1},
+        {"item": "10 pitons", "qty": 10},
+        {"item": "10 torches", "qty": 10},
+        {"item": "tinderbox", "qty": 1},
+        {"item": "10 days of rations", "qty": 10},
+        {"item": "waterskin", "qty": 1},
+        {"item": "50 feet of hempen rope", "qty": 1}
+      ]
+    },
+    {
+      "name": "Entertainer's Pack",
+      "cost": 40,
+      "contents": [
+        {"item": "backpack", "qty": 1},
+        {"item": "bedroll", "qty": 1},
+        {"item": "2 costumes", "qty": 2},
+        {"item": "5 candles", "qty": 5},
+        {"item": "5 days of rations", "qty": 5},
+        {"item": "waterskin", "qty": 1},
+        {"item": "disguise kit", "qty": 1}
+      ]
+    },
+    {
+      "name": "Explorer's Pack",
+      "cost": 10,
+      "contents": [
+        {"item": "backpack", "qty": 1},
+        {"item": "bedroll", "qty": 1},
+        {"item": "mess kit", "qty": 1},
+        {"item": "tinderbox", "qty": 1},
+        {"item": "10 torches", "qty": 10},
+        {"item": "10 days of rations", "qty": 10},
+        {"item": "waterskin", "qty": 1},
+        {"item": "50 feet of hempen rope", "qty": 1}
+      ]
+    },
+    {
+      "name": "Priest's Pack",
+      "cost": 19,
+      "contents": [
+        {"item": "backpack", "qty": 1},
+        {"item": "blanket", "qty": 1},
+        {"item": "10 candles", "qty": 10},
+        {"item": "tinderbox", "qty": 1},
+        {"item": "alms box", "qty": 1},
+        {"item": "2 blocks of incense", "qty": 2},
+        {"item": "censer", "qty": 1},
+        {"item": "vestments", "qty": 1},
+        {"item": "2 days of rations", "qty": 2},
+        {"item": "waterskin", "qty": 1}
+      ]
+    },
+    {
+      "name": "Scholar's Pack",
+      "cost": 40,
+      "contents": [
+        {"item": "backpack", "qty": 1},
+        {"item": "book of lore", "qty": 1},
+        {"item": "bottle of ink", "qty": 1},
+        {"item": "ink pen", "qty": 1},
+        {"item": "10 sheets of parchment", "qty": 10},
+        {"item": "little bag of sand", "qty": 1},
+        {"item": "small knife", "qty": 1}
+      ]
+    }
+  ];
+  
+  await prisma.packs.createMany({
+    data: packs.map((pks) => ({
+      ...pks,
+    })),
+  });
+
+  const equipment = [
+    {
+      "name": "Abacus",
+      "description": "A simple counting device with beads on rods.",
+      "cost": {
+        "value": 2,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Acid (vial)",
+      "description": "A vial of corrosive acid that can be thrown or poured on objects.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 25,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Alchemist's Fire (flask)",
+      "description": "A flask of sticky, flammable fluid that ignites when exposed to air.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 50,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Arrows (20)",
+      "description": "A quiver of 20 arrows for use with a bow.",
+      "group": "Ammunition",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 20
+    },
+    {
+      "name": "Blowgun needles (20)",
+      "description": "A quiver of 20 needles for use with a blowgun.",
+      "group": "Ammunition",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 20
+    },
+    {
+      "name": "Crossbow bolts (20)",
+      "description": "A quiver of 20 bolts for use with a crossbow.",
+      "group": "Ammunition",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1.5,
+        "type": "lb"
+      },
+      "qty": 20
+    },
+    {
+      "name": "Antitoxin (vial)",
+      "description": "A vial of liquid that grants advantage on saving throws against poison for 1 hour.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 50,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Crystal",
+      "description": "A crystal used as an arcane focus.",
+      "group": "Arcane Focus",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Orb",
+      "description": "An orb used as an arcane focus.",
+      "group": "Arcane Focus",
+      "cost": {
+        "value": 20,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 3,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Rod",
+      "description": "A rod used as an arcane focus.",
+      "group": "Arcane Focus",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Staff",
+      "description": "A staff used as an arcane focus.",
+      "group": "Arcane Focus",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 4,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Wand",
+      "description": "A wand used as an arcane focus.",
+      "group": "Arcane Focus",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Backpack",
+      "description": "A leather or cloth bag with shoulder straps for carrying items on one's back.",
+      "group": "Containers",
+      "cost": {
+        "value": 2,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 5,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Ball Bearings (bag of 1,000)",
+      "description": "A bag containing numerous tiny metal balls, used to create hazards or slow down pursuers.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Barrel",
+      "description": "A large cylindrical container typically used for storage or transportation of goods.",
+      "group": "Containers",
+      "cost": {
+        "value": 2,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 70,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Basket",
+      "description": "A woven container with a handle, used for carrying and storing items.",
+      "group": "Containers",
+      "cost": {
+        "value": 4,
+        "type": "sp"
+      },
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Bucket",
+      "description": "A cylindrical container with a handle, typically used for carrying liquids.",
+      "group": "Containers",
+      "cost": {
+        "value": 5,
+        "type": "cp"
+      },
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Caltrops (bag of 20)",
+      "description": "A bag containing small, spiked objects that can be scattered on the ground to impede movement.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Climber's Kit",
+      "description": "A set of specialized tools for climbing, including pitons, boot tips, gloves, and a harness.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 25,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 12,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Clothes, common",
+      "description": "Simple and everyday attire suitable for commoners.",
+      "group": "Clothes",
+      "cost": {
+        "value": 5,
+        "type": "sp"
+      },
+      "weight": {
+        "value": 3,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Clothes, costume",
+      "description": "Fancy attire suitable for masquerades and parties.",
+      "group": "Clothes",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 4,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Clothes, fine",
+      "description": "High-quality attire suitable for nobles and wealthy individuals.",
+      "group": "Clothes",
+      "cost": {
+        "value": 15,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 6,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Clothes, traveler's",
+      "description": "Sturdy and practical attire suitable for travel.",
+      "group": "Clothes",
+      "cost": {
+        "value": 2,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 4,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Component Pouch",
+      "description": "A small, watertight leather belt pouch containing compartments for spellcasting components.",
+      "group": "Common Items",
+      "cost": {
+        "value": 25,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Crowbar",
+      "description": "A sturdy, metal bar with a flattened end, used for prying and leveraging.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 2,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 5,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Sprig of mistletoe",
+      "description": "A sprig of mistletoe used as a druidic focus.",
+      "group": "Druidic Focus",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Totem",
+      "description": "A small totem or carving used as a druidic focus.",
+      "group": "Druidic Focus",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Wooden staff",
+      "description": "A staff made of wood used as a druidic focus.",
+      "group": "Druidic Focus",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 4,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Yew wand",
+      "description": "A wand made of yew used as a druidic focus.",
+      "group": "Druidic Focus",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Fishing Tackle",
+      "description": "A kit containing tools and equipment for fishing.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 4,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Flask or Tankard",
+      "description": "A simple container for holding liquids.",
+      "group": "Containers",
+      "cost": {
+        "value": 2,
+        "type": "cp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Grappling Hook",
+      "description": "A metal hook with multiple prongs, attached to a rope, used for climbing or grabbing objects.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 2,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 4,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Hammer",
+      "description": "A versatile tool with a heavy metal head, used for various tasks.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 3,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Healer's Kit",
+      "description": "A pouch containing bandages, salves, and other supplies for providing first aid.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 3,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Amulet",
+      "description": "A holy symbol in the form of an amulet.",
+      "group": "Holy Symbol",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Emblem",
+      "description": "A holy symbol in the form of an emblem.",
+      "group": "Holy Symbol",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Reliquary",
+      "description": "A holy symbol in the form of a small container holding a sacred relic.",
+      "group": "Holy Symbol",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Holy Water (flask)",
+      "description": "A vial of blessed water that can harm undead and fiends.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 25,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Hourglass",
+      "description": "A timekeeping device with two connected glass bulbs containing sand that takes an hour to flow from one to the other.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 25,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Hunting Trap",
+      "description": "A mechanical trap used for catching creatures.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 25,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Ink (1 ounce bottle)",
+      "description": "A small bottle of ink used for writing and drawing.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Ink Pen",
+      "description": "A simple writing instrument with a pointed end for applying ink.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 2,
+        "type": "cp"
+      },
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Jug or Pitcher",
+      "description": "A container for holding and pouring liquids.",
+      "group": "Containers",
+      "cost": {
+        "value": 2,
+        "type": "cp"
+      },
+      "weight": {
+        "value": 25,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Ladder (10-foot)",
+      "description": "A portable ladder consisting of rungs or steps connected by two long sidepieces.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 1,
+        "type": "sp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Lamp",
+      "description": "A container for holding oil with a wick for producing light.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 5,
+        "type": "sp"
+      },
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Lantern, bullseye",
+      "description": "A lantern with a hinged metal shutter that can be closed to block light.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Lantern, hooded",
+      "description": "A lantern with a shuttered hood, casting a focused beam of light.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Lock",
+      "description": "A basic lock with a key for securing doors and containers.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Magnifying Glass",
+      "description": "A lens set in a frame, used for making small objects appear larger.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 100,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Manacles",
+      "description": "A set of sturdy, metal restraints for binding a creature's wrists.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 2,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 6,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Mess Kit",
+      "description": "A simple set of dishes and utensils for eating on the go.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 2,
+        "type": "sp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Mirror, steel",
+      "description": "A small, reflective surface made of polished steel.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 0.5,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Oil (flask)",
+      "description": "A vial of oil that can be used to create a controlled flame or slick surface.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 1,
+        "type": "sp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Paper (one sheet)",
+      "description": "A single sheet of paper suitable for writing.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 2,
+        "type": "sp"
+      },
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Parchment (one sheet)",
+      "description": "A single sheet of parchment suitable for writing.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 1,
+        "type": "sp"
+      },
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Perfume (vial)",
+      "description": "A small vial of pleasant-smelling liquid used for personal grooming.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Pick, miner's",
+      "description": "A sturdy pick designed for breaking rocks and extracting minerals.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 2,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 10,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Piton",
+      "description": "A metal spike driven into rock to support weight or hold a rope.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 5,
+        "type": "cp"
+      },
+      "weight": {
+        "value": 0.25,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Poison, basic (vial)",
+      "description": "A vial of poison that can be applied to weapons or ammunition.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 100,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Pole (10-foot)",
+      "description": "A long pole that can be used for reaching or prodding.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 5,
+        "type": "cp"
+      },
+      "weight": {
+        "value": 7,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Pot, iron",
+      "description": "A sturdy iron pot for cooking or holding liquids.",
+      "group": "Containers",
+      "cost": {
+        "value": 2,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 10,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Potion of Healing",
+      "description": "A magical potion that can restore health when consumed.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 50,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 0.5,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Pouch",
+      "description": "A small bag or container for holding small items.",
+      "group": "Containers",
+      "cost": {
+        "value": 5,
+        "type": "sp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Quiver",
+      "description": "A container designed for holding arrows.",
+      "group": "Containers",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Ram, portable",
+    "description": "A sturdy, portable battering ram often used by law enforcement.",
+    "group": "Usable Items",
+    "cost": {
+      "value": 4,
+      "type": "gp"
+    },
+    "weight": {
+      "value": 35,
+      "type": "lb"
+    },
+    "qty": 1
+    },
+    {
+      "name": "Rations (1/day)",
+      "description": "A day's worth of preserved and compacted food.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 5,
+        "type": "sp"
+      },
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Robes",
+      "description": "Flowing, loose garments typically worn by spellcasters.",
+      "group": "Clothes",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 4,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Rope, hempen (50 ft)",
+      "description": "A length of strong, fibrous rope made from hemp.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 10,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Rope, silk (50 ft)",
+      "description": "A length of strong, silk rope.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 5,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Sack",
+      "description": "A simple bag made of cloth, typically used for carrying loose items.",
+      "group": "Containers",
+      "cost": {
+        "value": 1,
+        "type": "cp"
+      },
+      "weight": {
+        "value": 0.5,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Scale, merchant's",
+      "description": "A small set of scales for weighing items.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 3,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Sealing Wax",
+      "description": "A substance used for sealing letters and documents.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 5,
+        "type": "sp"
+      },
+      "weight": {
+        "value": 0.5,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Shovel",
+      "description": "A sturdy tool used for digging.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 2,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 5,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Signal Whistle",
+      "description": "A small metal whistle used for signaling over short distances.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 5,
+        "type": "cp"
+      },
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Signet Ring",
+      "description": "A ring bearing a distinctive mark or symbol used to sign and seal documents.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Soap",
+      "description": "A small, fragrant bar of soap.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 2,
+        "type": "cp"
+      },
+      "weight": {
+        "value": 0.5,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Spellbook",
+      "description": "A book containing a wizard's spells and magical formulae.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 50,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 3,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Spikes, iron (10)",
+      "description": "Metal spikes driven into surfaces to create a secure anchor point.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 5,
+        "type": "lb"
+      },
+      "qty": 10
+    },
+    {
+      "name": "Spyglass",
+      "description": "A small, handheld telescope used for seeing at a distance.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 1000,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Tent, two-person",
+      "description": "A simple tent that can comfortably sleep two people.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 2,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 20,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Tinderbox",
+      "description": "A small container with flint, tinder, and a striking surface for starting fires.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 5,
+        "type": "sp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Torch",
+      "description": "A simple wooden torch soaked in flammable substance and lit.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 1,
+        "type": "cp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Vial",
+      "description": "A small container designed to hold liquids and other substances.",
+      "group": "Containers",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 0.5,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Waterskin",
+      "description": "A container designed for holding water.",
+      "group": "Containers",
+      "cost": {
+        "value": 2,
+        "type": "sp"
+      },
+      "weight": {
+        "value": 5,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Whetstone",
+      "description": "A stone used for sharpening blades.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 1,
+        "type": "cp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    }
+  ];
+
+  await prisma.equipment.createMany({
+    data: equipment.map((eqp) => ({
+      ...eqp,
+    })),
+  });
+
   
   const spells = [
     {
@@ -11189,7 +12506,7 @@ async function main() {
       "range": "Touch",
       "components": "V, S, M (a diamond worth at least 1,000 gp and at least 1 cubic inch of flesh of the creature that is to be cloned, which the spell consumes, and a vessel worth at least 2,000 gp that has a sealable lid and is large enough to hold the creature being cloned, such as a huge urn, coffin, mud-filled cyst in the ground, or crystal container filled with salt water)",
       "duration": "Instantaneous",
-      "description": "This spell grows an inert duplicate of a living creature as a safeguard against death. This clone forms inside the vessel used in the spell’s casting and grows to full size and maturity after 120 days; you can also choose to have the clone be a younger version of the same creature. It remains inert and endures indefinitely, as long as its vessel remains undisturbed.\nAt any time after the clone matures, if the original creature dies, its soul transfers to the clone, provided that the soul is free and willing to return.\nThe clone is physically identical to the original and has the same personality, memories, and abilities, but none of the original's equipment. The original creature's physical remains, if they still exist, become inert and can't thereafter be restored to life, since the creature's soul is elsewhere."
+      "description": "This spell grows an inert duplicate of a living creature as a safeguard against death. This clone forms inside the vessel used in the spell's casting and grows to full size and maturity after 120 days; you can also choose to have the clone be a younger version of the same creature. It remains inert and endures indefinitely, as long as its vessel remains undisturbed.\nAt any time after the clone matures, if the original creature dies, its soul transfers to the clone, provided that the soul is free and willing to return.\nThe clone is physically identical to the original and has the same personality, memories, and abilities, but none of the original's equipment. The original creature's physical remains, if they still exist, become inert and can't thereafter be restored to life, since the creature's soul is elsewhere."
     },
     {
       "className": "Wizard",

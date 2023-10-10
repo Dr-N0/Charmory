@@ -141,9 +141,22 @@ model Background {
 
 // ===== Equipment =====
 model Equipment {
-  id          Int         @id @default(autoincrement())
+  id            Int         @id @default(autoincrement())
 
-  name        String?
+  name          String
+  description   String
+  group         String?
+  cost          Json?
+  weight        Json?
+  qty           Int?
+}
+
+
+model Packs {
+  id        Int      @id @default(autoincrement())
+  name      String
+  cost      Int
+  contents  Json[]
 }
 
 model Proficencies {
