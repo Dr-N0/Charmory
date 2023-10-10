@@ -131,9 +131,24 @@ CREATE TABLE "Background" (
 -- CreateTable
 CREATE TABLE "Equipment" (
     "id" SERIAL NOT NULL,
-    "name" TEXT,
+    "name" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "group" TEXT,
+    "cost" JSONB,
+    "weight" JSONB,
+    "qty" INTEGER,
 
     CONSTRAINT "Equipment_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Packs" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "cost" INTEGER NOT NULL,
+    "contents" JSONB[],
+
+    CONSTRAINT "Packs_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable

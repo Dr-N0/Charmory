@@ -193,7 +193,7 @@
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, 0.075) 0px 1px 1px inset;
     color: rgb(0, 0, 0);
-    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    transition: border 0.05s linear 0s, box-shadow 0.05s linear 0s;
 }
 
 .manualInput:focus {

@@ -12,22 +12,28 @@ export default function Race({
     const [searchItem, setSearchItem] = useState('');
     const [filtered, setFiltered] = useState(raceList);
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedRace, setSelectedRace] = useState('');
-    const [raceName, setRaceName] = useState('');
+    const [tempName, setTempName] = useState('');
     const [variantList, setVariantList] = useState([]);
+    const [race, setRace] = useState(raceList[0]);
 
-    const openModal = (name: any) => {
+    const openModal = (race: any) => {
         setIsOpen(true);
-        setSelectedRace(name);
+        
+        setRace(race);
     };
 
     const closeModal = () => {
         setIsOpen(false);
     };
 
-    const handleSelect = (selectedRace: any) => {
+    const handleSelect = (currentRace: any) => {
+        const { name, variants } = currentRace;
         setIsOpen(false);
-        handleChooseRace(selectedRace);
+        if (!variants) {
+            handleChooseRace(tempName, name);
+        } else {
+            handleChooseRace(name, null);
+        }
     }
 
     const handleInputChange = (e: any) => { 
@@ -42,11 +48,11 @@ export default function Race({
     }
 
     const toggleVariants = (name: any, list: any) => {
-        if (raceName == name && variantList == list) {
-            setRaceName("");
+        if (tempName == name && variantList == list) {
+            setTempName("");
             setVariantList([]);
         } else {
-            setRaceName(name);
+            setTempName(name);
             setVariantList(list);
         }
     }
@@ -85,11 +91,11 @@ export default function Race({
                                     style={{
                                         backgroundColor: listValue.color
                                     }}
-                                    onClick={()=> toggleVariants(listValue.name, listValue.variants)}>
+                                    onClick={() => toggleVariants(listValue.name, listValue.variants)}>
                                         <div className={style.listHeading}>
                                             <span className={style.raceName}>{listValue.name} ({listValue.variants.length})</span>
                                             
-                                            {raceName == listValue.name && variantList ?
+                                            {tempName == listValue.name && variantList ?
                                                 (<span className={`${style.dropDownArrow} ${style.dropDownDArrow}`}></span>) :
                                                 (<span className={`${style.dropDownArrow} ${style.dropDownRArrow}`}></span>)
                                             }
@@ -97,7 +103,7 @@ export default function Race({
                                             <i className={style.raceDescription}>"{listValue.description}"</i>
                                         </div>
                                         <div className={style.variantBox}>
-                                            {raceName == listValue.name && variantList ?
+                                            {tempName == listValue.name && variantList ?
                                                 variantList.map((variant: any) => {
                                                     return (
                                                         <div
@@ -106,7 +112,10 @@ export default function Race({
                                                         style={{
                                                             backgroundColor: variant.color
                                                         }}
-                                                        onClick={() => openModal(variant.name)}>
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            openModal(variant);
+                                                        }}>
                                                             {variant.name}
                                                             <p style={{marginTop: 5}}><i>"{variant.description}"</i></p>
                                                         </div>
@@ -121,7 +130,7 @@ export default function Race({
                                         style={{
                                             backgroundColor: listValue.color
                                         }}
-                                        onClick={()=> openModal(listValue.name)}>
+                                        onClick={()=> openModal(listValue)}>
                                         {listValue.name}
                                         <p style={{marginTop: 5}}><i>"{listValue.description}"</i></p>
                                     </span>)
@@ -135,10 +144,10 @@ export default function Race({
                                 <span onClick={closeModal}>x</span>
                                 {racialTraitList.map((trait: any) => {return(
                                     <li key={trait.name} className={style.inputLi}>
-                                        {selectedRace}
+                                        {race.name}
                                     </li>
                                 )})}
-                                <button onClick={() => handleSelect(selectedRace)}>Select Race</button>
+                                <button onClick={() => handleSelect(race)}>Select Race</button>
                             </ul>
                         </div>
                     )}
@@ -148,8 +157,3 @@ export default function Race({
         </div>
     );
 }
-
-{/* <div onClick={()=> openModal(listValue.variants)} className={style.inputDiv}>
-    {listValue.name}
-</div> */}
-
