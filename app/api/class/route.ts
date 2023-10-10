@@ -12,27 +12,46 @@ export async function POST(request: Request) {
     }
 
     try {
-        const foundClass = await prisma.class.findUnique({
+        // Find the class by name
+        const selectedClass = await prisma.class.findUnique({
             where: { name: className },
         });
 
-        const foundClassCopy = { ...foundClass };
+        if (!selectedClass) {
+            return NextResponse.json({
+                status: 404,
+                message: "Class not found",
+            });
+        }
 
-        const character = await prisma.character.findUnique({
-            where: { id: characterId },
-        });
-
+        // Update the character with the new class data
         const updatedCharacter = await prisma.character.update({
-            where: { id: character?.id },
+            where: { id: characterId },
             data: {
-                class: {
-                    connect: { id: foundClassCopy.id },
-                },
+                class: selectedClass,
             },
         });
 
-        return NextResponse.json({ status: 200, data: {character: updatedCharacter, foundclass: foundClass} })
+        return NextResponse.json({ status: 200, data: {character: updatedCharacter} })
     } finally {
+        await prisma.$disconnect();
+    }
+}
+
+// Define the GET route function for classes
+export async function GET(request: Request) {
+    try {
+        // Make a Prisma DB call to fetch the class list
+        const classList = await prisma.class.findMany({
+            orderBy: {
+                name: 'asc',
+            },
+        });
+
+        // Return the class list as a JSON response
+        return NextResponse.json({ status: 200, data: classList });
+    } finally {
+        // Disconnect from the Prisma client
         await prisma.$disconnect();
     }
 }
