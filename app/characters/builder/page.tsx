@@ -36,17 +36,23 @@ export default async function Builder({session}:any) {
     console.log(await prisma.character.findMany())
     const raceList = await prisma.race.findMany({
         orderBy: {
-            name: 'asc', // Sort by name in ascending order
+            name: 'asc',
         },
     });
     const classList = await prisma.class.findMany({
         orderBy: {
-            name: 'asc', // Sort by name in ascending order
+            name: 'asc',
         },
     });
     const backgroundList = await prisma.background.findMany({
         orderBy: {
-            name: 'asc', // Sort by name in ascending order
+            name: 'asc',
+        },
+    });
+
+    const equipmentList = await prisma.equipment.findMany({
+        orderBy: {
+            name: 'asc',
         },
     });
 
@@ -83,6 +89,7 @@ export default async function Builder({session}:any) {
                 raceList={raceList}
                 classList={classList}
                 backgroundList={backgroundList}
+                equipmentList={equipmentList}
             />
         </main>
     );
