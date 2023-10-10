@@ -21,7 +21,7 @@ export default function Renderer({
 }: any) {
     const [workstation, setWorkstation] = useState(0);
     const [name, setName] = useState(character.name);
-    const [previousName, setPreviousName] = useState(".");
+    const [previousName, setPreviousName] = useState(character.name);
     const [currentRace, setCurrentRace] = useState("");
     const [toggleRaceStation, setToggleRaceStation] = useState(false);
     const [currentClass, setCurrentClass] = useState("");

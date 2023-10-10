@@ -456,7 +456,7 @@ async function main() {
     },
     {
       "name": "Barbarian",
-      "color": "#CD7055",
+      "color": "#CF6D52",
       "subClasses": [
           "Path of the Zealot",
           "Path of the Ancestral Guardian",
@@ -469,7 +469,7 @@ async function main() {
     },
     {
       "name": "Bard",
-      "color": "#A87AAB",
+      "color": "#A876A9",
       "subClasses": [
           "College of Eloquence",
           "College of Swords",
@@ -500,7 +500,7 @@ async function main() {
     },
     {
       "name": "Druid",
-      "color": "#88934F",
+      "color": "#79853D",
       "subClasses": [
           "Circle of Dreams",
           "Circle of Stars",

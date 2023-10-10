@@ -50,7 +50,7 @@ export default async function Builder({session}:any) {
         },
     });
 
-    const equipmentList = await prisma.equipment.findMany({
+    const equipmentList = await prisma.packs.findMany({
         orderBy: {
             name: 'asc',
         },
