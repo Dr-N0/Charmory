@@ -1,36 +1,50 @@
 'use client'
 import { useState } from 'react'
-
 import style from './Builder.module.css'
-
 import dynamic from 'next/dynamic'
 
-const Race = dynamic(() => import('./components/Race'), { loading: () => <Loading />})
-const Class = dynamic(() => import('./components/Class'), { loading: () => <Loading />})
-const Abilities = dynamic(() => import('./components/Abilities'), { loading: () => <Loading />})
-const Description = dynamic(() => import('./components/Description'), { loading: () => <Loading />})
-const Equipment = dynamic(() => import('./components/Equipment'), { loading: () => <Loading />})
+const Race = dynamic(() => import('./components/Race'), { loading: () => <Loading /> })
+const Class = dynamic(() => import('./components/Class'), { loading: () => <Loading /> })
+const Abilities = dynamic(() => import('./components/Abilities'), { loading: () => <Loading /> })
+const Description = dynamic(() => import('./components/Description'), { loading: () => <Loading /> })
+const Equipment = dynamic(() => import('./components/Equipment'), { loading: () => <Loading /> })
 
 export default function Renderer({
-    character,
-    spellList,
-    raceList,
-    classList,
-    backgroundList,
-    equipmentList,
+  character,
+  spellList,
+  raceList,
+  classList,
+  backgroundList,
+  equipmentList,
 }: any) {
-    const [workstation, setWorkstation] = useState(0);
     const [name, setName] = useState(character.name);
     const [previousName, setPreviousName] = useState(character.name);
-    const [currentRace, setCurrentRace] = useState("");
-    const [toggleRaceStation, setToggleRaceStation] = useState(false);
-    const [currentClass, setCurrentClass] = useState("");
-    const [toggleClassStation, setToggleClassStation] = useState(false);
-    const [currentBackground, setCurrentBackground] = useState("");
-    const [toggleBackgroundStation, setToggleBackgroundStation] = useState(false);
-    const [currentPack, setCurrentPack] = useState("");
-    const [toggleEquipmentStation, setToggleEquipmentStation] = useState(false);
+    const [state, setState] = useState({
+        workstation: 0,
+        currentRace: "",
+        toggleRaceStation: false,
+        currentClass: "",
+        toggleClassStation: false,
+        currentBackground: "",
+        toggleBackgroundStation: false,
+        currentPack: "",
+        toggleEquipmentStation: false,
+        loading: false,
+    });
 
+    const {
+        workstation,
+        currentRace,
+        toggleRaceStation,
+        currentClass,
+        toggleClassStation,
+        currentBackground,
+        toggleBackgroundStation,
+        currentPack,
+        toggleEquipmentStation,
+        loading,
+    } = state;
+    
     function renderSwitch(param: string) {
         switch(param) {
             case 'race':
@@ -48,12 +62,48 @@ export default function Renderer({
         }
     }
 
+    const setWorkstation = (value: number) => {
+        setState((prevState) => ({ ...prevState, workstation: value }));
+    };
+
     function currentName(e: any){
         setName(e.target.value);
     }
 
-    // TODO: RATE LIMIT THE FUCK OUT OF THIS
-    async function saveName(e: any) {
+    const toggleStation = (stationKey: string) => {
+        setState((prevState: any) => ({ ...prevState, [stationKey]: !prevState[stationKey] }));
+    };
+
+    const handleAsyncOperation = async (apiEndpoint: string, data: object, successCallback: Function, stationKey: string) => {
+        setState((prevState) => ({ ...prevState, loading: true }));
+    
+        try {
+            const response = await fetch(apiEndpoint, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to ${successCallback.name.toLowerCase()}`);
+            }
+
+            const responseData = await response.json();
+            successCallback(responseData);
+            if (stationKey != "") {
+                toggleStation(stationKey);
+            }
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setState((prevState) => ({ ...prevState, loading: false }));
+        }
+    };
+
+    // TODO: RATE LIMIT THE FUCK OUT OF THESE
+    const saveName = async (e: any) => {
         if (name != previousName) {
             const response = await fetch("/api/name", {
                 method: "POST",
@@ -72,131 +122,52 @@ export default function Renderer({
 
             setPreviousName(name);
         }
-    }
+    };
 
-    async function handleChooseRace(value: any, variant: any) {
-        if (variant) {
-            setCurrentRace(variant);
-        } else {
-            setCurrentRace(value);
+    const handleChooseRace = async (value: any, variant: any) => {
+        const data = { race: variant || value, variant, characterId: character?.id };
+        await handleAsyncOperation("/api/race", data, () => {
+            setState((prevState) => ({ ...prevState, currentRace: data.race }));
+        }, 'toggleRaceStation');
+    };
+
+    const handleChooseClass = async (value: any) => {
+        const data = { className: value, characterId: character.id };
+        await handleAsyncOperation("/api/class", data, () => {
+            setState((prevState) => ({ ...prevState, currentClass: data.className }));
+        }, 'toggleClassStation');
+    };
+
+    const handleChooseAbility = async (value: number, type: string) => {
+        const data = { abilityValue: { type, value }, characterId: character?.id };
+
+        try {
+            await handleAsyncOperation("/api/ability", data, () => {
+                // Assuming state variable is named 'state'
+                setState((prevState) => ({
+                    ...prevState,
+                    // Assuming 'currentAbility' is the key in the state to update
+                    currentAbility: data.abilityValue,
+                }));
+            }, '');
+        } catch (error) {
+            console.error(error);
         }
-        setToggleRaceStation(true);
-        const response = await fetch("/api/race", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                race: value,
-                variant: variant,
-                characterId: character?.id
-            }),
-        });
-        
-        if (!response.ok) {
-            setCurrentRace("");
-            setToggleClassStation(false);
-            throw new Error("Failed to set race");
-        }
-        
-        const data = await response.json();
-        return data;
-    }
-
-    async function handleChooseClass(value: any) {
-        setCurrentClass(value);
-        setToggleClassStation(true);
-        const response = await fetch("/api/class", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                className: value,
-                characterId: character.id
-            }),
-        });
-        
-        if (!response.ok) {
-            setCurrentClass("");
-            setToggleClassStation(false);
-            throw new Error("Failed to set class");
-        }
-
-        const data = await response.json();
-        return data;
-    }
-
-    async function handleChooseBackground(value: any) {
-        setCurrentBackground(value);
-        setToggleBackgroundStation(true);
-        const response = await fetch("/api/background", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                background: value,
-                characterId: character.id
-            }),
-        });
-        
-        if (!response.ok) {
-            setCurrentBackground("");
-            setToggleClassStation(false);
-            throw new Error("Failed to set class");
-        }
-
-        const data = await response.json();
-        return data;
-    }
-
-    async function handleChooseEquipmentPack(value: any) {
-        setCurrentPack(value);
-        setToggleEquipmentStation(true);
-        const response = await fetch("/api/equipment", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                pack: value,
-                characterId: character.id
-            }),
-        });
-        
-        if (!response.ok) {
-            setCurrentPack("");
-            setToggleClassStation(false);
-            throw new Error("Failed to set class");
-        }
-
-        const data = await response.json();
-        return data;
-    }
-
-    async function handleChooseAbility(value: Number, type: String) {
-        const response = await fetch("/api/race", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                race: value,
-                variant: type,
-                characterId: character?.id
-            }),
-        });
-        
-        if (!response.ok) {
-            setCurrentRace("");
-            setToggleClassStation(false);
-            throw new Error("Failed to set race");
-        }
-        
-        const data = await response.json();
-        return data;
-    }
+    };
+    
+    const handleChooseBackground = async (value: any) => {
+        const data = { background: value, characterId: character.id };
+        await handleAsyncOperation("/api/background", data, () => {
+            setState((prevState) => ({ ...prevState, currentBackground: data.background }));
+        }, 'toggleBackgroundStation');
+    };
+    
+    const handleChooseEquipmentPack = async (value: any) => {
+        const data = { pack: value, characterId: character.id };
+        await handleAsyncOperation("/api/equipment", data, () => {
+            setState((prevState) => ({ ...prevState, currentPack: data.pack }));
+        }, 'toggleEquipmentStation');
+    };
 
     return (
         <>
@@ -225,28 +196,46 @@ export default function Renderer({
                 <div className={`${style.col} ${style.displayInformation} ${style.displayButtons}`}>
                     <div>
                         <h2>Race</h2>
-                        {currentRace == '' ?
-                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(1)}>
+                        {currentRace == '' ? (
+                            <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(1)}>
                                 Pick Your Race
-                            </button>) :
-                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(1)}>
-                                {currentRace}
-                            </button>)
+                            </button>
+                            ) : (
+                                <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(1)}>
+                                    {loading ? <Loading /> : <span>{currentRace}</span>}
+                                </button>
+                            )
                         }
                     </div>
                     <hr></hr>
                     <div>
                         <h2>Class</h2>
-                        {currentClass == '' ?
-                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(2)}>
+                        {currentClass == '' ? (
+                            <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(2)}>
                                 Choose Your Class
-                            </button>) :
-                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(2)}>
+                            </button>
+                            ) : (
+                            <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(2)}>
                                 {currentClass}
                             </button>)
                         }
                     </div>
                     <hr></hr>
+                    <div>
+                        <h2>Abilities</h2>
+                        <div>
+                            <button className={`${style.hvrFadeWhite}`} onClick={(e) => setWorkstation(3)}>
+                                Set Ability Values
+                            </button>
+                            <div>
+                                {Object.entries(character.abilities).map(([key, value]: any) => (
+                                    <p key={key}>
+                                        {key}: {value}
+                                    </p>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                     <div>
                         <h2>Abilities</h2>
                         <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(3)}>
@@ -256,11 +245,12 @@ export default function Renderer({
                     <hr></hr>
                     <div>
                         <h2>Description</h2>
-                        {currentBackground == '' ?
-                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(4)}>
+                        {currentBackground == '' ? (
+                            <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(4)}>
                                 Select A Background
-                            </button>) :
-                            (<button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(4)}>
+                            </button>
+                            ) : (
+                            <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(4)}>
                                 <span>{currentBackground}</span>
                             </button>)
                         }
@@ -281,13 +271,17 @@ export default function Renderer({
                     <span>&nbsp;Station</span>
                 </h1>
                 <div className={`${style.wrapper}`}>
-                    {
-                        workstation == 1 ? renderSwitch('race') : 
-                        workstation == 2 ? renderSwitch('class') :
-                        workstation == 3 ? renderSwitch('abilities') :
-                        workstation == 4 ? renderSwitch('description') :
-                        workstation == 5 ? renderSwitch('equipment') : renderSwitch('')
-                    }
+                {loading ? (
+                    <Loading />
+                ) : (
+                    <>{
+                        workstation == 1 ? renderSwitch("race") :
+                        workstation == 2 ? renderSwitch("class") :
+                        workstation == 3 ? renderSwitch("abilities") :
+                        workstation == 4 ? renderSwitch("description") :
+                        workstation == 5 ? renderSwitch("equipment") : renderSwitch("")
+                    }</>
+                )}
                 </div>
             </div>
         </main>
