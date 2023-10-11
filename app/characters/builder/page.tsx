@@ -49,15 +49,16 @@ export default async function Builder({session}:any) {
             name: 'asc',
         },
     });
-
-    const equipmentList = await prisma.packs.findMany({
+    const packList = await prisma.packs.findMany({
         orderBy: {
             name: 'asc',
         },
     });
-
-
-
+    const itemList = await prisma.equipment.findMany({
+        orderBy: {
+            name: 'asc',
+        },
+    });
     const spellList = await prisma.spell.findMany();
 
     // TODO: On "create character" button press inside of /characters page.
@@ -89,7 +90,7 @@ export default async function Builder({session}:any) {
                 raceList={raceList}
                 classList={classList}
                 backgroundList={backgroundList}
-                equipmentList={equipmentList}
+                equipmentList={{packList, itemList}}
             />
         </main>
     );

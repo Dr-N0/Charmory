@@ -38,11 +38,11 @@ export default function Renderer({
             case 'class':
                 return <Class classList={classList} toggleClassStation={toggleClassStation} handleChooseClass={handleChooseClass} />
             case 'abilities':
-                return <Abilities />
+                return <Abilities handleChooseAbility={handleChooseAbility} />
             case 'description':
                 return <Description backgroundList={backgroundList} toggleBackgroundStation={toggleBackgroundStation} handleChooseBackground={handleChooseBackground} />
             case 'equipment':
-                return <Equipment equipmentList={equipmentList} toggleEquipmentStation={toggleEquipmentStation} handleChooseEquipmentPack={handleChooseEquipmentPack}/>
+                return <Equipment packList={equipmentList.packList} equipmentList={equipmentList.itemList} toggleEquipmentStation={toggleEquipmentStation} handleChooseEquipmentPack={handleChooseEquipmentPack}/>
             default:
                 return <h1>Workstation not being used atm</h1>
         }
@@ -74,11 +74,11 @@ export default function Renderer({
         }
     }
 
-    async function handleChooseRace(characterRace: any, characterVariant: any) {
-        if (characterVariant) {
-            setCurrentRace(characterVariant);
+    async function handleChooseRace(value: any, variant: any) {
+        if (variant) {
+            setCurrentRace(variant);
         } else {
-            setCurrentRace(characterRace);
+            setCurrentRace(value);
         }
         setToggleRaceStation(true);
         const response = await fetch("/api/race", {
@@ -87,8 +87,8 @@ export default function Renderer({
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                race: characterRace,
-                variant: characterVariant,
+                race: value,
+                variant: variant,
                 characterId: character?.id
             }),
         });
@@ -103,8 +103,8 @@ export default function Renderer({
         return data;
     }
 
-    async function handleChooseClass(characterClass: any) {
-        setCurrentClass(characterClass);
+    async function handleChooseClass(value: any) {
+        setCurrentClass(value);
         setToggleClassStation(true);
         const response = await fetch("/api/class", {
             method: "POST",
@@ -112,7 +112,7 @@ export default function Renderer({
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                className: characterClass,
+                className: value,
                 characterId: character.id
             }),
         });
@@ -127,8 +127,8 @@ export default function Renderer({
         return data;
     }
 
-    async function handleChooseBackground(characterBackground: any) {
-        setCurrentBackground(characterBackground);
+    async function handleChooseBackground(value: any) {
+        setCurrentBackground(value);
         setToggleBackgroundStation(true);
         const response = await fetch("/api/background", {
             method: "POST",
@@ -136,7 +136,7 @@ export default function Renderer({
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                background: characterBackground,
+                background: value,
                 characterId: character.id
             }),
         });
@@ -151,8 +151,8 @@ export default function Renderer({
         return data;
     }
 
-    async function handleChooseEquipmentPack(selectedPack: any) {
-        setCurrentPack(selectedPack);
+    async function handleChooseEquipmentPack(value: any) {
+        setCurrentPack(value);
         setToggleEquipmentStation(true);
         const response = await fetch("/api/equipment", {
             method: "POST",
@@ -160,7 +160,7 @@ export default function Renderer({
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                pack: selectedPack,
+                pack: value,
                 characterId: character.id
             }),
         });
@@ -171,6 +171,29 @@ export default function Renderer({
             throw new Error("Failed to set class");
         }
 
+        const data = await response.json();
+        return data;
+    }
+
+    async function handleChooseAbility(value: Number, type: String) {
+        const response = await fetch("/api/race", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                race: value,
+                variant: type,
+                characterId: character?.id
+            }),
+        });
+        
+        if (!response.ok) {
+            setCurrentRace("");
+            setToggleClassStation(false);
+            throw new Error("Failed to set race");
+        }
+        
         const data = await response.json();
         return data;
     }
