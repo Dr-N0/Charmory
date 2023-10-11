@@ -67,7 +67,7 @@ export default function Class({
                                 style={{
                                     backgroundColor: listValue.color
                                 }}
-                                onClick={()=> openModal(listValue.name)}
+                                onClick={() => openModal(listValue.name)}
                                 >
                                 {listValue.name}
                             </li>

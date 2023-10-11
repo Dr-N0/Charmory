@@ -1,61 +1,84 @@
 'use client'
 import { ChangeEvent, useState } from 'react'
-
+import Image from 'next/image'
 import style from './BuilderComponents.module.css'
 
 export default function Equipment({
+    packList,
     equipmentList,
     toggleEquipmentStation,
     handleChooseEquipment,
 }: any) {
     const [chooseMethod, setChooseMethod] = useState("packs");
-    const [searchItem, setSearchItem] = useState('');
-    const [filtered, setFiltered] = useState(equipmentList);
+    const [equipment, setEquipment] = useState(packList);
+    const [pack, setCurrentPack] = useState(packList[0]);
 
     const handleSelect = (selected: any) => {
-        console.log('Selected: ', selected);
-    }
-
-    const handleInputChange = (e: any) => { 
-        const searchTerm = e.target.value;
-        setSearchItem(searchTerm)
-
-        const filteredItems = equipmentList.filter((list: any) =>
-            list.name.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-
-        setFiltered(filteredItems);
+        setCurrentPack(selected);
     }
 
     return (
         <div className={style.contentContainer}>
             <h2 className={style.workstationTitle}>Equipment</h2>
-            {toggleEquipmentStation ? (<div>class station</div>) :
-            (
-            <>
-                <input
-                    className={style.inputMain}
-                    type="text"
-                    value={searchItem}
-                    onChange={handleInputChange}
-                    placeholder='Type to search'
-                />
-                <div className={style.inputValues}>
-                    {filtered.map((listValue: any) => {
-                        return (
-                            <li
-                                key={listValue.name}
-                                className={style.classListValues}
-                                onClick={() => handleSelect}>
-                                {listValue.name}
-                            </li>
-                        )
-                    })}
+            {toggleEquipmentStation ? (<div>Equipment station</div>) :
+            (<div className={style.equipmentInput}>
+                {equipment.map((listValue: any) => {
+                    return (
+                        <li
+                            key={listValue.name}
+                            className={style.equipmentList}
+                            onClick={() => handleSelect(listValue.name)}>
+                            {listValue.name}
+                            <p>
+                            {listValue.contents.map((content: any) => {
+                                return (
+                                    <span>{content.name} | </span>
+                                )
+                            })}</p>
+                        </li>
+                    )
+                })}
+            </div>)}
+            <div className={style.addItemCont}>
+                <h2>Add Item</h2>
+                <div className={style.addItemBox}>
+                    <input className={style.addItemInput} placeholder='Name (Ex: Blaster Blade)'></input>
+                    <button className={style.addItemButton}>
+                        <Image
+                            className={`${style.addImage}`}
+                            src="/plus.png"
+                            width={30}
+                            height={30}
+                            alt="Background"
+                            onClick={() => {console.log('asdflkjasd')}}
+                        />
+                    </button>
                 </div>
-            </>)}
+            </div>
         </div>
     );
 }
+
+// {
+//     "name": "Burglar's Pack",
+//     "cost": 16,
+//     "contents": [
+//       {
+    //     "name": "Waterskin",
+    //     "description": "A container designed for holding water.",
+    //     "group": "Containers",
+    //     "cost": {
+    //         "value": 2,
+    //         "type": "sp"
+    //     },
+    //     "weight": {
+    //         "value": 5,
+    //         "type": "lb"
+    //     },
+    //     "qty": 1
+    // },
+//     ]
+// },
 
 // {
 //     "name": "Waterskin",

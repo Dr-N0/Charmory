@@ -1075,108 +1075,504 @@ async function main() {
       "name": "Burglar's Pack",
       "cost": 16,
       "contents": [
-        {"item": "backpack", "qty": 1},
-        {"item": "bag of 1,000 ball bearings", "qty": 1},
-        {"item": "10 feet of string", "qty": 1},
-        {"item": "bell", "qty": 1},
-        {"item": "5 candles", "qty": 5},
-        {"item": "crowbar", "qty": 1},
-        {"item": "hammer", "qty": 1},
-        {"item": "10 pitons", "qty": 10},
-        {"item": "hooded lantern", "qty": 1},
-        {"item": "2 flasks of oil", "qty": 2},
-        {"item": "5 days rations", "qty": 5},
-        {"item": "tinderbox", "qty": 1},
-        {"item": "waterskin", "qty": 1},
-        {"item": "50 feet of hempen rope", "qty": 1}
+        {
+          "name": "Backpack",
+          "description": "A common backpack.",
+          "cost": { "value": 2, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Bag of 1,000 Ball Bearings",
+          "description": "A bag containing 1,000 ball bearings.",
+          "cost": { "value": 1, "type": "gp" },
+          "weight": { "value": 2, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "10 Feet of String",
+          "description": "A 10-foot-long string.",
+          "cost": { "value": 1, "type": "cp" },
+          "weight": { "value": 0, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Bell",
+          "description": "A small, hand-held bell.",
+          "cost": { "value": 1, "type": "gp" },
+          "weight": { "value": 0.5, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "5 Candles",
+          "description": "A set of five candles.",
+          "cost": { "value": 0.1, "type": "gp" },
+          "weight": { "value": 0, "type": "lb" },
+          "qty": 5
+        },
+        {
+          "name": "Crowbar",
+          "description": "A sturdy iron crowbar.",
+          "cost": { "value": 2, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Hammer",
+          "description": "A standard hammer.",
+          "cost": { "value": 1, "type": "gp" },
+          "weight": { "value": 3, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "10 Pitons",
+          "description": "A set of ten iron spikes.",
+          "cost": { "value": 0.5, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 10
+        },
+        {
+          "name": "Hooded Lantern",
+          "description": "A lantern with a shutter.",
+          "cost": { "value": 5, "type": "gp" },
+          "weight": { "value": 2, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "2 Flasks of Oil",
+          "description": "Two flasks of common lamp oil.",
+          "cost": { "value": 0.1, "type": "gp" },
+          "weight": { "value": 1, "type": "lb" },
+          "qty": 2
+        },
+        {
+          "name": "5 Days Rations",
+          "description": "Five days' worth of rations.",
+          "cost": { "value": 2.5, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 5
+        },
+        {
+          "name": "Tinderbox",
+          "description": "A small box of tinder.",
+          "cost": { "value": 0.5, "type": "gp" },
+          "weight": { "value": 1, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Waterskin",
+          "description": "A container for holding water.",
+          "cost": { "value": 0.2, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "50 Feet of Hempen Rope",
+          "description": "A 50-foot length of hempen rope.",
+          "cost": { "value": 1, "type": "gp" },
+          "weight": { "value": 10, "type": "lb" },
+          "qty": 1
+        }
       ]
     },
     {
       "name": "Diplomat's Pack",
       "cost": 39,
       "contents": [
-        {"item": "chest", "qty": 1},
-        {"item": "2 cases for maps and scrolls", "qty": 2},
-        {"item": "set of fine clothes", "qty": 1},
-        {"item": "bottle of ink", "qty": 1},
-        {"item": "ink pen", "qty": 1},
-        {"item": "lamp", "qty": 1},
-        {"item": "2 flasks of oil", "qty": 2},
-        {"item": "5 sheets of paper", "qty": 5},
-        {"item": "vial of perfume", "qty": 1},
-        {"item": "sealing wax", "qty": 1},
-        {"item": "soap", "qty": 1}
+        {
+          "name": "Chest",
+          "description": "A sturdy, wooden chest.",
+          "cost": { "value": 5, "type": "gp" },
+          "weight": { "value": 25, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "2 Cases for Maps and Scrolls",
+          "description": "Two protective cases for storing maps and scrolls.",
+          "cost": { "value": 1, "type": "gp" },
+          "weight": { "value": 1, "type": "lb" },
+          "qty": 2
+        },
+        {
+          "name": "Set of Fine Clothes",
+          "description": "A set of high-quality, stylish clothes.",
+          "cost": { "value": 15, "type": "gp" },
+          "weight": { "value": 6, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Bottle of Ink",
+          "description": "A small bottle of black ink.",
+          "cost": { "value": 10, "type": "gp" },
+          "weight": { "value": 0, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Ink Pen",
+          "description": "A fine-pointed quill pen.",
+          "cost": { "value": 0.02, "type": "gp" },
+          "weight": { "value": 0, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Lamp",
+          "description": "A small oil lamp.",
+          "cost": { "value": 0.5, "type": "gp" },
+          "weight": { "value": 1, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "2 Flasks of Oil",
+          "description": "Two flasks of common lamp oil.",
+          "cost": { "value": 0.1, "type": "gp" },
+          "weight": { "value": 1, "type": "lb" },
+          "qty": 2
+        },
+        {
+          "name": "5 Sheets of Paper",
+          "description": "Five sheets of fine parchment.",
+          "cost": { "value": 0.2, "type": "gp" },
+          "weight": { "value": 0, "type": "lb" },
+          "qty": 5
+        },
+        {
+          "name": "Vial of Perfume",
+          "description": "A small vial of sweet-smelling perfume.",
+          "cost": { "value": 5, "type": "gp" },
+          "weight": { "value": 0, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Sealing Wax",
+          "description": "A stick of sealing wax.",
+          "cost": { "value": 0.5, "type": "gp" },
+          "weight": { "value": 0, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Soap",
+          "description": "A bar of soap.",
+          "cost": { "value": 0.02, "type": "gp" },
+          "weight": { "value": 0.5, "type": "lb" },
+          "qty": 1
+        }
       ]
     },
     {
       "name": "Dungeoneer's Pack",
       "cost": 12,
       "contents": [
-        {"item": "backpack", "qty": 1},
-        {"item": "crowbar", "qty": 1},
-        {"item": "hammer", "qty": 1},
-        {"item": "10 pitons", "qty": 10},
-        {"item": "10 torches", "qty": 10},
-        {"item": "tinderbox", "qty": 1},
-        {"item": "10 days of rations", "qty": 10},
-        {"item": "waterskin", "qty": 1},
-        {"item": "50 feet of hempen rope", "qty": 1}
+        {
+          "name": "Backpack",
+          "description": "A common backpack.",
+          "cost": { "value": 2, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Crowbar",
+          "description": "A sturdy iron crowbar.",
+          "cost": { "value": 2, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Hammer",
+          "description": "A standard hammer.",
+          "cost": { "value": 1, "type": "gp" },
+          "weight": { "value": 3, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "10 Pitons",
+          "description": "A set of ten iron spikes.",
+          "cost": { "value": 0.5, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 10
+        },
+        {
+          "name": "10 Torches",
+          "description": "A set of ten common torches.",
+          "cost": { "value": 0.01, "type": "gp" },
+          "weight": { "value": 10, "type": "lb" },
+          "qty": 10
+        },
+        {
+          "name": "Tinderbox",
+          "description": "A small box of tinder.",
+          "cost": { "value": 0.5, "type": "gp" },
+          "weight": { "value": 1, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "10 Days of Rations",
+          "description": "Ten days' worth of rations.",
+          "cost": { "value": 5, "type": "gp" },
+          "weight": { "value": 20, "type": "lb" },
+          "qty": 10
+        },
+        {
+          "name": "Waterskin",
+          "description": "A container for holding water.",
+          "cost": { "value": 0.2, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "50 Feet of Hempen Rope",
+          "description": "A 50-foot length of hempen rope.",
+          "cost": { "value": 1, "type": "gp" },
+          "weight": { "value": 10, "type": "lb" },
+          "qty": 1
+        }
       ]
     },
     {
       "name": "Entertainer's Pack",
       "cost": 40,
       "contents": [
-        {"item": "backpack", "qty": 1},
-        {"item": "bedroll", "qty": 1},
-        {"item": "2 costumes", "qty": 2},
-        {"item": "5 candles", "qty": 5},
-        {"item": "5 days of rations", "qty": 5},
-        {"item": "waterskin", "qty": 1},
-        {"item": "disguise kit", "qty": 1}
+        {
+          "name": "Backpack",
+          "description": "A common backpack.",
+          "cost": { "value": 2, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Bedroll",
+          "description": "A simple bedroll.",
+          "cost": { "value": 1, "type": "gp" },
+          "weight": { "value": 7, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "2 Costumes",
+          "description": "Two sets of simple costumes.",
+          "cost": { "value": 3, "type": "gp" },
+          "weight": { "value": 4, "type": "lb" },
+          "qty": 2
+        },
+        {
+          "name": "5 Candles",
+          "description": "A set of five candles.",
+          "cost": { "value": 0.1, "type": "gp" },
+          "weight": { "value": 0, "type": "lb" },
+          "qty": 5
+        },
+        {
+          "name": "5 Days of Rations",
+          "description": "Five days' worth of rations.",
+          "cost": { "value": 2.5, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 5
+        },
+        {
+          "name": "Waterskin",
+          "description": "A container for holding water.",
+          "cost": { "value": 0.2, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Disguise Kit",
+          "description": "A kit for creating disguises.",
+          "cost": { "value": 25, "type": "gp" },
+          "weight": { "value": 3, "type": "lb" },
+          "qty": 1
+        }
       ]
     },
     {
       "name": "Explorer's Pack",
       "cost": 10,
       "contents": [
-        {"item": "backpack", "qty": 1},
-        {"item": "bedroll", "qty": 1},
-        {"item": "mess kit", "qty": 1},
-        {"item": "tinderbox", "qty": 1},
-        {"item": "10 torches", "qty": 10},
-        {"item": "10 days of rations", "qty": 10},
-        {"item": "waterskin", "qty": 1},
-        {"item": "50 feet of hempen rope", "qty": 1}
+        {
+          "name": "Backpack",
+          "description": "A common backpack.",
+          "cost": { "value": 2, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 1
+        },  
+        {
+          "name": "Bedroll",
+          "description": "A simple bedroll.",
+          "cost": { "value": 1, "type": "gp" },
+          "weight": { "value": 7, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Mess Kit",
+          "description": "A set of simple eating utensils.",
+          "cost": { "value": 0.2, "type": "gp" },
+          "weight": { "value": 1, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Tinderbox",
+          "description": "A small box of tinder.",
+          "cost": { "value": 0.5, "type": "gp" },
+          "weight": { "value": 1, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "10 Torches",
+          "description": "A set of ten common torches.",
+          "cost": { "value": 0.01, "type": "gp" },
+          "weight": { "value": 10, "type": "lb" },
+          "qty": 10
+        },
+        {
+          "name": "10 Days of Rations",
+          "description": "Ten days' worth of rations.",
+          "cost": { "value": 5, "type": "gp" },
+          "weight": { "value": 20, "type": "lb" },
+          "qty": 10
+        },
+        {
+          "name": "Waterskin",
+          "description": "A container for holding water.",
+          "cost": { "value": 0.2, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "50 Feet of Hempen Rope",
+          "description": "A 50-foot length of hempen rope.",
+          "cost": { "value": 1, "type": "gp" },
+          "weight": { "value": 10, "type": "lb" },
+          "qty": 1
+        }
       ]
     },
     {
       "name": "Priest's Pack",
       "cost": 19,
       "contents": [
-        {"item": "backpack", "qty": 1},
-        {"item": "blanket", "qty": 1},
-        {"item": "10 candles", "qty": 10},
-        {"item": "tinderbox", "qty": 1},
-        {"item": "alms box", "qty": 1},
-        {"item": "2 blocks of incense", "qty": 2},
-        {"item": "censer", "qty": 1},
-        {"item": "vestments", "qty": 1},
-        {"item": "2 days of rations", "qty": 2},
-        {"item": "waterskin", "qty": 1}
+        {
+          "name": "Backpack",
+          "description": "A common backpack.",
+          "cost": { "value": 2, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Blanket",
+          "description": "A simple blanket.",
+          "cost": { "value": 0.5, "type": "gp" },
+          "weight": { "value": 3, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "10 Candles",
+          "description": "A set of ten candles.",
+          "cost": { "value": 0.1, "type": "gp" },
+          "weight": { "value": 0, "type": "lb" },
+          "qty": 10
+        },
+        {
+          "name": "Tinderbox",
+          "description": "A small box of tinder.",
+          "cost": { "value": 0.5, "type": "gp" },
+          "weight": { "value": 1, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Alms Box",
+          "description": "A small box for collecting donations.",
+          "cost": { "value": 0.01, "type": "gp" },
+          "weight": { "value": 6, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "2 Blocks of Incense",
+          "description": "Two blocks of incense.",
+          "cost": { "value": 0.1, "type": "gp" },
+          "weight": { "value": 0, "type": "lb" },
+          "qty": 2
+        },
+        {
+          "name": "Censer",
+          "description": "A container for burning incense.",
+          "cost": { "value": 0.1, "type": "gp" },
+          "weight": { "value": 1, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Vestments",
+          "description": "Religious vestments.",
+          "cost": { "value": 5, "type": "gp" },
+          "weight": { "value": 4, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "2 Days of Rations",
+          "description": "Two days' worth of rations.",
+          "cost": { "value": 1, "type": "gp" },
+          "weight": { "value": 2, "type": "lb" },
+          "qty": 2
+        },
+        {
+          "name": "Waterskin",
+          "description": "A container for holding water.",
+          "cost": { "value": 0.2, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 1
+        }
       ]
     },
     {
       "name": "Scholar's Pack",
       "cost": 40,
       "contents": [
-        {"item": "backpack", "qty": 1},
-        {"item": "book of lore", "qty": 1},
-        {"item": "bottle of ink", "qty": 1},
-        {"item": "ink pen", "qty": 1},
-        {"item": "10 sheets of parchment", "qty": 10},
-        {"item": "little bag of sand", "qty": 1},
-        {"item": "small knife", "qty": 1}
+        {
+          "name": "Backpack",
+          "description": "A common backpack.",
+          "cost": { "value": 2, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Book of Lore",
+          "description": "A book of useful knowledge or lore.",
+          "cost": { "value": 5, "type": "gp" },
+          "weight": { "value": 5, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Bottle of Ink",
+          "description": "A small bottle of black ink.",
+          "cost": { "value": 10, "type": "gp" },
+          "weight": { "value": 0, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Ink Pen",
+          "description": "A fine-pointed quill pen.",
+          "cost": { "value": 0.02, "type": "gp" },
+          "weight": { "value": 0, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "10 Sheets of Parchment",
+          "description": "Ten sheets of fine parchment.",
+          "cost": { "value": 1, "type": "gp" },
+          "weight": { "value": 0, "type": "lb" },
+          "qty": 10
+        },
+        {
+          "name": "Little Bag of Sand",
+          "description": "A small bag filled with fine sand.",
+          "cost": { "value": 0.1, "type": "gp" },
+          "weight": { "value": 1, "type": "lb" },
+          "qty": 1
+        },
+        {
+          "name": "Small Knife",
+          "description": "A simple, small knife.",
+          "cost": { "value": 0.5, "type": "gp" },
+          "weight": { "value": 1, "type": "lb" },
+          "qty": 1
+        }
       ]
     }
   ];
