@@ -13227,7 +13227,6 @@ async function main() {
             race: randomRace,
             class: randomClass,
             abilities: {
-              genMethod: 'MANUAL',
               strength: 10,
               dexterity: 12,
               constitution: 14,
@@ -13289,7 +13288,6 @@ async function main() {
       race: randomRace2,
       class: randomClass2,
       abilities: {
-        genMethod: 'MANUAL',
         strength: 12,
         dexterity: 14,
         constitution: 16,

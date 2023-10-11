@@ -1,11 +1,8 @@
 -- CreateEnum
-CREATE TYPE "Size" AS ENUM ('TINY', 'SMALL', 'MEDIUM', 'LARGE', 'HUGE');
-
--- CreateEnum
-CREATE TYPE "GenMethod" AS ENUM ('MANUAL', 'ARRAY', 'POINT');
-
--- CreateEnum
 CREATE TYPE "Senses" AS ENUM ('BLINDSIGHT', 'DARKVISION', 'TREMORSENSE', 'TRUESIGHT');
+
+-- CreateEnum
+CREATE TYPE "Size" AS ENUM ('TINY', 'SMALL', 'MEDIUM', 'LARGE', 'HUGE');
 
 -- CreateEnum
 CREATE TYPE "HowProficent" AS ENUM ('NONE', 'PROFICENT', 'EXTRA');
@@ -37,6 +34,7 @@ CREATE TABLE "Character" (
     "inspiration" BOOLEAN NOT NULL DEFAULT false,
     "healthMax" INTEGER NOT NULL,
     "healthCurrent" INTEGER NOT NULL,
+    "senses" "Senses"[] DEFAULT ARRAY[]::"Senses"[],
     "race" JSONB,
     "class" JSONB,
     "abilities" JSONB,
@@ -101,14 +99,12 @@ CREATE TABLE "ClassFeatures" (
 -- CreateTable
 CREATE TABLE "Abilities" (
     "id" SERIAL NOT NULL,
-    "genMethod" "GenMethod" NOT NULL DEFAULT 'MANUAL',
     "strength" INTEGER NOT NULL DEFAULT 10,
     "dexterity" INTEGER NOT NULL DEFAULT 10,
     "constitution" INTEGER NOT NULL DEFAULT 10,
     "intelligence" INTEGER NOT NULL DEFAULT 10,
     "wisdom" INTEGER NOT NULL DEFAULT 10,
     "charisma" INTEGER NOT NULL DEFAULT 10,
-    "senses" "Senses"[] DEFAULT ARRAY[]::"Senses"[],
 
     CONSTRAINT "Abilities_pkey" PRIMARY KEY ("id")
 );
