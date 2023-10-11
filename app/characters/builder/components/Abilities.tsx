@@ -4,175 +4,76 @@ import { ChangeEvent, useState } from 'react'
 import style from './BuilderComponents.module.css'
 
 export default function Abilities({
-    
+    handleChooseAbility,
 }: any) {
     const [genMethod, setGenMethod] = useState("manual");
-    const [strength, setStrength] = useState(8);
-    const [dexterity, setDexterity] = useState(8);
-    const [constitution, setConstitution] = useState(8);
-    const [intelligence, setIntelligence] = useState(8);
-    const [wisdom, setWisdom] = useState(8);
-    const [charisma, setCharisma] = useState(8);
     const [pointBuy, setPointBuy] = useState(27);
 
-    const abilitiesList = [
-        {
-            name: "Strength",
-            alt: "STR",
-            value: strength,
-        },
-        {
-            name: "Dexerity",
-            alt: "DEX",
-            value: dexterity,
-        },
-        {
-            name: "Constitution",
-            alt: "CON",
-            value: constitution,
-        },
-        {
-            name: "Intelligence",
-            alt: "INT",
-            value: intelligence,
-        },
-        {
-            name: "Wisdom",
-            alt: "WIS",
-            value: wisdom,
-        },
-        {
-            name: "Charisma",
-            alt: "CHA",
-            value: charisma,
-        },
-    ]
-
-    // const standardArray = [8, 10, 12, 13, 14, 15];
+    const [strength, setStrength] = useState(10);
+    const [dexterity, setDexterity] = useState(10);
+    const [constitution, setConstitution] = useState(10);
+    const [intelligence, setIntelligence] = useState(10);
+    const [wisdom, setWisdom] = useState(10);
+    const [charisma, setCharisma] = useState(10);
     
 
-    function handleGen(e: any){
+    const abilitiesList = [
+        { name: "Strength", alt: "STR", value: strength },
+        { name: "Dexterity", alt: "DEX", value: dexterity },
+        { name: "Constitution", alt: "CON", value: constitution },
+        { name: "Intelligence", alt: "INT", value: intelligence },
+        { name: "Wisdom", alt: "WIS", value: wisdom },
+        { name: "Charisma", alt: "CHA", value: charisma },
+      ];
+    
+    function handleGen(e: any) {
         setGenMethod(e.target.value);
     }
-    
-    const handleManualSave = async (type: string, e: React.FormEvent) => {
-        e.preventDefault();
-        try {
-            // Set these into the db with the params 18 max, 0 min
-            // switch (type){
-            //     case "strength":
-            //         if (target < 3) {
-            //             setStrength(3);
-            //         } else if (target > 18) {
-            //             setStrength(18);
-            //         } else {
-            //             setStrength(target);
-            //         }
-            //         break;
-            //     case "dexterity":
-            //         if (target < 3) {
-            //             setDexterity(3);
-            //         } else if (target > 18) {
-            //             setDexterity(18);
-            //         } else {
-            //             setDexterity(target);
-            //         }
-            //         break;
-            //     case "constitution":
-            //         if (target < 3) {
-            //             setConstitution(3);
-            //         } else if (target > 18) {
-            //             setConstitution(18);
-            //         } else {
-            //             setConstitution(target);
-            //         }
-            //         break;
-            //     case "intelligence":
-            //         if (target < 3) {
-            //             setIntelligence(3);
-            //         } else if (target > 18) {
-            //             setIntelligence(18);
-            //         } else {
-            //             setIntelligence(target);
-            //         }
-            //         break;
-            //     case "wisdom":
-            //         if (target < 3) {
-            //             setWisdom(3);
-            //         } else if (target > 18) {
-            //             setWisdom(18);
-            //         } else {
-            //             setWisdom(target);
-            //         }
-            //         break;
-            //     case "charisma":
-            //         if (target < 3) {
-            //             setCharisma(3);
-            //         } else if (target > 18) {
-            //             setCharisma(18);
-            //         } else {
-            //             setCharisma(target);
-            //         }
-            //         break;
-            //     default:
-            //         break;
-            // }
-        } catch (error: any) {
-            console.log(error)
-        }
-    };
 
-    const handleManualInput = (type: string, event: ChangeEvent<HTMLInputElement>) => {
-        let target = parseInt(event.target.value);
-
-        switch (type){
-            case "strength":
-                if (target > 18) {
-                    setStrength(18);
-                } else {
-                    setStrength(target);
-                }
+    const setValue = (type: string, target: number) => {
+        switch (type) {
+            case 'strength':
+                setStrength(target);
                 break;
-            case "dexterity":
-                if (target > 18) {
-                    setDexterity(18);
-                } else {
-                    setDexterity(target);
-                }
+            case 'dexterity':
+                setDexterity(target);
                 break;
-            case "constitution":
-                if (target > 18) {
-                    setConstitution(18);
-                } else {
-                    setConstitution(target);
-                }
+            case 'constitution':
+                setConstitution(target);
                 break;
-            case "intelligence":
-                if (target > 18) {
-                    setIntelligence(18);
-                } else {
-                    setIntelligence(target);
-                }
+            case 'intelligence':
+                setIntelligence(target);
                 break;
-            case "wisdom":
-                if (target > 18) {
-                    setWisdom(18);
-                } else {
-                    setWisdom(target);
-                }
+            case 'wisdom':
+                setWisdom(target);
                 break;
-            case "charisma":
-                if (target > 18) {
-                    setCharisma(18);
-                } else {
-                    setCharisma(target);
-                }
+            case 'charisma':
+                setCharisma(target);
                 break;
             default:
                 break;
         }
+    
+        return target;
     };
-
+    
+    const handleManualSave = async (type: string, e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        try {
+            const sanitizedValue = Math.max(1, Math.min(18, parseInt(e.currentTarget.value)));
+            const value = setValue(type, sanitizedValue);
+            await handleChooseAbility({ type, value });
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    
+    const handleManualInput = (type: string, event: React.ChangeEvent<HTMLInputElement>) => {
+        let target = parseInt(event.target.value);
+        setValue(type, target);
+    };
+    
+    
     const select = (event: any) => {
         event.target.select();
     };
@@ -271,7 +172,7 @@ export default function Abilities({
                                     return (
                                         <div key={abilities.alt} className={`${style.ability}`}>
                                             <p className={`${style.attributeName}`}>{abilities.alt}</p>
-                                            <p className={`${style.attributeValue}`}>{abilities.value}</p>
+                                            <p className={`${style.attributeValue}`}>{abilities.value || 0}</p>
                                         </div>
                                     )
                                 })}

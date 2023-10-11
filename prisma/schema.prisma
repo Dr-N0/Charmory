@@ -31,6 +31,7 @@ model Character {
 
   healthMax       Int
   healthCurrent   Int
+  senses          Senses[]      @default([])
   
   race            Json?
   class           Json?
@@ -42,6 +43,12 @@ model Character {
 
   height          String?
   eyeColor        String?
+}
+enum Senses {
+  BLINDSIGHT
+  DARKVISION
+  TREMORSENSE
+  TRUESIGHT
 }
 
 // ===== Race =====
@@ -102,7 +109,6 @@ model ClassFeatures {
 // ===== Abilities =====
 model Abilities {
   id            Int         @id @default(autoincrement())
-  genMethod     GenMethod   @default(MANUAL)
 
   strength      Int         @default(10)
   dexterity     Int         @default(10)
@@ -110,19 +116,6 @@ model Abilities {
   intelligence  Int         @default(10)
   wisdom        Int         @default(10)
   charisma      Int         @default(10)
-
-  senses        Senses[]    @default([])
-}
-enum GenMethod {
-  MANUAL
-  ARRAY
-  POINT
-}
-enum Senses {
-  BLINDSIGHT
-  DARKVISION
-  TREMORSENSE
-  TRUESIGHT
 }
 
 // ===== Description =====
