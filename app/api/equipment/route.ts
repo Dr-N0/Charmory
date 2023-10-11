@@ -12,7 +12,7 @@ export async function GET(request: Request) {
         });
 
         // Return the background list as a JSON response
-        return NextResponse.json({ status: 200, data: equipmentList });
+        return NextResponse.json({ status: 200 });
     } finally {
         // Disconnect from the Prisma client
         await prisma.$disconnect();
