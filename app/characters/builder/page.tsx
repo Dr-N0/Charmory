@@ -33,7 +33,7 @@ async function getCharacters(session: any) {
 
 export default async function Builder({session}:any) {
     const character = await getCharacters(session);
-    console.log(await prisma.character.findMany())
+    // console.log(await prisma.character.findMany());
     const raceList = await prisma.race.findMany({
         orderBy: {
             name: 'asc',

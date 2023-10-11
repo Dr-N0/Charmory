@@ -46,7 +46,7 @@ export async function POST(request: Request) {
             },
         });
 
-        return NextResponse.json({ status: 200, data: {character: updatedCharacter} })
+        return NextResponse.json({ status: 200 })
     } finally {
         await prisma.$disconnect();
     }
