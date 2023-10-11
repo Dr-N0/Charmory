@@ -25,6 +25,7 @@ export default function Renderer({
         toggleRaceStation: false,
         currentClass: "",
         toggleClassStation: false,
+        currentAbilities: character.abilities,
         currentBackground: "",
         toggleBackgroundStation: false,
         currentPack: "",
@@ -38,6 +39,7 @@ export default function Renderer({
         toggleRaceStation,
         currentClass,
         toggleClassStation,
+        currentAbilities,
         currentBackground,
         toggleBackgroundStation,
         currentPack,
@@ -52,7 +54,7 @@ export default function Renderer({
             case 'class':
                 return <Class classList={classList} toggleClassStation={toggleClassStation} handleChooseClass={handleChooseClass} />
             case 'abilities':
-                return <Abilities handleChooseAbility={handleChooseAbility} />
+                return <Abilities abilityList={character.abilities} handleChooseAbility={handleChooseAbility} />
             case 'description':
                 return <Description backgroundList={backgroundList} toggleBackgroundStation={toggleBackgroundStation} handleChooseBackground={handleChooseBackground} />
             case 'equipment':
@@ -75,8 +77,10 @@ export default function Renderer({
     };
 
     const handleAsyncOperation = async (apiEndpoint: string, data: object, successCallback: Function, stationKey: string) => {
-        setState((prevState) => ({ ...prevState, loading: true }));
-    
+        if (stationKey != "") {
+            setState((prevState) => ({ ...prevState, loading: true }));
+        }
+
         try {
             const response = await fetch(apiEndpoint, {
                 method: "POST",
@@ -98,7 +102,9 @@ export default function Renderer({
         } catch (error) {
             console.error(error);
         } finally {
-            setState((prevState) => ({ ...prevState, loading: false }));
+            if (stationKey != "") {
+                setState((prevState) => ({ ...prevState, loading: false }));
+            }
         }
     };
 
@@ -138,16 +144,15 @@ export default function Renderer({
         }, 'toggleClassStation');
     };
 
-    const handleChooseAbility = async (value: number, type: string) => {
-        const data = { abilityValue: { type, value }, characterId: character?.id };
+    const handleChooseAbility = async (type: string, value: number) => {
+        let updatedAbilities = { ...character.abilities, [type]: value };
+        const data = { updatedAbilities: updatedAbilities, characterId: character?.id };
 
         try {
             await handleAsyncOperation("/api/ability", data, () => {
-                // Assuming state variable is named 'state'
                 setState((prevState) => ({
                     ...prevState,
-                    // Assuming 'currentAbility' is the key in the state to update
-                    currentAbility: data.abilityValue,
+                    currentAbilities: updatedAbilities,
                 }));
             }, '');
         } catch (error) {
@@ -227,20 +232,14 @@ export default function Renderer({
                             <button className={`${style.hvrFadeWhite}`} onClick={(e) => setWorkstation(3)}>
                                 Set Ability Values
                             </button>
-                            <div>
-                                {Object.entries(character.abilities).map(([key, value]: any) => (
+                            {/* <div>
+                                {Object.entries(currentAbilities).map(([key, value]: any) => (
                                     <p key={key}>
                                         {key}: {value}
                                     </p>
                                 ))}
-                            </div>
+                            </div> */}
                         </div>
-                    </div>
-                    <div>
-                        <h2>Abilities</h2>
-                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(3)}>
-                            Set Ability Values
-                        </button>
                     </div>
                     <hr></hr>
                     <div>

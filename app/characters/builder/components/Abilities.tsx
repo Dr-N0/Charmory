@@ -4,17 +4,18 @@ import { ChangeEvent, useState } from 'react'
 import style from './BuilderComponents.module.css'
 
 export default function Abilities({
+    abilityList,
     handleChooseAbility,
 }: any) {
     const [genMethod, setGenMethod] = useState("manual");
     const [pointBuy, setPointBuy] = useState(27);
 
-    const [strength, setStrength] = useState(10);
-    const [dexterity, setDexterity] = useState(10);
-    const [constitution, setConstitution] = useState(10);
-    const [intelligence, setIntelligence] = useState(10);
-    const [wisdom, setWisdom] = useState(10);
-    const [charisma, setCharisma] = useState(10);
+    const [strength, setStrength] = useState(abilityList.strength);
+    const [dexterity, setDexterity] = useState(abilityList.dexterity);
+    const [constitution, setConstitution] = useState(abilityList.constitution);
+    const [intelligence, setIntelligence] = useState(abilityList.intelligence);
+    const [wisdom, setWisdom] = useState(abilityList.wisdom);
+    const [charisma, setCharisma] = useState(abilityList.charisma);
     
 
     const abilitiesList = [
@@ -62,7 +63,7 @@ export default function Abilities({
         try {
             const sanitizedValue = Math.max(1, Math.min(18, parseInt(e.currentTarget.value)));
             const value = setValue(type, sanitizedValue);
-            await handleChooseAbility({ type, value });
+            await handleChooseAbility( type, value );
         } catch (error) {
             console.error(error);
         }
