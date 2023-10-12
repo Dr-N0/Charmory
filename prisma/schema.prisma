@@ -139,8 +139,13 @@ model Equipment {
   name          String
   description   String
   group         String?
+  armorClass    String?
+  strength      Int?
+  stealth       String?
   cost          Json?
+  damage        String?
   weight        Json?
+  properties    String[]    
   qty           Int?
 }
 
@@ -153,7 +158,7 @@ model Packs {
 }
 
 model Proficencies {
-  id            Int         @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
 
   savingStrength      HowProficent  @default(NONE)
   savingDexterity     HowProficent  @default(NONE)
@@ -190,36 +195,10 @@ enum HowProficent {
 model Inventory {
   id          Int         @id @default(autoincrement())
 
-  armor       Armor?
-  weapons     Weapon[]
-  items       Item[]
-}
-
-model Armor {
-  id          Int         @id @default(autoincrement())
-  inventory   Inventory   @relation(fields: [inventoryId], references: [id])
-  inventoryId Int      @unique
-
-  name        String?
-  type        ItemType
-}
-model Weapon {
-  id          Int         @id @default(autoincrement())
-  inventory   Inventory   @relation(fields: [inventoryId], references: [id])
-  inventoryId Int      @unique
-
-  name        String?
-  type        ItemType
-  
-}
-model Item {
-  id          Int         @id @default(autoincrement())
-  inventory   Inventory   @relation(fields: [inventoryId], references: [id])
-  inventoryId Int      @unique
-
-  name        String?
-  type        ItemType
-  
+  armor       Json?
+  weapons     Json[]
+  items       Json[]
+  spells      Json[]
 }
 
 enum ItemType {

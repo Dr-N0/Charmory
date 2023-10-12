@@ -8,7 +8,7 @@ async function main() {
   const password = await hash('test', 12)
   console.log(password)
 
-  const races = [
+  const unlimitedRaces = [
     {
         "name": "Aarakocra",
         "color": "rgba(135, 206, 235, 0.55)",
@@ -362,58 +362,58 @@ async function main() {
         "keywords": ["tiefling", "infernal beings", "demonic traits"],
         "variants": [
             {
-                "name": "Asmodeus Tiefling",
+                "name": "Bloodline of Asmodeus",
                 "color": "rgba(255, 69, 0, 0.55)",
                 "description": "Tieflings tied to Asmodeus, the Lord of the Nine Hells, embodying infernal authority and cunning.",
-                "keywords": ["asmodeus tiefling", "lord of the nine hells", "infernal authority"]
+                "keywords": ["Bloodline of asmodeus", "lord of the nine hells", "infernal authority"]
             },
             {
-                "name": "Baalzebul Tiefling",
+                "name": "Bloodline of Baalzebul",
                 "color": "rgba(165, 42, 42, 0.55)",
                 "description": "Tieflings connected to Baalzebul, the Lord of the Flies, often exuding a sense of decay and pestilence.",
-                "keywords": ["baalzebul tiefling", "lord of the flies", "decay and pestilence"]
+                "keywords": ["Bloodline of baalzebul", "lord of the flies", "decay and pestilence"]
             },
             {
-                "name": "Dispater Tiefling",
+                "name": "Bloodline of Dispater",
                 "color": "rgba(47, 79, 79, 0.55)",
                 "description": "Tieflings with ties to Dispater, the Iron Duke, showcase discipline and a penchant for order.",
-                "keywords": ["dispater tiefling", "iron duke", "discipline and order"]
+                "keywords": ["Bloodline of dispater", "iron duke", "discipline and order"]
             },
             {
-                "name": "Fierna Tiefling",
+                "name": "Bloodline of Fierna",
                 "color": "rgba(205, 92, 92, 0.55)",
                 "description": "Tieflings aligned with Fierna, the Princess of Hell, often exhibit charm and persuasive abilities.",
-                "keywords": ["fierna tiefling", "princess of hell", "charm and persuasion"]
+                "keywords": ["Bloodline of fierna", "princess of hell", "charm and persuasion"]
             },
             {
-                "name": "Glasya Tiefling",
+                "name": "Bloodline of Glasya",
                 "color": "rgba(255, 192, 203, 0.55)",
                 "description": "Tieflings influenced by Glasya, the Duchess of Hell, embodying subtlety and guile.",
-                "keywords": ["glasya tiefling", "duchess of hell", "subtlety and guile"]
+                "keywords": ["Bloodline of glasya", "duchess of hell", "subtlety and guile"]
             },
             {
-                "name": "Levistus Tiefling",
+                "name": "Bloodline of Levistus",
                 "color": "rgba(70, 130, 180, 0.55)",
                 "description": "Tieflings tied to Levistus, the Lord of Stygia, often exude an aura of icy coldness and resilience.",
-                "keywords": ["levistus tiefling", "lord of stygia", "icy coldness and resilience"]
+                "keywords": ["Bloodline of levistus", "lord of stygia", "icy coldness and resilience"]
             },
             {
-                "name": "Mammon Tiefling",
+                "name": "Bloodline of Mammon",
                 "color": "rgba(255, 140, 0, 0.55)",
                 "description": "Tieflings with connections to Mammon, the Archduke of Minauros, often seek wealth and material gain.",
-                "keywords": ["mammon tiefling", "archduke of minauros", "wealth and material gain"]
+                "keywords": ["Bloodline of mammon", "archduke of minauros", "wealth and material gain"]
             },
             {
-                "name": "Mephistopheles Tiefling",
+                "name": "Bloodline of Mephistopheles",
                 "color": "rgba(255, 0, 0, 0.55)",
                 "description": "Tieflings influenced by Mephistopheles, the Lord of Cania, embodying devilish cunning and manipulation.",
-                "keywords": ["mephistopheles tiefling", "lord of cania", "devilish cunning and manipulation"]
+                "keywords": ["Bloodline of mephistopheles", "lord of cania", "devilish cunning and manipulation"]
             },
             {
-                "name": "Zariel Tiefling",
+                "name": "Bloodline of Zariel",
                 "color": "rgba(0, 0, 128, 0.55)",
                 "description": "Tieflings with ties to Zariel, the Fallen Angel, often exhibit a martial and warlike demeanor.",
-                "keywords": ["zariel tiefling", "fallen angel", "martial and warlike"]
+                "keywords": ["Bloodline of zariel", "fallen angel", "martial and warlike"]
             }
         ]
     },
@@ -437,8 +437,189 @@ async function main() {
     }
   ];
 
+  const limitedRaces = [
+    {
+        "name": "Dragonborn",
+        "color": "rgba(255, 69, 0, 0.55)",
+        "description": "Proud and honorable humanoid dragons with diverse breath weapons.",
+        "keywords": ["proud", "honorable", "dragons"]
+    },
+    {
+        "name": "Dwarf",
+        "color": "rgba(205, 133, 63, 0.55)",
+        "description": "Stout and skilled miners and craftsmen, known for their resilience.",
+        "keywords": ["stout", "miners", "resilience"],
+        "variants": [
+            {
+                "name": "Hill Dwarf",
+                "color": "rgba(139, 69, 19, 0.55)",
+                "description": "Dwarves hailing from mountainous regions, known for their hardiness.",
+                "keywords": ["mountainous regions", "hardiness", "dwarves"]
+            },
+            {
+                "name": "Mountain Dwarf",
+                "color": "rgba(165, 42, 42, 0.55)",
+                "description": "Dwarves with a natural affinity for mining and forging in the mountains.",
+                "keywords": ["mining", "forging", "mountains"]
+            }
+        ]
+    },
+    {
+        "name": "Elf",
+        "color": "rgba(34, 139, 34, 0.55)",
+        "description": "Graceful and long-lived beings with a deep connection to nature.",
+        "keywords": ["graceful", "long-lived", "nature"],
+        "variants": [
+            {
+                "name": "High Elf",
+                "color": "rgba(135, 206, 235, 0.55)",
+                "description": "Elves with a natural aptitude for magic and a strong connection to the arcane.",
+                "keywords": ["high elf", "magic", "arcane"]
+            },
+            {
+                "name": "Sea Elf",
+                "color": "rgba(30, 144, 255, 0.55)",
+                "description": "Elves adapted to life underwater, with aquatic features and agility.",
+                "keywords": ["sea elf", "underwater", "aquatic features"]
+            },
+            {
+                "name":             "Wood Elf",
+                "color": "rgba(34, 139, 34, 0.55)",
+                "description": "Elves with a deep affinity for forests and woodlands, skilled in archery.",
+                "keywords": ["wood elf", "forests", "skilled in archery"]
+            }
+        ]
+    },
+    {
+        "name": "Gnome",
+        "color": "rgba(255, 215, 0, 0.55)",
+        "description": "Small, inventive beings with a knack for technology, illusion, and humor.",
+        "keywords": ["small", "inventive", "technology"],
+        "variants": [
+            {
+                "name": "Deep Gnome",
+                "color": "rgba(47, 79, 79, 0.55)",
+                "description": "Subterranean Gnomes with innate magic and stealth abilities.",
+                "keywords": ["deep gnome", "subterranean", "stealth abilities"]
+            },
+            {
+                "name": "Forest Gnome",
+                "color": "rgba(50, 205, 50, 0.55)",
+                "description": "Gnomes with a deep connection to nature and a talent for illusion magic.",
+                "keywords": ["forest gnome", "nature", "illusion magic"]
+            },
+            {
+                "name": "Rock Gnome",
+                "color": "rgba(165, 42, 42, 0.55)",
+                "description": "Gnomes known for their engineering skills and inventive creations.",
+                "keywords": ["rock gnome", "engineering skills", "inventive creations"]
+            }
+        ]
+    },
+    {
+        "name": "Half-Elf",
+        "color": "rgba(210, 180, 140, 0.55)",
+        "description": "Individuals with a mix of human and elven ancestry, embodying adaptability.",
+        "keywords": ["half-elf", "human", "elven ancestry"]
+    },
+    {
+        "name": "Half-Orc",
+        "color": "rgba(165, 42, 42, 0.55)",
+        "description": "Robust and strong humanoids with both orc and human lineage.",
+        "keywords": ["robust", "strong", "orc and human lineage"]
+    },
+    {
+      "name": "Halfling",
+      "color": "rgba(222, 184, 135, 0.55)",
+      "description": "Small and nimble beings with a talent for stealth and luck.",
+      "keywords": ["small", "nimble", "stealth and luck"],
+      "variants": [
+          {
+              "name": "Lightfoot Halfling",
+              "color": "rgba(240, 230, 140, 0.55)",
+              "description": "Halflings known for their stealthy nature and ease in blending into crowds.",
+              "keywords": ["lightfoot halfling", "stealthy nature", "blending into crowds"]
+            },
+            {
+                "name": "Stout Halfling",
+                "color": "rgba(139, 69, 19, 0.55)",
+                "description": "Halflings with exceptional resilience and resistance to poison.",
+                "keywords": ["stout halfling", "resilience", "resistance to poison"]
+            }
+        ]
+    },
+    {
+        "name": "Human",
+        "color": "rgba(198, 134, 66, 0.55)",
+        "description": "Versatile and ambitious beings with diverse cultures and adaptability.",
+        "keywords": ["human", "versatile", "ambitious"]
+    },
+    {
+        "name": "Tiefling",
+        "color": "rgba(139, 0, 0, 0.55)",
+        "description": "Descendants of infernal beings, Tieflings bear demonic traits and often grapple with their dark lineage.",
+        "keywords": ["tiefling", "infernal beings", "demonic traits"],
+        "variants": [
+            {
+                "name": "Bloodline of Asmodeus",
+                "color": "rgba(255, 69, 0, 0.55)",
+                "description": "Tieflings tied to Asmodeus, the Lord of the Nine Hells, embodying infernal authority and cunning.",
+                "keywords": ["Bloodline of asmodeus", "lord of the nine hells", "infernal authority"]
+            },
+            {
+                "name": "Bloodline of Baalzebul",
+                "color": "rgba(165, 42, 42, 0.55)",
+                "description": "Tieflings connected to Baalzebul, the Lord of the Flies, often exuding a sense of decay and pestilence.",
+                "keywords": ["Bloodline of baalzebul", "lord of the flies", "decay and pestilence"]
+            },
+            {
+                "name": "Bloodline of Dispater",
+                "color": "rgba(47, 79, 79, 0.55)",
+                "description": "Tieflings with ties to Dispater, the Iron Duke, showcase discipline and a penchant for order.",
+                "keywords": ["Bloodline of dispater", "iron duke", "discipline and order"]
+            },
+            {
+                "name": "Bloodline of Fierna",
+                "color": "rgba(205, 92, 92, 0.55)",
+                "description": "Tieflings aligned with Fierna, the Princess of Hell, often exhibit charm and persuasive abilities.",
+                "keywords": ["Bloodline of fierna", "princess of hell", "charm and persuasion"]
+            },
+            {
+                "name": "Bloodline of Glasya",
+                "color": "rgba(255, 192, 203, 0.55)",
+                "description": "Tieflings influenced by Glasya, the Duchess of Hell, embodying subtlety and guile.",
+                "keywords": ["Bloodline of glasya", "duchess of hell", "subtlety and guile"]
+            },
+            {
+                "name": "Bloodline of Levistus",
+                "color": "rgba(70, 130, 180, 0.55)",
+                "description": "Tieflings tied to Levistus, the Lord of Stygia, often exude an aura of icy coldness and resilience.",
+                "keywords": ["Bloodline of levistus", "lord of stygia", "icy coldness and resilience"]
+            },
+            {
+                "name": "Bloodline of Mammon",
+                "color": "rgba(255, 140, 0, 0.55)",
+                "description": "Tieflings with connections to Mammon, the Archduke of Minauros, often seek wealth and material gain.",
+                "keywords": ["Bloodline of mammon", "archduke of minauros", "wealth and material gain"]
+            },
+            {
+                "name": "Bloodline of Mephistopheles",
+                "color": "rgba(255, 0, 0, 0.55)",
+                "description": "Tieflings influenced by Mephistopheles, the Lord of Cania, embodying devilish cunning and manipulation.",
+                "keywords": ["Bloodline of mephistopheles", "lord of cania", "devilish cunning and manipulation"]
+            },
+            {
+                "name": "Bloodline of Zariel",
+                "color": "rgba(0, 0, 128, 0.55)",
+                "description": "Tieflings with ties to Zariel, the Fallen Angel, often exhibit a martial and warlike demeanor.",
+                "keywords": ["Bloodline of zariel", "fallen angel", "martial and warlike"]
+            }
+        ]
+    },
+  ];
+
   await prisma.race.createMany({
-    data: races.map((rce) => ({
+    data: unlimitedRaces.map((rce) => ({
       ...rce,
     })),
   });
@@ -1724,6 +1905,42 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Battleaxe",
+      "description": "A versatile axe suitable for both one-handed and two-handed use.",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "damage": "1d8 slashing",
+      "weight": {
+        "value": 4,
+        "type": "lb"
+      },
+      "properties": [
+        "Versatile (1d10)"
+      ],
+      "qty": 1
+    },
+    {
+      "name": "Blowgun",
+      "description": "A small, tubular device used to propel darts or other small, needle-like projectiles.",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "damage": "1 piercing",
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "properties": [
+        "Ammunition",
+        "Range (25/100)",
+        "Loading"
+      ],
+      "qty": 1
+    },
+    {
       "name": "Blowgun needles (20)",
       "description": "A quiver of 20 needles for use with a blowgun.",
       "group": "Ammunition",
@@ -1742,17 +1959,15 @@ async function main() {
       "group": "Medium Armor",
       "description": "A fitted, metal breastplate for balanced protection. Allows for ease of movement.",
       "armorClass": "14 + Dex modifier (max 2)",
-      "attributes": {
-        "weight": {
-          "value": 20,
-          "type": "lb"
-        },
-        "cost": {
-          "value": 400,
-          "type": "gp"
-        },
-        "qty": 1
-      }
+      "weight": {
+        "value": 20,
+        "type": "lb"
+      },
+      "cost": {
+        "value": 400,
+        "type": "gp"
+      },
+      "qty": 1
     },
     {
       "name": "Bucket",
@@ -1787,36 +2002,32 @@ async function main() {
       "group": "Heavy Armor",
       "description": "Armor made of interlocking metal rings, covering the entire body. Heavy and hinders stealth.",
       "armorClass": "16",
-      "attributes": {
-        "weight": {
-          "value": 55,
-          "type": "lb"
-        },
-        "cost": {
-          "value": 75,
-          "type": "gp"
-        },
-        "qty": 1
-      },
       "strength": 13,
-      "stealth": "disadvantage"
+      "stealth": "disadvantage",
+      "weight": {
+        "value": 55,
+        "type": "lb"
+      },
+      "cost": {
+        "value": 75,
+        "type": "gp"
+      },
+      "qty": 1,
     },
     {
       "name": "Chain Shirt Armor",
       "group": "Medium Armor",
       "description": "A shirt made of interlocking metal rings. Strikes a balance between protection and maneuverability.",
       "armorClass": "13 + Dex modifier (max 2)",
-      "attributes": {
-        "weight": {
-          "value": 20,
-          "type": "lb"
-        },
-        "cost": {
-          "value": 50,
-          "type": "gp"
-        },
-        "qty": 1
-      }
+      "weight": {
+        "value": 20,
+        "type": "lb"
+      },
+      "cost": {
+        "value": 50,
+        "type": "gp"
+      },
+      "qty": 1
     },
     {
       "name": "Climber's Kit",
@@ -1889,6 +2100,23 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Club",
+      "description": "A simple, wooden club used for basic melee attacks.",
+      "cost": {
+        "value": 1,
+        "type": "sp"
+      },
+      "damage": "1d4 bludgeoning",
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "properties": [
+        "Light"
+      ],
+      "qty": 1
+    },
+    {
       "name": "Component Pouch",
       "description": "A small, watertight leather belt pouch containing compartments for spellcasting components.",
       "group": "Common Items",
@@ -1917,6 +2145,67 @@ async function main() {
       "qty": 20
     },
     {
+      "name": "Crossbow, hand",
+      "description": "A compact, one-handed crossbow suitable for quick and precise ranged attacks.",
+      "cost": {
+        "value": 75,
+        "type": "gp"
+      },
+      "damage": "1d6 piercing",
+      "weight": {
+        "value": 3,
+        "type": "lb"
+      },
+      "properties": [
+        "Ammunition",
+        "Range (30/120)",
+        "Light",
+        "Loading"
+      ],
+      "qty": 1
+    },
+    {
+      "name": "Crossbow, heavy",
+      "description": "A larger, two-handed crossbow designed for more powerful and longer-range attacks.",
+      "cost": {
+        "value": 50,
+        "type": "gp"
+      },
+      "damage": "1d10 piercing",
+      "weight": {
+        "value": 18,
+        "type": "lb"
+      },
+      "properties": [
+        "Ammunition",
+        "Range (100/400)",
+        "Heavy",
+        "Loading",
+        "Two-handed"
+      ],
+      "qty": 1
+    },
+    {
+      "name": "Crossbow, light",
+      "description": "A compact crossbow suitable for ranged attacks, but requires reloading.",
+      "cost": {
+        "value": 25,
+        "type": "gp"
+      },
+      "damage": "1d8 piercing",
+      "weight": {
+        "value": 5,
+        "type": "lb"
+      },
+      "properties": [
+        "Ammunition",
+        "Range (80/320)",
+        "Loading",
+        "Two-handed"
+      ],
+      "qty": 1
+    },
+    {
       "name": "Crowbar",
       "description": "A sturdy, metal bar with a flattened end, used for prying and leveraging.",
       "group": "Usable Items",
@@ -1942,6 +2231,43 @@ async function main() {
         "value": 1,
         "type": "lb"
       },
+      "qty": 1
+    },
+    {
+      "name": "Dagger",
+      "description": "A small, versatile blade that can be used for stabbing or throwing.",
+      "cost": {
+        "value": 2,
+        "type": "gp"
+      },
+      "damage": "1d4 piercing",
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "properties": [
+        "Finesse",
+        "Light",
+        "Thrown (20/60)"
+      ],
+      "qty": 1
+    },
+    {
+      "name": "Dart",
+      "description": "A small, throwable projectile with aerodynamic fins.",
+      "cost": {
+        "value": 5,
+        "type": "cp"
+      },
+      "damage": "1d4 piercing",
+      "weight": {
+        "value": 0.25,
+        "type": "lb"
+      },
+      "properties": [
+        "Finesse",
+        "Thrown (20/60)"
+      ],
       "qty": 1
     },
     {
@@ -1973,6 +2299,20 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Flail",
+      "description": "A heavy, spiked weapon with a chain, providing a unique and versatile attack style.",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "damage": "1d8 bludgeoning",
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
       "name": "Flask or Tankard",
       "description": "A simple container for holding liquids.",
       "group": "Containers",
@@ -1984,6 +2324,25 @@ async function main() {
         "value": 1,
         "type": "lb"
       },
+      "qty": 1
+    },
+    {
+      "name": "Glaive",
+      "description": "A polearm with a sharp blade at the end, offering extended reach and powerful slashing attacks.",
+      "cost": {
+        "value": 20,
+        "type": "gp"
+      },
+      "damage": "1d10 slashing",
+      "weight": {
+        "value": 6,
+        "type": "lb"
+      },
+      "properties": [
+        "Heavy",
+        "Reach",
+        "Two-handed"
+      ],
       "qty": 1
     },
     {
@@ -2001,22 +2360,92 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Greataxe",
+      "description": "A massive axe designed for devastating two-handed swings, dealing significant slashing damage.",
+      "cost": {
+        "value": 30,
+        "type": "gp"
+      },
+      "damage": "1d12 slashing",
+      "weight": {
+        "value": 7,
+        "type": "lb"
+      },
+      "properties": [
+        "Heavy",
+        "Two-handed"
+      ],
+      "qty": 1
+    },
+    {
+      "name": "Greatclub",
+      "description": "A large, heavy club suitable for powerful swings.",
+      "cost": {
+        "value": 2,
+        "type": "sp"
+      },
+      "damage": "1d8 bludgeoning",
+      "weight": {
+        "value": 10,
+        "type": "lb"
+      },
+      "properties": [
+        "Two-handed"
+      ],
+      "qty": 1
+    },
+    {
+      "name": "Greatsword",
+      "description": "An enormous, two-handed sword known for its immense slashing power.",
+      "cost": {
+        "value": 50,
+        "type": "gp"
+      },
+      "damage": "2d6 slashing",
+      "weight": {
+        "value": 6,
+        "type": "lb"
+      },
+      "properties": [
+        "Heavy",
+        "Two-handed"
+      ],
+      "qty": 1
+    },
+    {
+      "name": "Halberd",
+      "description": "A polearm with an axe blade and a spear point, combining the features of an axe and a spear.",
+      "cost": {
+        "value": 20,
+        "type": "gp"
+      },
+      "damage": "1d10 slashing",
+      "weight": {
+        "value": 6,
+        "type": "lb"
+      },
+      "properties": [
+        "Heavy",
+        "Reach",
+        "Two-handed"
+      ],
+      "qty": 1
+    },
+    {
       "name": "Halfplate Armor",
       "group": "Medium Armor",
       "description": "Armor covering the torso and limbs. Provides substantial defense at the cost of agility.",
       "armorClass": "15 + Dex modifier (max 2)",
-      "attributes": {
-        "weight": {
-          "value": 40,
-          "type": "lb"
-        },
-        "cost": {
-          "value": 750,
-          "type": "gp"
-        },
-        "qty": 1
+      "stealth": "disadvantage",
+      "weight": {
+        "value": 40,
+        "type": "lb"
       },
-      "stealth": "disadvantage"
+      "cost": {
+        "value": 750,
+        "type": "gp"
+      },
+      "qty": 1
     },
     {
       "name": "Hammer",
@@ -2030,6 +2459,24 @@ async function main() {
         "value": 3,
         "type": "lb"
       },
+      "qty": 1
+    },
+    {
+      "name": "Handaxe",
+      "description": "A small, versatile axe that can be used for chopping or throwing.",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "damage": "1d6 slashing",
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "properties": [
+        "Light",
+        "Thrown (20/60)"
+      ],
       "qty": 1
     },
     {
@@ -2051,19 +2498,17 @@ async function main() {
       "group": "Medium Armor",
       "description": "Tough animal hides layered for protection. Provides moderate defense while maintaining flexibility.",
       "armorClass": "12 + Dex modifier (max 2)",
-      "attributes": {
-        "weight": {
-          "value": 12,
-          "type": "lb"
-        },
-        "cost": {
-          "value": 10,
-          "type": "gp"
-        },
-        "qty": 1
-      },
       "strength": 13,
-      "stealth": "disadvantage"
+      "stealth": "disadvantage",
+      "weight": {
+        "value": 12,
+        "type": "lb"
+      },
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "qty": 1
     },
     {
       "name": "Holy Water (flask)",
@@ -2136,6 +2581,23 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Javelin",
+      "description": "A throwing spear, effective at a moderate range.",
+      "cost": {
+        "value": 5,
+        "type": "sp"
+      },
+      "damage": "1d6 piercing",
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "properties": [
+        "Thrown (30/120)"
+      ],
+      "qty": 1
+    },
+    {
       "name": "Jug or Pitcher",
       "description": "A container for holding and pouring liquids.",
       "group": "Containers",
@@ -2178,6 +2640,24 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Lance",
+      "description": "A long, pointed weapon used primarily from horseback to deliver powerful piercing attacks.",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "damage": "1d12 piercing",
+      "weight": {
+        "value": 6,
+        "type": "lb"
+      },
+      "properties": [
+        "Reach",
+        "Special"
+      ],
+      "qty": 1
+    },
+    {
       "name": "Lantern, bullseye",
       "description": "A lantern with a hinged metal shutter that can be closed to block light.",
       "group": "Usable Items",
@@ -2210,17 +2690,33 @@ async function main() {
       "group": "Light Armor",
       "description": "Toughened leather crafted into a lightweight suit. Balances protection and mobility.",
       "armorClass": "11 + Dex modifier",
-      "attributes": {
-        "weight": {
-          "value": 10,
-          "type": "lb"
-        },
-        "cost": {
-          "value": 10,
-          "type": "gp"
-        },
-        "qty": 1
-      }
+      "weight": {
+        "value": 10,
+        "type": "lb"
+      },
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Light hammer",
+      "description": "A small, balanced hammer suitable for throwing or close combat.",
+      "cost": {
+        "value": 2,
+        "type": "gp"
+      },
+      "damage": "1d4 bludgeoning",
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "properties": [
+        "Light",
+        "Thrown (20/60)"
+      ],
+      "qty": 1
     },
     {
       "name": "Lock",
@@ -2232,6 +2728,57 @@ async function main() {
       },
       "weight": {
         "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Longbow",
+      "description": "A large, powerful bow designed for accurate and long-range shooting.",
+      "cost": {
+        "value": 50,
+        "type": "gp"
+      },
+      "damage": "1d8 piercing",
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "properties": [
+        "Ammunition",
+        "Range (150/600)",
+        "Heavy",
+        "Two-handed"
+      ],
+      "qty": 1
+    },
+    {
+      "name": "Longsword",
+      "description": "A versatile and balanced sword suitable for both one-handed and two-handed use.",
+      "cost": {
+        "value": 15,
+        "type": "gp"
+      },
+      "damage": "1d8 slashing",
+      "weight": {
+        "value": 3,
+        "type": "lb"
+      },
+      "properties": [
+        "Versatile (1d10)"
+      ],
+      "qty": 1
+    },
+    {
+      "name": "Mace",
+      "description": "A sturdy, blunt weapon with a solid metal head for bashing foes.",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "damage": "1d6 bludgeoning",
+      "weight": {
+        "value": 4,
         "type": "lb"
       },
       "qty": 1
@@ -2265,6 +2812,24 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Maul",
+      "description": "A massive, two-handed hammer designed for delivering powerful crushing blows.",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "damage": "2d6 bludgeoning",
+      "weight": {
+        "value": 10,
+        "type": "lb"
+      },
+      "properties": [
+        "Heavy",
+        "Two-handed"
+      ],
+      "qty": 1
+    },
+    {
       "name": "Mess Kit",
       "description": "A simple set of dishes and utensils for eating on the go.",
       "group": "Usable Items",
@@ -2290,6 +2855,38 @@ async function main() {
         "value": 0.5,
         "type": "lb"
       },
+      "qty": 1
+    },
+    {
+      "name": "Morningstar",
+      "description": "A spiked metal ball attached to a handle, designed for delivering piercing blows.",
+      "cost": {
+        "value": 15,
+        "type": "gp"
+      },
+      "damage": "1d8 piercing",
+      "weight": {
+        "value": 4,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Net",
+      "description": "A thrown mesh that entangles and restrains a target, useful for capturing rather than causing harm.",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "damage": null,
+      "weight": {
+        "value": 3,
+        "type": "lb"
+      },
+      "properties": [
+        "Special",
+        "Thrown (5/15)"
+      ],
       "qty": 1
     },
     {
@@ -2325,17 +2922,15 @@ async function main() {
       "group": "Light Armor",
       "description": "Simple cloth padding that provides basic protection. Allows for easy movement.",
       "armorClass": "11 + Dex modifier",
-      "attributes": {
-        "weight": {
-          "value": 8,
-          "type": "lb"
-        },
-        "cost": {
-          "value": 5,
-          "type": "gp"
-        },
-        "qty": 1
-      }
+      "weight": {
+        "value": 8,
+        "type": "lb"
+      },
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "qty": 1
     },
     {
       "name": "Paper (one sheet)",
@@ -2394,6 +2989,25 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Pike",
+      "description": "A long, pointed weapon with exceptional reach, commonly used by foot soldiers in formations.",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "damage": "1d10 piercing",
+      "weight": {
+        "value": 18,
+        "type": "lb"
+      },
+      "properties": [
+        "Heavy",
+        "Reach",
+        "Two-handed"
+      ],
+      "qty": 1
+    },
+    {
       "name": "Piton",
       "description": "A metal spike driven into rock to support weight or hold a rope.",
       "group": "Usable Items",
@@ -2412,19 +3026,17 @@ async function main() {
       "group": "Heavy Armor",
       "description": "Full-body armor made of shaped metal plates. Exceptional defense at the cost of agility.",
       "armorClass": "18",
-      "attributes": {
-        "weight": {
-          "value": 65,
-          "type": "lb"
-        },
-        "cost": {
-          "value": 1500,
-          "type": "gp"
-        },
-        "qty": 1
-      },
       "strength": 15,
-      "stealth": "disadvantage"
+      "stealth": "disadvantage",
+      "weight": {
+        "value": 65,
+        "type": "lb"
+      },
+      "cost": {
+        "value": 1500,
+        "type": "gp"
+      },
+      "qty": 1
     },
     {
       "name": "Poison, basic (vial)",
@@ -2497,6 +3109,23 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Quarterstaff",
+      "description": "A simple, wooden staff that can be used with one or two hands.",
+      "cost": {
+        "value": 2,
+        "type": "sp"
+      },
+      "damage": "1d6 bludgeoning",
+      "weight": {
+        "value": 4,
+        "type": "lb"
+      },
+      "properties": [
+        "Versatile (1d8)"
+      ],
+      "qty": 1
+    },
+    {
       "name": "Quiver",
       "description": "A container designed for holding arrows.",
       "group": "Containers",
@@ -2522,6 +3151,23 @@ async function main() {
         "value": 35,
         "type": "lb"
       },
+      "qty": 1
+    },
+    {
+      "name": "Rapier",
+      "description": "A slender, sharply pointed sword designed for thrusting attacks.",
+      "cost": {
+        "value": 25,
+        "type": "gp"
+      },
+      "damage": "1d8 piercing",
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "properties": [
+        "Finesse"
+      ],
       "qty": 1
     },
     {
@@ -2557,18 +3203,16 @@ async function main() {
       "group": "Heavy Armor",
       "description": "Armor made of interlocking metal rings. Heavy and noisy, hinders stealth.",
       "armorClass": "14",
-      "attributes": {
-        "weight": {
-          "value": 40,
-          "type": "lb"
-        },
-        "cost": {
-          "value": 30,
-          "type": "gp"
-        },
-        "qty": 1
+      "stealth": "disadvantage",
+      "weight": {
+        "value": 40,
+        "type": "lb"
       },
-      "stealth": "disadvantage"
+      "cost": {
+        "value": 30,
+        "type": "gp"
+      },
+      "qty": 1
     },
     {
       "name": "Robes",
@@ -2645,18 +3289,16 @@ async function main() {
       "group": "Medium Armor",
       "description": "Armor made of small, overlapping metal scales. Provides solid protection but limits stealth.",
       "armorClass": "14 + Dex modifier (max 2)",
-      "attributes": {
-        "weight": {
-          "value": 45,
-          "type": "lb"
-        },
-        "cost": {
-          "value": 50,
-          "type": "gp"
-        },
-        "qty": 1
+      "stealth": "disadvantage",
+      "weight": {
+        "value": 45,
+        "type": "lb"
       },
-      "stealth": "disadvantage"
+      "cost": {
+        "value": 50,
+        "type": "gp"
+      },
+      "qty": 1
     },
     {
       "name": "Scale, merchant's",
@@ -2670,6 +3312,24 @@ async function main() {
         "value": 3,
         "type": "lb"
       },
+      "qty": 1
+    },
+    {
+      "name": "Scimitar",
+      "description": "A curved, slashing sword with a sharp edge, effective in close-quarters combat.",
+      "cost": {
+        "value": 25,
+        "type": "gp"
+      },
+      "damage": "1d6 slashing",
+      "weight": {
+        "value": 3,
+        "type": "lb"
+      },
+      "properties": [
+        "Finesse",
+        "Light"
+      ],
       "qty": 1
     },
     {
@@ -2691,17 +3351,52 @@ async function main() {
       "group": "Shield",
       "description": "A sturdy shield for blocking attacks. Provides additional protection in combat.",
       "armorClass": "+2",
-      "attributes": {
-        "weight": {
-          "value": 6,
-          "type": "lb"
-        },
-        "cost": {
-          "value": 10,
-          "type": "gp"
-        },
-        "qty": 1
-      }
+      "weight": {
+        "value": 6,
+        "type": "lb"
+      },
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Shortbow",
+      "description": "A compact bow suitable for ranged attacks, requiring both hands to use.",
+      "cost": {
+        "value": 25,
+        "type": "gp"
+      },
+      "damage": "1d6 piercing",
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "properties": [
+        "Ammunition",
+        "Range (80/320)",
+        "Two-handed"
+      ],
+      "qty": 1
+    },
+    {
+      "name": "Shortsword",
+      "description": "A versatile and nimble sword, suitable for quick and precise strikes.",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "damage": "1d6 piercing",
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "properties": [
+        "Finesse",
+        "Light"
+      ],
+      "qty": 1
     },
     {
       "name": "Shovel",
@@ -2715,6 +3410,23 @@ async function main() {
         "value": 5,
         "type": "lb"
       },
+      "qty": 1
+    },
+    {
+      "name": "Sickle",
+      "description": "A small, curved blade ideal for quick slashing attacks.",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "damage": "1d4 slashing",
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "properties": [
+        "Light"
+      ],
       "qty": 1
     },
     {
@@ -2746,6 +3458,38 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Sling",
+      "description": "A simple ranged weapon that hurls projectiles using centrifugal force.",
+      "cost": {
+        "value": 1,
+        "type": "sp"
+      },
+      "damage": "1d4 piercing",
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "properties": [
+        "Ammunition",
+        "Range (30/120)"
+      ],
+      "qty": 1
+    },
+    {
+      "name": "Sling bullets (20)",
+      "description": "Sling bullets are small, smooth projectiles crafted for use with slings. They are typically made of stone, lead, or other dense materials.",
+      "group": "Ammunition",
+      "cost": {
+        "value": 4,
+        "type": "cp"
+      },
+      "weight": {
+        "value": 1.5,
+        "type": "lb"
+      },
+      "qty": 20
+    },
+    {
       "name": "Soap",
       "description": "A small, fragrant bar of soap.",
       "group": "Usable Items",
@@ -2757,6 +3501,24 @@ async function main() {
         "value": 0.5,
         "type": "lb"
       },
+      "qty": 1
+    },
+    {
+      "name": "Spear",
+      "description": "A versatile weapon with both stabbing and throwing capabilities.",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "damage": "1d6 piercing",
+      "weight": {
+        "value": 3,
+        "type": "lb"
+      },
+      "properties": [
+        "Thrown (20/60)",
+        "Versatile (1d8)"
+      ],
       "qty": 1
     },
     {
@@ -2778,18 +3540,16 @@ async function main() {
       "group": "Medium Armor",
       "description": "Armor with strategically placed spikes. Deters close combatants and hinders stealth.",
       "armorClass": "14 + Dex modifier (max 2)",
-      "attributes": {
-        "weight": {
-          "value": 45,
-          "type": "lb"
-        },
-        "cost": {
-          "value": 75,
-          "type": "gp"
-        },
-        "qty": 1
+      "stealth": "disadvantage",
+      "weight": {
+        "value": 45,
+        "type": "lb"
       },
-      "stealth": "disadvantage"
+      "cost": {
+        "value": 75,
+        "type": "gp"
+      },
+      "qty": 1
     },
     {
       "name": "Spikes, iron (10)",
@@ -2810,19 +3570,17 @@ async function main() {
       "group": "Heavy Armor",
       "description": "Armor made of large, overlapping metal plates. Offers strong protection but limits mobility.",
       "armorClass": "17",
-      "attributes": {
-        "weight": {
-          "value": 60,
-          "type": "lb"
-        },
-        "cost": {
-          "value": 200,
-          "type": "gp"
-        },
-        "qty": 1
-      },
       "strength": 15,
-      "stealth": "disadvantage"
+      "stealth": "disadvantage",
+      "weight": {
+        "value": 60,
+        "type": "lb"
+      },
+      "cost": {
+        "value": 200,
+        "type": "gp"
+      },
+      "qty": 1
     },
     {
       "name": "Sprig of mistletoe",
@@ -2871,17 +3629,15 @@ async function main() {
       "group": "Light Armor",
       "description": "Leather armor adorned with metal studs. Offers better defense without sacrificing agility.",
       "armorClass": "12 + Dex Modifier",
-      "attributes": {
-        "weight": {
-          "value": 13,
-          "type": "lb"
-        },
-        "cost": {
-          "value": 45,
-          "type": "gp"
-        },
-        "qty": 1
-      }
+      "weight": {
+        "value": 13,
+        "type": "lb"
+      },
+      "cost": {
+        "value": 45,
+        "type": "gp"
+      },
+      "qty": 1
     },
     {
       "name": "Tent, two-person",
@@ -2940,6 +3696,24 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Trident",
+      "description": "A three-pronged spear with a wide, flat head, effective for both stabbing and throwing.",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "damage": "1d6 piercing",
+      "weight": {
+        "value": 4,
+        "type": "lb"
+      },
+      "properties": [
+        "Thrown (20/60)",
+        "Versatile (1d8)"
+      ],
+      "qty": 1
+    },
+    {
       "name": "Vial",
       "description": "A small container designed to hold liquids and other substances.",
       "group": "Containers",
@@ -2968,6 +3742,37 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "War pick",
+      "description": "A heavy, pick-shaped weapon designed to penetrate armor and deal piercing damage.",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "damage": "1d8 piercing",
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Warhammer",
+      "description": "A versatile weapon with a hammerhead on one side and a pick on the other, suitable for bludgeoning or piercing attacks.",
+      "cost": {
+        "value": 15,
+        "type": "gp"
+      },
+      "damage": "1d8 bludgeoning",
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "properties": [
+        "Versatile (1d10)"
+      ],
+      "qty": 1
+    },
+    {
       "name": "Waterskin",
       "description": "A container designed for holding water.",
       "group": "Containers",
@@ -2993,6 +3798,24 @@ async function main() {
         "value": 1,
         "type": "lb"
       },
+      "qty": 1
+    },
+    {
+      "name": "Whip",
+      "description": "A long, flexible weapon with a narrow lash, used for both striking and controlling opponents from a distance.",
+      "cost": {
+        "value": 2,
+        "type": "gp"
+      },
+      "damage": "1d4 slashing",
+      "weight": {
+        "value": 3,
+        "type": "lb"
+      },
+      "properties": [
+        "Finesse",
+        "Reach"
+      ],
       "qty": 1
     },
     {
@@ -3031,7 +3854,6 @@ async function main() {
     })),
   });
 
-  
   const spells = [
     {
       "className": "Artificer",

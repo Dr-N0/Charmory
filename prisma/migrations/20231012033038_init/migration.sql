@@ -130,8 +130,13 @@ CREATE TABLE "Equipment" (
     "name" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "group" TEXT,
+    "armorClass" TEXT,
+    "strength" INTEGER,
+    "stealth" TEXT,
     "cost" JSONB,
+    "damage" TEXT,
     "weight" JSONB,
+    "properties" TEXT[],
     "qty" INTEGER,
 
     CONSTRAINT "Equipment_pkey" PRIMARY KEY ("id")

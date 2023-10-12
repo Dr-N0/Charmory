@@ -87,9 +87,16 @@
     
     background-color: var(--background-box-color);
     border-radius: 3px;
-    border: 1px solid #bbb;
     cursor: pointer;
     box-sizing: border-box;
+}
+
+.displayButtonSelected {
+    border: 1px solid #21da39;
+}
+
+.displayButtonUnselected {
+    border: 1px solid #bbb;
 }
 
 .displayButtons hr {

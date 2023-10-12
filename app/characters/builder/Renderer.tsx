@@ -56,7 +56,7 @@ export default function Renderer({
             case 'class':
                 return <Class classList={classList} toggleClassStation={toggleClassStation} handleChooseClass={handleChooseClass} />
             case 'abilities':
-                return <Abilities abilityList={character.abilities} handleChooseAbility={handleChooseAbility} />
+                return <Abilities abilityList={currentAbilities} handleChooseAbility={handleChooseAbility} />
             case 'description':
                 return <Description backgroundList={backgroundList} toggleBackgroundStation={toggleBackgroundStation} handleChooseBackground={handleChooseBackground} />
             case 'equipment':
@@ -204,12 +204,12 @@ export default function Renderer({
                     <div>
                         <h2>Race</h2>
                         {currentRace == '' ? (
-                            <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(1)}>
+                            <button className={`${style.hvrFadeWhite} ${style.displayButtonUnselected}`} onClick={(e:any) => setWorkstation(1)}>
                                 Pick Your Race
                             </button>
                             ) : (
-                                <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(1)}>
-                                    {loading ? <Loading /> : <span>{currentRace}</span>}
+                                <button className={`${style.hvrFadeWhite} ${style.displayButtonSelected}`} onClick={(e:any) => setWorkstation(1)}>
+                                    {currentRace}
                                 </button>
                             )
                         }
@@ -218,11 +218,11 @@ export default function Renderer({
                     <div>
                         <h2>Class</h2>
                         {currentClass == '' ? (
-                            <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(2)}>
+                            <button className={`${style.hvrFadeWhite} ${style.displayButtonUnselected}`} onClick={(e:any) => setWorkstation(2)}>
                                 Choose Your Class
                             </button>
                             ) : (
-                            <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(2)}>
+                            <button className={`${style.hvrFadeWhite} ${style.displayButtonSelected}`} onClick={(e:any) => setWorkstation(2)}>
                                 {currentClass}
                             </button>)
                         }
@@ -231,9 +231,15 @@ export default function Renderer({
                     <div>
                         <h2>Abilities</h2>
                         <div>
-                            <button className={`${style.hvrFadeWhite}`} onClick={(e) => setWorkstation(3)}>
-                                Set Ability Values
-                            </button>
+                            {currentAbilities ? (
+                                <button className={`${style.hvrFadeWhite} ${style.displayButtonSelected}`} onClick={(e) => setWorkstation(3)}>
+                                    Change Ability Values
+                                </button>
+                                ) : (
+                                <button className={`${style.hvrFadeWhite} ${style.displayButtonUnselected}`} onClick={(e) => setWorkstation(3)}>
+                                    Set Ability Values
+                                </button>
+                            )}
                             {/* <div>
                                 {Object.entries(currentAbilities).map(([key, value]: any) => (
                                     <p key={key}>
@@ -247,11 +253,11 @@ export default function Renderer({
                     <div>
                         <h2>Description</h2>
                         {currentBackground == '' ? (
-                            <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(4)}>
+                            <button className={`${style.hvrFadeWhite} ${style.displayButtonUnselected}`} onClick={(e:any) => setWorkstation(4)}>
                                 Select A Background
                             </button>
                             ) : (
-                            <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(4)}>
+                            <button className={`${style.hvrFadeWhite} ${style.displayButtonSelected}`} onClick={(e:any) => setWorkstation(4)}>
                                 <span>{currentBackground}</span>
                             </button>)
                         }
@@ -259,7 +265,7 @@ export default function Renderer({
                     <hr></hr>
                     <div>
                         <h2>Equipment</h2>
-                        <button className={`${style.hvrFadeWhite}`} onClick={(e:any) => setWorkstation(5)}>
+                        <button className={`${style.hvrFadeWhite} ${style.displayButtonUnselected}`} onClick={(e:any) => setWorkstation(5)}>
                             Add Equipment
                         </button>
                     </div>
