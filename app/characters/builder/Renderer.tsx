@@ -30,6 +30,7 @@ export default function Renderer({
         toggleBackgroundStation: false,
         currentPack: "",
         toggleEquipmentStation: false,
+        extraEquipment: [],
         loading: false,
     });
 
@@ -44,6 +45,7 @@ export default function Renderer({
         toggleBackgroundStation,
         currentPack,
         toggleEquipmentStation,
+        extraEquipment,
         loading,
     } = state;
     
@@ -58,7 +60,7 @@ export default function Renderer({
             case 'description':
                 return <Description backgroundList={backgroundList} toggleBackgroundStation={toggleBackgroundStation} handleChooseBackground={handleChooseBackground} />
             case 'equipment':
-                return <Equipment packList={equipmentList.packList} equipmentList={equipmentList.itemList} toggleEquipmentStation={toggleEquipmentStation} handleChooseEquipmentPack={handleChooseEquipmentPack}/>
+                return <Equipment packList={equipmentList.packList} equipmentList={equipmentList.itemList} toggleEquipmentStation={toggleEquipmentStation} handleChooseEquipmentPack={handleChooseEquipmentPack} extraEquipment={extraEquipment} />
             default:
                 return <h1>Workstation not being used atm</h1>
         }

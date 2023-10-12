@@ -9,7 +9,7 @@ export default function Equipment({
     toggleEquipmentStation,
     handleChooseEquipment,
 }: any) {
-    const [chooseMethod, setChooseMethod] = useState("packs");
+    const [chooseMethod, setChooseMethod] = useState(true);
     const [equipment, setEquipment] = useState(packList);
     const [pack, setCurrentPack] = useState(packList[0]);
 
@@ -22,23 +22,22 @@ export default function Equipment({
             <h2 className={style.workstationTitle}>Equipment</h2>
             {toggleEquipmentStation ? (<div>Equipment station</div>) :
             (<div className={style.equipmentInput}>
-                {equipment.map((listValue: any) => {
-                    return (
-                        <li
-                            key={listValue.name}
-                            className={style.equipmentList}
-                            onClick={() => handleSelect(listValue.name)}>
-                            {listValue.name}
-                            <p>
-                            {listValue.contents.map((content: any) => {
-                                return (
-                                    <span>{content.name} | </span>
-                                )
-                            })}</p>
-                        </li>
-                    )
-                })}
+                <div>
+                    <button>Simple</button>
+                    <button>Complex</button>
+                </div>
+                { chooseMethod ? (
+                    <div>
+                        Simple
+                    </div>
+                ) : (
+                    <div>
+                        Complex
+                    </div>
+                )}
             </div>)}
+
+
             <div className={style.addItemCont}>
                 <h2>Add Item</h2>
                 <div className={style.addItemBox}>

@@ -445,34 +445,6 @@
     filter: brightness(0) invert(1);
 }
 
-.equipmentInput {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 10px;
-
-    overflow-y: auto;
-}
-
-.equipmentList {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    list-style-type: none;
-    margin: 0;
-    /* padding: 10px 20px; */
-    width: 99%;
-    /* height: 60px; */
-    border-radius: 3px;
-    cursor: pointer;
-    border: 1px solid transparent;
-}
-
-.equipmentList:hover {
-    border: 1px solid white;
-}
-
 /* Modal */
 
 .modal {

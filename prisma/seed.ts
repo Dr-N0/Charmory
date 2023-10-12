@@ -452,7 +452,7 @@ async function main() {
           "Armorer",
           "Battle Smith",
           "Alchemist"
-      ]
+      ],
     },
     {
       "name": "Barbarian",
@@ -465,7 +465,7 @@ async function main() {
           "Path of the Storm Herald",
           "Path of Wild Magic",
           "Path of the Beast"
-      ]
+      ],
     },
     {
       "name": "Bard",
@@ -478,7 +478,7 @@ async function main() {
           "College of Glamor",
           "College of Valor",
           "College of Lore"
-      ]
+      ],
     },
     {
       "name": "Cleric",
@@ -496,7 +496,7 @@ async function main() {
           "Light Domain",
           "Life Domain",
           "Trickery Domain"
-      ]
+      ],
     },
     {
       "name": "Druid",
@@ -509,7 +509,7 @@ async function main() {
           "Circle of the Moon",
           "Circle of the Land",
           "Circle of Wildfire"
-      ]
+      ],
     },
     {
       "name": "Fighter",
@@ -524,7 +524,7 @@ async function main() {
           "Champion",
           "Eldritch Knight",
           "Battle Master"
-      ]
+      ],
     },
     {
       "name": "Monk",
@@ -539,7 +539,7 @@ async function main() {
           "Way of the Ascendant Dragon",
           "Way of the Four Elements",
           "Way of the Open Hand"
-      ]
+      ],
     },
     {
       "name": "Paladin",
@@ -552,7 +552,7 @@ async function main() {
           "Oath of Conquest",
           "Oath of Redemption",
           "Oath of the Ancients"
-      ]
+      ],
     },
     {
       "name": "Ranger",
@@ -566,7 +566,7 @@ async function main() {
           "Gloom Stalker",
           "Horizon Walker",
           "Fey Wanderer"
-      ]
+      ],
     },
     {
       "name": "Rogue",
@@ -581,7 +581,7 @@ async function main() {
           "Arcane Trickster",
           "Phantom",
           "Thief"
-      ]
+      ],
     },
     {
       "name": "Sorcerer",
@@ -594,7 +594,7 @@ async function main() {
           "Draconic Bloodline",
           "Storm Sorcery",
           "Clockwork Soul"
-      ]
+      ],
     },
     {
       "name": "Warlock",
@@ -607,7 +607,7 @@ async function main() {
           "The Great Old One",
           "The Genie",
           "The Hexblade"
-      ]
+      ],
     },
     {
       "name": "Wizard",
@@ -626,7 +626,7 @@ async function main() {
           "School of Necromancy",
           "Order of Scribes",
           "School of Enchantment"
-      ]
+      ],
     }
   ];
   
@@ -1626,46 +1626,18 @@ async function main() {
       "qty": 1
     },
     {
-      "name": "Arrows (20)",
-      "description": "A quiver of 20 arrows for use with a bow.",
-      "group": "Ammunition",
+      "name": "Amulet",
+      "description": "A holy symbol in the form of an amulet.",
+      "group": "Holy Symbol",
       "cost": {
-        "value": 1,
+        "value": 5,
         "type": "gp"
       },
       "weight": {
         "value": 1,
         "type": "lb"
       },
-      "qty": 20
-    },
-    {
-      "name": "Blowgun needles (20)",
-      "description": "A quiver of 20 needles for use with a blowgun.",
-      "group": "Ammunition",
-      "cost": {
-        "value": 1,
-        "type": "gp"
-      },
-      "weight": {
-        "value": 1,
-        "type": "lb"
-      },
-      "qty": 20
-    },
-    {
-      "name": "Crossbow bolts (20)",
-      "description": "A quiver of 20 bolts for use with a crossbow.",
-      "group": "Ammunition",
-      "cost": {
-        "value": 1,
-        "type": "gp"
-      },
-      "weight": {
-        "value": 1.5,
-        "type": "lb"
-      },
-      "qty": 20
+      "qty": 1
     },
     {
       "name": "Antitoxin (vial)",
@@ -1682,74 +1654,18 @@ async function main() {
       "qty": 1
     },
     {
-      "name": "Crystal",
-      "description": "A crystal used as an arcane focus.",
-      "group": "Arcane Focus",
+      "name": "Arrows (20)",
+      "description": "A quiver of 20 arrows for use with a bow.",
+      "group": "Ammunition",
       "cost": {
-        "value": 10,
+        "value": 1,
         "type": "gp"
       },
       "weight": {
         "value": 1,
         "type": "lb"
       },
-      "qty": 1
-    },
-    {
-      "name": "Orb",
-      "description": "An orb used as an arcane focus.",
-      "group": "Arcane Focus",
-      "cost": {
-        "value": 20,
-        "type": "gp"
-      },
-      "weight": {
-        "value": 3,
-        "type": "lb"
-      },
-      "qty": 1
-    },
-    {
-      "name": "Rod",
-      "description": "A rod used as an arcane focus.",
-      "group": "Arcane Focus",
-      "cost": {
-        "value": 10,
-        "type": "gp"
-      },
-      "weight": {
-        "value": 2,
-        "type": "lb"
-      },
-      "qty": 1
-    },
-    {
-      "name": "Staff",
-      "description": "A staff used as an arcane focus.",
-      "group": "Arcane Focus",
-      "cost": {
-        "value": 10,
-        "type": "gp"
-      },
-      "weight": {
-        "value": 4,
-        "type": "lb"
-      },
-      "qty": 1
-    },
-    {
-      "name": "Wand",
-      "description": "A wand used as an arcane focus.",
-      "group": "Arcane Focus",
-      "cost": {
-        "value": 5,
-        "type": "gp"
-      },
-      "weight": {
-        "value": 1,
-        "type": "lb"
-      },
-      "qty": 1
+      "qty": 20
     },
     {
       "name": "Backpack",
@@ -1808,6 +1724,37 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Blowgun needles (20)",
+      "description": "A quiver of 20 needles for use with a blowgun.",
+      "group": "Ammunition",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 20
+    },
+    {
+      "name": "Breastplate Armor",
+      "group": "Medium Armor",
+      "description": "A fitted, metal breastplate for balanced protection. Allows for ease of movement.",
+      "armorClass": "14 + Dex modifier (max 2)",
+      "attributes": {
+        "weight": {
+          "value": 20,
+          "type": "lb"
+        },
+        "cost": {
+          "value": 400,
+          "type": "gp"
+        },
+        "qty": 1
+      }
+    },
+    {
       "name": "Bucket",
       "description": "A cylindrical container with a handle, typically used for carrying liquids.",
       "group": "Containers",
@@ -1834,6 +1781,42 @@ async function main() {
         "type": "lb"
       },
       "qty": 1
+    },
+    {
+      "name": "Chain Mail Armor",
+      "group": "Heavy Armor",
+      "description": "Armor made of interlocking metal rings, covering the entire body. Heavy and hinders stealth.",
+      "armorClass": "16",
+      "attributes": {
+        "weight": {
+          "value": 55,
+          "type": "lb"
+        },
+        "cost": {
+          "value": 75,
+          "type": "gp"
+        },
+        "qty": 1
+      },
+      "strength": 13,
+      "stealth": "disadvantage"
+    },
+    {
+      "name": "Chain Shirt Armor",
+      "group": "Medium Armor",
+      "description": "A shirt made of interlocking metal rings. Strikes a balance between protection and maneuverability.",
+      "armorClass": "13 + Dex modifier (max 2)",
+      "attributes": {
+        "weight": {
+          "value": 20,
+          "type": "lb"
+        },
+        "cost": {
+          "value": 50,
+          "type": "gp"
+        },
+        "qty": 1
+      }
     },
     {
       "name": "Climber's Kit",
@@ -1920,6 +1903,20 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Crossbow bolts (20)",
+      "description": "A quiver of 20 bolts for use with a crossbow.",
+      "group": "Ammunition",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1.5,
+        "type": "lb"
+      },
+      "qty": 20
+    },
+    {
       "name": "Crowbar",
       "description": "A sturdy, metal bar with a flattened end, used for prying and leveraging.",
       "group": "Usable Items",
@@ -1934,57 +1931,29 @@ async function main() {
       "qty": 1
     },
     {
-      "name": "Sprig of mistletoe",
-      "description": "A sprig of mistletoe used as a druidic focus.",
-      "group": "Druidic Focus",
-      "cost": {
-        "value": 1,
-        "type": "gp"
-      },
-      "weight": {
-        "value": 0,
-        "type": "lb"
-      },
-      "qty": 1
-    },
-    {
-      "name": "Totem",
-      "description": "A small totem or carving used as a druidic focus.",
-      "group": "Druidic Focus",
-      "cost": {
-        "value": 1,
-        "type": "gp"
-      },
-      "weight": {
-        "value": 0,
-        "type": "lb"
-      },
-      "qty": 1
-    },
-    {
-      "name": "Wooden staff",
-      "description": "A staff made of wood used as a druidic focus.",
-      "group": "Druidic Focus",
-      "cost": {
-        "value": 5,
-        "type": "gp"
-      },
-      "weight": {
-        "value": 4,
-        "type": "lb"
-      },
-      "qty": 1
-    },
-    {
-      "name": "Yew wand",
-      "description": "A wand made of yew used as a druidic focus.",
-      "group": "Druidic Focus",
+      "name": "Crystal",
+      "description": "A crystal used as an arcane focus.",
+      "group": "Arcane Focus",
       "cost": {
         "value": 10,
         "type": "gp"
       },
       "weight": {
         "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Emblem",
+      "description": "A holy symbol in the form of an emblem.",
+      "group": "Holy Symbol",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 0,
         "type": "lb"
       },
       "qty": 1
@@ -2032,6 +2001,24 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Halfplate Armor",
+      "group": "Medium Armor",
+      "description": "Armor covering the torso and limbs. Provides substantial defense at the cost of agility.",
+      "armorClass": "15 + Dex modifier (max 2)",
+      "attributes": {
+        "weight": {
+          "value": 40,
+          "type": "lb"
+        },
+        "cost": {
+          "value": 750,
+          "type": "gp"
+        },
+        "qty": 1
+      },
+      "stealth": "disadvantage"
+    },
+    {
       "name": "Hammer",
       "description": "A versatile tool with a heavy metal head, used for various tasks.",
       "group": "Usable Items",
@@ -2060,46 +2047,23 @@ async function main() {
       "qty": 1
     },
     {
-      "name": "Amulet",
-      "description": "A holy symbol in the form of an amulet.",
-      "group": "Holy Symbol",
-      "cost": {
-        "value": 5,
-        "type": "gp"
+      "name": "Hide Armor",
+      "group": "Medium Armor",
+      "description": "Tough animal hides layered for protection. Provides moderate defense while maintaining flexibility.",
+      "armorClass": "12 + Dex modifier (max 2)",
+      "attributes": {
+        "weight": {
+          "value": 12,
+          "type": "lb"
+        },
+        "cost": {
+          "value": 10,
+          "type": "gp"
+        },
+        "qty": 1
       },
-      "weight": {
-        "value": 1,
-        "type": "lb"
-      },
-      "qty": 1
-    },
-    {
-      "name": "Emblem",
-      "description": "A holy symbol in the form of an emblem.",
-      "group": "Holy Symbol",
-      "cost": {
-        "value": 5,
-        "type": "gp"
-      },
-      "weight": {
-        "value": 0,
-        "type": "lb"
-      },
-      "qty": 1
-    },
-    {
-      "name": "Reliquary",
-      "description": "A holy symbol in the form of a small container holding a sacred relic.",
-      "group": "Holy Symbol",
-      "cost": {
-        "value": 5,
-        "type": "gp"
-      },
-      "weight": {
-        "value": 2,
-        "type": "lb"
-      },
-      "qty": 1
+      "strength": 13,
+      "stealth": "disadvantage"
     },
     {
       "name": "Holy Water (flask)",
@@ -2242,6 +2206,23 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Leather Armor",
+      "group": "Light Armor",
+      "description": "Toughened leather crafted into a lightweight suit. Balances protection and mobility.",
+      "armorClass": "11 + Dex modifier",
+      "attributes": {
+        "weight": {
+          "value": 10,
+          "type": "lb"
+        },
+        "cost": {
+          "value": 10,
+          "type": "gp"
+        },
+        "qty": 1
+      }
+    },
+    {
       "name": "Lock",
       "description": "A basic lock with a key for securing doors and containers.",
       "group": "Usable Items",
@@ -2326,6 +2307,37 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Orb",
+      "description": "An orb used as an arcane focus.",
+      "group": "Arcane Focus",
+      "cost": {
+        "value": 20,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 3,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Padded Armor",
+      "group": "Light Armor",
+      "description": "Simple cloth padding that provides basic protection. Allows for easy movement.",
+      "armorClass": "11 + Dex modifier",
+      "attributes": {
+        "weight": {
+          "value": 8,
+          "type": "lb"
+        },
+        "cost": {
+          "value": 5,
+          "type": "gp"
+        },
+        "qty": 1
+      }
+    },
+    {
       "name": "Paper (one sheet)",
       "description": "A single sheet of paper suitable for writing.",
       "group": "Usable Items",
@@ -2394,6 +2406,25 @@ async function main() {
         "type": "lb"
       },
       "qty": 1
+    },
+    {
+      "name": "Plate Armor",
+      "group": "Heavy Armor",
+      "description": "Full-body armor made of shaped metal plates. Exceptional defense at the cost of agility.",
+      "armorClass": "18",
+      "attributes": {
+        "weight": {
+          "value": 65,
+          "type": "lb"
+        },
+        "cost": {
+          "value": 1500,
+          "type": "gp"
+        },
+        "qty": 1
+      },
+      "strength": 15,
+      "stealth": "disadvantage"
     },
     {
       "name": "Poison, basic (vial)",
@@ -2481,17 +2512,17 @@ async function main() {
     },
     {
       "name": "Ram, portable",
-    "description": "A sturdy, portable battering ram often used by law enforcement.",
-    "group": "Usable Items",
-    "cost": {
-      "value": 4,
-      "type": "gp"
-    },
-    "weight": {
-      "value": 35,
-      "type": "lb"
-    },
-    "qty": 1
+      "description": "A sturdy, portable battering ram often used by law enforcement.",
+      "group": "Usable Items",
+      "cost": {
+        "value": 4,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 35,
+        "type": "lb"
+      },
+      "qty": 1
     },
     {
       "name": "Rations (1/day)",
@@ -2508,6 +2539,38 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Reliquary",
+      "description": "A holy symbol in the form of a small container holding a sacred relic.",
+      "group": "Holy Symbol",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 2,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Ring Mail Armor",
+      "group": "Heavy Armor",
+      "description": "Armor made of interlocking metal rings. Heavy and noisy, hinders stealth.",
+      "armorClass": "14",
+      "attributes": {
+        "weight": {
+          "value": 40,
+          "type": "lb"
+        },
+        "cost": {
+          "value": 30,
+          "type": "gp"
+        },
+        "qty": 1
+      },
+      "stealth": "disadvantage"
+    },
+    {
       "name": "Robes",
       "description": "Flowing, loose garments typically worn by spellcasters.",
       "group": "Clothes",
@@ -2517,6 +2580,20 @@ async function main() {
       },
       "weight": {
         "value": 4,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Rod",
+      "description": "A rod used as an arcane focus.",
+      "group": "Arcane Focus",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 2,
         "type": "lb"
       },
       "qty": 1
@@ -2564,6 +2641,24 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Scale Mail Armor",
+      "group": "Medium Armor",
+      "description": "Armor made of small, overlapping metal scales. Provides solid protection but limits stealth.",
+      "armorClass": "14 + Dex modifier (max 2)",
+      "attributes": {
+        "weight": {
+          "value": 45,
+          "type": "lb"
+        },
+        "cost": {
+          "value": 50,
+          "type": "gp"
+        },
+        "qty": 1
+      },
+      "stealth": "disadvantage"
+    },
+    {
       "name": "Scale, merchant's",
       "description": "A small set of scales for weighing items.",
       "group": "Usable Items",
@@ -2590,6 +2685,23 @@ async function main() {
         "type": "lb"
       },
       "qty": 1
+    },
+    {
+      "name": "Shield",
+      "group": "Shield",
+      "description": "A sturdy shield for blocking attacks. Provides additional protection in combat.",
+      "armorClass": "+2",
+      "attributes": {
+        "weight": {
+          "value": 6,
+          "type": "lb"
+        },
+        "cost": {
+          "value": 10,
+          "type": "gp"
+        },
+        "qty": 1
+      }
     },
     {
       "name": "Shovel",
@@ -2662,6 +2774,24 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Spiked Armor",
+      "group": "Medium Armor",
+      "description": "Armor with strategically placed spikes. Deters close combatants and hinders stealth.",
+      "armorClass": "14 + Dex modifier (max 2)",
+      "attributes": {
+        "weight": {
+          "value": 45,
+          "type": "lb"
+        },
+        "cost": {
+          "value": 75,
+          "type": "gp"
+        },
+        "qty": 1
+      },
+      "stealth": "disadvantage"
+    },
+    {
       "name": "Spikes, iron (10)",
       "description": "Metal spikes driven into surfaces to create a secure anchor point.",
       "group": "Usable Items",
@@ -2676,6 +2806,39 @@ async function main() {
       "qty": 10
     },
     {
+      "name": "Splint Armor",
+      "group": "Heavy Armor",
+      "description": "Armor made of large, overlapping metal plates. Offers strong protection but limits mobility.",
+      "armorClass": "17",
+      "attributes": {
+        "weight": {
+          "value": 60,
+          "type": "lb"
+        },
+        "cost": {
+          "value": 200,
+          "type": "gp"
+        },
+        "qty": 1
+      },
+      "strength": 15,
+      "stealth": "disadvantage"
+    },
+    {
+      "name": "Sprig of mistletoe",
+      "description": "A sprig of mistletoe used as a druidic focus.",
+      "group": "Druidic Focus",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
       "name": "Spyglass",
       "description": "A small, handheld telescope used for seeing at a distance.",
       "group": "Usable Items",
@@ -2688,6 +2851,37 @@ async function main() {
         "type": "lb"
       },
       "qty": 1
+    },
+    {
+      "name": "Staff",
+      "description": "A staff used as an arcane focus.",
+      "group": "Arcane Focus",
+      "cost": {
+        "value": 10,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 4,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Studded Leather Armor",
+      "group": "Light Armor",
+      "description": "Leather armor adorned with metal studs. Offers better defense without sacrificing agility.",
+      "armorClass": "12 + Dex Modifier",
+      "attributes": {
+        "weight": {
+          "value": 13,
+          "type": "lb"
+        },
+        "cost": {
+          "value": 45,
+          "type": "gp"
+        },
+        "qty": 1
+      }
     },
     {
       "name": "Tent, two-person",
@@ -2732,6 +2926,20 @@ async function main() {
       "qty": 1
     },
     {
+      "name": "Totem",
+      "description": "A small totem or carving used as a druidic focus.",
+      "group": "Druidic Focus",
+      "cost": {
+        "value": 1,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 0,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
       "name": "Vial",
       "description": "A small container designed to hold liquids and other substances.",
       "group": "Containers",
@@ -2741,6 +2949,20 @@ async function main() {
       },
       "weight": {
         "value": 0.5,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Wand",
+      "description": "A wand used as an arcane focus.",
+      "group": "Arcane Focus",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 1,
         "type": "lb"
       },
       "qty": 1
@@ -2766,6 +2988,34 @@ async function main() {
       "cost": {
         "value": 1,
         "type": "cp"
+      },
+      "weight": {
+        "value": 1,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Wooden staff",
+      "description": "A staff made of wood used as a druidic focus.",
+      "group": "Druidic Focus",
+      "cost": {
+        "value": 5,
+        "type": "gp"
+      },
+      "weight": {
+        "value": 4,
+        "type": "lb"
+      },
+      "qty": 1
+    },
+    {
+      "name": "Yew wand",
+      "description": "A wand made of yew used as a druidic focus.",
+      "group": "Druidic Focus",
+      "cost": {
+        "value": 10,
+        "type": "gp"
       },
       "weight": {
         "value": 1,
